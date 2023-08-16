@@ -20,7 +20,7 @@ Updated 1340 GMT+8 Aug 16, 2023
 
 | 北京大学正版软件，http://software.pku.edu.cn                 |
 | ------------------------------------------------------------ |
-| 为便于便于展示小字体的代码，课上很大可能用到 teams会议系统，可申请北京大学的teams账号。M365（含teams）账号申请链接：https://www.wjx.cn/vm/Y5XwfHD.aspx# ，北京大学教师教学发展中心（http://cetl.pku.edu.cn）维护，2023年1月20日 |
+| 为便于展示小字体的代码，课上很大可能用到 teams会议系统，可申请北京大学的teams账号。M365（含teams）账号申请链接：https://www.wjx.cn/vm/Y5XwfHD.aspx# ，北京大学教师教学发展中心（http://cetl.pku.edu.cn）维护，2023年1月20日 |
 | 网络相关问题由 北京大学计算中心（ http://its.pku.edu.cn）维护，或者电话 62751023 |
 
 
