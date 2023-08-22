@@ -1,10 +1,10 @@
 # 选课Frequently Asked Question (FAQ)
 
-Updated 0958 GMT+8 Aug 22, 2023
+Updated 1051 GMT+8 Aug 22, 2023
 
 2023 fall, Complied by Hongfei Yan
 
-
+提醒：请同学们群昵称改实名，便于互相认识以及后续学习中答疑。
 
 Q: 如果不选“计算概论（B）上机”课程，会影响期末上机考试吗？
 
