@@ -1,6 +1,6 @@
 # 选课Frequently Asked Question (FAQ)
 
-Updated 1716 GMT+8 Aug 22, 2023
+Updated 2237 GMT+8 Aug 22, 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -54,7 +54,7 @@ Q: 选的时候没看到是提高班，没基础能学吗？
 
 Q: 要用什么软件写程序?
 
-Python的编程环境有多种，推荐 Anaconda ( https://www.anaconda.com ) ⾃带的 spyder集成开发环境（Integrated development environment, IDE）， spyder 启动⽅法详⻅ 2.4.2 节；同学们经常⽤到的开发环境还有 PyCharm；另外，在线运⾏的程序使⽤ https://leetcode-cn.com/playground/new/empty/ 也⽅便，它可以接收矩阵形式的输⼊数据。
+Python的编程环境有多种，推荐 Anaconda ( https://www.anaconda.com ) ⾃带的 spyder集成开发环境（Integrated development environment, IDE）， spyder 启动⽅法详⻅ 2.5.2 节；同学们经常⽤到的开发环境还有 PyCharm；另外，在线运⾏的程序使⽤ https://leetcode-cn.com/playground/new/empty/ 也⽅便，它可以接收矩阵形式的输⼊数据。
 
 
 
