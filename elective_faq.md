@@ -4,7 +4,9 @@ Updated 1309 GMT+8 Aug 23, 2023
 
 2023 fall, Complied by Hongfei Yan
 
-提醒：请同学们群昵称改实名，便于互相认识以及后续学习中答疑。
+提醒：请同学们群昵称改==实名，便于互相认识以及后续学习中答疑==。
+
+
 
 Q: 如果不选“计算概论（B）上机”课程，会影响期末上机考试吗？
 
@@ -36,7 +38,7 @@ Q: 请问上机课是老师指导学生进行实操吗？不选会不会对学�
 
 Q: 今年秋季学期开设的计算概论B课程是否会在选课阶段后期增加选课名额？
 
-权限在教务老师，我这里是有多少同学都接收。往年教务老师会根据选课情况调整，比如调整到教室容量的上限。
+权限在教务老师，我这里是有多少同学都接收。==往年教务老师会根据选课情况调整==，比如调整到教室容量的上限，当然还要考虑机位。目前2023/8/23看到开课人数设置为120人，6号和7号机房合计96+103=199个机位，理教208有393个座位。
 
 
 
@@ -52,10 +54,11 @@ Q: 选的时候没看到是提高班，没基础能学吗？
 
 Q: 要用什么软件写程序?
 
-Python的编程环境有多种，推荐 Anaconda ( https://www.anaconda.com ) ⾃带的 spyder集成开发环境（Integrated development environment, IDE）， spyder 启动⽅法详⻅ 2.4.2 节；同学们经常⽤到的开发环境还有 PyCharm；另外，在线运⾏的程序使⽤ https://leetcode-cn.com/playground/new/empty/ 也⽅便，它可以接收矩阵形式的输⼊数据。
+Python的编程环境有多种，推荐 Anaconda ( https://www.anaconda.com ) ⾃带的 spyder集成开发环境（Integrated development environment, IDE）， spyder 启动⽅法详⻅ 2.5.2 节；同学们经常⽤到的开发环境还有 PyCharm ( https://www.jetbrains.com/pycharm/ )；另外，在线运⾏的程序使⽤ https://leetcode-cn.com/playground/new/empty/ 也⽅便，它可以接收矩阵形式的输⼊数据。
 
 
 
 Q: 一名大一新生，想要在未来转入信科。本来其实想选计算概论A，但是跟很多课都冲突了，选了计算概论B。想请教您一下计概选python会对未来的学习有影响吗？
 
 信科还是要学习C/C++，这是必须的。 例如后续的 计算机系统 课的作业都是 C语言。如果现在学习 Python ，你得自学 C/C++。往年也有同学用C/C++交作业的。
+
