@@ -1,14 +1,8 @@
 # 《计算概论（B）》提高班课程简介
 
-Updated 1302 GMT+8 Aug 24, 2023
+Updated 1302 GMT+8 Aug 24, 2023				2023 fall, Complied by Hongfei Yan
 
-2023 fall, Complied by Hongfei Yan
-
-课程编号：04831410	课程名称：计算概论（B）		学分：3
-
-总 学 时：48学时理论课（每周3学时）+ 32学时上机实习课（每周2学时）
-
- 
+课程编号：04831410，学分：3，总 学 时：48学时理论课（每周3学时）+ 32学时上机实习课（每周2学时）
 
 面向有电脑基础或者对计算机技术感兴趣的同学，零基础同学可以选课。
 
@@ -28,7 +22,7 @@ Updated 1302 GMT+8 Aug 24, 2023
 
 ## 二．课程安排
 
-其中，1-6周为理论和编程语法掌握部分，7-12周学习和掌握各种常见算法，进行计算思维算法实践，13-16周是课程总结和拓展项目。下表是16周的课程内容安排：
+1-6周为理论和编程语法掌握部分，7-12周学习和掌握各种常见算法，进行计算思维算法实践，13-16周是课程总结和拓展项目。
 
 | 1. 课程概述                        | 2. 计算机文化                      |
 | ---------------------------------- | ---------------------------------- |
@@ -78,7 +72,7 @@ Updated 1302 GMT+8 Aug 24, 2023
 
 6） Eric Matthes. Python编程：从入门到实践（第2版）（Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming）[M]. 袁国忠，译. 北京：人民邮电出版社，2019.
 
-![img](https://raw.githubusercontent.com/GMyhf/img/main/img/clip_image001.png)
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/clip_image001.png" alt="img" style="zoom: 50%;" />
 
 ## 四．学生成绩评定方法
 
