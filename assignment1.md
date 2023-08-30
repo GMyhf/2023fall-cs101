@@ -1,6 +1,6 @@
 # Assignment #1: Programming Practice
 
-Updated 2204 GMT+8 Aug 29, 2023
+Updated 1046 GMT+8 Aug 30, 2023
 
 
 
@@ -21,6 +21,18 @@ Markdown（用 https://typoraio.cn 编辑）格式文件在，https://github.com
 
 
 
+【张概论，2023年秋】 ==（请改为同学的姓名、系统、编程环境等）==
+
+操作系统：macOS Ventura 13.4.1 (c)
+
+Python编程环境：Spyder IDE 5.2.2, PyCharm 2023.1.4 (Professional Edition)
+
+C/C++编程环境：Mac terminal vi (version 9.0.1424), g++/gcc (Apple clang version 14.0.3, clang-1403.0.22.14.1)
+
+
+
+
+
 ## 1.必做题目
 
 ### CF4A: Watermelon
@@ -29,7 +41,9 @@ brute force/math, http://codeforces.com/problemset/problem/4/A
 
 
 
-【你的姓名，2023年秋】思路：将⼀个数分成两个偶数。
+【张概论，2023年秋】思路：将⼀个数分成两个偶数。
+
+==（请改为同学的姓名、思路等）==
 
 ```python
 w = int(input())
@@ -41,7 +55,7 @@ print('NO')
 
 
 
-CF或者OJ上 AC/非AC 截图
+CF或者OJ上 AC/非AC 截图 ==（请改为同学的截图）==
 
 ![image-20230829222018599](https://raw.githubusercontent.com/GMyhf/img/main/img/202308292220148.png)
 
@@ -61,6 +75,12 @@ http://codeforces.com/problemset/problem/71/A
 
 
 
+
+
+CF或者OJ上 AC/非AC 截图 
+
+
+
 ### OJ02750. 鸡兔同笼, math
 http://cs101.openjudge.cn/practice/02750
 
@@ -74,6 +94,8 @@ http://cs101.openjudge.cn/practice/02750
 ```
 
 
+
+CF或者OJ上 AC/非AC 截图 
 
 
 
@@ -89,6 +111,10 @@ http://cs101.openjudge.cn/practice/02733
 
 
 
+CF或者OJ上 AC/非AC 截图 
+
+
+
 ## 2.选做题目
 
 待定
@@ -99,4 +125,4 @@ http://cs101.openjudge.cn/practice/02733
 
 ## 3.本周学习总结和收获
 
-待定
+待书写
