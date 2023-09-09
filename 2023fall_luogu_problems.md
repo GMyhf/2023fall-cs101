@@ -2,7 +2,7 @@
 
 # Programming Problems in luogu.com.cn
 
-Updated 1118 GMT+8 Sep 6, 2023
+Updated 1520 GMT+8 Sep 9, 2023
 
 
 
@@ -166,9 +166,68 @@ write(int(input()))
 
 # ==OPTIONAL PROBLEMS==
 
-## XX158: Taxi
+## P5730: 【深基5.例10】显示屏
+
+bruteforce, https://www.luogu.com.cn/problem/P5730
+
+液晶屏上，每个阿拉伯数字都是可以显示成 $3\times5$ 的点阵的（其中 `X` 表示亮点，`.` 表示暗点）。现在给出数字位数（不超过 $100$）和一串数字，要求输出这些数字在显示屏上的效果。数字的显示方式如同样例输出，注意每个数字之间都有一列间隔。
+
+**输入格式**
+
+第一行输入一个正整数 $n$，表示数字的位数。
+
+第二行输入一个长度为 $n$ 的自然数。
+
+**输出格式**
+
+输出五行，表示显示屏上的数字。
+
+样例 #1
+
+样例输入 #1
+
+```
+10
+0123456789
+```
+
+样例输出 #1
+
+```
+XXX...X.XXX.XXX.X.X.XXX.XXX.XXX.XXX.XXX
+X.X...X...X...X.X.X.X...X.....X.X.X.X.X
+X.X...X.XXX.XXX.XXX.XXX.XXX...X.XXX.XXX
+X.X...X.X.....X...X...X.X.X...X.X.X...X
+XXX...X.XXX.XXX...X.XXX.XXX...X.XXX.XXX
+```
+
+提示
+
+数据保证，$1 \leq n \leq 100$。
 
 
+
+【2023fall, 夏天明】我的想法是，先把0~9的画法写在一个长度10的list里，每个元素是一个长度5的list，这个子list存储对应单个数字每行的长度为3的字符串。然后用个循环，对于目标数的每一个数字的列表的同序号项以.相隔拼接起来，最后逐行输出就可以了。
+
+```python
+# 它的测试数据有问题，接收输入加个strip
+#10个数字的图
+sample = [["XXX","X.X","X.X","X.X","XXX"],
+          ["..X","..X","..X","..X","..X"],
+          ["XXX","..X","XXX","X..","XXX"],
+          ["XXX","..X","XXX","..X","XXX"],
+          ["X.X","X.X","XXX","..X","..X"],
+          ["XXX","X..","XXX","..X","XXX"],
+          ["XXX","X..","XXX","X.X","XXX"],
+          ["XXX","..X","..X","..X","..X"],
+          ["XXX","X.X","XXX","X.X","XXX"],
+          ["XXX","X.X","XXX","..X","XXX"]]
+
+n = int(input())
+k = input().strip()
+for i in range(5):
+    print(".".join([sample[int(m)][i] for m in k]))
+```
 
 
 
