@@ -1,6 +1,6 @@
 # 2023fall-cs101 摸底考试
 
-Updated 1159 GMT+8 Sep 9, 2023								
+Updated 1109 GMT+8 Sep 10, 2023								
 
 2023 fall, Complied by Hongfei Yan
 
@@ -26,7 +26,11 @@ Updated 1159 GMT+8 Sep 9, 2023
 
 **方式：学生在线考试和教师监考**
 
-有意向选择 《计算概论（B）》12班的同学，届时请参加在OJ平台 http://cs101.openjudge.cn/cs101_2023initial_class12/ 进行的一次语法摸底考试（6个题目；小组昵称需要23n加学号，如 23n2200011723，提交时候编程语言选择Python3, G++，或者GCC）。
+有意向选择 《计算概论（B）》12班的同学，届时请参加在OJ平台 http://cs101.openjudge.cn/cs101_2023initial_class12/ 进行的一次语法摸底考试（6个题目，通常是中文为主；小组昵称需要23n加学号，如 23n2200011723，提交时候编程语言选择Python3, G++，或者GCC）。
+
+考试期间，请同学只访问OJ，以及线上调试工具 https://pythontutor.com/，不能访问其他网站，不要查看OJ考试之前自己提交的代码。
+
+可以多次提交，可以本地调试（如Spyder, pycharm的调试工具），本地help查函数说明，如：help(sorted), help(list.sort)（python的交互窗口。在terminal，敲python会车。或者spyder的右下角窗口，pycharm也有类似窗口）。
 
 
 
@@ -39,6 +43,14 @@ Updated 1159 GMT+8 Sep 9, 2023
 同学可以提前练习 CF最简单的30个题目。由简到难题目排序，https://codeforces.com/problemset?order=BY_SOLVED_DESC
 
 另外，因为考试是在OJ进行，同学也需要刷几个OJ题目，熟悉提交流程。
+
+
+
+语法基础（包括基本数据类型，控制结构），必须会用，如果考试时候，还考虑语法错误，时间是不够的。
+
+函数记不住时候本地查一下返回值、参数或者用法就成。可以带一张A4纸大小的cheat sheet，把“基本数据类型的操作总结”双面打印了，如附录2所示。
+
+
 
 
 
