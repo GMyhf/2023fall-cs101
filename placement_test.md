@@ -1,6 +1,6 @@
 # 2023fall-cs101 摸底考试
 
-Updated 1109 GMT+8 Sep 10, 2023								
+Updated 1512 GMT+8 Sep 13, 2023								
 
 2023 fall, Complied by Hongfei Yan
 
@@ -14,7 +14,7 @@ Updated 1109 GMT+8 Sep 10, 2023
 
 ## 2 安排
 
-**时间：2023年9月14日周四下午15:08-17:00**
+### 2.1 时间：2023年9月14日周四下午15:08-17:00
 
 摸底考试时间安排在第1周周四下午进行，是因为要在选课系统关闭时间（第2周2023年9月21日周四上午10:00）之前完成，给同学预留时间自行调整选课。
 
@@ -24,7 +24,7 @@ Updated 1109 GMT+8 Sep 10, 2023
 
 
 
-**方式：学生在线考试和教师监考**
+### 2.2 方式：学生在线考试和教师监考
 
 有意向选择 《计算概论（B）》12班的同学，届时请参加在OJ平台 http://cs101.openjudge.cn/cs101_2023initial_class12/ 进行的一次语法摸底考试（6个题目，通常是中文为主；小组昵称需要23n加学号，如 23n2200011723，提交时候编程语言选择Python3, G++，或者GCC）。
 
@@ -34,11 +34,29 @@ Updated 1109 GMT+8 Sep 10, 2023
 
 
 
-请同学自己找到合适的地方，进行线上考试。在线考试的操作参考，请看附录1的说明。
+**请同学自己找到合适的地方，进行线上考试。**在线考试的操作参考，请看附录1的说明。
+
+云监考的原理是：同学自己找地方考试，电脑答题不需要加入teams，手机摄像头视角作为监考画面（能看到同学上半身及电脑屏幕为好）。Teams单个会议不支持超过开启98个的画面，所以我们设了6个云监考考场，同学的手机根据自己学号除以6取余的值加入相应teams会议。
+
+考试期间如果你正在上其他课程，不用加teams监考，请自我监督。利用课间10分钟，或者课上，至少AC1。因为考试结束后，当次比赛不能再提交了。实在无法考试期间刷题的同学，考试结束后，单独联系我。
+
+如果有同学不满18岁，无法使用teams，请自我监督。
+
+考试期间，如有其他特殊情况发生，如手机端加不了teams会议，手机断电、死机，请自我监督。
+
+### 2.3 线上考场
+
+| 主题：2023年计算概论摸底考试（闫宏飞线上考场）（学号除以6余0）<br/>时间：2023年9月14日，周四 15:00~17:00 北京，上海<br/>Meeting ID: 453 089 513 614 <br/>Passcode: 2vEsnf<br/>https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTY5MGM4MTUtMmU2Mi00YmNjLTlhMDYtOWEwNWU4YzZhZWJk%40thread.v2/0?context=%7b%22Tid%22%3a%22cd66712e-8aa9-44ad-9e42-02ea2d037e64%22%2c%22Oid%22%3a%227fae1325-5f9b-401d-bd3f-42dd9a7d27b8%22%7d |
+| ------------------------------------------------------------ |
+| 2023年计算概论摸底考试（张以宁线上考场）（学号除以6余1）<br/>会议 ID: 414 544 872 528 <br/>密码: g9mjEw <br/>https://teams.microsoft.com/l/meetup-join/19%3ameeting_Mzg1MjAzNWEtNmU1OC00NmRlLWJhNjMtZjNkZjk1MjU2Mzcw%40thread.v2/0?context=%7b%22Tid%22%3a%22cd66712e-8aa9-44ad-9e42-02ea2d037e64%22%2c%22Oid%22%3a%22adf496fc-6600-404d-9c81-eb0d7a61310f%22%7d |
+| 2023年计算概论摸底考试（涂程颖线上考场）（学号除以6余2）<br/>会议 ID: 434 456 291 436 <br/>密码: gLPGYH<br/>https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTI0NzMwMzEtMDY5Zi00NDhmLWExZjUtODRlMjUwMzgxYjll%40thread.v2/0?context=%7b%22Tid%22%3a%22cd66712e-8aa9-44ad-9e42-02ea2d037e64%22%2c%22Oid%22%3a%222eec4059-135d-48f8-a316-38f6c65dba42%22%7d |
+| 2023年计算概论摸底考试（彭亦男线上考场）（学号除以6余3）<br/>会议 ID: 434 616 446 88 <br/>密码: S4F3E6 <br/>https://teams.microsoft.com/l/meetup-join/19%3ameeting_OTBkNDEzMDMtOWZkZC00OTAzLWJmODYtMDRlNmRkZmVjMjRk%40thread.v2/0?context=%7b%22Tid%22%3a%22cd66712e-8aa9-44ad-9e42-02ea2d037e64%22%2c%22Oid%22%3a%22b3c8e809-25b4-4223-85cf-c3762a76025c%22%7d |
+| 2023年计算概论摸底考试（张哲瑞线上考场）（学号除以6余4）<br/>Meeting ID: 478 479 118 974 <br/>Passcode: BytwPK <br/>https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZDI2OTRhYmMtMmYzNi00MGQ0LWE2NzQtYTFkMTk0OWQyNGQw%40thread.v2/0?context=%7b%22Tid%22%3a%22cd66712e-8aa9-44ad-9e42-02ea2d037e64%22%2c%22Oid%22%3a%22931d23a9-f8eb-4f0c-8900-ba8c4a1a4aec%22%7d |
+| 2023年计算概论摸底考试（陈威宇线上考场）（学号除以6余5）<br/>会议 ID: 453 816 614 890 <br/>密码: xQ42Dy<br/>https://teams.microsoft.com/l/meetup-join/19%3ameeting_N2I5ZGYzNWQtNTIzNi00NWEwLTkyZTctMzEzMjVlYWU4NWM5%40thread.v2/0?context=%7b%22Tid%22%3a%22cd66712e-8aa9-44ad-9e42-02ea2d037e64%22%2c%22Oid%22%3a%228ea2851f-9a0d-41b1-bc4c-4d4e6ba36401%22%7d |
 
 
 
-**题目难度：考察编程语法为主**
+### 2.4 题目难度：考察编程语法为主
 
 同学可以提前练习 CF最简单的30个题目。由简到难题目排序，https://codeforces.com/problemset?order=BY_SOLVED_DESC
 
