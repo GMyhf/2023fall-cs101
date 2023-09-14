@@ -20,6 +20,8 @@ Markdown（用 https://typoraio.cn 编辑）格式文件在，https://github.com
 
 为了尽量拉齐大家的学习基础，尤其是零基础同学的强化学习，第一周就进行了语法摸底考试。鉴于Canvas 9月22日开始使用，这之前大家写好作业，先自己保存，之后通知提交到canvas.
 
+摸底考试：AC6==（请改为同学的通过数）==
+
 请把每个题目解题思路（可选），源码Python, 或者C++/C（已经在Codeforces/Openjudge上AC），截图，填写到下面作业模版中（例如使用：typora https://typoraio.cn ，或者word）中提交。如果不能按时完成，请写明大致花费时间，原因。
 
 教材、题解等课程相关材料，请在课程微信群索要。
