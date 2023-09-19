@@ -1,20 +1,10 @@
 # Assignment #2: 字符串相关
 
-Updated 2211 GMT+8 Sep 19, 2023
+Updated 0014 GMT+8 Sep 20, 2023
 
 
 
 2023 fall, Complied by Hongfei Yan==（请改为同学的姓名、院系）==
-
-Markdown（用 https://typoraio.cn 编辑）格式文件在，https://github.com/GMyhf/2023fall-cs101
-
-
-
-| 课程号: 04831410		课程名: 计算概论(B)                  | 班号: 12                                              |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
-| 上课时间: 1-16周 每周 周二 7-9节                             | 地点: 理教208                                         |
-| 上机时间: 2-15周 每周 周四 7-8节<br/>期末机考时间: 第16周 周四 7-8节 | 地点：理科1号楼计算中心，二层楼的6号和三层楼的7号机房 |
-| 助教：张哲瑞、张以宁、彭亦男、涂程颖、陈威宇                 | 在课程微信群中的名字是“TA-”开始，地点：理科1号楼1220  |
 
 
 
@@ -22,11 +12,9 @@ Markdown（用 https://typoraio.cn 编辑）格式文件在，https://github.com
 
 1）第2周课上讲到了计算机相关的历史，介绍了ASCII表。
 
-2）请把每个题目解题思路（可选），源码Python, 或者C++/C（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号，或者姓名+学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC或者没有AC，都请标上每个题目大致花费时间。
+2）请把每个题目解题思路（可选），源码Python, 或者C++/C（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC 或者没有AC，都请标上每个题目大致花费时间。
 
-3）提交时候先提交pdf文件，再把md或者doc文件上传到右侧“作业评论”。提交后，助教看到画面如下，有同学清晰头像、提交文件有pdf、作业评论有md或者doc。
-
-<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20230918143743985.png" alt="image-20230918143743985" style="zoom: 33%;" />
+3）提交时候先提交pdf文件，再把md或者doc文件上传到右侧“作业评论”。Canvas需要有同学清晰头像、提交文件有pdf、作业评论有md或者doc。
 
 4）同学完成作业的时候，就是这个模版文件中修改补充好。为便于助教批改作业，请尽量不要删除其他文字。
 
@@ -108,9 +96,9 @@ p43s
 
 
 
-Python代码运行截图 ==（请替换为同学的AC代码截图，至少包含有"Accepted"，和“学号”的截图）==
+Python代码运行截图 ==（请替换为同学的AC代码截图，至少包含有"Accepted"的截图）==
 
-<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20230918135854857.png" alt="image-20230918135854857" style="zoom: 50%;" />
+
 
 
 
@@ -125,7 +113,7 @@ C++ 代码（如果没有，C++部分可以删除）
 
 
 
-C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -209,7 +197,7 @@ If you want more formal information about the lexicographical order (also known 
 
 
 
-Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -224,7 +212,7 @@ C++ 代码（如果没有，C++部分可以删除）
 
 
 
-C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -299,7 +287,7 @@ In the second example nobody got a positive score.
 
 
 
-Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -314,7 +302,7 @@ C++ 代码（如果没有，C++部分可以删除）
 
 
 
-C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -322,52 +310,44 @@ C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“�
 
 
 
-#### 02689: 大小写字母互换
+#### 58A. Chat room
 
-http://cs101.openjudge.cn/practice/02689
+greedy/strings, 1000, http://codeforces.com/problemset/problem/58/A
 
-把一个字符串中所有出现的大写字母都替换成小写字母，同时把小写字母替换成大写字母。
+Vasya has recently learned to type and log on to the Internet. He immediately entered a chat room and decided to say hello to everybody. Vasya typed the word *s*. It is considered that Vasya managed to say hello if several letters can be deleted from the typed word so that it resulted in the word "hello". For example, if Vasya types the word "ahhellllloou", it will be considered that he said hello, and if he types "hlelo", it will be considered that Vasya got misunderstood and he didn't manage to say hello. Determine whether Vasya managed to say hello by the given word *s*.
 
-**输入**
+**Input**
 
-输入一行：待互换的字符串。
+The first and only line contains the word *s*, which Vasya typed. This word consisits of small Latin letters, its length is no less that 1 and no more than 100 letters.
 
-**输出**
+**Output**
 
-输出一行：完成互换的字符串（字符串长度小于80）。
+If Vasya managed to say hello, print "YES", otherwise print "NO".
 
-样例输入
+Examples
 
-```
-If so, you already have a Google Account. You can sign in on the right. 
-```
-
-样例输出
+input
 
 ```
-iF SO, YOU ALREADY HAVE A gOOGLE aCCOUNT. yOU CAN SIGN IN ON THE RIGHT. 
+ahhellllloou
 ```
 
-来源
+output
 
-计算概论05
+```
+YES
+```
 
+input
 
+```
+hlelo
+```
 
-```python
-s = input()
-gap = ord('a') - ord('A')
+output
 
-ans = []
-for i in s:
-    if 'A' <= i <= 'Z':
-        ans += chr(ord(i) + gap)
-    elif 'a' <= i <= 'z':
-        ans += chr(ord(i) - gap)
-    else:
-        ans += i
-
-print(''.join(ans))
+```
+NO
 ```
 
 
@@ -389,7 +369,7 @@ print(''.join(ans))
 
 
 
-Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -404,7 +384,7 @@ C++ 代码（如果没有，C++部分可以删除）
 
 
 
-C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -470,7 +450,7 @@ NO
 
 
 
-Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -485,11 +465,7 @@ C++ 代码（如果没有，C++部分可以删除）
 
 
 
-C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
-
-
-
-
+C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -562,7 +538,7 @@ Central Europe 1995
 
 
 
-Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+Python代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -577,7 +553,7 @@ C++ 代码（如果没有，C++部分可以删除）
 
 
 
-C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“学号”）==
+C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
 
 
 
@@ -599,8 +575,3 @@ C++ 代码运行截图 ==（AC代码截图，至少包含有"Accepted"，和“�
 
 
 
-**附录**
-
-如果设好了 typora的图床，md文件中图片在其他地方也能看见。因为图片存在云端。如果不好设置，注意导出的pdf文件包含图片。
-
-Typora+PicGo+Github解决个人博客图片上传问题 https://zhuanlan.zhihu.com/p/367529569
