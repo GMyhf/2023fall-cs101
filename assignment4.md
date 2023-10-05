@@ -1,6 +1,6 @@
 # Assignment #4: 国庆节月考
 
-Updated 1514 GMT+8 Oct 5, 2023
+Updated 1641 GMT+8 Oct 5, 2023
 
 
 
@@ -10,11 +10,13 @@ Updated 1514 GMT+8 Oct 5, 2023
 
 **说明：**
 
-1）请把每个题目解题思路（可选），源码Python, 或者C++/C（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC 或者没有AC，都请标上每个题目大致花费时间。
+1）国庆节⽉考： AC8==（请改为同学的通过数）== 。摸底题⽬都在“练习”⾥⾯，按照数字题号能找到，可以重新提交。作业中提交⾃⼰最满意版本的代码和截图。
 
-2）提交时候先提交pdf文件，再把md或者doc文件上传到右侧“作业评论”。Canvas需要有同学清晰头像、提交文件有pdf、作业评论有md或者doc。
+2）请把每个题目解题思路（可选），源码Python, 或者C++/C（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC 或者没有AC，都请标上每个题目大致花费时间。
 
-3）如果不能在截止前提交作业，请写明原因。
+3）提交时候先提交pdf文件，再把md或者doc文件上传到右侧“作业评论”。Canvas需要有同学清晰头像、提交文件有pdf、作业评论有md或者doc。
+
+4）如果不能在截止前提交作业，请写明原因。
 
 
 
