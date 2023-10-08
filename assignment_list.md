@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 1828 GMT+8 Oct 4, 2023
+Updated 2353 GMT+8 Oct 8, 2023
 
 
 
@@ -851,308 +851,412 @@ Greedy, http://cs101.openjudge.cn/practice/25353/
 
 ## Routine
 
-### 2023/10/05
+### 2023/10/08 贪心算法
+
+#### 01042/44:Gone Fishing
+
+http://cs101.openjudge.cn/practice/01042/
+
+#### 04144/12066:畜栏保留问题
+
+http://cs101.openjudge.cn/practice/04144
+
+#### 02797/1799:最短前缀 
+
+http://cs101.openjudge.cn/practice/02797
 
 
 
-### 2023/10/04
+### 2023/10/07 二分查找
 
-04141/8755:砝码称重
+#### 02503/1505:Babelfish
+
+http://cs101.openjudge.cn/practice/02503/
+
+#### 04136/8208:矩形分割
+
+http://cs101.openjudge.cn/practice/04136/
+
+#### 02538/1540:WERTYU
+
+http://cs101.openjudge.cn/routine/02538/
+
+
+
+### 2023/10/06 二分查找
+
+#### 04140/12065:方程求解
+
+http://cs101.openjudge.cn/practice/04140/
+
+#### 03441/2442:4 Values whose Sum is 0
+
+http://cs101.openjudge.cn/practice/03441
+
+#### 04145/12067:放弃考试
+
+http://cs101.openjudge.cn/practice/04145/
+
+
+
+### 2023/10/05 递归
+
+#### 01191/193:棋盘分割
+
+http://cs101.openjudge.cn/practice/01191/
+
+#### 03248/2249:最大公约数
+
+http://cs101.openjudge.cn/practice/03248
+
+#### 02749/1751:分解因数
+
+http://cs101.openjudge.cn/practice/02749
+
+
+
+### 2023/10/04 枚举、递归
+
+#### 04141/8755:砝码称重
 
 http://cs101.openjudge.cn/practice/04141/
 
-04147/8200: 汉诺塔问题(Tower of Hanoi)
+#### 04147/8200: 汉诺塔问题(Tower of Hanoi)
 
 http://cs101.openjudge.cn/practice/04147
 
-02802/1804:小游戏
+#### 02802/1804:小游戏
 
 http://cs101.openjudge.cn/practice/02802/
 
-### 2023/10/03
 
-02707/1709:求一元二次方程的根
+
+### 2023/10/03 简单计算、枚举
+
+#### 02707/1709:求一元二次方程的根
 
 http://cs101.openjudge.cn/practice/02707/
 
-04133/7213:垃圾炸弹
+#### 04133/7213:垃圾炸弹
 
 http://cs101.openjudge.cn/practice/04133
 
-04139/7650:不定方程求解
+#### 04139/7650:不定方程求解
 
 http://cs101.openjudge.cn/practice/04139
 
-### 2023/10/02
 
-02692/1694:假币问题
+
+### 2023/10/02 枚举
+
+#### 02692/1694:假币问题
 
 http://cs101.openjudge.cn/practice/02692/
 
-02810/1812:完美立方
+#### 02810/1812:完美立方
 
 http://cs101.openjudge.cn/practice/02810/
 
-02812/1814:恼人的青蛙
+#### 02812/1814:恼人的青蛙
 
 http://cs101.openjudge.cn/practice/02812/
 
+
+
 ### 2023/10/01
 
-03254/2255: 约瑟夫问题No.2
+#### 03254/2255: 约瑟夫问题No.2
 
 http://cs101.openjudge.cn/practice/03253/
 
-01321/323: 棋盘问题
+#### 01321/323: 棋盘问题
 
 http://cs101.openjudge.cn/practice/01321/
 
-24834: 通配符匹配
+#### 24834/24834: 通配符匹配
 
-http://bailian.openjudge.cn/tm2023cis/E/
+http://cs101.openjudge.cn/routine/24834/
+
+
 
 ### 2023/9/30
 
-01276/278:Cash Machine
+#### 01276/278:Cash Machine
 
 http://cs101.openjudge.cn/practice/01276/
 
-02431/1433:Expedition				Page 74 《挑战程序设计竞赛》第2版 
+#### 02431/1433:Expedition		Page 74 《挑战程序设计竞赛》第2版 
 
 http://cs101.openjudge.cn/practice/02431/
 
-04146/1749: 数字方格
+#### 04146/1749: 数字方格
 
 http://cs101.openjudge.cn/practice/04146/
 
+
+
 ### 2023/9/29
 
-23421: ⼩偷背包
+#### 23421: ⼩偷背包
 
 dp, http://cs101.openjudge.cn/practice/23421
 
-02773/1775: 采药
+#### 02773/1775: 采药
 
 dp, http://cs101.openjudge.cn/practice/02773
 
-2996/1997:选课
+#### 02996/1997:选课
 
-http://bailian.openjudge.cn/practice/2996/
+http://cs101.openjudge.cn/routine/02996/
+
+
 
 ### 2023/9/28
 
-2757/1759: 最⻓上升⼦序列				Page 64
+#### 2757/1759: 最⻓上升⼦序列			Page 64
 
 dp, http://cs101.openjudge.cn/practice/02757
 
-02806/1808:公共子序列				Page 56
+#### 02806/1808:公共子序列				Page 56
 
 http://cs101.openjudge.cn/practice/02806/
 
-02746/1747: 显示器
+#### 02746/1747: 显示器
 
 http://cs101.openjudge.cn/practice/02745/
+
+
 
 ### 2023/9/27 
 
 选自《算法基础与在线实践》
 
-01833/835:排列
+#### 01833/835:排列
 
 http://cs101.openjudge.cn/practice/01833/
 
-02711/1713:合唱队形
+#### 02711/1713:合唱队形
 
 http://cs101.openjudge.cn/practice/02711/
 
-02811/1813:熄灯问题
+#### 02811/1813:熄灯问题
 
 http://cs101.openjudge.cn/practice/02811/
+
+
 
 ### 2023/9/26 
 
 选自《挑战程序设计竞赛》第2版 Page 135
 
-02229/1231: Sumsets				
+#### 02229/1231: Sumsets				
 
 http://cs101.openjudge.cn/routine/02229/
 
-02385/1387:Apple Catching			
+#### 02385/1387:Apple Catching			
 
 http://cs101.openjudge.cn/routine/02385/
 
-01742/744: Coins					
+#### 01742/744: Coins					
 
 http://cs101.openjudge.cn/routine/01742/
+
+
 
 ### 2023/9/25 
 
 选自《挑战程序设计竞赛》第2版
 
-01852/854:Ants					Page 18
+#### 01852/854:Ants					Page 18
 
 http://cs101.openjudge.cn/practice/01852/
 
-2386/1388:Lake Counting			Page32
+#### 2386/1388:Lake Counting			Page32
 
-http://bailian.openjudge.cn/practice/2386/
+http://cs101.openjudge.cn/routine/02386/
 
-19757:Saruman's Army				Page 45
+#### 19757:Saruman's Army				Page 45
 
 http://cs101.openjudge.cn/practice/19757/
 
+
+
 ### 2023/9/24
 
-9267: 核电站
+#### 09267/9267: 核电站
 
-http://bailian.openjudge.cn/tm2023cis/D/
+http://cs101.openjudge.cn/practice/09267/
 
-2659/1661: Bomb Game
+#### 02659/1661: Bomb Game
 
-http://bailian.openjudge.cn/practice/2659/
+http://cs101.openjudge.cn/practice/02659/
 
-/5430: 表达式·表达式树·表达式求值
+#### 05430/5430: 表达式·表达式树·表达式求值
 
-Expression Expression tree Expression evaluation
+http://cs101.openjudge.cn/practice/05430/
+
+
 
 ### 2023/9/23
 
-2393/1395: Yogurt factory
+#### 2393/1395: Yogurt factory
 
-http://bailian.openjudge.cn/practice/2393/
+http://cs101.openjudge.cn/practice/02393/
 
-Tug of War
+#### 02576/1578: Tug of War
 
-3377\2378:Best Cow Line, Gold		《挑战程序设计竞赛》Page 43
+http://cs101.openjudge.cn/practice/02576/
 
-http://bailian.openjudge.cn/practice/3377/
+#### 03377/2378:Best Cow Line, Gold		《挑战程序设计竞赛》Page 43
+
+http://cs101.openjudge.cn/practice/03377/
+
+
 
 ### 2023/9/22
 
-3789/2790:牛奶模式
+#### 03789/2790:牛奶模式
 
-http://bailian.openjudge.cn/practice/3789/
+http://cs101.openjudge.cn/practice/03789/
 
-1961/963: 前缀中的周期
+#### 01961/963: 前缀中的周期
 
-http://bailian.openjudge.cn/practice/1961/
+http://cs101.openjudge.cn/practice/01961/
 
-1276/278: Cash Machine
+#### 01276/278: Cash Machine
 
-http://bailian.openjudge.cn/practice/1276/
+http://cs101.openjudge.cn/practice/01276
 
-1702/704: Eva's Balance
+#### 01702/704: Eva's Balance
 
-http://bailian.openjudge.cn/practice/1702/
+http://cs101.openjudge.cn/practice/01702
 
-24755: 有多少种二叉树
+#### 24755/24755: 有多少种二叉树
+
+http://cs101.openjudge.cn/practice/24755/
+
+
 
 ### 2023/9/21
 
-8167: 图像处理
+#### 08167/8167: 图像处理
 
-http://bailian.openjudge.cn/ss2023jsj/B/
+http://cs101.openjudge.cn/practice/08167/
 
-22642: 括号生成
+#### 022642/22642: 括号生成
 
-http://bailian.openjudge.cn/ss2023jsj/C/
+http://cs101.openjudge.cn/practice/22642/
 
-18252: 最短路
+#### 18252/18252: 最短路
 
-http://bailian.openjudge.cn/ss2023jsj/F/
+http://cs101.openjudge.cn/practice/18252
 
-1308/310: Is it A Tree?
+#### 01308/310: Is it A Tree?
 
-http://bailian.openjudge.cn/practice/1308/
+http://cs101.openjudge.cn/practice/01308/
 
-2485/1487: Highways
+#### 2485/1487: Highways
 
-http://bailian.openjudge.cn/practice/2485
+http://cs101.openjudge.cn/practice/02485/
 
 // 最小支撑树——很明显的图论题，需要积累基础知识，现在肯定做不出来的
 
+
+
 ### 2023/9/20
 
-1125/127:Stockbroker Grapevine
+#### 01125/127:Stockbroker Grapevine
 
-http://bailian.openjudge.cn/practice/1125/
+http://cs101.openjudge.cn/practice/01125/
 
-7832 最接近的分数
+#### 07832/7832 最接近的分数
 
-4982 踩方格
+http://cs101.openjudge.cn/practice/07832/
 
-1936/938 全在其中
+#### 04982/4982 踩方格
 
-http://bailian.openjudge.cn/practice/1936/
+http://cs101.openjudge.cn/practice/04982
 
-23654,  寻找特殊年号
+#### 01936/938 全在其中
+
+http://cs101.openjudge.cn/practice/01936
+
+#### 23654,  寻找特殊年号
+
+http://cs101.openjudge.cn/practice/23654/
+
+
 
 ### 2023/9/19
 
-1006/8:Biorhythms
+#### 01006/8:Biorhythms
 
-http://bailian.openjudge.cn/practice/1006/
+http://cs101.openjudge.cn/practice/01006/
 
-1047/49:Round and Round We Go
+#### 01047/49:Round and Round We Go
 
-http://bailian.openjudge.cn/practice/1047/
+http://cs101.openjudge.cn/practice/01047/
 
-1089/91: Intervals
+#### 01089/91: Intervals
 
-http://bailian.openjudge.cn/practice/1089/
+http://cs101.openjudge.cn/practice/01089/
 
-1095/97:Trees Made to Order
+#### 01095/97:Trees Made to Order
 
-http://bailian.openjudge.cn/practice/1095/
+http://cs101.openjudge.cn/practice/01095/
 
-1114/116:Chemical Reactions
+#### 01114/116:Chemical Reactions
 
-http://bailian.openjudge.cn/practice/1114/
+http://cs101.openjudge.cn/practice/01114/
+
+
 
 ### 2023/9/18
 
 \#### 1159/161: Palindrome
 
-\#### http://bailian.openjudge.cn/practice/1159/
+\#### http://cs101.openjudge.cn/practice/01159/
 
-1080/82:Human Gene Functions
+#### 1080/82:Human Gene Functions
 
-http://bailian.openjudge.cn/practice/1080/
+http://cs101.openjudge.cn/practice/01080/
 
-1001/3:Exponentiation
+#### 1001/3:Exponentiation
 
-http://bailian.openjudge.cn/practice/1001/
+http://cs101.openjudge.cn/practice/01001/
 
-1193/195:内存分配
+#### 01193/195:内存分配
 
-http://bailian.openjudge.cn/practice/1193/
+http://cs101.openjudge.cn/practice/01193/
 
-1019/21:Number Sequence
+#### 01019/21:Number Sequence
 
-http://bailian.openjudge.cn/practice/1019/
+http://cs101.openjudge.cn/practice/01019/
 
-1008/10:Maya Calendar
+#### 01008/10:Maya Calendar
 
-http://bailian.openjudge.cn/practice/1008/
+http://cs101.openjudge.cn/practice/01008/
+
+
 
 ### 2023/9/17
 
-1067/69: 取石子
+#### 01067/69: 取石子
 
 http://bailian.openjudge.cn/practice/1067/
 
-1084/86: 正方形破坏者
+#### 01084/86: 正方形破坏者
 
-http://bailian.openjudge.cn/practice/1084/
+http://cs101.openjudge.cn/practice/01084/
 
-1091/93:跳蚤
+#### 01091/93:跳蚤
 
-http://bailian.openjudge.cn/practice/1091/
+http://cs101.openjudge.cn/practice/01091/
 
-1183/185:反正切函数的应用
+#### 01183/185:反正切函数的应用
 
-http://bailian.openjudge.cn/practice/1183/
+http://cs101.openjudge.cn/practice/01183/
 
-1184/186:聪明的打字员
+#### 01184/186:聪明的打字员
 
-http://bailian.openjudge.cn/practice/1184/
+http://cs101.openjudge.cn/practice/01184/
