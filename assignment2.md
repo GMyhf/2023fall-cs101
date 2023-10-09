@@ -431,7 +431,7 @@ YES
 NO
 ```
 
-
+提示：需要 Handling EOFError Exception，参考 [https://stackoverflow.com/questions/51105010/how-can-i-raise-an-eof-errorLinks to an external site.](https://stackoverflow.com/questions/51105010/how-can-i-raise-an-eof-error) EOF is sent when the input stream reaches the end, or if it's from the console, it means the user presses ctrl-D on *NIX, or ctrl-Z+Return on Windows.
 
 
 
