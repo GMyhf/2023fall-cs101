@@ -168,65 +168,48 @@ YES
 
 
 
-#### 118A. String Task
+#### 270A. Fancy Fence
 
-implementation/strings, 1000, http://codeforces.com/problemset/problem/118/A
+geometry/implementation/math, 1100, x23265, https://codeforces.com/problemset/problem/270/A
 
-Petya started to attend programming lessons. On the first lesson his task was to write a simple program. The program was supposed to do the following: in the given string, consisting if uppercase and lowercase Latin letters, it:
+Emuskald needs a fence around his farm, but he is too lazy to build it himself. So he purchased a fence-building robot.
 
-- deletes all the vowels,
-- inserts a character "." before each consonant,
-- replaces all uppercase consonants with corresponding lowercase ones.
+He wants the fence to be a regular polygon. The robot builds the fence along a single path, but it can only make fence corners at a single angle *a*.
 
-Vowels are letters "A", "O", "Y", "E", "U", "I", and the rest are consonants. The program's input is exactly one string, it should return the output as a single string, resulting after the program's processing the initial string.
-
-Help Petya cope with this easy task.
+Will the robot be able to build the fence Emuskald wants? In other words, is there a regular polygon which angles are equal to *a*?
 
 **Input**
 
-The first line represents input string of Petya's program. This string only consists of uppercase and lowercase Latin letters and its length is from 1 to 100, inclusive.
+The first line of input contains an integer *t* (0 < *t* < 180) — the number of tests. Each of the following *t* lines contains a single integer *a* (0 < *a* < 180) — the angle the robot can make corners at measured in degrees.
 
 **Output**
 
-Print the resulting string. It is guaranteed that this string is not empty.
+For each test, output on a single line "YES" (without quotes), if the robot can build a fence Emuskald wants, and "NO" (without quotes), if it is impossible.
 
 Examples
 
 input
 
 ```
-tour
+3
+30
+60
+90
 ```
 
 output
 
 ```
-.t.r
+NO
+YES
+YES
 ```
 
-input
+Note
 
-```
-Codeforces
-```
+In the first test case, it is impossible to build the fence, since there is no regular polygon with angle ![img](https://espresso.codeforces.com/df5f4b07dd5316fde165b43657b2696e2919e791.png).
 
-output
-
-```
-.c.d.f.r.c.s
-```
-
-input
-
-```
-aBAcAba
-```
-
-output
-
-```
-.b.c.b
-```
+In the second test case, the fence is a regular triangle, and in the last test case — a square.
 
 
 
