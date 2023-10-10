@@ -10,9 +10,7 @@ Updated 1745 GMT+8 Oct 9, 2023
 
 ## todo: Assignment #6
 
-CF270A: Fancy Fencegeometry, implementation/math, 1100
 
-https://codeforces.com/problemset/problem/270/A
 
 
 
@@ -56,9 +54,9 @@ http://codeforces.com/problemset/problem/96/A
 
 
 
-CF118A: String Task, implementation/strings, 1000
+CF270A: Fancy Fencegeometry, implementation/math, 1100
 
-http://codeforces.com/problemset/problem/118/A
+https://codeforces.com/problemset/problem/270/A
 
 
 
