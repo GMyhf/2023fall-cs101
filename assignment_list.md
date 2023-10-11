@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 1745 GMT+8 Oct 9, 2023
+Updated 1054 GMT+8 Oct 11, 2023
 
 
 
@@ -40,7 +40,7 @@ http://cs101.openjudge.cn/practice/01833
 
 
 
-## Assignment #5 
+## Assignment #5 排序和超时
 
 CF69A: Young Physicist, implementation/math, 1000
 
