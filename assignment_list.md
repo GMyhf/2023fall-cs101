@@ -1,42 +1,95 @@
 # Assignment & Routine List
 
-Updated 1054 GMT+8 Oct 11, 2023
+Updated 2136 GMT+8 Oct 17, 2023
 
 
 
-2023 fall, Complied by Hongfei Yan==（请改为同学的姓名、院系）==
+2023 fall, Complied by Hongfei Yan
 
 
 
-## todo: Assignment #6
+Todo:
+
+
+
+OJ19948：因材施教, greedy
+http://cs101.openjudge.cn/practice/19948
+
+OJ18161：矩阵运算
+matrices, http://cs101.openjudge.cn/practice/18161
+
+OJ19942：⼆维矩阵上的卷积运算v0.2 (matrix)
+http://cs101.openjudge.cn/practice/19942/
+
+OJ19943：图的拉普拉斯矩阵(matrix)
+http://cs101.openjudge.cn/practice/19943/
+
+OJ12558：岛屿周⻓, matices
+http://cs101.openjudge.cn/practice/12558/
+
+OJ18106：螺旋矩阵， matrices
+http://cs101.openjudge.cn/practice/18106/
+
+OJ03670：计算鞍点, matices
+http://cs101.openjudge.cn/practice/03670/
 
 
 
 
 
-CF25A: IQ test, brute force, 1300
-
-http://codeforces.com/problemset/problem/25/A
-
-
-
-CF545C: Woodcutters, dp/greedy, 1500
-
-https://codeforces.com/problemset/problem/545/C
-
-
-
-CF1000B: Light It Up, greedy, 1500
-
-https://codeforces.com/problemset/problem/1000/B
-
-
+CF492B: Vanya and Lanterns, binary search/implementation/math/sortings, 1200
+https://codeforces.com/problemset/problem/492/B
 
 OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
 http://cs101.openjudge.cn/practice/16528
 
 OJ01833: 排列, math
 http://cs101.openjudge.cn/practice/01833
+
+
+
+CF1000B: Light It Up, greedy, 1500（选做）
+
+https://codeforces.com/problemset/problem/1000/B
+
+
+
+
+
+
+
+
+
+## Assignment #6 贪心和矩阵
+
+508A. Pasha and Pixels
+
+brute force, 1100, http://codeforces.com/problemset/problem/508/A
+
+OJ23555：节省存储的矩阵乘法
+implementation, matrices, http://cs101.openjudge.cn/practice/23555/
+
+OJ12560：⽣存游戏, matrix, cs10116 final exam
+http://cs101.openjudge.cn/practice/12560/
+
+OJ04110：圣诞⽼⼈的礼物-Santa Clau’s Gifts， greedy
+http://cs101.openjudge.cn/practice/04110/
+
+
+
+02659:Bomb Game
+
+matrices, http://cs101.openjudge.cn/practice/02659/
+
+CF545C: Woodcutters, dp/greedy, 1500 （选做）
+
+https://codeforces.com/problemset/problem/545/C
+
+
+
+
+
+
 
 
 
