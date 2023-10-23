@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 2136 GMT+8 Oct 17, 2023
+Updated 1723 GMT+8 Oct 23, 2023
 
 
 
@@ -8,9 +8,7 @@ Updated 2136 GMT+8 Oct 17, 2023
 
 
 
-Todo:
-
-
+**Todo:**
 
 OJ19948：因材施教, greedy
 http://cs101.openjudge.cn/practice/19948
@@ -33,20 +31,16 @@ http://cs101.openjudge.cn/practice/18106/
 OJ03670：计算鞍点, matices
 http://cs101.openjudge.cn/practice/03670/
 
-
+OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
+http://cs101.openjudge.cn/practice/16528
 
 
 
 CF492B: Vanya and Lanterns, binary search/implementation/math/sortings, 1200
 https://codeforces.com/problemset/problem/492/B
 
-OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
-http://cs101.openjudge.cn/practice/16528
-
 OJ01833: 排列, math
 http://cs101.openjudge.cn/practice/01833
-
-
 
 CF1000B: Light It Up, greedy, 1500（选做）
 
@@ -54,7 +48,44 @@ https://codeforces.com/problemset/problem/1000/B
 
 
 
+## Assignment #7 贪心和DP
 
+158B. Taxi
+*special problem, greedy, mplementation, 1100
+
+ https://codeforces.com/problemset/problem/158/B
+
+545D. Queue
+
+greedy, implementation, sortings, 1300
+
+https://codeforces.com/problemset/problem/545/D
+
+803A. Maximal Binary Matrixcon
+
+structive algorithms, 1400
+
+ https://codeforces.com/problemset/problem/803/A
+
+1793C. Dora and Search
+
+constructive algorithms, data structures, two pointers, 1200, 
+
+https://codeforces.com/problemset/problem/1793/C
+
+
+
+368B. Sereja and Suffixes（选做）
+
+data structures/dp, 1100
+
+https://codeforces.com/problemset/problem/368/B
+
+1764C. Doremy's City Construction（选做）
+
+graphs, greedy, 1400
+
+https://codeforces.com/problemset/problem/1764/C
 
 
 
@@ -77,7 +108,7 @@ http://cs101.openjudge.cn/practice/04110/
 
 
 
-02659:Bomb Game
+02659:Bomb Game（选做）
 
 matrices, http://cs101.openjudge.cn/practice/02659/
 
@@ -121,13 +152,13 @@ https://codeforces.com/problemset/problem/160/A
 
 
 
-#### CF1221A: 2048 Game, brute force/greedy/math, 1000 （选做）
+CF1221A: 2048 Game, brute force/greedy/math, 1000 （选做）
 
 http://codeforces.com/problemset/problem/1221/A
 
 
 
-#### CF230B: T-primes, binary search/implementation/math/number theory, 1300 （选做）
+CF230B: T-primes, binary search/implementation/math/number theory, 1300 （选做）
 
 http://codeforces.com/problemset/problem/230/B
 
@@ -435,7 +466,7 @@ In the third test case, all subarrays have an even sum, so the answer is −1.
 
 
 
-## Assignment #3
+## Assignment #3 语法练习
 
 #### 118A. String Task
 
@@ -755,7 +786,7 @@ greedy, http://cs101.openjudge.cn/practice/01017
 
 
 
-## Assignment #2
+## Assignment #2 字符相关
 
 #### 71A. Way Too Long Words
 
