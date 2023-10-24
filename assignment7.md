@@ -1,8 +1,8 @@
 # Assignment #7: 贪心和DP
 
-Updated 1718 GMT+8 Oct 23, 2023
+Updated 0919 GMT+8 Oct 24, 2023
 
-2023 fall, Complied by Hongfei Yan==（请改为同学的姓名、院系）==
+2023 fall, Complied by ==同学的姓名、院系==
 
 
 
@@ -14,7 +14,7 @@ Updated 1718 GMT+8 Oct 23, 2023
 
 4）如果不能在截止前提交作业，请写明原因。
 
-5）CF的题目，在洛谷有中文翻译，例如 https://www.luogu.com.cn/problem/CF1764C 
+另外，CF的题目，在洛谷有中文翻译，例如 https://www.luogu.com.cn/problem/CF1764C 
 
 
 
@@ -34,7 +34,7 @@ C/C++编程环境：Mac terminal vi (version 9.0.1424), g++/gcc (Apple clang ver
 
 #### 158B. Taxi
 
-*special problem, greedy, mplementation, 1100
+*special problem, greedy, implementation, 1100
 
  https://codeforces.com/problemset/problem/158/B
 
@@ -198,7 +198,7 @@ https://codeforces.com/problemset/problem/1764/C
 
 ## 3. 学习总结和收获
 
-==如果作业题目简单，有否额外练习题目，比如：OJ“每日选做”中每天推出的3个题目、CF、LeetCode、洛谷等网站题目。==
+==如果作业题目简单，有否额外练习题目，比如：OJ“每日选做”中每天推出的32题目、CF、LeetCode、洛谷等网站题目。==
 
 
 
