@@ -88,7 +88,7 @@ https://codeforces.com/problemset/problem/545/D
 
 #### 803A. Maximal Binary Matrixcon
 
-structive algorithms, 1400
+constructive algorithms, 1400
 
  https://codeforces.com/problemset/problem/803/A
 
