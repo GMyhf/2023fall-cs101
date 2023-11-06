@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 1723 GMT+8 Oct 23, 2023
+Updated 1416 GMT+8 Nov 6, 2023
 
 
 
@@ -10,26 +10,14 @@ Updated 1723 GMT+8 Oct 23, 2023
 
 **Todo:**
 
-OJ19948：因材施教, greedy
-http://cs101.openjudge.cn/practice/19948
-
 OJ18161：矩阵运算
 matrices, http://cs101.openjudge.cn/practice/18161
-
-OJ19942：⼆维矩阵上的卷积运算v0.2 (matrix)
-http://cs101.openjudge.cn/practice/19942/
-
-OJ19943：图的拉普拉斯矩阵(matrix)
-http://cs101.openjudge.cn/practice/19943/
 
 OJ12558：岛屿周⻓, matices
 http://cs101.openjudge.cn/practice/12558/
 
 OJ18106：螺旋矩阵， matrices
 http://cs101.openjudge.cn/practice/18106/
-
-OJ03670：计算鞍点, matices
-http://cs101.openjudge.cn/practice/03670/
 
 OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
 http://cs101.openjudge.cn/practice/16528
@@ -48,26 +36,85 @@ https://codeforces.com/problemset/problem/1000/B
 
 
 
+
+
+## Assignment #9: 密集期中考试周
+
+有动态规划dp题⽬。零基础同学可以参看《算法图解》第9章。
+
+OJ19943：图的拉普拉斯矩阵(matrix)
+http://cs101.openjudge.cn/practice/19943/
+OJ19942：⼆维矩阵上的卷积运算v0.2 (matrix)
+http://cs101.openjudge.cn/practice/19942/
+
+CF313B: Ilya and Queries, dp/implementation, 1100
+https://codeforces.com/contest/313/problem/B
+
+CF706B: Interesting drink, binary search/dp/implementation, 1100
+https://codeforces.com/problemset/problem/706/B
+
+
+
+选做：如果耗时太⻓，直接看解题思路，或者源码
+CF466C: Number of Ways, binary search/brute force/data structures/dp/two pointers, 1700
+https://codeforces.com/problemset/problem/466/C
+CF1443C: The Delivery Dilemma, binary search/greedy/sortings, 1400
+https://codeforces.com/problemset/problem/1443/C
+提示： 1）结果要⼀起输出，不要分次print，会超时。2）⽤zip函数。
+
+
+
+## Assignment #8: Nov 月考
+
+### 23563: 多项式时间复杂度
+
+string/implementation/math, http://cs101.openjudge.cn/practice/23563
+
+### 03143: 验证“歌德巴赫猜想”
+
+math, http://cs101.openjudge.cn/practice/03143
+
+### 23566: 决战双十一
+
+implementation, http://cs101.openjudge.cn/practice/23566
+
+### 03670: 计算鞍点
+
+matrice, http://cs101.openjudge.cn/practice/03670
+
+### 19948: 因材施教
+
+greedy, http://cs101.openjudge.cn/practice/19948
+
+### 18182: 打怪兽
+
+implementation/sortings/data structures, http://cs101.openjudge.cn/practice/18182/
+
+
+
+
+
 ## Assignment #7 贪心和DP
 
-158B. Taxi
+### 158B. Taxi
+
 *special problem, greedy, mplementation, 1100
 
  https://codeforces.com/problemset/problem/158/B
 
-545D. Queue
+### 545D. Queue
 
 greedy, implementation, sortings, 1300
 
 https://codeforces.com/problemset/problem/545/D
 
-803A. Maximal Binary Matrixcon
+### 803A. Maximal Binary Matrixcon
 
 structive algorithms, 1400
 
  https://codeforces.com/problemset/problem/803/A
 
-1793C. Dora and Search
+### 1793C. Dora and Search
 
 constructive algorithms, data structures, two pointers, 1200, 
 
@@ -75,13 +122,13 @@ https://codeforces.com/problemset/problem/1793/C
 
 
 
-368B. Sereja and Suffixes（选做）
+### 368B. Sereja and Suffixes（选做）
 
 data structures/dp, 1100
 
 https://codeforces.com/problemset/problem/368/B
 
-1764C. Doremy's City Construction（选做）
+### 1764C. Doremy's City Construction（选做）
 
 graphs, greedy, 1400
 
@@ -93,26 +140,29 @@ https://codeforces.com/problemset/problem/1764/C
 
 ## Assignment #6 贪心和矩阵
 
-508A. Pasha and Pixels
+### 508A. Pasha and Pixels
 
 brute force, 1100, http://codeforces.com/problemset/problem/508/A
 
-OJ23555：节省存储的矩阵乘法
+### OJ23555：节省存储的矩阵乘法
+
 implementation, matrices, http://cs101.openjudge.cn/practice/23555/
 
-OJ12560：⽣存游戏, matrix, cs10116 final exam
+### OJ12560：⽣存游戏, matrix, cs10116 final exam
+
 http://cs101.openjudge.cn/practice/12560/
 
-OJ04110：圣诞⽼⼈的礼物-Santa Clau’s Gifts， greedy
+### OJ04110：圣诞⽼⼈的礼物-Santa Clau’s Gifts， greedy
+
 http://cs101.openjudge.cn/practice/04110/
 
 
 
-02659:Bomb Game（选做）
+### 02659:Bomb Game（选做）
 
 matrices, http://cs101.openjudge.cn/practice/02659/
 
-CF545C: Woodcutters, dp/greedy, 1500 （选做）
+### CF545C: Woodcutters, dp/greedy, 1500 （选做）
 
 https://codeforces.com/problemset/problem/545/C
 
@@ -126,25 +176,25 @@ https://codeforces.com/problemset/problem/545/C
 
 ## Assignment #5 排序和超时
 
-CF69A: Young Physicist, implementation/math, 1000
+### CF69A: Young Physicist, implementation/math, 1000
 
 https://codeforces.com/problemset/problem/69/A
 
 
 
-CF96A: Football, implementation/strings, 900
+### CF96A: Football, implementation/strings, 900
 
 http://codeforces.com/problemset/problem/96/A
 
 
 
-CF270A: Fancy Fencegeometry, implementation/math, 1100
+### CF270A: Fancy Fencegeometry, implementation/math, 1100
 
 https://codeforces.com/problemset/problem/270/A
 
 
 
-CF160A: Twins, greedy, sortings, 900
+### CF160A: Twins, greedy, sortings, 900
 
 https://codeforces.com/problemset/problem/160/A
 
@@ -152,13 +202,13 @@ https://codeforces.com/problemset/problem/160/A
 
 
 
-CF1221A: 2048 Game, brute force/greedy/math, 1000 （选做）
+### CF1221A: 2048 Game, brute force/greedy/math, 1000 （选做）
 
 http://codeforces.com/problemset/problem/1221/A
 
 
 
-CF230B: T-primes, binary search/implementation/math/number theory, 1300 （选做）
+### CF230B: T-primes, binary search/implementation/math/number theory, 1300 （选做）
 
 http://codeforces.com/problemset/problem/230/B
 
