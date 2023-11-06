@@ -8,7 +8,7 @@ Updated 1355 GMT+8 Nov 2, 2023
 
 **说明：**
 
-1）1）Nov⽉考： AC6==（请改为同学的通过数）== 。题⽬都在“练习”⾥⾯，按照数字题号能找到，可以重新提交。作业中提交⾃⼰最满意版本的代码和截图。
+1）Nov⽉考： AC6==（请改为同学的通过数）== 。题⽬都在“练习”⾥⾯，按照数字题号能找到，可以重新提交。作业中提交⾃⼰最满意版本的代码和截图。
 
 2）请把每个题目解题思路（可选），源码Python, 或者C++（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC 或者没有AC，都请标上每个题目大致花费时间。
 
@@ -35,8 +35,6 @@ C/C++编程环境：Mac terminal vi (version 9.0.1424), g++/gcc (Apple clang ver
 ### 23563: 多项式时间复杂度
 
 string/implementation/math, http://cs101.openjudge.cn/practice/23563
-
-
 
 
 
