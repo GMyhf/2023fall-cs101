@@ -64,33 +64,59 @@ Simplified Chinese-language edition copyright © 2017 by Posts & Telecom Press.
 
 ### 基本思路
 
-这是最基础的背包问题，特点是：每种物品仅有一件，可以选择放或不放。
+最简单的算法如下： 尝试各种可能的商品组合， 并找出价值最高的组合。这样可行， 但速度非常慢。 在有3件商品的情况下， 你需要计算8个不同的集合； 有4件商品时， 你需要计算16个集合。 每增加一件商品， 需要计算的集合数都将翻倍！ 这种算法的运行时间为$O(2^n)$， 真的是慢如蜗牛。
+
+答案是使用动态规划！ 下面来看看动态规划算法的工作原理。 动态规划先解决子问题， 再逐步解决大问题。对于背包问题， 你先解决小背包（子背包） 问题， 再逐步解决原来的问题。
+
+这是最基础的背包问题，特点是：每种物品仅有一件，可以选择放或不放。每个动态规划算法都从一个网格开始， 背包问题的网格如下。
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/empty_grid.png" alt="empty_grid" style="zoom: 25%;" />
 
 The  rows  of  the  grid  are  the  items,  and  the  columns  are  knapsack  weights  from  1  lb  to  4  lb.  You  need  all  of  those  columns because they will help you calculate the values of the sub-knapsacks.
 
+网格的各行为商品， 各列为不同容量（1～4磅） 的背包。 所有这些列你都需要， 因为它们将帮助你计算子背包的价值。
+
 The grid starts out empty. You’re going to fill in each cell of the  grid.  Once  the  grid  is  filled  in,  you’ll  have  your  answer  to  this  problem!  Please  follow  along.  Make  your  own  grid,  and we’ll fill it out together. 
+
+网格最初是空的。 你将填充其中的每个单元格， 网格填满后， 就找到了问题的答案！ 你一定要跟着做。 请你创建网格， 我们一起来填满它。
+
+
 
 **THE GUITAR ROW**
 
 I’ll show you the exact formula for calculating this grid later. Let’s do a walkthrough first. Start with the first row.
 
+后面将列出计算这个网格中单元格值的公式。 我们先来一步一步做。 首先来看第一行。
+
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/first_row.png" alt="first_row" style="zoom:25%;" />
 
 This  is  the  guitar  row,  which  means  you’re  trying  to  fit  the  guitar  into  the  knapsack.  At  each  cell,  there’s  a  simple  decision: do you steal the guitar or not? Remember, you’re trying to find the set of items to steal that will give you the most value. 
+
+这是吉他 行， 意味着你将尝试将吉他装入背包。 在每个单元格， 都需要做一个简单的决定： 偷不偷吉他？ 别忘了， 你要找出一个价值最高的商品集合。
+
+
+
+该不该偷音响呢？
+背包的容量为1磅， 能装下音响吗？ 音响太重了， 装不下！ 由于容量1磅的背包装不下音响， 因此最大价值依然是1500美元。
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/cell_2_1.png" alt="cell_2_1" style="zoom:25%;" />
 
 Same  thing  for  the  next  two  cells.  These  knapsacks  have  a  capacity  of  2  lb  and  3  lb.  The  old  max  value  for  both  was  $1,500. 
 
+接下来的两个单元格的情况与此相同。 在这些单元格中， 背包的容量分别为2磅和3磅， 而以前的最大价值为1500美元。
+
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/cell_2_3.png" alt="cell_2_3" style="zoom:25%;" />
 
 The   stereo   still   doesn’t   fit,   so   your   guesses   remain   unchanged.What  if  you  have  a  knapsack  of  capacity  4  lb?  Aha:  the  stereo finally fits! The old max value was \$1,500, but if you put  the  stereo  in  there  instead,  the  value  is  \$3,000!  Let’s  take the stereo.
 
+由于这些背包装不下音响， 因此最大价值保持不变。
+背包容量为4磅呢？ 终于能够装下音响了！ 原来的最大价值为1500美元， 但如果在背包中装入音响而不是吉他， 价值将为3000美元！ 因此还是偷音响吧。
+
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/cell_2_4.png" alt="cell_2_4" style="zoom:25%;" />
 
 You   just   updated   your   estimate!   If   you   have   a   4   lb
+
+你更新了最大价值！ 如果背包的容量为4磅， 就能装入价值至少3000美元的商品。 在这个网格中， 你逐步地更新最大价值。
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/cell_3_3.png" alt="cell_3_3" style="zoom:25%;" />
 
@@ -109,9 +135,11 @@ You   just   updated   your   estimate!   If   you   have   a   4   lb
 
 There’s  the  answer:  the  maximum  value  that  will  fit  in  the  knapsack is $3,500, made up of a guitar and a laptop!Maybe you think that I used a different formula to calculate the  value  of  that  last  cell.  That’s  because  I  skipped  some  unnecessary  complexity  when  filling  in  the  values  of  the  earlier cells. Each cell’s value gets calculated with the same formula. Here it is.
 
-用子问题定义状态：即 CELL\[i][j] 表示前 i 件物品恰放入一个容量为 j 的背包可以获得的最大价值。则其状态转移方程便是：
+答案如下： 将吉他和笔记本电脑装入背包时价值最高， 为3500美元。你可能认为， 计算最后一个单元格的价值时， 我使用了不同的公式。 那是因为填充之前的单元格时， 我故意避开了一些复杂的因素。 其实， 计算每个单元格的价值时， 使用的公式都相同。 这个公式如下。
 
 ![formula](https://raw.githubusercontent.com/GMyhf/img/main/img/formula.png)
+
+用子问题定义状态：即 CELL\[i][j] 表示前 i 件物品恰放入一个容量为 j 的背包可以获得的最大价值。则其状态转移方程便是：
 
 $CELL[i][j] = max(CELL[i−1][j]; V_i + CELL[i−1][j− W_i]$
 
@@ -119,6 +147,8 @@ $CELL[i][j] = max(CELL[i−1][j]; V_i + CELL[i−1][j− W_i]$
 入剩下的容量为 $j − W_i$ 的背包中”，此时能获得的最大价值就是 $CELL[i − 1][j − Wi]$ 再加上通过放入第 i 件物品获得的价值 Vi。
 
 You  can  use  this  formula  with  every  cell  in  this  grid,  and  you  should  end  up  with  the  same  grid  I  did.  Remember  how  I  talked  about  solving  subproblems?  You  combined  the  solutions  to  two  subproblems  to  solve  the  bigger  problem.
+
+你可以使用这个公式来计算每个单元格的价值， 最终的网格将与前一个网格相同。 现在你明白了为何要求解子问题吧？ 你可以合并两个子问题的解来得到更大问题的解。
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/subproblems_with_items.png" alt="subproblems_with_items" style="zoom:25%;" />
 
