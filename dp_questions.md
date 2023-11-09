@@ -1,6 +1,6 @@
-# Dynamic Programming
+# 动态规划专题
 
-Updated 2253 GMT+8 Nov 8, 2023
+Updated 2253 GMT+8 Nov 9, 2023
 
 
 
@@ -17,6 +17,152 @@ Notes 讲解《算法图解》第9章 动态规划
 ppt: Recursion & Dynamic Programming
 
 题目是：用最少的硬币找零，
+
+
+
+**动态规划的递归写法和递推写法**
+
+动态规划是一种非常精妙的算法思想，它没有固定的写法、极其灵活，常常需要具体问题具体分析。和之前介绍的大部分算法不同，一开始就直接讨论动态规划的概念并不是很好的学习方式，反而先接触一些经典模型会有更好的效果。因此我们主要介绍一些动态规划经典模型，并在其中穿插动态规划的概念，慢慢接触动态规划。同时不要畏惧，多练习、多思考、多总结是学习动态规划的重点。
+
+**什么是动态规划**
+
+动态规划(Dynamic Programming，DP)是一种用来解决一类最优化问题的算法思想。简单来说，动态规划将一个复杂的问题分解成若干个子问题，通过综合子问题的最优解来得到原问题的最优解。需要注意的是，动态规划会将每个求解过的子问题的解记录下来，这样当下一次碰到同样的子问题时，就可以直接使用之前记录的结果，而不是重复计算。注意:虽然动态规划采用这种方式来提高计算效率，但不能说这种做法就是动态规划的核心。
+
+一般可以使用递归或者递推的写法来实现动态规划，其中递归写法在此处又称作记忆化搜索。
+
+**动态规划的递归写法**
+
+先来讲解递归写法。通过这部分内容的学习，理解动态规划是如何记录子问题的解，来避免下次遇到相同的子问题时的重复计算的。
+
+以斐波那契 (Fibonacci)数列为例，斐波那契数列的定义为E=l,F =l,E =Fa- +F-2(n≥2)。在 4.3 节中是按下面的代码来计算的:
+
+
+
+
+
+## 02753: 菲波那契数列
+
+math,recursion, dp, http://cs101.openjudge.cn/practice/02753
+
+菲波那契数列是指这样的数列: 数列的第一个和第二个数都为1，接下来每个数都等于前面2个数之和。
+给出一个正整数a，要求菲波那契数列中第a个数是多少。
+**输入**
+第1行是测试数据的组数n，后面跟着n行输入。每组测试数据占1行，包括一个正整数 $a \ (1 \le a \le 20)$
+**输出**
+输出有n行，每行输出对应一个输入。输出应是一个正整数，为菲波那契数列中第a个数的大小
+样例输入
+
+```
+4
+5
+2
+19
+1
+```
+
+样例输出
+
+```
+5
+1
+4181
+1
+```
+
+
+
+菲波那契（Fibonacci）数列的定义为 $F_0=0,F_1=1,F_n=F_{n-1} + F_{n-2} \ (n\ge 2)$
+
+```python
+def f(n):
+    if n <= 2:
+        return 1
+    else:
+        return f(n-1)+f(n-2)
+
+
+n = int(input())
+ans = []
+for _ in range(n):
+    num = int(input())
+    ans.append(f(num))
+
+print('\n'.join(map(str, ans)))
+```
+
+
+
+事实上，这个递归会涉及很多重复的计算。如图A所示，当n=5 时，可以得到 F(5)= F(4) + F(3)，接下来在计算 F(4)时又会有 F(4)= F(3) + F(2)。这时候如果不采取措施，F(3)将会被计算两次。可以推知，如果 n 很大，重复计算的次数将难以想象。事实上，由于没有及时保存中间计算的结果，实际复杂度会高达 $O(2^n)$，即每次都会计算 F(n-1)和 F(n-2)这两个分支，基本不能承受 n 较大的情况。
+
+为了避免重复计算，可以开一个一维数组 dp，用以保存已经计算过的结果，其中 dp[n]记录 F(n)的结果，并用 dp[n]=-1 表示 F(n)当前还没有被计算过。然后就可以在递归当中判断dp[n]是否是-1：如果不是-1，说明已经计算过F(n),直接返回 dp[n]就是结果，否则，按照递归式进行递归。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231109145315004.png" alt="image-20231109145315004" style="zoom:50%;" />
+
+​					图A 斐波那契数列递归图						图B 斐波那契数列记忆化搜索示意图
+
+这样就把已经计算过的内容记录了下来，于是当下次再碰到需要计算相同的内容时，就能直接使用上次计算的结果，这可以省去大半无效计算，而这也是记忆化搜索这个名字的由来。如图B所示，通过记忆化搜索，把复杂度从 $O(2^n)$降到了 $O(n)$，也就是说，用一个 $O(n)$空间的力量就让复杂度从指数级别降低到了线性级别。
+
+```python
+def f(n):
+    if n <= 2:
+        return 1
+    
+    if dp[n] != -1:
+        return dp[n]
+    else:
+        dp[n] = f(n-1)+f(n-2)
+        return dp[n]
+
+
+dp = [-1]*21
+n = int(input())
+ans = []
+for _ in range(n):
+    num = int(input())
+    ans.append(f(num))
+
+print('\n'.join(map(str, ans)))
+```
+
+通过上面的例子可以引申出一个概念：如果一个问题可以被分解为若干个子问题，且这些子问题会重复出现，那么就称这个问题拥有重叠子问题 (Overlapping Subproblems)。动态规划通过记录重叠子问题的解，来使下次碰到相同的子问题时直接使用之前记录的结果以此避免大量重复计算。因此，一个问题必须拥有重叠子问题，才能使用动态规划去解决。
+
+
+
+```python
+'''
+lru_cache在OJ可以用。Python Functools – lru_cache(), 
+https://www.geeksforgeeks.org/python-functools-lru_cache/
+
+The LRU caching scheme is to remove the least recently used frame when the 
+cache is full and a new page is referenced which is not there in the cache.  
+https://www.geeksforgeeks.org/python-lru-cache/
+'''
+from functools import lru_cache 
+
+@lru_cache(maxsize = 128) 
+def f(n):
+    if n <= 2:
+        return 1
+    else:
+        return f(n-1)+f(n-2)
+
+
+n = int(input())
+list_1 = []
+for i in range(n):
+    num = int(input())
+    list_1.append(f(num))
+for i in list_1:
+    print(i)
+```
+
+
+
+
+
+
+
+
 
 
 
@@ -227,6 +373,14 @@ for i in range(N):
             
 print(dp[-1])
 ```
+
+
+
+pythontutor.com
+
+输入数据情况是：可装 B=4 磅东西的背包。有 N=3 件物品：价值1500 美元重 1 磅的吉他，价值 3000 美元重 4 磅的音响，价值 2000 美元重 3 磅的笔记本。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231109102454482.png" alt="image-20231109102454482" style="zoom: 50%;" />
 
 
 
