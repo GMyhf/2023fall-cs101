@@ -421,6 +421,14 @@ Longest Increasing Subsequence
 
 dp, http://cs101.openjudge.cn/practice/02533
 
+与这个题目相同：
+
+OJ2757: 最⻓上升⼦序列
+
+dp, http://cs101.openjudge.cn/practice/02757
+
+
+
 A numeric sequence of *ai* is ordered if a~1~ < a~2~ < ... < a~N~. Let the subsequence of the given numeric sequence (a~1~, a~2~, ..., a~N~) be any sequence$ (a_{i_1}, a_{i_2}, ..., a_{i_K})$, where 1 <= i~1~ < i~2~ < ... < i~K~ <= *N*. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g., (1, 7), (3, 4, 8) and many others. All longest ordered subsequences are of length 4, e. g., (1, 3, 5, 8).
 
 Your program, when given the numeric sequence, must find the length of its longest ordered subsequence.
@@ -564,7 +572,7 @@ print(max(dp))
 
 
 
-# 5 背包问题
+# 4 背包问题
 
 ## 23421: 小偷背包
 
@@ -784,7 +792,7 @@ pythontutor.com
 
 
 
-# 最长公共子串
+# 5 最长公共子串
 
 《算法图解》9.3 最长公共子串
 
@@ -962,7 +970,7 @@ while True:
 
 
 
-# 小结
+# 6 小结
 
 - 需要在给定约束条件下优化某种指标时， 动态规划很有用。
 - 问题可分解为离散子问题时， 可使用动态规划来解决。
@@ -973,7 +981,9 @@ while True:
 
 
 
-# Top 20 Dynamic Programming Interview Questions
+# 7 More Problems
+
+### Top 20 Dynamic Programming Interview Questions
 
 https://www.geeksforgeeks.org/top-20-dynamic-programming-interview-questions/
 
@@ -1004,52 +1014,21 @@ Last Updated : 22 Jun, 2022
 
 
 
-## 0/1 Knapsack Problem
-
-https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
-
-**Prerequisites:** [Introduction to Knapsack Problem, its Types and How to solve them](https://www.geeksforgeeks.org/introduction-to-knapsack-problem-its-types-and-how-to-solve-them/)
-
-Given **N** items where each item has some weight and profit associated with it and also given a bag with capacity **W**, [i.e., the bag can hold at most **W** weight in it]. The task is to put the items into the bag such that the sum of profits associated with them is the maximum possible. 
-
-**Note:** The constraint here is we can either put an item completely into the bag or cannot put it at all [It is not possible to put a part of an item into the bag].
-
-**Examples:**
-
-> ***Input:*** N = 3, W = 4, profit[] = {1, 2, 3}, weight[] = {4, 5, 1}
-> ***Output:*** 3
-> ***Explanation:*** There are two items which have weight less than or equal to 4. If we select the item with weight 4, the possible profit is 1. And if we select the item with weight 1, the possible profit is 3. So the maximum possible profit is 3. Note that we cannot put both the items with weight 4 and 1 together as the capacity of the bag is 4.
->
-> ***Input:*** N = 3, W = 3, profit[] = {1, 2, 3}, weight[] = {4, 5, 6}
-> ***Output:*** 0
+## Other Problems:
 
 
-
-## Problems:
-
-
-
-### OJ23421: ⼩偷背包
-
-dp, http://cs101.openjudge.cn/practice/23421
 
 ### OJ02773: 采药
 
 dp, http://cs101.openjudge.cn/practice/02773
 
-
-
-### OJ2757: 最⻓上升⼦序列
-
-dp, http://cs101.openjudge.cn/practice/02757
-
-
-
-### OJ02711/1713:合唱队形
+### OJ02711: 合唱队形
 
 http://cs101.openjudge.cn/practice/02711/
 
+### 9267: 核电站
 
+http://bailian.openjudge.cn/tm2023cis/D/
 
 
 
@@ -1059,7 +1038,7 @@ http://cs101.openjudge.cn/practice/02711/
 
 http://cs101.openjudge.cn/routine/02229/
 
-### 2385:Apple Catching			
+### 2385: Apple Catching			
 
 http://bailian.openjudge.cn/practice/2385/
 
@@ -1069,13 +1048,19 @@ http://bailian.openjudge.cn/practice/1742/
 
 
 
-9267: 核电站
-
-http://bailian.openjudge.cn/tm2023cis/D/
 
 
 
-## References:
+
+# References:
+
+《算法笔记》，胡凡，曾磊。机械工业出版社，2016年7月。
+
+《算法图解》，[美]Aditya Bhargava。2017年。
+
+《Python数据结构与算法分析》，[美]布拉德利·米勒（BradleyN.Miller）,戴维·拉努。人民邮电出版社，2019年9月。
+
+
 
 https://www.geeksforgeeks.org/top-20-dynamic-programming-interview-questions/
 
@@ -1084,12 +1069,6 @@ https://www.geeksforgeeks.org/top-50-dynamic-programming-coding-problems-for-int
 Introduction to Knapsack Problem, its Types and How to solve them
 
 https://www.geeksforgeeks.org/introduction-to-knapsack-problem-its-types-and-how-to-solve-them/
-
-《算法笔记》，胡凡，曾磊。机械工业出版社，2016年7月。
-
-《Python数据结构与算法分析》，[美]布拉德利·米勒（BradleyN.Miller）,戴维·拉努。人民邮电出版社，2019年9月。
-
-《算法图解》，[美]Aditya Bhargava。2017年。
 
 
 
