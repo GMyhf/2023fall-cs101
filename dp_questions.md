@@ -1,6 +1,6 @@
 # 动态规划专题
 
-Updated 2359 GMT+8 Nov 9, 2023
+Updated 1521 GMT+8 Nov 10, 2023
 
 
 
@@ -8,7 +8,11 @@ Updated 2359 GMT+8 Nov 9, 2023
 
 
 
-**2023/11/8 说明：**
+**2023/11/10 说明：**
+
+提醒：下周二讲dp，3小时有5+个典型题目，对于零基础同学来说，很烧脑。最好提前预习！dp与递归，经常同时出现。
+
+**2023/11/9 说明：**
 
 本课程最难的部分是DP，下周二开始讲。建议零基础同学提前预习！比 segment tree, binary indexed tree, KMP都难，因为没有定式，只有框架。
 
@@ -409,9 +413,97 @@ print(max_val, start[pos]+1, pos+1)
 
 
 
-# 3 最大上升子序列和（LISS）
+# 3 最大上升子序列（LIS）
 
-Longest Increasing Subsequence Sum
+Longest Increasing Subsequence
+
+## 02533: Longest Ordered Subsequence
+
+dp, http://cs101.openjudge.cn/practice/02533
+
+A numeric sequence of *ai* is ordered if a~1~ < a~2~ < ... < a~N~. Let the subsequence of the given numeric sequence (a~1~, a~2~, ..., a~N~) be any sequence$ (a_{i_1}, a_{i_2}, ..., a_{i_K})$, where 1 <= i~1~ < i~2~ < ... < i~K~ <= *N*. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g., (1, 7), (3, 4, 8) and many others. All longest ordered subsequences are of length 4, e. g., (1, 3, 5, 8).
+
+Your program, when given the numeric sequence, must find the length of its longest ordered subsequence.
+
+**输入**
+
+The first line of input file contains the length of sequence N. The second line contains the elements of sequence - N integers in the range from 0 to 10000 each, separated by spaces. 1 <= N <= 1000
+
+**输出**
+
+Output file must contain a single integer - the length of the longest ordered subsequence of the given sequence.
+
+样例输入
+
+```
+7
+1 7 3 5 9 4 8
+```
+
+样例输出
+
+```
+4
+```
+
+来源
+
+Northeastern Europe 2002, Far-Eastern Subregion
+
+
+
+对于这个问题，可以用最原始的办法来枚举每种情况，即对于每个元素有取和不取两种选择，然后判断序列是否为上升序列。如果是上升序列，则更新最大长度，直到枚举完所有情况并得到最大长度。但是很严峻的一个问题是，由于需要对每个元素都选择取或者不取，那么如果元素有 n 个，时间复杂度将高达 $O(2^n)$，这显然是不能承受的。
+
+事实上这个枚举过程包含了大量重复计算。那么这些重复计算源自哪里呢?不妨先来看动态规划的解法，之后就会容易理解为什么会有重复计算产生了 (下文中出现的 LIS 均指最大上升子序列)。
+
+令 dp[i]表示以 A[i]结尾的最长上升子序列长度(和最大连续子序列和问题一样,以 A[i]结尾是强制的要求)。这样对 A[i]来说就会有两种可能:
+① 如果存在 A[i]之前的元素 $A[j] (j<i)$，使得 $A[j]<A[i]\ 且\ dp[j]+1> dp[i]$  (即把 A[i]跟在以 A[i]结尾的 LIS 后面时能比当前以 A[i]结尾的 LIS 长度更长)，那么就把 A[i]跟在以 A[i]结尾的LIS 后面，形成一条更长的上升子序列 (令 $dp[i]= dp[j]+1$)。 
+
+② 如果 A[i]之前的元素都比 A[i]大，那么 A[i]就只好自己形成一条 LIS，但是长度为1，即这个子序列里面只有一个 A[i]。
+最后以 A[i]结尾的 LIS 长度就是①②中能形成的最大长度。
+
+由此可以写出状态转移方程:
+
+$dp[i]= max(1,dp[i]+1), (j=1,2,...,i-1 \ \&\& \ A[j] < A[i])$
+
+上面的状态转移方程中隐含了边界: $dp[i]=1 \ (1≤i≤n)$。显然 dp[i]只与小于i的j有关,因此只要让i从小到大遍历即可求出整个 dp 数组。由于 dp[i]表示的是以 A[i]结尾的LIS 长度，因此从整个 dp 数组中找出最大的那个才是要寻求的整个序列的 LIS 长度，整体复杂度为$O(n^2)$.
+
+到此就可以想象究竟重复计算出现在哪里了:每次碰到子问题“以 A[i]结尾的最大上升子序列”时，都去重新遍历所有子序列，而不是直接记录这个子问题的结果。
+
+
+
+```python
+n = int(input())
+*b, = map(int, input().split())
+dp = [1]*n
+
+for i in range(1, n):
+    for j in range(i):
+        if b[j] < b[i]:
+            dp[i] = max(dp[i], dp[j]+1)
+
+print(max(dp))
+```
+
+
+
+bisect用法，Maintain lists in sorted order, https://pymotw.com/2/bisect/
+
+```python
+import bisect
+n = int(input())
+*lis, = map(int, input().split())
+dp = [1e9]*n
+for i in lis:
+    dp[bisect.bisect_left(dp, i)] = i
+print(bisect.bisect_left(dp, 1e8))
+```
+
+
+
+![image-20211112231207446](https://i.loli.net/2021/11/12/Z5FMfIDK2Ti1Suy.png)
+
+
 
 ## 03532: 最大上升子序列和
 
@@ -444,24 +536,6 @@ dp, http://cs101.openjudge.cn/practice/03532
 
 
 
-对于这个问题，可以用最原始的办法来枚举每种情况，即对于每个元素有取和不取两种选择，然后判断序列是否为不下降序列。如果是上升序列，则更新最大长度，直到枚举完所有情况并得到最大长度。但是很严峻的一个问题是，由于需要对每个元素都选择取或者不取，那么如果元素有 n 个，时间复杂度将高达 $O(2^n)$，这显然是不能承受的。
-
-事实上这个枚举过程包含了大量重复计算。那么这些重复计算源自哪里呢?不妨先来看动态规划的解法，之后就会容易理解为什么会有重复计算产生了 (下文中出现的 LISS 均指最大上升子序列和)。
-
-令 dp[i]表示以 A[i]结尾的最长上升子序列长度(和最大连续子序列和问题一样,以 A[i]结尾是强制的要求)。这样对 A[i]来说就会有两种可能:
-① 如果存在 A[i]之前的元素 $A[j] (j<i)$，使得 $A[j]<A[i]\ 且\ dp[j]+A[i]> dp[i]$  (即把 A[i]跟在以 A[i]结尾的 LISS 后面时能比当前以 A[i]结尾的 LISS 长度更长)，那么就把 A[i]跟在以 A[i]结尾的LISS 后面，形成一条更长的上升子序列 (令 $dp[i]= dp[j]+A[i]$)。 
-
-② 如果 A[i]之前的元素都比 A[i]大，那么 A[i]就只好自己形成一条 LISS，但是和为 A[i]，即这个子序列里面只有一个 A[i]。
-最后以 A[i]结尾的 LISS 和就是①②中能形成的最大和。
-
-由此可以写出状态转移方程:
-
-$dp[i]= max(A[i],dp[i]+A[i]), (j=1,2,...,i-1 \ \&\& \ A[j] < A[i])$
-
-上面的状态转移方程中隐含了边界: $dp[i]=A[i] \ (1≤i≤n)$。显然 dp[i]只与小于i的j有关,因此只要让i从小到大遍历即可求出整个 dp 数组。由于 dp[i]表示的是以 A[i]结尾的LISS 和因此从整个 dp 数组中找出最大的那个才是要寻求的整个序列的 LISS 和，整体复杂度为$O(n^2)$.
-
-到此就可以想象究竟重复计算出现在哪里了:每次碰到子问题“以 A[i]结尾的最大上升子序列”时，都去重新遍历所有子序列，而不是直接记录这个子问题的结果。
-
 
 
 思路：从第一个数开始逐次递推，考虑第 i个数的情况时，再从第一个数开始逐个检验，如果第 i个数大于前 i个数中的第 j个数，那么将前 j个数的最大上升子序列和再加上第 i个数，即构成前 i个数上升子序列和的一种情况，再取这些情况中的最大值，即得到前 i个数的最大上升子序列和。最后依次递推，即可得到整个序列的最大上升子序列和。
@@ -485,12 +559,6 @@ for i in range(n):
 
 print(max(dp))
 ```
-
-
-
-
-
-
 
 
 
