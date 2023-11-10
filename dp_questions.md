@@ -1089,5 +1089,7 @@ https://www.geeksforgeeks.org/introduction-to-knapsack-problem-its-types-and-how
 
 《Python数据结构与算法分析》，[美]布拉德利·米勒（BradleyN.Miller）,戴维·拉努。人民邮电出版社，2019年9月。
 
+《算法图解》，[美]Aditya Bhargava。2017年。
+
 
 
