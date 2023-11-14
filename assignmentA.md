@@ -105,7 +105,7 @@ dp, http://cs101.openjudge.cn/practice/02773
 
 
 
-### OJ18106：螺旋矩阵
+### OJ18106: 螺旋矩阵
 
 matrices, http://cs101.openjudge.cn/practice/18106/
 
