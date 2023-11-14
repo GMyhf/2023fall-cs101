@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 1416 GMT+8 Nov 6, 2023
+Updated 1419 GMT+8 Nov 14, 2023
 
 
 
@@ -13,11 +13,7 @@ Updated 1416 GMT+8 Nov 6, 2023
 OJ18161：矩阵运算
 matrices, http://cs101.openjudge.cn/practice/18161
 
-OJ12558：岛屿周⻓, matices
-http://cs101.openjudge.cn/practice/12558/
 
-OJ18106：螺旋矩阵， matrices
-http://cs101.openjudge.cn/practice/18106/
 
 OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
 http://cs101.openjudge.cn/practice/16528
@@ -35,6 +31,36 @@ CF1000B: Light It Up, greedy, 1500（选做）
 https://codeforces.com/problemset/problem/1000/B
 
 
+
+## Assignment #A: 矩阵和动态规划
+
+
+
+OJ12558：岛屿周⻓, matices
+http://cs101.openjudge.cn/practice/12558/
+
+OJ02760:数字三角形, dp 
+
+http://cs101.openjudge.cn/practice/02760/
+
+OJ02773: 采药
+
+dp, http://cs101.openjudge.cn/practice/02773
+
+OJ18106：螺旋矩阵， matrices
+http://cs101.openjudge.cn/practice/18106/
+
+
+
+选做
+
+CF189A: Cut Ribbon, brute force/dp, 1300
+
+https://codeforces.com/problemset/problem/189/A
+
+CF455A: Boredom, dp, 1500
+
+https://codeforces.com/contest/455/problem/A
 
 
 
