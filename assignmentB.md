@@ -1,6 +1,6 @@
-# Assignment #A: 贪心、矩阵和动态规划
+# Assignment #B: 贪心、矩阵和动态规划
 
-Updated 1721 GMT+8 Nov 20, 2023
+Updated 0118 GMT+8 Nov 21, 2023
 
 2023 fall, Complied by ==同学的姓名、院系==
 
@@ -8,7 +8,7 @@ Updated 1721 GMT+8 Nov 20, 2023
 
 **说明：**
 
-本周作业留点难题，期中考试结束了，需要学习计算概论了。这次不分必做选做题目了，如果耗时太⻓，直接找答案安看。
+本周作业留点难题，期中考试结束了，需要学习计算概论了。这次不分必做选做题目了，如果耗时太⻓，直接找答案看。两个题解，经常更新。所以最好从这个链接下载最新的，https://github.com/GMyhf/2020fall-cs101 。
 
 1）请把每个题目解题思路（可选），源码Python, 或者C++（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC 或者没有AC，都请标上每个题目大致花费时间。
 
@@ -39,31 +39,6 @@ C/C++编程环境：Mac terminal vi (version 9.0.1424), g++/gcc (Apple clang ver
 ### 02786:Pell数列
 
 http://cs101.openjudge.cn/practice/02786/
-
-
-
-思路：
-
-
-
-##### 代码
-
-```python
-# 
-
-```
-
-
-
-代码运行截图 ==（至少包含有"Accepted"）==
-
-
-
-
-
-### 26976:摆动序列
-
-greedy, http://cs101.openjudge.cn/routine/26976/
 
 
 
@@ -136,6 +111,29 @@ greedy, http://cs101.openjudge.cn/routine/26971/
 
 
 
+### 26976:摆动序列
+
+greedy, http://cs101.openjudge.cn/routine/26976/
+
+
+
+思路：
+
+
+
+##### 代码
+
+```python
+# 
+
+```
+
+
+
+代码运行截图 ==（至少包含有"Accepted"）==
+
+
+
 
 
 ### 27104:世界杯只因
@@ -188,7 +186,7 @@ greedy, 1500, https://codeforces.com/problemset/problem/1000/B
 
 
 
-## 3. 学习总结和收获
+## 2. 学习总结和收获
 
 ==如果作业题目简单，有否额外练习题目，比如：OJ“每日选做”中每天推出的2题目、CF、LeetCode、洛谷等网站题目。==
 
