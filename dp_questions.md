@@ -1,12 +1,14 @@
 # 动态规划专题
 
-Updated 0108 GMT+8 Nov 21, 2023
+Updated 1358 GMT+8 Nov 21, 2023
 
 
 
 2023 fall, Complied by Hongfei Yan
 
 
+
+2023/11/21 先讲递归，然后继续这个pdf的动规。
 
 **2023/11/10 说明：**
 
@@ -170,8 +172,13 @@ for i in list_1:
 
 ## 1.2 动态规划的递推写法
 
-以经典的数塔问题为例，如图 11-3 所示，将一些数字排成数塔的形状，其中第一层有一个数字，第二层有两个数字......第n层有n 个数字。现在要从第一层走到第n 层，每次只能走向下一层连接的两个数字中的一个，问:最后将路径上所有数字相加后得到的和最大是多少?
-按照题目的描述，如果开一个二维数组 f，其中 f\[i][j]存放第i层的第j个数字，那么就有f\[1][1]= 5,f\[2]\[1]= 8,f\[2][2]= 3,f\[3][1] = 12,..., f\[5][4]=9,f\[5][5]= 4.此时，如果尝试穷举所有路径，然后记录路径上数字和的最大值，那么由于每层中的每个数字都会有两条分支路径，因此可以得到时间复杂度为 $O(2^n)$，这在 n 很大的情况下是不可接受的。那么，产生这么大复杂度的原因是什么?下面来分析一下。一开始，从第一层的 5 出发，按 5->8->7 的路线来到 7，并枚举从 7 出发的到达最底层的所有路径。但是，之后当按 5->3->7 的路线再次来到 7 时，又会去枚举从 7 出发的到达最底层的所有路径，这就导致了从 7 出发的到达最底层的所有路径都被反复地访问，做了许多多余的计算。事实上，可以在第一次枚举从 7 出发的到达最底层的所有路径时就把路径上能产生的最大和记录下来，这样当再次访问到 7 这个数字时就可以直接获取这个最大值，避免重复计算。
+以经典的数塔问题为例，如图 11-3 所示，将一些数字排成数塔的形状，其中第一层有一个数字，第二层有两个数字......第n层有n 个数字。现在要从第一层走到第n 层，每次只能走向下一层连接的两个数字中的一个，问：最后将路径上所有数字相加后得到的和最大是多少?
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231121140039866.png" alt="image-20231121140039866" style="zoom:50%;" />
+
+按照题目的描述，如果开一个二维数组 f，其中 f\[i][j]存放第i层的第j个数字，那么就有f\[1][1]= 5，f\[2]\[1]= 8，f\[2][2]= 3，f\[3][1] = 12，...， f\[5][4]=9，f\[5][5]= 4。
+
+此时，如果尝试穷举所有路径，然后记录路径上数字和的最大值，那么由于每层中的每个数字都会有两条分支路径，因此可以得到时间复杂度为 $O(2^n)$，这在 n 很大的情况下是不可接受的。那么，产生这么大复杂度的原因是什么?下面来分析一下。一开始，从第一层的 5 出发，按 5->8->7 的路线来到 7，并枚举从 7 出发的到达最底层的所有路径。但是，之后当按 5->3->7 的路线再次来到 7 时，又会去枚举从 7 出发的到达最底层的所有路径，这就导致了从 7 出发的到达最底层的所有路径都被反复地访问，做了许多多余的计算。事实上，可以在第一次枚举从 7 出发的到达最底层的所有路径时就把路径上能产生的最大和记录下来，这样当再次访问到 7 这个数字时就可以直接获取这个最大值，避免重复计算。
 
 由上面的考虑，不妨令 ==dp\[i][j]表示从第i行第j个数字出发的到达最底层的所有路径中能得到的最大和==，例如 dp\[3][2] 就是图中的7 到最底层的路径最大和。在定义这个数组之后dp\[1][1]就是最终想要的答案，现在想办法求出它。
 
@@ -303,7 +310,7 @@ print(dp[0][0])
 至此，重叠子问题和最优子结构的内容已介绍完毕。需要指出，**一个问题必须拥有重叠子问题和最优子结构，才能使用动态规划去解决**。下面指出这两个概念的区别: 
 
 ① 分治与动态规划。分治和动态规划都是将问题分解为子问题，然后合并子问题的解得到原问题的解。但是不同的是，分治法分解出的子问题是不重叠的，因此分治法解决的问题不拥有重叠子问题，而动态规划解决的问题拥有重叠子问题。例如，归并排序和快速排序都是分别处理左序列和右序列，然后将左右序列的结果合并，过程中不出现重叠子问题，因此它们使用的都是分治法。另外，分治法解决的问题不一定是最优化问题，而动态规划解决的问题一定是最优化问题。
-② 贪心与动态规划。贪心和动态规划都要求原问题必须拥有最优子结构。二者的区别在于，贪心法采用的计算方式类似于上面介绍的“自顶向下”，但是并不等待子问题求解完毕后再选择使用哪一个，而是通过一种策略直接选择一个子问题去求解，没被选择的子问题就不去求解了，直接抛弃。也就是说，它总是只在上一步选择的基础上继续选择，因此整个过程以一种单链的流水方式进行，显然这种所谓“最优选择”的正确性需要用归纳法证明。例如对数塔问题而言，贪心法从最上层开始，每次选择左下和右下两个数字中较大的一个，一直到最底层得到最后结果，显然这不一定可以得到最优解。而动态规划不管是采用自底向上还是自顶向下的计算方式，都是从边界开始向上得到目标问题的解。也就是说，它总是会考虑所有子问题，并选择继承能得到最优结果的那个，对暂时没被继承的子问题，由于重叠子问题的存在，后期可能会再次考虑它们，因此还有机会成为全局最优的一部分，不需要放弃。所以贪心是一种壮士断腕的决策，只要进行了选择，就不后悔;动态规划则要看哪个选择笑到了最后，暂时的领先说明不了什么。
+② 贪心与动态规划。贪心和动态规划都要求原问题必须拥有最优子结构。二者的区别在于，贪心法采用的计算方式类似于上面介绍的“自顶向下”，但是并不等待子问题求解完毕后再选择使用哪一个，而是通过一种策略直接选择一个子问题去求解，没被选择的子问题就不去求解了，直接抛弃。也就是说，它总是只在上一步选择的基础上继续选择，因此整个过程以一种单链的流水方式进行，显然这种所谓“最优选择”的正确性需要用归纳法证明。例如对数塔问题而言，贪心法从最上层开始，每次选择左下和右下两个数字中较大的一个，一直到最底层得到最后结果，显然这不一定可以得到最优解。而动态规划不管是采用自底向上还是自顶向下的计算方式，都是从边界开始向上得到目标问题的解。也就是说，它总是会考虑所有子问题，并选择继承能得到最优结果的那个，对暂时没被继承的子问题，由于重叠子问题的存在，后期可能会再次考虑它们，因此还有机会成为全局最优的一部分，不需要放弃。所以贪心是一种壮士断腕的决策，只要进行了选择，就不后悔；动态规划则要看哪个选择笑到了最后，暂时的领先说明不了什么。
 随着动态规划的学习，会对上面的内容不断深化理解，因此可以暂时不必太过拘泥于部分细节，之后再回过头来看，可能会有更深的理解。
 
 
@@ -411,6 +418,93 @@ print(max_val, start[pos]+1, pos+1)
 
 
 
+## 02766: 最大子矩阵
+
+dp, http://cs101.openjudge.cn/practice/02766/
+
+已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 * 1)子矩阵。
+
+比如，如下4 * 4的矩阵
+
+0 -2 -7 0
+9 2 -6 2
+-4 1 -4 1
+-1 8 0 -2
+
+的最大子矩阵是
+
+9 2
+-4 1
+-1 8
+
+这个子矩阵的大小是15。
+
+**输入**
+
+输入是一个N * N的矩阵。输入的第一行给出N (0 < N <= 100)。再后面的若干行中，依次（首先从左到右给出第一行的N个整数，再从左到右给出第二行的N个整数……）给出矩阵中的N2个整数，整数之间由空白字符分隔（空格或者空行）。已知矩阵中整数的范围都在[-127, 127]。
+
+**输出**
+
+输出最大子矩阵的大小。
+
+样例输入
+
+```
+4
+0 -2 -7 0 9 2 -6 2
+-4 1 -4  1 -1
+
+8  0 -2
+```
+
+样例输出
+
+```
+15
+```
+
+来源：翻译自 Greater New York 2001 的试题
+
+```python
+'''
+为了找到最大的非空子矩阵，可以使用动态规划中的Kadane算法进行扩展来处理二维矩阵。
+基本思路是将二维问题转化为一维问题：可以计算出从第i行到第j行的列的累计和，
+这样就得到了一个一维数组。然后对这个一维数组应用Kadane算法，找到最大的子数组和。
+通过遍历所有可能的行组合，我们可以找到最大的子矩阵。
+'''
+def max_submatrix(matrix):
+    def kadane(arr):
+        max_end_here = max_so_far = arr[0]
+        for x in arr[1:]:
+            max_end_here = max(x, max_end_here + x)
+            max_so_far = max(max_so_far, max_end_here)
+        return max_so_far
+
+    rows = len(matrix)
+    cols = len(matrix[0])
+    max_sum = float('-inf')
+
+    for left in range(cols):
+        temp = [0] * rows
+        for right in range(left, cols):
+            for row in range(rows):
+                temp[row] += matrix[row][right]
+            max_sum = max(max_sum, kadane(temp))
+    return max_sum
+
+n = int(input())
+nums = []
+
+while len(nums) < n * n:
+    nums.extend(input().split())
+matrix = [list(map(int, nums[i * n:(i + 1) * n])) for i in range(n)]
+
+max_sum = max_submatrix(matrix)
+print(max_sum)
+```
+
+
+
 
 
 # 3 最大上升子序列（LIS）
@@ -465,7 +559,7 @@ Northeastern Europe 2002, Far-Eastern Subregion
 事实上这个枚举过程包含了大量重复计算。那么这些重复计算源自哪里呢?不妨先来看动态规划的解法，之后就会容易理解为什么会有重复计算产生了 (下文中出现的 LIS 均指最大上升子序列)。
 
 令 dp[i]表示以 A[i]结尾的最长上升子序列长度(和最大连续子序列和问题一样,以 A[i]结尾是强制的要求)。这样对 A[i]来说就会有两种可能:
-① 如果存在 A[i]之前的元素 $A[j] (j<i)$，使得 $A[j]<A[i]\ 且\ dp[j]+1> dp[i]$  (即把 A[i]跟在以 A[i]结尾的 LIS 后面时能比当前以 A[i]结尾的 LIS 长度更长)，那么就把 A[i]跟在以 A[i]结尾的LIS 后面，形成一条更长的上升子序列 (令 $dp[i]= dp[j]+1$)。 
+① 如果存在 A[i]之前的元素 $A[j] (j<i)$，使得 $A[j]<A[i]\ 且\ dp[j]+1> dp[i]$  (即把 A[i]跟在以 A[i]结尾的 LIS 后面时能比当前以 A[i]结尾的 LIS 长度更长)，那么就把 A[i]跟在以 A[j]结尾的LIS 后面，形成一条更长的上升子序列 (令 $dp[i]= dp[j]+1$)。 
 
 ② 如果 A[i]之前的元素都比 A[i]大，那么 A[i]就只好自己形成一条 LIS，但是长度为1，即这个子序列里面只有一个 A[i]。
 最后以 A[i]结尾的 LIS 长度就是①②中能形成的最大长度。
@@ -508,6 +602,8 @@ print(bisect.bisect_left(dp, 1e8))
 ```
 
 
+
+Bisect_left返回的位置，如果不是升序，值会被覆盖
 
 ![image-20211112231207446](https://i.loli.net/2021/11/12/Z5FMfIDK2Ti1Suy.png)
 
@@ -970,7 +1066,199 @@ while True:
 
 
 
-# 6 小结
+# 6 定义多个dp数组
+
+## 1195C. Basketball Exercise
+
+dp, 1400, https://codeforces.com/problemset/problem/1195/C
+
+Finally, a basketball court has been opened in SIS, so Demid has decided to hold a basketball exercise session. 2⋅𝑛 students have come to Demid's exercise session, and he lined up them into two rows of the same size (there are exactly 𝑛 people in each row). Students are numbered from 11 to 𝑛 in each row in order from left to right.
+
+![img](https://espresso.codeforces.com/bf391a96cdb51467057f2a6fae4d88e745e0fc53.png)
+
+Now Demid wants to choose a team to play basketball. He will choose players from left to right, and the index of each chosen player (excluding the first one **taken**) will be strictly greater than the index of the previously chosen player. To avoid giving preference to one of the rows, Demid chooses students in such a way that no consecutive chosen students belong to the same row. The first student can be chosen among all 2𝑛 students (there are no additional constraints), and a team can consist of any number of students.
+
+Demid thinks, that in order to compose a perfect team, he should choose students in such a way, that the total height of all chosen students is maximum possible. Help Demid to find the maximum possible total height of players in a team he can choose.
+
+Input
+
+The first line of the input contains a single integer 𝑛 (1≤𝑛≤10^5^) — the number of students in each row.
+
+The second line of the input contains 𝑛 integers $ℎ_{1,1},ℎ_{1,2},…,ℎ_{1,𝑛} (1≤ℎ_{1,𝑖}≤10^9)$, where $ℎ_{1,𝑖}$is the height of the 𝑖-th student in the first row.
+
+The third line of the input contains 𝑛 integers $ℎ_{2,1},ℎ_{2,2},…,ℎ_{2,𝑛} (1≤ℎ_{2,𝑖}≤10^9)$, where $ℎ_{2,𝑖}$ is the height of the 𝑖-th student in the second row.
+
+Output
+
+Print a single integer — the maximum possible total height of players in a team Demid can choose.
+
+Examples
+
+input
+
+```
+5
+9 3 5 7 3
+5 8 1 4 5
+```
+
+output
+
+```
+29
+```
+
+input
+
+```
+3
+1 2 9
+10 1 1
+```
+
+output
+
+```
+19
+```
+
+input
+
+```
+1
+7
+4
+```
+
+output
+
+```
+7
+```
+
+Note
+
+In the first example Demid can choose the following team as follows:
+
+![img](https://espresso.codeforces.com/4e91cbc6d188bea6a651a3ee663b4842b5a853d6.png)
+
+In the second example Demid can choose the following team as follows:
+
+![img](https://espresso.codeforces.com/05e00446ce2bc15b43dee54633824f909a6e8695.png)
+
+
+
+```python
+n = int(input())
+*h1, = map(int, input().split())
+*h2, = map(int, input().split())
+ 
+dp1 = [0]*n
+dp1[0] = h1[0]
+dp2 = [0]*n
+dp2[0] = h2[0]
+ 
+for i in range(1,n):
+    dp1[i] = max(dp2[i-1], dp2[i-1]+h1[i], dp1[i-1])
+    dp2[i] = max(dp1[i-1], dp1[i-1]+h2[i], dp2[i-1])
+ 
+print(max(dp1[-1],dp2[-1]))
+```
+
+
+
+## 25573: 红蓝玫瑰
+
+dp, greedy, http://cs101.openjudge.cn/practice/25573/
+
+“玫瑰的红，容易受伤的梦，握在手中却流失于指缝，又落空”
+
+
+
+有n (n<500000)支玫瑰从左到右排成一排，它们的颜色是红色或蓝色，红色玫瑰用R表示，蓝色玫瑰用B表示
+
+作为魔法女巫的你，掌握两种魔法：
+
+魔法1：对一支玫瑰施加颜色反转咒语
+
+魔法2：对从左数前k支玫瑰同时施加颜色反转咒语（每次施法时的k值可以不同）
+
+颜色反转咒语将使红玫瑰变成蓝玫瑰，蓝玫瑰变成红玫瑰
+
+
+
+请你求出，最少使用多少次魔法，能使得这一排玫瑰全都变为红玫瑰
+
+输入
+
+一个字符串，由R和B组成
+
+输出
+
+一个整数，最少使用多少次魔法
+
+样例输入
+
+```
+Sample Input1:
+RRRRRBR
+
+Sample Output1:
+1
+```
+
+样例输出
+
+```
+Sample Input2:
+RRRBBBRRRBBB
+
+Sample Output2:
+4
+
+解释：先使用魔法2令k=12，得到BBBRRRBBBRRR，然后使用魔法2令k=9，得到RRRBBBRRRRRR，
+然后使用魔法2令k=6，得到BBBRRRRRRRRR，然后使用魔法2令k=3，得到RRRRRRRRRRRR。
+共使用了4次魔法
+```
+
+提示
+
+tags: dp, greedy
+
+来源：2022fall-cs101, gdr
+
+
+
+25573: 红蓝玫瑰，有点像 蒋子轩23工学院 推荐的CF那两个dp题目：698A-vacations，1195C-Basketball Exercise。
+
+2022fall-cs101，姜鑫。
+
+思路的关键是建了两个一维dp，一个是前n朵玫瑰全变红，记为Rn，一个是前n朵玫瑰全变蓝，记为Bn。
+如果n+1朵玫瑰是红色，R(n+1)=Rn,B(n+1)可以通过魔法一由前n朵全是蓝色的玫瑰变来，也可以通过魔法二由前n朵全是红色的玫瑰变来。所以B(n+1)=min(Rn,Bn)+1。
+如果n+1朵玫瑰是蓝色就反过来。最后对R1，B1赋个值就可以快乐dp了。
+
+```python
+r=list(input())
+n=len(r)
+R=[0]*n
+B=[0]*n
+if r[0]=="R":R[0]=0;B[0]=1
+else:R[0]=1;B[0]=0
+for i in range(n-1):
+    if r[i+1]=="R":
+        R[i+1]=R[i]
+        B[i+1]=min(R[i],B[i])+1
+    else:
+        R[i+1]=min(R[i],B[i])+1
+        B[i+1]=B[i]
+print(R[-1])
+```
+
+
+
+
+
+# 7 小结
 
 - 需要在给定约束条件下优化某种指标时， 动态规划很有用。
 - 问题可分解为离散子问题时， 可使用动态规划来解决。
@@ -981,7 +1269,7 @@ while True:
 
 
 
-# 7 More Problems
+# 8 More Problems
 
 ### Top 20 Dynamic Programming Interview Questions
 
@@ -1030,8 +1318,6 @@ http://cs101.openjudge.cn/practice/02711/
 
 http://bailian.openjudge.cn/tm2023cis/D/
 
-
-
 选自《挑战程序设计竞赛》第2版 Page 135
 
 ### OJ2229: Sumsets				
@@ -1069,6 +1355,10 @@ https://www.geeksforgeeks.org/top-50-dynamic-programming-coding-problems-for-int
 Introduction to Knapsack Problem, its Types and How to solve them
 
 https://www.geeksforgeeks.org/introduction-to-knapsack-problem-its-types-and-how-to-solve-them/
+
+Complexity of Python Operations
+
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
 
 
 
