@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 1419 GMT+8 Nov 14, 2023
+Updated 0907 GMT+8 Nov 21, 2023
 
 
 
@@ -13,12 +13,8 @@ Updated 1419 GMT+8 Nov 14, 2023
 OJ18161：矩阵运算
 matrices, http://cs101.openjudge.cn/practice/18161
 
-
-
 OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
 http://cs101.openjudge.cn/practice/16528
-
-
 
 CF492B: Vanya and Lanterns, binary search/implementation/math/sortings, 1200
 https://codeforces.com/problemset/problem/492/B
@@ -26,7 +22,31 @@ https://codeforces.com/problemset/problem/492/B
 OJ01833: 排列, math
 http://cs101.openjudge.cn/practice/01833
 
-CF1000B: Light It Up, greedy, 1500（选做）
+
+
+## Assignment #B: 贪心、矩阵和动态规划
+
+### 02786: Pell数列
+
+http://cs101.openjudge.cn/practice/02786/
+
+### 04133: 垃圾炸弹
+
+matrices, http://cs101.openjudge.cn/practice/04133/
+
+### 26971: 分发糖果
+
+greedy, http://cs101.openjudge.cn/routine/26971/
+
+### 26976: 摆动序列
+
+greedy, http://cs101.openjudge.cn/routine/26976/
+
+### 27104: 世界杯只因
+
+http://cs101.openjudge.cn/practice/27104/
+
+### CF1000B: Light It Up, greedy, 1500
 
 https://codeforces.com/problemset/problem/1000/B
 
@@ -36,31 +56,33 @@ https://codeforces.com/problemset/problem/1000/B
 
 
 
-OJ12558：岛屿周⻓, matices
+### OJ12558: 岛屿周⻓, matices
+
 http://cs101.openjudge.cn/practice/12558/
 
-OJ02760:数字三角形, dp 
+### OJ02760: 数字三角形, dp 
 
 http://cs101.openjudge.cn/practice/02760/
 
-OJ02773: 采药
+### OJ02773: 采药
 
 dp, http://cs101.openjudge.cn/practice/02773
 
-OJ18106：螺旋矩阵， matrices
-http://cs101.openjudge.cn/practice/18106/
+### OJ18106：螺旋矩阵
+
+matrices, http://cs101.openjudge.cn/practice/18106/
 
 
 
 选做
 
-CF189A: Cut Ribbon, brute force/dp, 1300
+### CF189A: Cut Ribbon
 
-https://codeforces.com/problemset/problem/189/A
+brute force/dp, 1300, https://codeforces.com/problemset/problem/189/A
 
-CF455A: Boredom, dp, 1500
+### CF455A: Boredom
 
-https://codeforces.com/contest/455/problem/A
+dp, 1500, https://codeforces.com/contest/455/problem/A
 
 
 
@@ -68,23 +90,36 @@ https://codeforces.com/contest/455/problem/A
 
 有动态规划dp题⽬。零基础同学可以参看《算法图解》第9章。
 
-OJ19943：图的拉普拉斯矩阵(matrix)
-http://cs101.openjudge.cn/practice/19943/
-OJ19942：⼆维矩阵上的卷积运算v0.2 (matrix)
-http://cs101.openjudge.cn/practice/19942/
+### OJ19943：图的拉普拉斯矩阵
 
-CF313B: Ilya and Queries, dp/implementation, 1100
-https://codeforces.com/contest/313/problem/B
+matrix, http://cs101.openjudge.cn/practice/19943/
 
-CF706B: Interesting drink, binary search/dp/implementation, 1100
-https://codeforces.com/problemset/problem/706/B
+### OJ19942：⼆维矩阵上的卷积运算v0.2
+
+matrix, http://cs101.openjudge.cn/practice/19942/
+
+### CF313B: Ilya and Queries
+
+dp/implementation, 1100, https://codeforces.com/contest/313/problem/B
+
+### CF706B: Interesting drink
+
+binary search/dp/implementation, 1100, https://codeforces.com/problemset/problem/706/B
 
 
 
 选做：如果耗时太⻓，直接看解题思路，或者源码
-CF466C: Number of Ways, binary search/brute force/data structures/dp/two pointers, 1700
+
+### CF466C: Number of Ways
+
+binary search/brute force/data structures/dp/two pointers, 1700
+
 https://codeforces.com/problemset/problem/466/C
-CF1443C: The Delivery Dilemma, binary search/greedy/sortings, 1400
+
+### CF1443C: The Delivery Dilemma
+
+binary search/greedy/sortings, 1400
+
 https://codeforces.com/problemset/problem/1443/C
 提示： 1）结果要⼀起输出，不要分次print，会超时。2）⽤zip函数。
 
@@ -174,27 +209,23 @@ brute force, 1100, http://codeforces.com/problemset/problem/508/A
 
 implementation, matrices, http://cs101.openjudge.cn/practice/23555/
 
-### OJ12560：⽣存游戏, matrix, cs10116 final exam
+### OJ12560：⽣存游戏
 
-http://cs101.openjudge.cn/practice/12560/
+matrix, cs10116 final exam, http://cs101.openjudge.cn/practice/12560/
 
-### OJ04110：圣诞⽼⼈的礼物-Santa Clau’s Gifts， greedy
+### OJ04110：圣诞⽼⼈的礼物-Santa Clau’s Gifts
 
-http://cs101.openjudge.cn/practice/04110/
+greedy, http://cs101.openjudge.cn/practice/04110/
 
 
 
-### 02659:Bomb Game（选做）
+### 02659: Bomb Game（选做）
 
 matrices, http://cs101.openjudge.cn/practice/02659/
 
-### CF545C: Woodcutters, dp/greedy, 1500 （选做）
+### CF545C: Woodcutters（选做）
 
-https://codeforces.com/problemset/problem/545/C
-
-
-
-
+dp/greedy, 1500, https://codeforces.com/problemset/problem/545/C
 
 
 
@@ -202,39 +233,49 @@ https://codeforces.com/problemset/problem/545/C
 
 ## Assignment #5 排序和超时
 
-### CF69A: Young Physicist, implementation/math, 1000
+### CF69A: Young Physicist
+
+implementation/math, 1000
 
 https://codeforces.com/problemset/problem/69/A
 
 
 
-### CF96A: Football, implementation/strings, 900
+### CF96A: Football
+
+implementation/strings, 900
 
 http://codeforces.com/problemset/problem/96/A
 
 
 
-### CF270A: Fancy Fencegeometry, implementation/math, 1100
+### CF270A: Fancy Fencegeometry
+
+implementation/math, 1100
 
 https://codeforces.com/problemset/problem/270/A
 
 
 
-### CF160A: Twins, greedy, sortings, 900
+### CF160A: Twins
 
-https://codeforces.com/problemset/problem/160/A
-
-
+greedy, sortings, 900, https://codeforces.com/problemset/problem/160/A
 
 
 
-### CF1221A: 2048 Game, brute force/greedy/math, 1000 （选做）
+
+
+### CF1221A: 2048 Game （选做）
+
+brute force/greedy/math, 1000
 
 http://codeforces.com/problemset/problem/1221/A
 
 
 
-### CF230B: T-primes, binary search/implementation/math/number theory, 1300 （选做）
+### CF230B: T-primes （选做）
+
+binary search/implementation/math/number theory, 1300
 
 http://codeforces.com/problemset/problem/230/B
 
@@ -1216,7 +1257,7 @@ N
 
 
 
-#### OJ01218:THE DRUNK JAILER
+#### OJ01218: THE DRUNK JAILER
 
 http://cs101.openjudge.cn/practice/01218/
 
@@ -1378,6 +1419,452 @@ Greedy, http://cs101.openjudge.cn/practice/25353/
 
 
 ## Routine
+
+## 2023/11/21
+
+2791/1793:矩形覆盖
+
+2774/1776:木材加工
+
+## 2023/11/20
+
+27141:完美的爱
+
+27104:世界杯只因
+
+## 2023/11/19
+
+2766/1768:最大子矩阵
+
+1837/839:Balance
+
+## 2023/11/18
+
+2945/1947: 拦截导弹
+
+02979/1980: 陪审团的人选
+
+dp, http://cs101.openjudge.cn/practice/02979
+
+## 2023/11/17
+
+02995/1996：登⼭
+
+http://cs101.openjudge.cn/practice/02995
+
+1065/67:Wooden Sticks			优化递推，《挑战程序设计竞赛》第2版  P135
+
+**2023/11/16**
+
+## 25573: **红蓝玫瑰**
+
+dp, greedy, http://cs101.openjudge.cn/practice/25573/
+
+01661/663: Help Jimmy
+
+dfs/dp, http://cs101.openjudge.cn/practice/01661
+
+## 2023/11/15
+
+08210/8210:河中跳房子
+
+04018/3090:子串
+
+http://cs101.openjudge.cn/practice/04018/
+
+3262/2263:新数字三角形
+
+## 2023/11/14
+
+27103:最短的愉悦旋律长度
+
+http://cs101.openjudge.cn/routine/27103/
+
+01204/206:Word Puzzles
+
+http://cs101.openjudge.cn/practice/01204/
+
+## 2023/11/13
+
+20731/20731:矩阵换行求边缘和
+
+http://cs101.openjudge.cn/practice/20731/
+
+20722/20722:双重tag里的整数
+
+http://cs101.openjudge.cn/practice/20722/
+
+## 2023/11/12
+
+计算概论实验班 / 适合python完成的题型 
+
+1035/37:拼写检查
+
+http://bailian.openjudge.cn/practice/1035/
+
+2818/1820:密码
+
+http://bailian.openjudge.cn/practice/2818/
+
+## 2023/11/11
+
+4001/2971:抓住那头牛 
+
+http://bailian.openjudge.cn/practice/4001/
+
+1273/275: Drainage Ditches
+
+http://bailian.openjudge.cn/practice/1273/
+
+网络流题目。给定点数，边数，每条边的容量，以及源点，汇点，求最大流。
+
+解析：通过Ford-Fulkerson算法或者是Dinic算法，通过dfs搜索最小流进行增广路。
+
+参考：https://blog.csdn.net/potential1/article/details/78076009
+
+## 2023/11/10
+
+2184/1186:Cow Exhibition
+
+http://bailian.openjudge.cn/practice/2184/
+
+1664/666.放苹果
+
+http://bailian.openjudge.cn/practice/1664/
+
+## 2023/11/09
+
+备选题目 选自《挑战程序设计竞赛》第2版 
+
+05333/4335:Fence Repair			Page 47,76 《挑战程序设计竞赛》第2版 
+
+http://cs101.openjudge.cn/practice/05333/
+
+01182/184:食物链					Page 88 《挑战程序设计竞赛》第2版 
+
+http://cs101.openjudge.cn/practice/01182/
+
+## 2023/11/08
+
+01481/484:The Die Is Cast	(2018计算机学科夏令营上机考试)
+
+http://cs101.openjudge.cn/practice/01481/
+
+01251/253:丛林中的路
+
+http://cs101.openjudge.cn/practice/01251/
+
+## 2023/11/07
+
+02814/1816:拨钟问题
+
+http://cs101.openjudge.cn/practice/02814/
+
+01056/58:IMMEDIATE DECODABILITY
+
+http://cs101.openjudge.cn/practice/01056/
+
+## 2023/11/06
+
+2255/1257:重建二叉树
+
+http://bailian.openjudge.cn/practice/2255/
+
+02488/1490:A Knight's Journey
+
+http://cs101.openjudge.cn/practice/02488/
+
+## 2023/11/05
+
+03866/2867:Red and Black
+
+http://cs101.openjudge.cn/practice/03866/
+
+1979/981:Red and Black			BFS, 《挑战程序设计竞赛》第2版  P135
+
+02755/1757:神奇的口袋
+
+http://cs101.openjudge.cn/practice/02755/
+
+## 2023/11/04
+
+01011/13:Sticks
+
+http://cs101.openjudge.cn/practice/01011/
+
+04143/8207:和为给定数
+
+http://cs101.openjudge.cn/practice/04143/
+
+## 2023/11/03
+
+02756/1758:二叉树
+
+[http://cs101.openjudge.cn/practice/02756/](http://cs101.openjudge.cn/practice/02755/)
+
+04131/7113:Charm Bracelet
+
+http://cs101.openjudge.cn/practice/04131
+
+
+
+## 2023/11/02
+
+03704/2705:扩号匹配问题
+
+http://cs101.openjudge.cn/practice/03704
+
+04134/7940:查找最接近的元素
+
+http://cs101.openjudge.cn/practice/04134/
+
+## 2023/11/01
+
+04126/8470:DNA
+
+http://cs101.openjudge.cn/practice/04126/
+
+04135/8209:月度开销
+
+http://cs101.openjudge.cn/practice/04135
+
+## 2023/10/31
+
+04123/8465:马走日
+
+http://cs101.openjudge.cn/practice/04123/
+
+Mersenne Composite Numbers
+
+02191/1193
+
+## 2023/10/30
+
+02754/1756:八皇后
+
+http://cs101.openjudge.cn/practice/02754/
+
+01958/960:Strange Towers of Hanoi
+
+http://cs101.openjudge.cn/practice/01958/
+
+Mersenne Composite Numbers
+
+https://blog.csdn.net/imzxww/article/details/80997960
+
+题意:i从1到k，如果是[素数](https://so.csdn.net/so/search?q=素数&spm=1001.2101.3001.7020)，看2的i次方减1是否为合数，如果是，看是否能拆成几个素数相乘。
+
+思路：用大整数因式分解Pollard_rho算法和大整数素数判断miller_rabin。
+
+## 2023/10/29
+
+04128/8468:单词序列
+
+http://cs101.openjudge.cn/practice/04128
+
+01753/755:Flip Game
+
+http://cs101.openjudge.cn/practice/01753
+
+1100
+
+0100
+
+101
+
+011
+
+2023/10/28
+
+27018:康托展开
+
+http://cs101.openjudge.cn/practice/27018/
+
+04130/10956:Saving Tang Monk
+
+http://cs101.openjudge.cn/practice/04130/
+
+## 2023/10/27
+
+04129/10718:变换的迷宫
+
+http://cs101.openjudge.cn/practice/04129
+
+01729/731:Jack and Jill
+
+http://cs101.openjudge.cn/practice/01729
+
+## 2023/10/26
+
+04122/8471:切割回文
+
+http://cs101.openjudge.cn/practice/04122
+
+01077/79:Eight
+
+http://cs101.openjudge.cn/practice/01077/
+
+## 2023/10/25
+
+04121/8464:股票买卖
+
+http://cs101.openjudge.cn/practice/04121
+
+04124/4979:海贼王之伟大航路
+
+http://cs101.openjudge.cn/practice/04124
+
+## 2023/10/24
+
+01037/39:A decorative fence
+
+http://cs101.openjudge.cn/practice/01037
+
+04115/6044:鸣人和佐助
+
+http://cs101.openjudge.cn/practice/04115/
+
+## 2023/10/23
+
+01390/392:Blocks
+
+http://cs101.openjudge.cn/practice/01390/
+
+04116/4980:拯救行动
+
+http://bailian.openjudge.cn/practice/4116/
+
+## 2023/10/22
+
+04102/4978:宠物小精灵之收服
+
+http://cs101.openjudge.cn/practice/04102/
+
+01190/192:生日蛋糕
+
+http://cs101.openjudge.cn/practice/01190
+
+## 2023/10/21
+
+04120/4976:硬币
+
+http://cs101.openjudge.cn/practice/04120/
+
+01724/726:ROADS
+
+http://cs101.openjudge.cn/practice/01724/
+
+## 2023/10/20
+
+02373/1375:Dividing the Path
+
+http://cs101.openjudge.cn/practice/02373
+
+02815/1817:城堡问题
+
+http://cs101.openjudge.cn/practice/02815
+
+## 2023/10/19
+
+04117/7215:简单的整数划分问题
+
+http://cs101.openjudge.cn/practice/04117
+
+04119/7219:复杂的整数划分问题
+
+http://cs101.openjudge.cn/practice/04119
+
+## 2023/10/18
+
+26646:建筑修建
+
+http://cs101.openjudge.cn/practice/26646/
+
+04118/6045:开餐馆
+
+http://cs101.openjudge.cn/practice/04118/
+
+## 2023/10/17
+
+26978:滑动窗口最大值
+
+http://cs101.openjudge.cn/practice/26978/
+
+26977:接雨水
+
+http://cs101.openjudge.cn/practice/26977/
+
+## 2023/10/16
+
+02694/1696:波兰表达式
+
+http://cs101.openjudge.cn/practice/02694/
+
+02775/1777:文件结构“图”
+
+http://cs101.openjudge.cn/practice/02775/
+
+## 2023/10/15 《算法基础》第4章 递归
+
+02787/1789:算24
+
+http://cs101.openjudge.cn/practice/02787
+
+26976:摆动序列
+
+http://cs101.openjudge.cn/practice/26976/
+
+**2023/10/14** 
+
+## 4142/8206:二分法求函数的零点
+
+http://cs101.openjudge.cn/practice/04142/
+
+26971: 分发糖果
+
+http://cs101.openjudge.cn/practice/26971/
+
+## 2023/10/13 二分查找@算法基础
+
+02456/1458:Aggressive cows
+
+http://cs101.openjudge.cn/practice/02456/
+
+01905/907:Expanding Rods
+
+http://cs101.openjudge.cn/practice/01905
+
+## 2023/10/12 贪心算法
+
+02181/1183:Jumping Cows
+
+http://cs101.openjudge.cn/practice/02181 
+
+02287/1289:Tian Ji -- The Horse Racing
+
+http://cs101.openjudge.cn/practice/02287
+
+## 2023/10/11 贪心算法
+
+03468/2469:电池的寿命
+
+http://cs101.openjudge.cn/practice/03468
+
+01328/330:Radar Installation
+
+http://cs101.openjudge.cn/practice/01328
+
+## 2023/10/10 贪心算法
+
+03406/2407:书架
+
+http://bailian.openjudge.cn/practice/3406/
+
+04137/3528:最小新整数
+
+http://bailian.openjudge.cn/practice/4137/
+
+
 
 ### 2023/10/09 贪心算法
 
