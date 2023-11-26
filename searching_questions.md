@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 2155 GMT+8 Nov 26 2023
+Updated 2356 GMT+8 Nov 26 2023
 
 2020 fall, Complied by Hongfei Yan
 
@@ -121,6 +121,7 @@ print(cnt)
 #### 辅助visited空间
 
 ```python
+# gpt translated version of the C++ code
 MAXN = 5
 n, m = map(int, input().split())
 maze = []
@@ -316,6 +317,7 @@ print("Yes" if canReach else "No")
 #### 辅助visited空间
 
 ```python
+# gpt translated version of the C++ code
 MAXN = 5
 n, m, k = map(int, input().split())
 maze = []
@@ -492,6 +494,7 @@ print(maxValue)
 #### 辅助visited空间
 
 ```python
+# gpt translated version of the C++ code
 MAXN = 5
 INF = float('inf')
 n, m = map(int, input().split())
@@ -630,6 +633,7 @@ https://sunnywhy.com/sfbj/8/1/316
 #### 辅助visited空间
 
 ```python
+# gpt translated version of the C++ code
 MAXN = 5
 INF = float('inf')
 n, m = map(int, input().split())
@@ -836,6 +840,7 @@ print(maxValue)
 #### 辅助visited空间
 
 ```python
+# gpt translated version of the C++ code
 MAXN = 5
 INF = float('inf')
 n, m = map(int, input().split())
@@ -1016,7 +1021,10 @@ https://sunnywhy.com/sfbj/8/2/318
 
 
 
+#### Python
+
 ```python
+# gpt translated version of the C++ code
 from collections import deque
 
 MAXN = 100000
@@ -1047,7 +1055,7 @@ if __name__ == "__main__":
 
 
 
-C++
+#### C++
 
 ```c++
 #include <cstdio>
@@ -1146,6 +1154,7 @@ https://sunnywhy.com/sfbj/8/2/319
 #### inq 数组，结点是否已入过队
 
 ```python
+# gpt translated version of the C++ code
 from collections import deque
 
 # Constants
@@ -1316,6 +1325,7 @@ https://sunnywhy.com/sfbj/8/2/320
 #### inq 数组，结点是否已入过队
 
 ```python
+# gpt translated version of the C++ code
 from collections import deque
 
 # 声明方向变化的数组，代表上下左右移动
@@ -1476,10 +1486,127 @@ https://sunnywhy.com/sfbj/8/2/321
 
 
 
+#### inq 数组，结点是否已入过队
+
+```python
+# gpt translated version of the C++ code
+from queue import Queue
+
+MAXN = 100
+MAXD = 4
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def canVisit(x, y):
+    return x >= 0 and x < n and y >= 0 and y < m and maze[x][y] == 0 and not inQueue[x][y]
+
+def BFS(x, y):
+    q = Queue()
+    q.put((x, y))
+    inQueue[x][y] = True
+    while not q.empty():
+        front = q.get()
+        if front[0] == n - 1 and front[1] == m - 1:
+            return
+        for i in range(MAXD):
+            nextX = front[0] + dx[i]
+            nextY = front[1] + dy[i]
+            if canVisit(nextX, nextY):
+                pre[nextX][nextY] = (front[0], front[1])
+                inQueue[nextX][nextY] = True
+                q.put((nextX, nextY))
+
+def printPath(p):
+    prePosition = pre[p[0]][p[1]]
+    if prePosition == (-1, -1):
+        print(p[0] + 1, p[1] + 1)
+        return
+    printPath(prePosition)
+    print(p[0] + 1, p[1] + 1)
+
+n, m = map(int, input().split())
+maze = []
+for _ in range(n):
+    row = list(map(int, input().split()))
+    maze.append(row)
+
+inQueue = [[False] * m for _ in range(n)]
+pre = [[(-1, -1)] * m for _ in range(n)]
+
+BFS(0, 0)
+printPath((n - 1, m - 1))
+```
+
+
+
 #### C++
 
 ```python
+#include <cstdio>
+#include <queue>
+#include <utility>
+#include <algorithm>
+using namespace std;
 
+typedef pair<int, int> Position;
+
+const int MAXN = 100;
+int n, m, maze[MAXN][MAXN];
+bool inQueue[MAXN][MAXN] = {false};
+Position pre[MAXN][MAXN];
+
+const int MAXD = 4;
+int dx[MAXD] = {0, 0, 1, -1};
+int dy[MAXD] = {1, -1, 0, 0};
+
+bool canVisit(int x, int y) {
+    return x >= 0 && x < n && y >= 0 && y < m && maze[x][y] == 0 && !inQueue[x][y];
+}
+
+void BFS(int x, int y) {
+    queue<Position> q;
+    q.push(Position(x, y));
+    inQueue[x][y] = true;
+    while (!q.empty()) {
+        Position front = q.front();
+        q.pop();
+        if (front.first == n - 1 && front.second == m - 1) {
+            return;
+        }
+        for (int i = 0; i < MAXD; i++) {
+            int nextX = front.first + dx[i];
+            int nextY = front.second + dy[i];
+            if (canVisit(nextX, nextY)) {
+                pre[nextX][nextY] = Position(front.first, front.second);
+                inQueue[nextX][nextY] = true;
+                q.push(Position(nextX, nextY));
+            }
+        }
+    }
+}
+
+void printPath(Position p) {
+    Position prePosition = pre[p.first][p.second];
+    if (prePosition == Position(-1, -1)) {
+        printf("%d %d\n", p.first + 1, p.second + 1);
+        return;
+    }
+    printPath(prePosition);
+    printf("%d %d\n", p.first + 1, p.second + 1);
+}
+
+int main() {
+    scanf("%d%d", &n, &m);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &maze[i][j]);
+        }
+    }
+    fill(pre[0], pre[0] + n * m, Position(-1, -1));
+    BFS(0, 0);
+    printPath(Position(n - 1, m - 1));
+    return 0;
+}
 ```
 
 
