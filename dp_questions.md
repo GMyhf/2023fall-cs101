@@ -1,6 +1,6 @@
 # 动态规划专题
 
-Updated 2055 GMT+8 Nov 21, 2023
+Updated 1330 GMT+8 Nov 28, 2023
 
 
 
@@ -1256,9 +1256,258 @@ print(R[-1])
 
 
 
+# 7 “恰好”型dp
 
 
-# 7 小结
+
+## 189A. Cut Ribbon
+
+brute force/dp, 1300, https://codeforces.com/problemset/problem/189/A
+
+Polycarpus has a ribbon, its length is *n*. He wants to cut the ribbon in a way that fulfils the following two conditions:
+
+- After the cutting each ribbon piece should have length *a*, *b* or *c*.
+- After the cutting the number of ribbon pieces should be maximum.
+
+Help Polycarpus and find the number of ribbon pieces after the required cutting.
+
+**Input**
+
+The first line contains four space-separated integers *n*, *a*, *b* and *c* (1 ≤ *n*, *a*, *b*, *c* ≤ 4000) — the length of the original ribbon and the acceptable lengths of the ribbon pieces after the cutting, correspondingly. The numbers *a*, *b* and *c* can coincide.
+
+**Output**
+
+Print a single number — the maximum possible number of ribbon pieces. It is guaranteed that at least one correct ribbon cutting exists.
+
+Examples
+
+input
+
+```
+5 5 3 2
+```
+
+output
+
+```
+2
+```
+
+input
+
+```
+7 5 5 2
+```
+
+output
+
+```
+2
+```
+
+Note
+
+In the first example Polycarpus can cut the ribbon in such way: the first piece has length 2, the second piece has length 3.
+
+In the second example Polycarpus can cut the ribbon in such way: the first piece has length 5, the second piece has length 2.
+
+
+
+思路：就是一个需要刚好装满的完全背包问题，只有三种商品a, b, c，能取无限件物品，每件物品价值是1，求最大价值。
+
+```python
+n, a, b, c = map(int, input().split())
+dp = [0]+[float('-inf')]*n
+
+for i in range(1, n+1):
+    for j in (a, b, c):
+        if i >= j:
+            dp[i] = max(dp[i-j] + 1, dp[i])
+
+print(dp[n])
+```
+
+
+
+## 21458: 健身房 (dp)
+
+dp，http://cs101.openjudge.cn/routine/21458/
+
+小嘤是大不列颠及北爱尔兰联合王国大力士，为了完成增肌计划，他需要选择一些训练组进行训练：有n个训练组，每天做第i个训练需要耗费ti分钟，每天坚持做第i个训练一个月后预计可增肌wi千克。因为会导致效果变差，小嘤一天不会做相同的训练组多次。由于小嘤是强迫症，他希望每天用于健身的时间**恰好**为**T** 分钟，他希望在一个月后获得最多的增肌量，请帮助小嘤计算：他训练一个月后最大增肌量是多少呢？
+
+对应英文描述：
+
+Boingo, a bodybuilder from the United Kingdom of Great Britain and Northern Ireland, needs to choose a number of training sets in order to complete his muscle building program: there are **n** training groups, and it takes **ti** minutes per day to do the  i-th training set, and It's expected to gain  **wi** kilograms of muscle after doing the first **i** training set every day for one month. Boingo would not do the same training set more than once a day because it's not effective. Since Boingo is obsessive-compulsive, he wants to spend **exactly**  **t** minutes per day working out, he wants to gain the maximum amount of muscle mass after one month of training, please help him.
+
+**输入**
+
+第一行两个整数 T,n。
+
+第 2 行到第 n+1 行，每行两个整数 ti,wi。
+
+保证 0 < ti ≤ T ≤ 103, 0 < n ≤ 103, 0 < wi < 20。
+
+**输出**
+
+如果不存在满足条件的训练计划，输出-1。
+
+如果存在满足条件的训练计划，输出一个整数，表示训练一个月后的最大增肌量。
+
+样例输入
+
+```
+sample1 in
+6 4
+2 1
+4 7
+3 5
+3 5
+
+sample1 out
+10
+```
+
+样例输出
+
+```
+sample2 in
+700 4
+450 5
+340 1
+690 10
+9 2
+
+sample2 out
+-1
+样例2解释：无法找出一种方案满足训练时间恰好等于T.
+```
+
+来源：cs101 2020 Final Exam
+
+
+
+“恰好”型dp。类似方法：最开始的设为0，其余的都为设为负无穷。。。 https://zhuanlan.zhihu.com/p/560690993?utm_id=0
+
+```python
+# 23n2300011031,黄源森
+t,n=map(int,input().split())
+dp=[0]+[-1]*(t+1)
+for i in range(n):
+    k,w=map(int,input().split())
+    for j in range(t,k-1,-1):
+        if dp[j-k]!=-1:
+            dp[j]=max(dp[j-k]+w,dp[j])
+print(dp[t])
+```
+
+
+
+## 20089: NBA门票
+
+dp, http://cs101.openjudge.cn/practice/20089/
+
+六月，巨佬甲正在加州进行暑研工作。恰逢湖人和某东部球队进NBA总决赛的对决。而同为球迷的老板大发慈悲给了甲若干美元的经费，让甲同学用于购买球票。然而由于球市火爆，球票数量也有限。共有七种档次的球票（对应价格分别为50 100 250 500 1000 2500 5000美元）而同学甲购票时这七种票也还分别剩余（n1，n2，n3，n4，n5，n6，n7张）。现由于甲同学与同伴关系恶劣。而老板又要求甲同学必须将所有经费恰好花完，请给出同学甲可买的最少的球票数X。
+
+**输入**
+
+第一行老板所发的经费N,其中50≤N≤1000000。
+
+第二行输入n1-n7，分别为七种票的剩余量，用空格隔开
+
+**输出**
+
+假若余票不足或者有余额，则输出’Fail’
+
+而假定能刚好花完，则输出同学甲所购买的最少的票数X。
+
+样例输入
+
+```
+Sample1 Input：
+5500
+3 3 3 3 3 3 3 
+
+Sample1 Output：
+2
+```
+
+样例输出
+
+```
+Sample2 Input：
+125050
+1 2 3 1 2 5 20
+
+Smaple2 Output：
+Fail
+```
+
+来源: cs101-2019 龚世棋
+
+
+
+```python
+# 2200015481, 陈涛
+n=int(input())
+tickets=list(map(int,input().split()))
+price=[50,100,250,500,1000,2500,5000]
+dp={0:0}
+path={0:[0,0,0,0,0,0,0]}
+for i in range(n):
+    if i in dp:
+        for k in range(7):
+            if path[i][k]<tickets[k]:
+                if i+price[k] in dp:
+                    if dp[i]+1<dp[i+price[k]]:
+                        dp[i+price[k]]=dp[i]+1
+                        path[i+price[k]]=path[i][:]
+                        path[i+price[k]][k]+=1
+                else:
+                    dp[i+price[k]]=dp[i]+1
+                    path[i+price[k]]=path[i][:]
+                    path[i+price[k]][k]+=1
+if n in dp:
+    print(dp[n])
+else:
+    print('Fail')
+```
+
+
+
+```python
+# 夏天明
+def dfs(money, loc):
+    if money == 0:
+        return 0
+
+    for i, cnt in enumerate(barrel[loc:], loc):
+        n = min(cnt, money // price[i])
+        if n == 0:
+            continue
+
+        result = dfs(money - n * price[i], i + 1)
+        if result != "Fail":
+            return n + result
+
+    return "Fail"
+
+
+N = int(input())
+if N % 50:
+    print("Fail")
+else:
+    N //= 50
+    barrel = [int(i) for i in input().split()]
+    price = [100, 50, 20, 10, 5, 2, 1]
+    barrel.reverse()
+    print(dfs(N, 0))
+```
+
+
+
+
+
+# 8 小结
 
 - 需要在给定约束条件下优化某种指标时， 动态规划很有用。
 - 问题可分解为离散子问题时， 可使用动态规划来解决。
@@ -1269,7 +1518,7 @@ print(R[-1])
 
 
 
-# 8 More Problems
+# 9 More Problems
 
 ### Top 20 Dynamic Programming Interview Questions
 
@@ -1314,7 +1563,11 @@ dp, http://cs101.openjudge.cn/practice/02773
 
 http://cs101.openjudge.cn/practice/02711/
 
-### 9267: 核电站
+### OJ02995: 登山
+
+dp , http://cs101.openjudge.cn/practice/02995
+
+### OJ9267: 核电站
 
 http://bailian.openjudge.cn/tm2023cis/D/
 
@@ -1324,11 +1577,11 @@ http://bailian.openjudge.cn/tm2023cis/D/
 
 http://cs101.openjudge.cn/routine/02229/
 
-### 2385: Apple Catching			
+### OJ2385: Apple Catching			
 
 http://bailian.openjudge.cn/practice/2385/
 
-### 1742: Coins					
+### OJ1742: Coins					
 
 http://bailian.openjudge.cn/practice/1742/
 
