@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 1443 GMT+8 Nov 28 2023
+Updated 1920 GMT+8 Nov 28 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -377,8 +377,9 @@ def dfs(maze, x, y, step):
         if maze[nx][ny] == 'e':
             if step==k-1:
                 canReach = True
+                return
             
-            return
+            continue
             
         if maze[nx][ny] == 0:
             if step < k:
