@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 2125 GMT+8 Nov 21, 2023
+Updated 1028 GMT+8 Nov 28, 2023
 
 
 
@@ -16,11 +16,75 @@ matrices, http://cs101.openjudge.cn/practice/18161
 OJ16528：充实的寒假生活, cs10117 Final Exam, greedy
 http://cs101.openjudge.cn/practice/16528
 
-CF492B: Vanya and Lanterns, binary search/implementation/math/sortings, 1200
+简答：  CF492B: Vanya and Lanterns, binary search/implementation/math/sortings, 1200
 https://codeforces.com/problemset/problem/492/B
 
 OJ01833: 排列, math
 http://cs101.openjudge.cn/practice/01833
+
+
+
+CF1883D. In Love
+
+data structure, greedy, 1500, https://codeforces.com/problemset/problem/1883/D
+
+黄源森、查达闻推荐
+
+
+
+
+
+## Assignment #C: 矩阵、递归、贪心、和dfs simlar
+
+1881C. Perfect Square
+
+brute force, implementation, 1200, https://codeforces.com/problemset/problem/1881/C
+
+黄源森推荐：”一个一般的矩阵“。感觉现在CF problemset第一页的题（难度1000+的）都不是那么好做。
+
+
+
+OJ02694：波兰表达式
+
+recursion, data structure,  http://cs101.openjudge.cn/practice/02694/
+
+
+
+OJ18160: 最大连通域面积
+
+dfs similar, http://cs101.openjudge.cn/practice/18160
+
+
+
+OJ02754: 八皇后
+
+dfs, http://cs101.openjudge.cn/practice/02754
+
+
+
+OJ21608：你和你比较熟悉的同学
+
+dfs similar, http://cs101.openjudge.cn/practice/21608
+
+
+
+OJ18146: 乌鸦坐飞机
+
+http://cs101.openjudge.cn/routine/18146/
+
+查达闻推荐：乌鸦坐飞机和装箱子那道题很像，其实难度不比装箱子高 但是考虑的情况确实不少。
+
+测试数据在课程微信群里有，查达闻说：“18146数据点13错误，应该是NO”。
+
+
+
+OJ02287：Tian Ji -The Horse Racing田忌赛马
+
+greedy, http://cs101.openjudge.cn/practice/02287
+
+
+
+
 
 
 
@@ -283,7 +347,7 @@ http://codeforces.com/problemset/problem/230/B
 
 ## Assignment #4 国庆节月考
 
-#### 02701: 与7无关的数
+### 02701: 与7无关的数
 
 math, http://cs101.openjudge.cn/practice/02701
 
@@ -317,7 +381,7 @@ math, http://cs101.openjudge.cn/practice/02701
 
 
 
-#### 02712: 细菌繁殖 
+### 02712: 细菌繁殖 
 
 math, http://cs101.openjudge.cn/practice/02712
 
@@ -354,7 +418,7 @@ math, http://cs101.openjudge.cn/practice/02712
 
 
 
-#### 02753: 菲波那契数列
+### 02753: 菲波那契数列
 
 math, http://cs101.openjudge.cn/practice/02753
 
@@ -387,7 +451,7 @@ math, http://cs101.openjudge.cn/practice/02753
 
 
 
-#### 02810: 完美立方
+### 02810: 完美立方
 
 bruteforce, http://cs101.openjudge.cn/practice/02810
 
@@ -427,7 +491,7 @@ Cube = 24, Triple = (12,16,20)
 
 
 
-#### 04138: 质数的和与积
+### 04138: 质数的和与积
 
 math, http://cs101.openjudge.cn/practice/04138
 
@@ -461,7 +525,7 @@ math, http://cs101.openjudge.cn/practice/04138
 
 
 
-#### 04146: 数字方格
+### 04146: 数字方格
 
 math, http://cs101.openjudge.cn/practice/04146
 
@@ -492,7 +556,7 @@ math, http://cs101.openjudge.cn/practice/04146
 
 
 
-#### 02746: 约瑟夫问题
+### 02746: 约瑟夫问题
 
 implementation, http://cs101.openjudge.cn/practice/02746
 
@@ -529,7 +593,7 @@ implementation, http://cs101.openjudge.cn/practice/02746
 
 
 
-#### CF1364A: A. XXXXX
+### CF1364A: A. XXXXX
 
 brute force/data structures/number theory/two pointers, 1200, https://codeforces.com/problemset/problem/1364/A
 
@@ -585,7 +649,7 @@ In the third test case, all subarrays have an even sum, so the answer is −1.
 
 ## Assignment #3 语法练习
 
-#### 118A. String Task
+### 118A. String Task
 
 implementation/strings, 1000, http://codeforces.com/problemset/problem/118/A
 
@@ -649,7 +713,7 @@ output
 
 
 
-#### 263A. Beautiful Matrix
+### 263A. Beautiful Matrix
 
 implementation, 800, http://codeforces.com/problemset/problem/263/A
 
@@ -706,7 +770,7 @@ output
 
 
 
-#### 281A. Word Capitalization
+### 281A. Word Capitalization
 
 implementation/strings, 800, http://codeforces.com/problemset/problem/281/A
 
@@ -752,7 +816,7 @@ Konjac
 
 
 
-#### 282A. Bit++
+### 282A. Bit++
 
 implementation, 800, http://codeforces.com/problemset/problem/282/A
 
@@ -812,7 +876,7 @@ output
 
 
 
-#### 339A. Helpful Maths
+### 339A. Helpful Maths
 
 greedy/implementation/sortings/strings, 800, http://codeforces.com/problemset/problem/339/A
 
@@ -872,7 +936,7 @@ output
 
 
 
-#### OJ01017: 装箱问题（选做）
+### OJ01017: 装箱问题（选做）
 
 greedy, http://cs101.openjudge.cn/practice/01017
 
@@ -905,7 +969,7 @@ greedy, http://cs101.openjudge.cn/practice/01017
 
 ## Assignment #2 字符相关
 
-#### 71A. Way Too Long Words
+### 71A. Way Too Long Words
 
 strings, 1000, http://codeforces.com/problemset/problem/71/A
 
@@ -950,7 +1014,7 @@ p43s
 
 
 
-#### 112A. Petya and Strings
+### 112A. Petya and Strings
 
 implementation/strings, 800, http://codeforces.com/problemset/problem/112/A
 
@@ -1013,7 +1077,7 @@ If you want more formal information about the lexicographical order (also known 
 
 
 
-#### 158A. Next Round
+### 158A. Next Round
 
 *special problem/implementation, 800, http://codeforces.com/problemset/problem/158/A
 
@@ -1067,7 +1131,7 @@ In the second example nobody got a positive score.
 
 
 
-#### 58A. Chat room
+### 58A. Chat room
 
 greedy/strings, 1000, http://codeforces.com/problemset/problem/58/A
 
@@ -1109,7 +1173,7 @@ NO
 
 
 
-#### 04015: 邮箱验证
+### 04015: 邮箱验证
 
 strings, http://cs101.openjudge.cn/practice/04015
 
@@ -1150,7 +1214,7 @@ NO
 
 
 
-#### OJ01008: Maya Calendar（选做）
+### OJ01008: Maya Calendar（选做）
 
 math, http://cs101.openjudge.cn/practice/01008/
 
@@ -1196,7 +1260,7 @@ Central Europe 1995
 
 ## Assignment #1 暨 摸底考试
 
-#### OJ02750：鸡兔同笼
+### OJ02750：鸡兔同笼
 
 math, http://cs101.openjudge.cn/practice/02750
 
@@ -1225,7 +1289,7 @@ math, http://cs101.openjudge.cn/practice/02750
 
 
 
-#### OJ02733：判断闰年
+### OJ02733：判断闰年
 
 math, http://cs101.openjudge.cn/practice/02733
 
@@ -1257,7 +1321,7 @@ N
 
 
 
-#### OJ01218: THE DRUNK JAILER
+### OJ01218: THE DRUNK JAILER
 
 http://cs101.openjudge.cn/practice/01218/
 
@@ -1297,7 +1361,7 @@ Greater New York 2002
 
 
 
-#### OJ02689: 大小写字母互换
+### OJ02689: 大小写字母互换
 
 http://cs101.openjudge.cn/practice/02689
 
@@ -1329,7 +1393,7 @@ iF SO, YOU ALREADY HAVE A gOOGLE aCCOUNT. yOU CAN SIGN IN ON THE RIGHT.
 
 
 
-#### OJ02808: 校⻔外的树
+### OJ02808: 校⻔外的树
 
 implementation, http://cs101.openjudge.cn/practice/02808
 
@@ -1365,7 +1429,7 @@ implementation, http://cs101.openjudge.cn/practice/02808
 
 
 
-#### OJ25353: 排队（选做）
+### OJ25353: 排队（选做）
 
 Greedy, http://cs101.openjudge.cn/practice/25353/
 
