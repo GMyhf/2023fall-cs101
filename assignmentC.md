@@ -1,6 +1,6 @@
 # Assignment #C: 矩阵、递归、贪心、和dfs simlar
 
-Updated 1028 GMT+8 Nov 28, 2023
+Updated 1126 GMT+8 Nov 28, 2023
 
 2023 fall, Complied by ==同学的姓名、院系==
 
@@ -143,8 +143,6 @@ dfs, http://cs101.openjudge.cn/practice/02754
 http://cs101.openjudge.cn/routine/18146/
 
 查达闻推荐：乌鸦坐飞机和装箱子那道题很像，其实难度不比装箱子高 但是考虑的情况确实不少。
-
-测试数据在课程微信群里有，查达闻说：“18146数据点13错误，应该是NO”。
 
 
 
