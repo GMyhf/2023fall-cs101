@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 2028 GMT+8 Nov 27 2023
+Updated 1443 GMT+8 Nov 28 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -1700,13 +1700,225 @@ int main() {
 
 
 
+## 3 递归可视化
+
+
+
+```python
+from recviz import recviz
+
+
+maxn = 11
+hashTable = [False]*maxn  # 当整数i已经在数组 P中时为 true
+
+@recviz
+def increasing_permutaions(n, prefix=[]):
+    if len(prefix) == n:  # 递归边界，已经处理完排列的1~位
+        return [prefix]
+    
+    result = []
+    for i in range(1, n+1):
+        if hashTable[i]:
+            continue
+        
+        hashTable[i] = True  #记i已在prefix中
+        # 把i加入当前排列，处理排列的后续号位
+        result += increasing_permutaions(n, prefix+[i]) 
+        hashTable[i] = False #处理完为i的子问题，还原状态
+        
+    return result
+
+
+n = int(input())
+result = increasing_permutaions(n)
+for r in result:
+    print(r)
+```
+
+
+
+![image-20231128135735294](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231128135735294.png)
+
+
+
+## 4 相关题目
+
+
+
+### 550C. Divisibility by Eight
+
+Brute force, dp, math, 1500, https://codeforces.com/contest/550/problem/C
+
+You are given a non-negative integer *n*, its decimal representation consists of at most 100 digits and doesn't contain leading zeroes.
+
+Your task is to determine if it is possible in this case to remove some of the digits (possibly not remove any digit at all) so that the result contains at least one digit, forms a non-negative integer, doesn't have leading zeroes and is divisible by 8. After the removing, it is forbidden to rearrange the digits.
+
+If a solution exists, you should print it.
+
+**Input**
+
+The single line of the input contains a non-negative integer *n*. The representation of number *n* doesn't contain any leading zeroes and its length doesn't exceed 100 digits.
+
+**Output**
+
+Print "NO" (without quotes), if there is no such way to remove some digits from number *n*.
+
+Otherwise, print "YES" in the first line and the resulting number after removing digits from number *n* in the second line. The printed number must be divisible by 8.
+
+If there are multiple possible answers, you may print any of them.
+
+Examples
+
+input
+
+```
+3454
+```
+
+output
+
+```
+YES
+344
+```
+
+input
+
+```
+10
+```
+
+output
+
+```
+YES
+0
+```
+
+input
+
+```
+111111
+```
+
+output
+
+```
+NO
+```
+
+
+
+记忆式搜索，20-21行是分叉。
+
+```python
+'''
+应该递归后三位，而不是所有的位数。因为
+A number is divisible by 8 if its last three digits are also divisible by 8
+'''
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def dfs(n, i, depth):
+    global bo, result
+    if depth > 3 or bo:
+        return
+    if len(n) > 0 and int(n) % 8 == 0:
+        result = n
+        bo = True
+        return
+    if bo:
+        return
+    if i >= l:
+        return
+    dfs(n, i+1, depth)
+    dfs(n+s[i], i+1, depth+1)
+
+
+s = input()
+l = len(s)
+bo = False
+result = ""
+dfs('', 0, 0)
+if bo:
+    print('YES\n', result)
+else:
+    print('NO')
+```
 
 
 
 
-## Recap 递归专题的第6部分
 
-### 01661: Help Jimmy
+### OJ02773: 采药
+
+dp, http://cs101.openjudge.cn/practice/02773
+
+辰辰是个很有潜能、天资聪颖的孩子，他的梦想是称为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同的草药，采每一株都需要一些时间，每一株也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”
+
+如果你是辰辰，你能完成这个任务吗？
+
+**输入**
+
+输入的第一行有两个整数T（1 <= T <= 1000）和M（1 <= M <= 100），T代表总共能够用来采药的时间，M代表山洞里的草药的数目。接下来的M行每行包括两个在1到100之间（包括1和100）的的整数，分别表示采摘某株草药的时间和这株草药的价值。
+
+**输出**
+
+输出只包括一行，这一行只包含一个整数，表示在规定的时间内，可以采到的草药的最大总价值。
+
+样例输入
+
+```
+70 3
+71 100
+69 1
+1 2
+```
+
+样例输出
+
+```
+3
+```
+
+来源：NOIP 2005
+
+
+
+记忆式搜索，13行是分叉。
+
+```python
+import math
+from functools import lru_cache
+
+@lru_cache(maxsize = None)
+def fn(i, s):
+  # i-th item, knapsack with available capacity s
+
+  if (s < 0):
+    return -math.inf
+  if (i == len(vs)):
+      return 0
+
+  return max(fn(i+1, s), vs[i] + fn(i+1, s-ws[i]))
+
+
+T, M = map(int, input().split())
+ws = []
+vs = []
+for _ in range(M):
+    t, v = map(int, input().split())
+    ws.append(t)
+    vs.append(v)
+
+print(fn(0, T))
+```
+
+
+
+
+
+### OJ01661: Help Jimmy （难题）
 
 dfs/dp, http://cs101.openjudge.cn/practice/01661
 
@@ -1782,7 +1994,86 @@ for _ in range(int(input())):
 
 
 
-### 02386: Lake Counting
+### OJ20089: NBA门票（难题）
+
+dp, http://cs101.openjudge.cn/practice/20089/
+
+六月，巨佬甲正在加州进行暑研工作。恰逢湖人和某东部球队进NBA总决赛的对决。而同为球迷的老板大发慈悲给了甲若干美元的经费，让甲同学用于购买球票。然而由于球市火爆，球票数量也有限。共有七种档次的球票（对应价格分别为50 100 250 500 1000 2500 5000美元）而同学甲购票时这七种票也还分别剩余（n1，n2，n3，n4，n5，n6，n7张）。现由于甲同学与同伴关系恶劣。而老板又要求甲同学必须将所有经费恰好花完，请给出同学甲可买的最少的球票数X。
+
+**输入**
+
+第一行老板所发的经费N,其中50≤N≤1000000。
+
+第二行输入n1-n7，分别为七种票的剩余量，用空格隔开
+
+**输出**
+
+假若余票不足或者有余额，则输出’Fail’
+
+而假定能刚好花完，则输出同学甲所购买的最少的票数X。
+
+样例输入
+
+```
+Sample1 Input：
+5500
+3 3 3 3 3 3 3 
+
+Sample1 Output：
+2
+```
+
+样例输出
+
+```
+Sample2 Input：
+125050
+1 2 3 1 2 5 20
+
+Smaple2 Output：
+Fail
+```
+
+来源: cs101-2019 龚世棋
+
+
+
+
+
+```python
+# 夏天明
+def dfs(money, loc):
+    if money == 0:
+        return 0
+
+    for i, cnt in enumerate(barrel[loc:], loc):
+        n = min(cnt, money // price[i])
+        if n == 0:
+            continue
+
+        result = dfs(money - n * price[i], i + 1)
+        if result != "Fail":
+            return n + result
+
+    return "Fail"
+
+
+N = int(input())
+if N % 50:
+    print("Fail")
+else:
+    N //= 50
+    barrel = [int(i) for i in input().split()]
+    price = [100, 50, 20, 10, 5, 2, 1]
+    barrel.reverse()
+    print(dfs(N, 0))
+```
+
+
+
+
+
+### OJ02386: Lake Counting
 
 dfs similar, http://cs101.openjudge.cn/practice/02386
 
@@ -1861,7 +2152,7 @@ print(cnt)
 
 
 
-### 05585: 晶矿的个数
+### OJ05585: 晶矿的个数
 
 matrices/dfs similar, http://cs101.openjudge.cn/practice/05585
 
@@ -1932,62 +2223,6 @@ for _ in range(int(input())):
                 dfs(i,j,'b')
                 b += 1
     print(r, b)
-```
-
-
-
-### 02786: Pell数列
-
-dp, http://cs101.openjudge.cn/practice/02786/
-
-Pell数列a1, a2, a3, ...的定义是这样的，a1 = 1, a2 = 2, ... , an = 2 * an − 1 + an - 2 (n > 2)。
-给出一个正整数k，要求Pell数列的第k项模上32767是多少。
-
-**输入**
-
-第1行是测试数据的组数n，后面跟着n行输入。每组测试数据占1行，包括一个正整数k (1 ≤ k < 1000000)。
-
-**输出**
-
-n行，每行输出对应一个输入。输出应是一个非负整数。
-
-样例输入
-
-```
-2
-1
-8
-```
-
-样例输出
-
-```
-1
-408
-```
-
-
-
-
-
-```python
-#2300011786 裘思远
-from functools import lru_cache
-
-@lru_cache(maxsize=None)
-def series(n):
-    if n>2:
-        return (series(n-1)*2+series(n-2))%32767
-    elif n==2:
-        return 2
-    else:
-        return 1
-
-n=int(input())
-for _ in range(n):
-    k=int(input())%150
-    ans=series(k)
-    print(ans)
 ```
 
 
