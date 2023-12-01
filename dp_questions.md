@@ -1569,7 +1569,7 @@ dp , http://cs101.openjudge.cn/practice/02995
 
 ### OJ9267: 核电站
 
-http://bailian.openjudge.cn/tm2023cis/D/
+http://cs101.openjudge.cn/practice/09267
 
 选自《挑战程序设计竞赛》第2版 Page 135
 
