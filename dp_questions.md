@@ -1,6 +1,6 @@
 # 动态规划专题
 
-Updated 1330 GMT+8 Nov 28, 2023
+Updated 1848 GMT+8 Dec 3, 2023
 
 
 
@@ -1474,34 +1474,7 @@ else:
 
 
 
-```python
-# 夏天明
-def dfs(money, loc):
-    if money == 0:
-        return 0
 
-    for i, cnt in enumerate(barrel[loc:], loc):
-        n = min(cnt, money // price[i])
-        if n == 0:
-            continue
-
-        result = dfs(money - n * price[i], i + 1)
-        if result != "Fail":
-            return n + result
-
-    return "Fail"
-
-
-N = int(input())
-if N % 50:
-    print("Fail")
-else:
-    N //= 50
-    barrel = [int(i) for i in input().split()]
-    price = [100, 50, 20, 10, 5, 2, 1]
-    barrel.reverse()
-    print(dfs(N, 0))
-```
 
 
 
