@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 1920 GMT+8 Nov 28 2023
+Updated 0029 GMT+8 Dec 5 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -1701,9 +1701,13 @@ int main() {
 
 
 
+
+
 ## 3 递归可视化
 
 
+
+### dfs生成排列
 
 ```python
 from recviz import recviz
@@ -1742,7 +1746,410 @@ for r in result:
 
 
 
+### 02754: 八皇后
+
+dfs and similar, http://cs101.openjudge.cn/practice/02754
+
+描述：会下国际象棋的人都很清楚：皇后可以在横、竖、斜线上不限步数地吃掉其他棋子。如何将8个皇后放在棋盘上（有8 * 8个方格），使它们谁也不能被吃掉！这就是著名的八皇后问题。
+		对于某个满足要求的8皇后的摆放方法，定义一个皇后串a与之对应，即$a=b_1b_2...b_8~$,其中$b_i$为相应摆法中第i行皇后所处的列数。已经知道8皇后问题一共有92组解（即92个不同的皇后串）。
+		给出一个数b，要求输出第b个串。串的比较是这样的：皇后串x置于皇后串y之前，当且仅当将x视为整数时比y小。
+
+​	八皇后是一个古老的经典问题：**如何在一张国际象棋的棋盘上，摆放8个皇后，使其任意两个皇后互相不受攻击。**该问题由一位德国**国际象棋排局家** **Max Bezzel** 于 1848年提出。严格来说，那个年代，还没有“德国”这个国家，彼时称作“普鲁士”。1850年，**Franz Nauck** 给出了第一个解，并将其扩展成了“ **n皇后** ”问题，即**在一张 n** x **n 的棋盘上，如何摆放 n 个皇后，使其两两互不攻击**。历史上，八皇后问题曾惊动过“数学王子”高斯(Gauss)，而且正是 Franz Nauck 写信找高斯请教的。
+
+**输入**
+
+第1行是测试数据的组数n，后面跟着n行输入。每组测试数据占1行，包括一个正整数b(1 ≤  b ≤  92)
+
+**输出**
+
+输出有n行，每行输出对应一个输入。输出应是一个正整数，是对应于b的皇后串。
+
+样例输入
+
+```
+2
+1
+92
+```
+
+样例输出
+
+```
+15863724
+84136275
+```
+
+
+
+这里在记录解的时候，不能直接引用数组，否则最终解集中的解都是重复的，要进行拷贝，另外开辟出一个数组空间用解集记录。
+
+```python
+ans = []
+def queen_dfs(A, cur=0):          #考虑放第cur行的皇后
+    if cur == len(A):             #如果已经放了n个皇后，一组新的解产生了
+        ans.append(''.join([str(x+1) for x in A])) #注意避免浅拷贝
+        return 
+    
+    for col in range(len(A)):     #将当前皇后逐一放置在不同的列，每列对应一组解
+        for row in range(cur):    #逐一判定，与前面的皇后是否冲突
+            #因为预先确定所有皇后一定不在同一行，所以只需要检查是否同列，或者在同一斜线上
+            if A[row] == col or abs(col - A[row]) == cur - row:
+                break
+        else:                     #若都不冲突
+            A[cur] = col          #放置新皇后，在cur行，col列
+            queen_dfs(A, cur+1)	  #对下一个皇后位置进行递归
+            
+queen_dfs([None]*8)   
+for _ in range(int(input())):
+    print(ans[int(input()) - 1])
+```
+
+
+
+![image-20231205002333349](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231205002333349.png)
+
+
+
+
+
+
+
 ## 4 相关题目
+
+### 02287: Tian Ji -- The Horse Racing
+
+greedy, http://cs101.openjudge.cn/practice/02287
+
+Here is a famous story in Chinese history.
+
+That was about 2300 years ago. General Tian Ji was a high official in the country Qi. He likes to play horse racing with the king and others.
+
+Both of Tian and the king have three horses in different classes, namely, regular, plus, and super. The rule is to have three rounds in a match; each of the horses must be used in one round. The winner of a single round takes two hundred silver dollars from the loser.
+
+Being the most powerful man in the country, the king has so nice horses that in each class his horse is better than Tian's. As a result, each time the king takes six hundred silver dollars from Tian.
+
+Tian Ji was not happy about that, until he met Sun Bin, one of the most famous generals in Chinese history. Using a little trick due to Sun, Tian Ji brought home two hundred silver dollars and such a grace in the next match.
+
+It was a rather simple trick. Using his regular class horse race against the super class from the king, they will certainly lose that round. But then his plus beat the king's regular, and his super beat the king's plus. What a simple trick. And how do you think of Tian Ji, the high ranked official in China?
+
+![img](https://raw.githubusercontent.com/GMyhf/img/main/img/2287_1.jpg)
+
+
+
+Were Tian Ji lives in nowadays, he will certainly laugh at himself. Even more, were he sitting in the ACM contest right now, he may discover that the horse racing problem can be simply viewed as finding the maximum matching in a bipartite graph. Draw Tian's horses on one side, and the king's horses on the other. Whenever one of Tian's horses can beat one from the king, we draw an edge between them, meaning we wish to establish this pair. Then, the problem of winning as many rounds as possible is just to find the maximum matching in this graph. If there are ties, the problem becomes more complicated, he needs to assign weights 0, 1, or -1 to all the possible edges, and find a maximum weighted perfect matching...
+
+However, the horse racing problem is a very special case of bipartite matching. The graph is decided by the speed of the horses -- a vertex of higher speed always beat a vertex of lower speed. In this case, the weighted bipartite matching algorithm is a too advanced tool to deal with the problem.
+
+In this problem, you are asked to write a program to solve this special case of matching problem.
+
+**输入**
+
+The input consists of up to 50 test cases. Each case starts with a positive integer n ( n<=1000) on the first line, which is the number of horses on each side. The next n integers on the second line are the speeds of Tian's horses. Then the next n integers on the third line are the speeds of the king's horses. The input ends with a line that has a single `0' after the last test case.
+
+**输出**
+
+For each input case, output a line containing a single number, which is the maximum money Tian Ji will get, in silver dollars.
+
+样例输入
+
+```
+3
+92 83 71
+95 87 74
+2
+20 20
+20 20
+2
+20 19
+22 18
+0
+```
+
+样例输出
+
+```
+200
+0
+0
+```
+
+来源：Shanghai 2004
+
+
+
+dfs
+
+```python
+# 赵时阳-数院23
+
+from functools import lru_cache
+import sys
+sys.setrecursionlimit(1 << 30)
+
+
+def compare(a, b):
+    if a > b:
+        return 1
+    elif a == b:
+        return 0
+    else:
+        return -1
+
+while True:
+    n = int(input())
+    if n == 0: 
+        break
+
+    tian_values = list(map(int, input().split()))
+    king_values = list(map(int, input().split()))
+    tian_values.sort()
+    king_values.sort()
+
+    @lru_cache(maxsize=2048)
+    def dfs(start, end, i):
+        if i < n:
+            tian_value = tian_values[i]
+            king_value_start = king_values[start]
+            x1 = dfs(start + 1, end, i + 1) + compare(tian_value, king_value_start)
+            
+            king_value_end = king_values[end]
+            x2 = dfs(start, end - 1, i + 1) + compare(tian_value, king_value_end)  
+            x = max(x1, x2)
+            return x
+        else:
+            return 0
+
+    result = dfs(0, n - 1, 0)
+    print(200 * result)
+
+```
+
+
+
+
+
+### 20140: 今日化学论文
+
+http://cs101.openjudge.cn/practice/20140/
+
+常凯申同学发现自己今日化学论文字数抄上限了，决定采取如下的压缩方法萌混过关：
+
+把连续的x个字符串s记为[xs]。(1 <= x <= 100)
+
+但这样的方法当然骗不过lwh老师啦。老师非常生气，但出于好奇，还是想看一看常凯申同学写了什么。
+请你帮老师还原出原始的论文。
+
+**输入**
+
+仅一行，由小写英文字母、数字和[]组成的字符串（其中不含空格）
+
+**输出**
+
+一行，原始的字符串。
+
+样例输入
+
+```
+[2b[3a]c]
+```
+
+样例输出
+
+```
+baaacbaaac
+```
+
+来源: cs101-2019 柏敬尧v0.2
+
+
+
+本地调试可以用sys.stderr.write(checkpoint)。如果精神不集中写程序太难受了，调试的print忘记注释造成WA，会耽误很久。
+
+递归实现，避免使用全局变量。
+
+```python
+import sys
+
+def recursive_decode(s, idx):
+    stack = []
+    numstr = ""
+
+    while idx < len(s):
+        sys.stderr.write(s)
+        sys.stderr.write(s[idx])
+        if s[idx] == "[":
+            decoded_str, next_idx = recursive_decode(s, idx + 1)
+            stack.extend(decoded_str)
+            idx = next_idx
+        elif s[idx] == "]":
+            num = int(numstr)
+            return stack * num, idx
+        elif s[idx].isdigit():
+            numstr += s[idx]
+        else:
+            stack.append(s[idx])
+        idx += 1
+
+    return stack, idx
+
+
+s = input()
+#s = "[2b[3a]c]"
+decoded_str, _ = recursive_decode(s, 0)
+print(*decoded_str, sep="")
+```
+
+
+
+### 27217: 有多少种合法的出栈顺序
+
+http://cs101.openjudge.cn/practice/27217/
+
+栈是计算机中经典的数据结构，简单的说，栈就是限制在一端进行插入删除操作的线性表。栈有两种最重要的操作，即 pop（从栈顶弹出一个元素）和 push（将一个元素进栈）。栈的重要性不言自明，任何一门数据结构的课程都会介绍栈。宁宁同学在复习栈的基本概念时，想到了一个书上没有讲过的问题，而他自己无法给出答案，所以需要你的帮忙。![img](http://media.openjudge.cn/images/upload/1576/1701440958.jpg)宁宁考虑的是这样一个问题：一个操作数序列，1,2,...,n（图示为 1 到 3 的情况），栈 A 的深度大于 n。现在可以进行两种操作，将一个数，从操作数序列的头端移到栈的头端（对应数据结构栈的 push 操作）将一个数，从栈的头端移到输出序列的尾端（对应数据结构栈的 pop 操作）使用这两种操作，由一个操作数序列就可以得到一系列的输出序列，下图所示为由 `1 2 3` 生成序列 `2 3 1`的过程。![img](http://media.openjudge.cn/images/upload/4265/1701441123.jpg)（原始状态如上图所示）你的程序将对给定的 n，计算并输出由操作数序列 1,2,...,n 经过操作可能得到的输出序列的总数。
+
+**输入**
+
+输入文件只含一个整数 n（1 <= n <= 1000）。
+
+**输出**
+
+输出文件只有一行，即可能输出序列的总数目。
+
+样例输入
+
+`3`
+
+样例输出
+
+`5`
+
+来源：洛谷 1044
+
+
+
+```python
+'''
+递归/记忆化搜索，https://www.luogu.com.cn/problem/solution/P1044
+1）二维数组f[i,j]，用下标 i 表示队列里还有几个待排的数，j 表示栈里有 j 个数，
+f[i,j]表示此时的情况数
+2）那么，更加自然的，只要f[i,j]有值就直接返回；
+3）然后递归如何实现呢？首先，可以想到，要是数全在栈里了，就只剩1种情况了，所以：i=0时，返回1；
+4）然后，有两种情况：一种栈空，一种栈不空：在栈空时，我们不可以弹出栈里的元素，只能进入，
+所以队列里的数−1，栈里的数+1，即加上 f[i−1,j+1] ；另一种是栈不空，
+那么此时有出栈1个或者进1个再出1个 2种情况，分别加上 f[i−1,j+1] 和 f[i,j−1] 
+'''
+import sys
+sys.setrecursionlimit(1<<30)
+
+def dfs(i, j, f):
+    if f[i][j] != -1:
+        return f[i][j]
+    
+    if i == 0:
+        f[i][j] = 1
+        return 1
+    
+    if j == 0:
+        f[i][j] = dfs(i - 1, j + 1, f)
+        return f[i][j]
+    
+    f[i][j] = dfs(i - 1, j + 1, f) + dfs(i, j - 1, f)
+    return f[i][j]
+
+n = int(input())
+f = [[-1] * (n + 1) for _ in range(n + 1)]
+
+result = dfs(n, 0, f)
+print(result)
+```
+
+
+
+### 20123: 7-友好数
+
+brute force, math, dfs similar, http://cs101.openjudge.cn/practice/20123/
+
+黑板上写了一个正整数N，其首位不为0，位数不超过10^5。
+
+N被称为7-友好数，如果可以擦掉若干位，使得剩下的数字构成的数为7的倍数。
+
+要求不能擦掉所有数字，但允许只剩下一个数字0。
+
+请你编写程序，判断N是不是7-友好数。
+
+**输入**
+
+一个正整数N，其位数 ≤ 10^5。
+
+**输出**
+
+如果N是7-友好数，那么输出YES ； 否则输出 NO
+
+样例输入
+
+```
+输入样例1：
+123364315
+
+输出样例1：
+YES
+
+解释：可以使得剩下的数为35，因此满足要求。
+```
+
+样例输出
+
+```
+输入样例2：
+31116
+
+输出样例2：
+NO
+```
+
+来源：cs101-2019 金及凯
+
+
+
+```python
+#20123:7-友好数，http://cs101.openjudge.cn/practice/20123/
+#
+# 陈威宇：>=7位就一定YES了，因为所有后缀%7有两个相等的（抽屉原理），
+# 取这两个后缀里长的那个去掉短的那个即可？
+'''
+通过递归地尝试不同的子串来寻找符合条件的解.
+`dfs(n, i)` 函数是进行深度优先搜索的核心部分。它接受两个参数：`n`代表当前搜索到的子串，
+`i`代表当前处理到的位置索引。在函数内部，通过不断拼接字符来生成不同的子串，
+然后检查是否满足能够被7整除的条件。
+
+'''
+def dfs(n, i):
+    global bo
+    if len(n) > 0 and int(n) % 7 == 0:
+        bo = True
+    if bo:
+        return
+    if i >= l:
+        return
+    dfs(n, i+1)
+    dfs(n+s[i], i+1)
+
+
+s = input()
+l = len(s)
+if l >= 7:
+    print('YES')
+    exit()
+bo = False
+dfs('', 0)
+if bo:
+    print('YES')
+else:
+    print('NO')
+
+```
+
+
 
 
 
@@ -1851,7 +2258,7 @@ else:
 
 
 
-### OJ02773: 采药
+### 02773: 采药
 
 dp, http://cs101.openjudge.cn/practice/02773
 
@@ -1919,7 +2326,7 @@ print(fn(0, T))
 
 
 
-### OJ01661: Help Jimmy （难题）
+### 01661: Help Jimmy （难题）
 
 dfs/dp, http://cs101.openjudge.cn/practice/01661
 
@@ -1995,86 +2402,9 @@ for _ in range(int(input())):
 
 
 
-### OJ20089: NBA门票（难题）
-
-dp, http://cs101.openjudge.cn/practice/20089/
-
-六月，巨佬甲正在加州进行暑研工作。恰逢湖人和某东部球队进NBA总决赛的对决。而同为球迷的老板大发慈悲给了甲若干美元的经费，让甲同学用于购买球票。然而由于球市火爆，球票数量也有限。共有七种档次的球票（对应价格分别为50 100 250 500 1000 2500 5000美元）而同学甲购票时这七种票也还分别剩余（n1，n2，n3，n4，n5，n6，n7张）。现由于甲同学与同伴关系恶劣。而老板又要求甲同学必须将所有经费恰好花完，请给出同学甲可买的最少的球票数X。
-
-**输入**
-
-第一行老板所发的经费N,其中50≤N≤1000000。
-
-第二行输入n1-n7，分别为七种票的剩余量，用空格隔开
-
-**输出**
-
-假若余票不足或者有余额，则输出’Fail’
-
-而假定能刚好花完，则输出同学甲所购买的最少的票数X。
-
-样例输入
-
-```
-Sample1 Input：
-5500
-3 3 3 3 3 3 3 
-
-Sample1 Output：
-2
-```
-
-样例输出
-
-```
-Sample2 Input：
-125050
-1 2 3 1 2 5 20
-
-Smaple2 Output：
-Fail
-```
-
-来源: cs101-2019 龚世棋
 
 
-
-
-
-```python
-# 夏天明
-def dfs(money, loc):
-    if money == 0:
-        return 0
-
-    for i, cnt in enumerate(barrel[loc:], loc):
-        n = min(cnt, money // price[i])
-        if n == 0:
-            continue
-
-        result = dfs(money - n * price[i], i + 1)
-        if result != "Fail":
-            return n + result
-
-    return "Fail"
-
-
-N = int(input())
-if N % 50:
-    print("Fail")
-else:
-    N //= 50
-    barrel = [int(i) for i in input().split()]
-    price = [100, 50, 20, 10, 5, 2, 1]
-    barrel.reverse()
-    print(dfs(N, 0))
-```
-
-
-
-
-
-### OJ02386: Lake Counting
+### 02386: Lake Counting
 
 dfs similar, http://cs101.openjudge.cn/practice/02386
 
@@ -2153,7 +2483,7 @@ print(cnt)
 
 
 
-### OJ05585: 晶矿的个数
+### 05585: 晶矿的个数
 
 matrices/dfs similar, http://cs101.openjudge.cn/practice/05585
 
@@ -2224,6 +2554,475 @@ for _ in range(int(input())):
                 dfs(i,j,'b')
                 b += 1
     print(r, b)
+```
+
+
+
+
+
+### 19930: 寻宝
+
+bfs, http://cs101.openjudge.cn/practice/19930
+
+Billy获得了一张藏宝图，图上标记了普通点（0），藏宝点（1）和陷阱（2）。按照藏宝图，Billy只能上下左右移动，每次移动一格，且途中不能经过陷阱。现在Billy从藏宝图的左上角出发，请问他是否能到达藏宝点？如果能，所需最短步数为多少？
+
+**输入**
+
+第一行为两个整数m,n，分别表示藏宝图的行数和列数。(m<=50,n<=50)
+此后m行，每行n个整数（0，1，2），表示藏宝图的内容。
+
+**输出**
+
+如果不能到达，输出‘NO’。
+如果能到达，输出所需的最短步数（一个整数）。
+
+样例输入
+
+```
+样例输入1：
+3 4
+0 0 2 0
+0 2 1 0
+0 0 0 0
+
+样例输出1：
+5
+```
+
+样例输出
+
+```
+样例输入2：
+2 2
+0 2
+2 1
+
+样例输出2:
+NO
+```
+
+提示
+
+每张藏宝图有且仅有一个藏宝点。
+输入保证左上角（起点）不是陷阱。
+
+来源：by cs101-2009 邵天泽
+
+
+
+找最短路径，是bfs，借助队列queue实现，head和tail分别指向队列的头和尾。
+
+```python
+q = []
+
+step = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+vis = [[0] * 52 for _ in range(52)]
+g = []
+
+m, n = map(int, input().split())
+for i in range(m):
+    g.append([int(x) for x in input().split()])
+
+def check(x, y):
+    if (x < 0 or y < 0 or x >= m or y >= n):
+        return False
+    if (vis[x][y] or g[x][y] == 2):
+        return False
+    return True
+
+
+q.append((0, 0))
+head = 0
+tail = 1
+level = 0
+while (head < tail):
+    # i = head
+    # j = tail
+    for k in range(head, tail):
+        x, y = q[head]
+        head += 1
+        if (g[x][y] == 1):
+            print(level)
+            exit(0)     
+        for z in range(4):
+            newx = x + step[z][0]
+            newy = y + step[z][1]
+            if (check(newx, newy)):
+                vis[newx][newy] = 1
+                q.append((newx, newy))
+                tail += 1
+    level += 1
+print('NO')
+```
+
+
+
+### 04115: 鸣人和佐助
+
+bfs, http://cs101.openjudge.cn/practice/04115/
+
+佐助被大蛇丸诱骗走了，鸣人在多少时间内能追上他呢？
+
+![image-20231025141449508](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231025141449508.png)
+
+已知一张地图（以二维矩阵的形式表示）以及佐助和鸣人的位置。地图上的每个位置都可以走到，只不过有些位置上有大蛇丸的手下，需要先打败大蛇丸的手下才能到这些位置。鸣人有一定数量的查克拉，每一个单位的查克拉可以打败一个大蛇丸的手下。假设鸣人可以往上下左右四个方向移动，每移动一个距离需要花费1个单位时间，打败大蛇丸的手下不需要时间。如果鸣人查克拉消耗完了，则只可以走到没有大蛇丸手下的位置，不可以再移动到有大蛇丸手下的位置。佐助在此期间不移动，大蛇丸的手下也不移动。请问，鸣人要追上佐助最少需要花费多少时间？
+
+**输入**
+
+输入的第一行包含三个整数：M，N，T。代表M行N列的地图和鸣人初始的查克拉数量T。0 < M,N < 200，0 ≤ T < 10
+后面是M行N列的地图，其中@代表鸣人，+代表佐助。*代表通路，#代表大蛇丸的手下。
+
+**输出**
+
+输出包含一个整数R，代表鸣人追上佐助最少需要花费的时间。如果鸣人无法追上佐助，则输出-1。
+
+样例输入
+
+```
+样例输入1
+4 4 1
+#@##
+**##
+###+
+****
+
+样例输入2
+4 4 2
+#@##
+**##
+###+
+****
+```
+
+样例输出
+
+```
+样例输出1
+6
+
+样例输出2
+4
+```
+
+
+
+```python
+# 2300011075	苏王捷	工学院
+'''
+这段代码是一个迷宫求解的问题。主要使用了广度优先搜索算法来找到从起点到终点的最短路径。
+
+首先，代码导入了deque模块来实现队列数据结构。
+然后，定义了一个Node类，表示迷宫中的一个节点。它有四个属性：x和y表示节点的坐标，
+tools表示节点当前拥有的工具数，steps表示从起点到达该节点的步数。
+
+接下来，读取输入的迷宫信息，包括迷宫的大小M和N，以及可以使用的工具数T。maze是一个二维列表，
+表示迷宫的格子，其中'@'表示起点，'+'表示终点，'*'表示障碍物。
+
+创建了一个visit列表，用于记录节点是否被访问过。visit是一个三维列表，
+三个维度分别表示行、列和工具数。
+
+定义了directions列表，包含四个方向的偏移量。
+
+通过遍历迷宫，找到起点和终点的位置，并设置起点节点的属性。
+
+使用广度优先搜索算法，通过一个队列queue来依次处理节点。从起点开始，判断四个方向的相邻节点：
+如果是'*'表示可以直接通过，将其加入队列并标记为已访问；如果是'#'表示需要使用一个工具，
+才能通过，判断当前节点是否还有工具可用，如果有则减少一个工具，并将该节点加入队列并标记为已访问。
+
+如果队列为空，即无法到达终点，则输出"-1"；如果找到终点，输出步数，并将flag标记为1，退出循环。
+
+最后，判断flag是否为0，如果是说明无法找到终点，输出"-1"。
+'''
+
+from collections import deque
+
+
+class Node:
+    def __init__(self, x, y, tools, steps):
+        self.x = x
+        self.y = y
+        self.tools = tools
+        self.steps = steps
+
+
+M, N, T = map(int, input().split())
+maze = [list(input()) for _ in range(M)]
+visit = [[[0]*(T+1) for _ in range(N)] for _ in range(M)]
+directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+start = end = None
+flag = 0
+for i in range(M):
+    for j in range(N):
+        if maze[i][j] == '@':
+            start = Node(i, j, T, 0)
+            visit[i][j][T] = 1
+        if maze[i][j] == '+':
+            end = (i, j)
+            maze[i][j] = '*'
+            
+queue = deque([start])
+while queue:
+    node = queue.popleft()
+    if (node.x, node.y) == end:
+        print(node.steps)
+        flag = 1
+        break
+    for direction in directions:
+        nx, ny = node.x+direction[0], node.y+direction[1]
+        if 0 <= nx < M and 0 <= ny < N:
+            if maze[nx][ny] == '*':
+                if not visit[nx][ny][node.tools]:
+                    queue.append(Node(nx, ny, node.tools, node.steps+1))
+                    visit[nx][ny][node.tools] = 1
+            elif maze[nx][ny] == '#':
+                if node.tools > 0 and not visit[nx][ny][node.tools-1]:
+                    queue.append(Node(nx, ny, node.tools-1, node.steps+1))
+                    visit[nx][ny][node.tools-1] = 1
+                    
+if not flag:
+    print("-1")
+
+```
+
+
+
+
+
+### 04116: 拯救行动
+
+bfs, http://cs101.openjudge.cn/practice/04116/
+
+公主被恶人抓走，被关押在牢房的某个地方。牢房用N*M (N, M <= 200)的矩阵来表示。矩阵中的每项可以代表道路（@）、墙壁（#）、和守卫（x）。
+英勇的骑士（r）决定孤身一人去拯救公主（a）。我们假设拯救成功的表示是“骑士到达了公主所在的位置”。由于在通往公主所在位置的道路中可能遇到守卫，骑士一旦遇到守卫，必须杀死守卫才能继续前进。
+现假设骑士可以向上、下、左、右四个方向移动，每移动一个位置需要1个单位时间，杀死一个守卫需要花费额外的1个单位时间。同时假设骑士足够强壮，有能力杀死所有的守卫。
+
+给定牢房矩阵，公主、骑士和守卫在矩阵中的位置，请你计算拯救行动成功需要花费最短时间。
+
+**输入**
+
+第一行为一个整数S，表示输入的数据的组数（多组输入）
+随后有S组数据，每组数据按如下格式输入
+1、两个整数代表N和M, (N, M <= 200).
+2、随后N行，每行有M个字符。"@"代表道路，"a"代表公主，"r"代表骑士，"x"代表守卫, "#"代表墙壁。
+
+**输出**
+
+如果拯救行动成功，输出一个整数，表示行动的最短时间。
+如果不可能成功，输出"Impossible"
+
+样例输入
+
+```
+2
+7 8
+#@#####@
+#@a#@@r@
+#@@#x@@@
+@@#@@#@#
+#@@@##@@
+@#@@@@@@
+@@@@@@@@ 
+13 40
+@x@@##x@#x@x#xxxx##@#x@x@@#x#@#x#@@x@#@x
+xx###x@x#@@##xx@@@#@x@@#x@xxx@@#x@#x@@x@
+#@x#@x#x#@@##@@x#@xx#xxx@@x##@@@#@x@@x@x
+@##x@@@x#xx#@@#xxxx#@@x@x@#@x@@@x@#@#x@#
+@#xxxxx##@@x##x@xxx@@#x@x####@@@x#x##@#@
+#xxx#@#x##xxxx@@#xx@@@x@xxx#@#xxx@x#####
+#x@xxxx#@x@@@@##@x#xx#xxx@#xx#@#####x#@x
+xx##@#@x##x##x#@x#@a#xx@##@#@##xx@#@@x@x
+x#x#@x@#x#@##@xrx@x#xxxx@##x##xx#@#x@xx@
+#x@@#@###x##x@x#@@#@@x@x@@xx@@@@##@@x@@x
+x#xx@x###@xxx#@#x#@@###@#@##@x#@x@#@@#@@
+#@#x@x#x#x###@x@@xxx####x@x##@x####xx#@x
+#x#@x#x######@@#x@#xxxx#xx@@@#xx#x#####@
+```
+
+样例输出
+
+```
+13
+7
+```
+
+ 
+
+```python
+# 用时间来扩展bfs的下一个节点
+#from collections import deque
+from heapq import heappush, heappop
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+
+def bfs(matrix, start):
+    n, m = len(matrix), len(matrix[0])
+    visited = [[False for _ in range(m)] for _ in range(n)]
+    #q = deque([(start[0], start[1], 0)])
+    q = []
+    heappush(q, (0, start[0], start[1]))
+    visited[start[0]][start[1]] = True
+    while len(q) != 0:
+        #x, y, time = q.popleft()
+        time, x, y = heappop(q)
+        for i in range(4):
+            nx, ny = x + dx[i], y + dy[i]
+            if 0 <= nx < n and 0 <= ny < m and not visited[nx][ny]:
+                if matrix[nx][ny] == "a":
+                    #ans.append(time+1)
+                    return time + 1
+                elif matrix[nx][ny] == "@":
+                    #q.append((nx, ny, time + 1))
+                    heappush(q, (time + 1, nx, ny))
+                    visited[nx][ny] = True
+                elif matrix[nx][ny] == "x":
+                    #q.append((nx, ny, time + 2))
+                    heappush(q, (time + 2, nx, ny))
+                    visited[nx][ny] = True
+
+    return "Impossible"
+
+
+S = int(input())
+for _ in range(S):
+    N, M = map(int, input().split())
+    matrix = [list(input()) for _ in range(N)]
+    start = None
+    ans = []
+    for i in range(N):
+        for j in range(M):
+            if matrix[i][j] == "r":
+                start = (i, j)
+                break
+    print(bfs(matrix, start))
+    # if ans == []:
+    #     print("Impossible")
+    # else:
+    #     print(min(ans))
+
+```
+
+
+
+
+
+### 04129: 变换的迷宫
+
+bfs, http://cs101.openjudge.cn/practice/04129
+
+你现在身处一个R*C 的迷宫中，你的位置用"S" 表示，迷宫的出口用"E" 表示。
+
+迷宫中有一些石头，用"#" 表示，还有一些可以随意走动的区域，用"." 表示。
+
+初始时间为0 时，你站在地图中标记为"S" 的位置上。你每移动一步（向上下左右方向移动）会花费一个单位时间。你必须一直保持移动，不能停留在原地不走。
+
+当前时间是K 的倍数时，迷宫中的石头就会消失，此时你可以走到这些位置上。在其余的时间里，你不能走到石头所在的位置。
+
+求你从初始位置走到迷宫出口最少需要花费多少个单位时间。
+
+如果无法走到出口，则输出"Oop!"。
+
+**输入**
+
+第一行是一个正整数 T，表示有 T 组数据。
+每组数据的第一行包含三个用空格分开的正整数，分别为 R、C、K。
+接下来的 R 行中，每行包含了 C 个字符，分别可能是 "S"、"E"、"#" 或 "."。
+其中，0 < T <= 20，0 < R, C <= 100，2 <= K <= 10。
+
+**输出**
+
+对于每组数据，如果能够走到迷宫的出口，则输出一个正整数，表示最少需要花费的单位时间，否则输出 "Oop!"。
+
+样例输入
+
+```
+1
+6 6 2
+...S..
+...#..
+.#....
+...#..
+...#..
+..#E#.
+```
+
+样例输出
+
+```
+7
+```
+
+
+
+容易想到广搜，但是数据大，会超时，需要剪枝。由于每过k单位时间，石头就会消失一次，那么当我们站在某点 (x,y) 时，时间为 t+k 和  t  时，它们之后行走面临的情境是完全一样的，那就意味着，对于某个状态的时间，我们可以取模后作为 visited\[x]\[y]\[time] 的第三个变量，如果取模后的值代入发现已经访问过，那说明之前已经有更优越的情况出现过，不必再继续搜索了.   思路参考：https://blog.csdn.net/dhc65376/article/details/101555903
+
+```python
+arr2 = lambda m,n : [ [' ' for j in range(n)] for i in range(m) ]
+arr3 = lambda m,n,l : [ [ [False for k in range(l)] for j in range(n)] for i in range(m) ]
+
+N = 100
+K = 10
+
+class Node:
+    def __init__(self, r=0, c=0, t=0):
+        self.row = r
+        self.col = c
+        self.time = t
+        
+dr = [-1, 1, 0, 0]
+dc = [0, 0, -1, 1]
+
+for _ in range(int(input())):
+    maze = arr2(N, N)       # 注意不同数据组之间的初始化
+    vis = arr3(N, N, K)
+    q = []
+    r,c,k = map(int, input().split())
+    for i in range(r):
+        maze[i][:c] = list(input())
+
+    tr = tc = cnt = 0;
+    for i in range(r):
+        for j in range(c):
+            if maze[i][j] == 'S':
+                q.append(Node(i, j))
+                vis[i][j][0] = True
+                cnt += 1
+                if cnt == 2: break
+            elif maze[i][j] == 'E':
+                tr = i
+                tc = j
+                cnt += 1
+                if cnt == 2: break
+            
+    while(len(q)):
+        t = q[0] # t : Node
+        if t.row == tr and t.col == tc: break
+        q.pop(0)
+        for i in range(4):
+            nrow = t.row + dr[i]
+            ncol = t.col + dc[i]
+
+            if nrow < 0 or nrow >= r or ncol < 0 or ncol >= c:
+                 continue
+                    
+            # 剪枝很容易能知道，由于每过k单位时间，石头就会消失一次，那么当我们站在某点 (x,y) 时，
+            # 时间为 t+k 和  t  时，它们之后行走面临的情境是完全一样的，那就意味着，
+            # 对于某个状态的时间，我们可以取模后作为 visited[x][y][time] 的第三个变量，
+            # 如果取模后的值代入发现已经访问过，那说明之前已经有更优越的情况出现过，不必再继续搜索了. 
+            if vis[nrow][ncol][(t.time + 1) % k]:
+                 continue
+             
+            # 时间是K 的倍数时，迷宫中的石头就会消失
+            if (t.time + 1) % k and maze[nrow][ncol] == '#': 
+                 continue;
+            vis[nrow][ncol][(t.time + 1) % k] = True
+            q.append(Node(nrow, ncol, t.time + 1))
+
+    if len(q) == 0:
+        print("Oop!")
+    else:
+        print(q[0].time)
 ```
 
 
