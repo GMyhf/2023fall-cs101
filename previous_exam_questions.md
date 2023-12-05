@@ -145,8 +145,23 @@ http://cs101.openjudge.cn/20221201mockexam/
 
 http://cs101.openjudge.cn/cs101_2021fe_class8/
 
-[
-D23558](http://cs101.openjudge.cn/cs101_2021fe_class8/D23558/)[有界的深度优先搜索](http://cs101.openjudge.cn/cs101_2021fe_class8/D23558/)66%[63](http://cs101.openjudge.cn/cs101_2021fe_class8/D23558/statistics/)[95](http://cs101.openjudge.cn/cs101_2021fe_class8/D23558/statistics/)[D23568](http://cs101.openjudge.cn/cs101_2021fe_class8/D23568/)[幸福的寒假生活](http://cs101.openjudge.cn/cs101_2021fe_class8/D23568/)42%[29](http://cs101.openjudge.cn/cs101_2021fe_class8/D23568/statistics/)[69](http://cs101.openjudge.cn/cs101_2021fe_class8/D23568/statistics/)[E23554](http://cs101.openjudge.cn/cs101_2021fe_class8/E23554/)[小朋友春游](http://cs101.openjudge.cn/cs101_2021fe_class8/E23554/)93%[141](http://cs101.openjudge.cn/cs101_2021fe_class8/E23554/statistics/)[152](http://cs101.openjudge.cn/cs101_2021fe_class8/E23554/statistics/)[E23564](http://cs101.openjudge.cn/cs101_2021fe_class8/E23564/)[数论](http://cs101.openjudge.cn/cs101_2021fe_class8/E23564/)92%[139](http://cs101.openjudge.cn/cs101_2021fe_class8/E23564/statistics/)[151](http://cs101.openjudge.cn/cs101_2021fe_class8/E23564/statistics/)[M23555](http://cs101.openjudge.cn/cs101_2021fe_class8/M23555/)[节省存储的矩阵乘法](http://cs101.openjudge.cn/cs101_2021fe_class8/M23555/)94%[136](http://cs101.openjudge.cn/cs101_2021fe_class8/M23555/statistics/)[145](http://cs101.openjudge.cn/cs101_2021fe_class8/M23555/statistics/)[M23556](http://cs101.openjudge.cn/cs101_2021fe_class8/M23556/)[小青蛙跳荷叶](http://cs101.openjudge.cn/cs101_2021fe_class8/M23556/)95%[138](http://cs101.openjudge.cn/cs101_2021fe_class8/M23556/statistics/)[146](http://cs101.openjudge.cn/cs101_2021fe_class8/M23556/statistics/)
+Hard:
+有界的深度优先搜索
+http://cs101.openjudge.cn/practice/23558/
+幸福的寒假生活
+http://cs101.openjudge.cn/practice/23568/
+
+Easy:
+小朋友春游
+http://cs101.openjudge.cn/practice/23554/
+数论
+http://cs101.openjudge.cn/practice/23564/
+
+Medium:
+节省存储的矩阵乘法
+http://cs101.openjudge.cn/practice/23555/
+小青蛙跳荷叶
+http://cs101.openjudge.cn/practice/23556/
 
 
 
@@ -180,8 +195,19 @@ A_3143](http://cs101.openjudge.cn/20211125liuzihaomockexam/A_3143/)[验证“歌
 
  http://cs101.openjudge.cn/cs101_2020fe_class13/
 
-[
-A](http://cs101.openjudge.cn/cs101_2020fe_class13/A/)[湾仔码头 (math)](http://cs101.openjudge.cn/cs101_2020fe_class13/A/)84%[32](http://cs101.openjudge.cn/cs101_2020fe_class13/A/statistics/)[38](http://cs101.openjudge.cn/cs101_2020fe_class13/A/statistics/)[B](http://cs101.openjudge.cn/cs101_2020fe_class13/B/)[How old are you？(implementation)](http://cs101.openjudge.cn/cs101_2020fe_class13/B/)88%[28](http://cs101.openjudge.cn/cs101_2020fe_class13/B/statistics/)[32](http://cs101.openjudge.cn/cs101_2020fe_class13/B/statistics/)[C](http://cs101.openjudge.cn/cs101_2020fe_class13/C/)[数学密码 (brute force/math)](http://cs101.openjudge.cn/cs101_2020fe_class13/C/)33%[3](http://cs101.openjudge.cn/cs101_2020fe_class13/C/statistics/)[9](http://cs101.openjudge.cn/cs101_2020fe_class13/C/statistics/)[D](http://cs101.openjudge.cn/cs101_2020fe_class13/D/)[排队做实验 (implementation)](http://cs101.openjudge.cn/cs101_2020fe_class13/D/)71%[15](http://cs101.openjudge.cn/cs101_2020fe_class13/D/statistics/)[21](http://cs101.openjudge.cn/cs101_2020fe_class13/D/statistics/)[E](http://cs101.openjudge.cn/cs101_2020fe_class13/E/)[加密的称赞 v0.2 (matrices)](http://cs101.openjudge.cn/cs101_2020fe_class13/E/)64%[7](http://cs101.openjudge.cn/cs101_2020fe_class13/E/statistics/)[11](http://cs101.openjudge.cn/cs101_2020fe_class13/E/statistics/)[F](http://cs101.openjudge.cn/cs101_2020fe_class13/F/)[打怪兽II (implementation)](http://cs101.openjudge.cn/cs101_2020fe_class13/F/)43%[3](http://cs101.openjudge.cn/cs101_2020fe_class13/F/statistics/)[7](http://cs101.openjudge.cn/cs101_2020fe_class13/F/statistics/)[G](http://cs101.openjudge.cn/cs101_2020fe_class13/G/)[健身房 (dp)](http://cs101.openjudge.cn/cs101_2020fe_class13/G/)0%[0](http://cs101.openjudge.cn/cs101_2020fe_class13/G/statistics/)[2](http://cs101.openjudge.cn/cs101_2020fe_class13/G/statistics/)
+湾仔码头 (math)
+http://cs101.openjudge.cn/cs101_2020fe_class13/A/
+How old are you？(implementation)
+http://cs101.openjudge.cn/cs101_2020fe_class13/B/
+数学密码 (brute force/math)
+http://cs101.openjudge.cn/cs101_2020fe_class13/C/
+排队做实验 (implementation)
+http://cs101.openjudge.cn/cs101_2020fe_class13/D/
+加密的称赞 v0.2 (matrices)
+http://cs101.openjudge.cn/cs101_2020fe_class13/E/
+打怪兽II (implementation)
+http://cs101.openjudge.cn/cs101_2020fe_class13/F/
+健身房 (dp)](http://cs101.openjudge.cn/cs101_2020fe_class13/G/
 
 
 
