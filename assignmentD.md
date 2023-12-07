@@ -140,8 +140,6 @@ http://cs101.openjudge.cn/practice/23806/
 
 http://cs101.openjudge.cn/practice/25561/
 
-查达闻推荐：乌鸦坐飞机和装箱子那道题很像，其实难度不比装箱子高 但是考虑的情况确实不少。
-
 
 
 思路：
