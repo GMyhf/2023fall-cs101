@@ -1,6 +1,6 @@
 # Previous exam questions
 
-Updated 0913 GMT+8 Dec 7 2023
+Updated 0137 GMT+8 Dec 8 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -18,7 +18,45 @@ Todo:
 
 cs101 2023 Final Exam @ 20231228
 
-20231207 cs101 2023 Mock Exam
+
+
+### 20231207 cs101 2023 Mock Exam
+
+Easy:
+
+18176: 2050年成绩计算
+
+http://cs101.openjudge.cn/practice/18176/
+
+18224: 找魔数
+
+http://cs101.openjudge.cn/practice/18224
+
+Medium:
+
+19963: 买学区房
+
+http://cs101.openjudge.cn/practice/19963
+
+23806: 三数之和
+
+Trouble
+
+http://cs101.openjudge.cn/practice/23806/
+
+25561: 2022决战双十一
+
+http://cs101.openjudge.cn/practice/25561/
+
+08210: 河中跳房子
+
+http://cs101.openjudge.cn/practice/08210/
+
+Unsure
+
+01922: Ride to School
+
+http://cs101.openjudge.cn/practice/01922/
 
 
 
@@ -264,11 +302,21 @@ http://cs101.openjudge.cn/cs10119fe/
 
 这一天星期几v0.3(math)
 http://cs101.openjudge.cn/practice/19944/
-提取实体v0.3 (string)](http://cs101.openjudge.cn/practice/19949/
-图的拉普拉斯矩阵(matrix)](http://cs101.openjudge.cn/practice/19943/
-二维矩阵上的卷积运算v0.2 (matrix)](http://cs101.openjudge.cn/practice/19942/
-买学区房v0.4(sort,math)](http://cs101.openjudge.cn/practice/19963/
-因材施教(greedy)](http://cs101.openjudge.cn/practice/19948/
+提取实体v0.3 (string)
+
+http://cs101.openjudge.cn/practice/19949/
+图的拉普拉斯矩阵(matrix)
+
+http://cs101.openjudge.cn/practice/19943/
+二维矩阵上的卷积运算v0.2 (matrix)
+
+http://cs101.openjudge.cn/practice/19942/
+买学区房v0.4(sort,math)
+
+http://cs101.openjudge.cn/practice/19963/
+因材施教(greedy)
+
+http://cs101.openjudge.cn/practice/19948/
 
 
 
@@ -417,17 +465,26 @@ http://cs101.openjudge.cn/practice/02981/
 
 http://jsgl.openjudge.cn/contest1642/
 
-1的个数](http://jsgl.openjudge.cn/contest1642/A/
-2进制转化为3进制](http://jsgl.openjudge.cn/contest1642/B/
-有多少位不同](http://jsgl.openjudge.cn/contest1642/C/
-字符串移位包含问题](http://jsgl.openjudge.cn/contest1642/D/
-电话号码生成英语单词](http://jsgl.openjudge.cn/contest1642/E/
-外星人翻译用数字转换模块](http://jsgl.openjudge.cn/contest1642/F/
-点菜问题](http://jsgl.openjudge.cn/contest1642/G/
-计算工作天数](http://jsgl.openjudge.cn/contest1642/H/
-配置文件解析](http://jsgl.openjudge.cn/contest1642/I/
-移动路线](http://jsgl.openjudge.cn/contest1642/J/
-
+1的个数
+http://cs101.openjudge.cn/practice/03708/
+2进制转化为3进制
+http://cs101.openjudge.cn/practice/03709/
+有多少位不同
+http://cs101.openjudge.cn/practice/03710
+字符串移位包含问题
+http://cs101.openjudge.cn/practice/03711
+电话号码生成英语单词
+http://cs101.openjudge.cn/practice/03712
+外星人翻译用数字转换模块
+http://cs101.openjudge.cn/practice/03713
+点菜问题
+http://cs101.openjudge.cn/practice/03714
+计算工作天数
+http://cs101.openjudge.cn/practice/03715
+配置文件解析
+http://cs101.openjudge.cn/practice/03716
+移动路线
+http://cs101.openjudge.cn/practice/03717
 
 
 
@@ -438,12 +495,18 @@ http://jsgl.openjudge.cn/contest1642/
 
 http://jsgl.openjudge.cn/contest1640/
 
-日历问题](http://jsgl.openjudge.cn/contest1640/A/
-方便记忆的电话号码](http://jsgl.openjudge.cn/contest1640/B/
-假币问题](http://jsgl.openjudge.cn/contest1640/C/
-Holiday Hotel](http://jsgl.openjudge.cn/contest1640/D/
-数字三角形](http://jsgl.openjudge.cn/contest1640/E/
-Palindrome](http://jsgl.openjudge.cn/contest1640/F/
+日历问题
+http://cs101.openjudge.cn/practice/23805/
+方便记忆的电话号码
+http://cs101.openjudge.cn/practice/01002/
+假币问题
+http://cs101.openjudge.cn/practice/02692/
+Holiday Hotel
+http://cs101.openjudge.cn/practice/02783/
+数字三角形
+http://cs101.openjudge.cn/practice/02760/
+Palindrome
+http://cs101.openjudge.cn/practice/01159/
 
 
 
@@ -454,15 +517,22 @@ Palindrome](http://jsgl.openjudge.cn/contest1640/F/
 
 http://jsgl.openjudge.cn/contest1637/
 
-
-满足条件的整数](http://jsgl.openjudge.cn/contest1637/A/
-受限完全平方数](http://jsgl.openjudge.cn/contest1637/B/
-加密技术](http://jsgl.openjudge.cn/contest1637/C/
-整数的个数](http://jsgl.openjudge.cn/contest1637/D/
-Checking order](http://jsgl.openjudge.cn/contest1637/E/
-试剂配制](http://jsgl.openjudge.cn/contest1637/F/
-吃糖果](http://jsgl.openjudge.cn/contest1637/G/
-玩游戏](http://jsgl.openjudge.cn/contest1637/H/
+满足条件的整数
+http://cs101.openjudge.cn/practice/03225/
+受限完全平方数
+http://cs101.openjudge.cn/practice/02911/
+加密技术
+http://cs101.openjudge.cn/practice/02913/
+整数的个数
+http://cs101.openjudge.cn/practice/02676/
+Checking order
+http://cs101.openjudge.cn/practice/02883/
+试剂配制 1938
+http://bailian.openjudge.cn/practice/2936/
+吃糖果 1944
+http://bailian.openjudge.cn/practice/2942/
+玩游戏 1948
+http://bailian.openjudge.cn/practice/2946/
 
 
 
@@ -475,17 +545,26 @@ Checking order](http://jsgl.openjudge.cn/contest1637/E/
 
 http://jsgl.openjudge.cn/contest1460/
 
-
-整数的个数](http://jsgl.openjudge.cn/contest1460/A/
-词典](http://jsgl.openjudge.cn/contest1460/B/
-Checking order](http://jsgl.openjudge.cn/contest1460/C/
-试剂配制](http://jsgl.openjudge.cn/contest1460/D/)
-异常细胞检测](http://jsgl.openjudge.cn/contest1460/E/
-[求和](http://jsgl.openjudge.cn/contest1460/F/
-吃糖果](http://jsgl.openjudge.cn/contest1460/G/
-Problem N:矩阵交换行](http://jsgl.openjudge.cn/contest1460/H/
-[Holiday Hotel](http://jsgl.openjudge.cn/contest1460/I/
-[子串](http://jsgl.openjudge.cn/contest1460/J/
+整数的个数
+http://cs101.openjudge.cn/practice/02676/
+词典
+http://jsgl.openjudge.cn/contest1460/B/
+Checking order
+http://cs101.openjudge.cn/practice/02883/
+试剂配制
+http://bailian.openjudge.cn/practice/2936/
+异常细胞检测 1939
+http://bailian.openjudge.cn/practice/2937/
+求和 1942
+http://bailian.openjudge.cn/practice/2940/
+吃糖果
+http://bailian.openjudge.cn/practice/2942/
+矩阵交换行 1901
+http://bailian.openjudge.cn/practice/2899/
+Holiday Hotel
+http://cs101.openjudge.cn/practice/02783/
+子串 2090
+http://bailian.openjudge.cn/practice/4018/
 
 
 
@@ -497,14 +576,20 @@ Problem N:矩阵交换行](http://jsgl.openjudge.cn/contest1460/H/
 
 http://jsgl.openjudge.cn/contest1452/
 
-
-受限完全平方数](http://jsgl.openjudge.cn/contest1452/A/
-加密技术](http://jsgl.openjudge.cn/contest1452/B/
-熄灯问题](http://jsgl.openjudge.cn/contest1452/C/
-分解因数](http://jsgl.openjudge.cn/contest1452/D/
-最长上升子序列](http://jsgl.openjudge.cn/contest1452/E/
-麦森数](http://jsgl.openjudge.cn/contest1452/F/
-提取数字](http://jsgl.openjudge.cn/contest1452/G/
+受限完全平方数 1913
+http://bailian.openjudge.cn/practice/2911/
+加密技术 1915
+http://bailian.openjudge.cn/practice/2913/
+熄灯问题 1813
+http://bailian.openjudge.cn/practice/2811/
+分解因数 1751
+http://bailian.openjudge.cn/practice/2749/
+最长上升子序列 1759
+http://bailian.openjudge.cn/practice/2757/
+麦森数 1708
+http://bailian.openjudge.cn/practice/2706/
+提取数字 1912
+http://bailian.openjudge.cn/practice/2910/
 
 
 
@@ -515,8 +600,13 @@ http://jsgl.openjudge.cn/contest1452/
 
 http://jsgl.openjudge.cn/contest1447/
 
-判断数字个数](http://jsgl.openjudge.cn/contest1447/A/
-满足条件的整数](http://jsgl.openjudge.cn/contest1447/B/
-生日相同](http://jsgl.openjudge.cn/contest1447/C/
-鸡兔同笼](http://jsgl.openjudge.cn/contest1447/D/
-棋盘问题](http://jsgl.openjudge.cn/contest1447/E/
+判断数字个数 1929
+http://bailian.openjudge.cn/practice/2927/
+满足条件的整数
+http://cs101.openjudge.cn/practice/03225/
+生日相同 2239
+http://bailian.openjudge.cn/practice/3238/
+鸡兔同笼 2238
+http://bailian.openjudge.cn/practice/3237/
+棋盘问题 323
+http://bailian.openjudge.cn/practice/1321/
