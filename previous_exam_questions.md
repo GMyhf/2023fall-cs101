@@ -1,12 +1,14 @@
 # Previous exam questions
 
-Updated 0137 GMT+8 Dec 8 2023
+Updated 2309 GMT+8 Dec 8 2023
 
 2023 fall, Complied by Hongfei Yan
 
 
 
 每次上机考试2小时，在计算中心机房进行。可以Python, C++提交程序。
+
+题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。
 
 往年考试题目，http://cs101.openjudge.cn，点“已结束的比赛”
 
@@ -40,7 +42,7 @@ http://cs101.openjudge.cn/practice/19963
 
 23806: 三数之和
 
-Trouble
+Tough
 
 http://cs101.openjudge.cn/practice/23806/
 
@@ -119,7 +121,7 @@ http://cs101.openjudge.cn/practice/02733/
 http://cs101.openjudge.cn/practice/02750
 校门外的树
 http://cs101.openjudge.cn/practice/02808/
-Trouble:
+Tough:
 排队
 http://cs101.openjudge.cn/practice/25353/
 
@@ -144,7 +146,7 @@ CPU 调度
 http://cs101.openjudge.cn/practice/25566/
 洋葱
 http://cs101.openjudge.cn/practice/25570/
-Trouble:
+Tough:
 螃蟹采蘑菇
 http://cs101.openjudge.cn/practice/25572/
 红蓝玫瑰
@@ -167,7 +169,7 @@ Medium:
 http://cs101.openjudge.cn/practice/M12757/
 打怪兽(sorting,math)v0.2
 http://cs101.openjudge.cn/practice/M18182/
-Trouble:
+Tough:
 滑雪
 http://cs101.openjudge.cn/practice/H01088/
 月度开销
@@ -195,7 +197,7 @@ Medium:
 http://cs101.openjudge.cn/practice/23555/
 小青蛙跳荷叶
 http://cs101.openjudge.cn/practice/23556/
-Trouble:
+Tough:
 有界的深度优先搜索
 http://cs101.openjudge.cn/practice/23558/
 幸福的寒假生活
@@ -212,7 +214,7 @@ http://cs101.openjudge.cn/practice/01852/
 http://cs101.openjudge.cn/practice/04110/
 岛屿周长(matrix)
 http://cs101.openjudge.cn/practice/12558/
-Trouble:
+Tough:
 阿尔法星人翻译官
 http://cs101.openjudge.cn/practice/12757/
 马走日
@@ -236,7 +238,7 @@ http://cs101.openjudge.cn/practice/03670/
 
 因材施教(greedy)
 http://cs101.openjudge.cn/practice/19948/
-Trouble:
+Tough:
 月度开销
 http://cs101.openjudge.cn/practice/04135/
 统计单词数
@@ -553,18 +555,18 @@ Checking order
 http://cs101.openjudge.cn/practice/02883/
 试剂配制
 http://bailian.openjudge.cn/practice/2936/
-异常细胞检测 1939
-http://bailian.openjudge.cn/practice/2937/
-求和 1942
-http://bailian.openjudge.cn/practice/2940/
+异常细胞检测
+http://cs101.openjudge.cn/practice/02937/
+求和
+http://cs101.openjudge.cn/practice/02940/
 吃糖果
 http://bailian.openjudge.cn/practice/2942/
-矩阵交换行 1901
-http://bailian.openjudge.cn/practice/2899/
+矩阵交换行
+http://cs101.openjudge.cn/practice/02899/
 Holiday Hotel
 http://cs101.openjudge.cn/practice/02783/
-子串 2090
-http://bailian.openjudge.cn/practice/4018/
+子串
+http://cs101.openjudge.cn/practice/04018/
 
 
 
@@ -576,18 +578,18 @@ http://bailian.openjudge.cn/practice/4018/
 
 http://jsgl.openjudge.cn/contest1452/
 
-受限完全平方数 1913
-http://bailian.openjudge.cn/practice/2911/
-加密技术 1915
-http://bailian.openjudge.cn/practice/2913/
-熄灯问题 1813
-http://bailian.openjudge.cn/practice/2811/
-分解因数 1751
-http://bailian.openjudge.cn/practice/2749/
-最长上升子序列 1759
-http://bailian.openjudge.cn/practice/2757/
-麦森数 1708
-http://bailian.openjudge.cn/practice/2706/
+受限完全平方数
+http://cs101.openjudge.cn/practice/02911/
+加密技术
+http://cs101.openjudge.cn/practice/02913/
+熄灯问题
+http://cs101.openjudge.cn/practice/02811/
+分解因数
+http://cs101.openjudge.cn/practice/02749/
+最长上升子序列
+http://cs101.openjudge.cn/practice/02757/
+麦森数
+http://cs101.openjudge.cn/practice/02706/
 提取数字 1912
 http://bailian.openjudge.cn/practice/2910/
 
@@ -600,13 +602,13 @@ http://bailian.openjudge.cn/practice/2910/
 
 http://jsgl.openjudge.cn/contest1447/
 
-判断数字个数 1929
-http://bailian.openjudge.cn/practice/2927/
+判断数字个数
+http://cs101.openjudge.cn/practice/02927/
 满足条件的整数
 http://cs101.openjudge.cn/practice/03225/
-生日相同 2239
-http://bailian.openjudge.cn/practice/3238/
-鸡兔同笼 2238
-http://bailian.openjudge.cn/practice/3237/
-棋盘问题 323
-http://bailian.openjudge.cn/practice/1321/
+生日相同
+http://cs101.openjudge.cn/practice/25301/
+鸡兔同笼
+http://cs101.openjudge.cn/practice/03237/
+棋盘问题
+http://cs101.openjudge.cn/practice/01321/
