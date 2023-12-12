@@ -1,6 +1,6 @@
 # Assignment #E: 算法基础
 
-Updated 0050 GMT+8 Dec 12, 2023
+Updated 1419 GMT+8 Dec 12, 2023
 
 2023 fall, Complied by ==同学的姓名、院系==
 
@@ -131,6 +131,36 @@ bfs, http://cs101.openjudge.cn/practice/19930
 
 
 代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+
+
+
+
+
+### 1163B2. Cat Party (Hard Edition)
+
+https://codeforces.com/contest/1163/problem/B2
+好题。通过维护双层（三层？）数据结构可以O(n)。
+
+确实好题，而且感觉难度适合作业没有复杂的东西。多维护了几个数就做到O(n)了。
+
+
+
+思路：
+
+
+
+##### 代码
+
+```python
+# 
+
+```
+
+
+
+代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+
+
 
 
 
