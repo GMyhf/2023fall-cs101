@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 1419 GMT+8 Dec 5 2023
+Updated 1402 GMT+8 Dec 13 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -1238,6 +1238,47 @@ https://sunnywhy.com/sfbj/8/2/319
 矩阵中的`1`共有`4`块，如下图所示。
 
 ![矩阵中的块_样例.png](https://raw.githubusercontent.com/GMyhf/img/main/img/202311262246785.png)
+
+
+
+#### 加保护圈，inq_set集合判断是否入过队
+
+```python
+from collections import deque
+
+# Constants
+MAXD = 4
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def bfs(x, y):
+    q = deque([(x, y)])
+    inq_set.add((x,y))
+    while q:
+        front = q.popleft()
+        for i in range(MAXD):
+            next_x = front[0] + dx[i]
+            next_y = front[1] + dy[i]
+            if matrix[next_x][next_y] == 1 and (next_x,next_y) not in inq_set:
+                inq_set.add((next_x, next_y))
+                q.append((next_x, next_y))
+
+# Input
+n, m = map(int, input().split())
+matrix=[[-1]*(m+2)]+[[-1]+list(map(int,input().split()))+[-1] for i in range(n)]+[[-1]*(m+2)]
+inq_set = set()
+
+# Main process
+counter = 0
+for i in range(1,n+1):
+    for j in range(1,m+1):
+        if matrix[i][j] == 1 and (i,j) not in inq_set:
+            bfs(i, j)
+            counter += 1
+
+# Output
+print(counter)
+```
 
 
 
