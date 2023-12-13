@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 1402 GMT+8 Dec 13 2023
+Updated 2049 GMT+8 Dec 13 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -1453,6 +1453,47 @@ https://sunnywhy.com/sfbj/8/2/320
 
 
 
+#### 加保护圈，inq_set集合判断是否入过队
+
+```python
+from collections import deque
+
+# 声明方向变化的数组，代表上下左右移动
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def bfs(x, y):
+    q = deque()
+    q.append((x, y))
+    inq_set.add((x, y))
+    step = 0
+    while q:
+        for _ in range(len(q)):
+            cur_x, cur_y = q.popleft()
+            if cur_x == n and cur_y == m:
+                return step
+            for direction in range(4):
+                next_x = cur_x + dx[direction]
+                next_y = cur_y + dy[direction]
+                if maze[next_x][next_y] == 0 and (next_x,next_y) not in inq_set:
+                    inq_set.add((next_x, next_y))
+                    q.append((next_x, next_y))
+        step += 1
+    return -1
+
+if __name__ == '__main__':
+
+    n, m = map(int, input().split())
+    maze = [[-1] * (m + 2)] + [[-1] + list(map(int, input().split())) + [-1] for i in range(n)] + [[-1] * (m + 2)]
+    inq_set = set()
+
+    step = bfs(1, 1)
+    print(step)
+
+```
+
+
+
 #### inq 数组，结点是否已入过队
 
 ```python
@@ -1741,6 +1782,679 @@ int main() {
 ```
 
 
+
+### 2.5 跨步迷宫
+
+https://sunnywhy.com/sfbj/8/2/322
+
+现有一个n*m大小的迷宫，其中`1`表示不可通过的墙壁，`0`表示平地。每次移动只能向上下左右移动一格或两格（两格为同向），且只能移动到平地上（不允许跨越墙壁）。求从迷宫左上角到右下角的最小步数（假设移动两格时算作一步）。
+
+**输入**
+
+第一行两个整数 $n、m \hspace{1em} (2 \le n \le 100, 2 \le m \le 100)$，分别表示迷宫的行数和列数；
+
+接下来n行，每行m个整数（值为`0`或`1`），表示迷宫。
+
+**输出**
+
+输出一个整数，表示最小步数。如果无法到达，那么输出`-1`。
+
+样例1
+
+输入
+
+```
+3 3
+0 1 0
+0 0 0
+0 1 0
+```
+
+输出
+
+```
+3
+```
+
+解释
+
+假设左上角坐标是，行数增加的方向为增长的方向，列数增加的方向为增长的方向。
+
+可以得到从左上角到右下角的前进路线：=>=>=>。
+
+因此最少需要`3`步。
+
+样例2
+
+输入
+
+```
+3 3
+0 1 0
+0 1 0
+0 1 0
+```
+
+输出
+
+```
+-1
+```
+
+解释
+
+显然从左上角无法到达右下角。
+
+
+
+```python
+from queue import Queue
+
+MAXN = 100
+MAXD = 8
+
+dx = [0, 0, 0, 0, 1, -1, 2, -2]
+dy = [1, -1, 2, -2, 0, 0, 0, 0]
+
+def canVisit(x, y):
+    return x >= 0 and x < n and y >= 0 and y < m and maze[x][y] == 0 and not inQueue[x][y]
+
+def BFS(x, y):
+    q = Queue()
+    q.put((x, y))
+    inQueue[x][y] = True
+    step = 0
+    while not q.empty():
+        cnt = q.qsize()
+        while cnt > 0:
+            front = q.get()
+            cnt -= 1
+            if front[0] == n - 1 and front[1] == m - 1:
+                return step
+            for i in range(MAXD):
+                nextX = front[0] + dx[i]
+                nextY = front[1] + dy[i]
+                nextHalfX = front[0] + dx[i] // 2
+                nextHalfY = front[1] + dy[i] // 2
+                if canVisit(nextX, nextY) and maze[nextHalfX][nextHalfY] == 0:
+                    inQueue[nextX][nextY] = True
+                    q.put((nextX, nextY))
+        step += 1
+    return -1
+
+n, m = map(int, input().split())
+maze = []
+inQueue = [[False] * m for _ in range(n)]
+for _ in range(n):
+    maze.append(list(map(int, input().split())))
+
+step = BFS(0, 0)
+print(step)
+```
+
+
+
+### 2.6 字符迷宫
+
+现有一个n*m大小的迷宫，其中`*`表示不可通过的墙壁，`.`表示平地。每次移动只能向上下左右移动一格，且只能移动到平地上。求从起点`S`到终点`T`的最小步数。
+
+**输入**
+
+第一行两个整数 $n、m \hspace{1em} (2 \le n \le 100, 2 \le m \le 100)$，分别表示迷宫的行数和列数；
+
+接下来n行，每行一个长度为m的字符串，表示迷宫。
+
+**输出**
+
+输出一个整数，表示最小步数。如果无法从`S`到达`T`，那么输出`-1`。
+
+样例1
+
+输入
+
+```
+5 5
+.....
+.*.*.
+.*S*.
+.***.
+...T*
+```
+
+输出
+
+```
+11
+```
+
+解释
+
+假设左上角坐标是，行数增加的方向为增长的方向，列数增加的方向为增长的方向。
+
+起点的坐标为，终点的坐标为。
+
+可以得到从`S`到`T`的前进路线：=>=>=>=>=>=>=>=>=>=>=>。
+
+样例2
+
+输入
+
+复制
+
+```
+5 5
+.....
+.*.*.
+.*S*.
+.***.
+..*T*
+```
+
+输出
+
+```
+-1
+```
+
+解释
+
+显然终点`T`被墙壁包围，无法到达。
+
+
+
+
+
+```python
+from queue import Queue
+
+MAXN = 100
+MAXD = 4
+
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def canVisit(x, y):
+    return x >= 0 and x < n and y >= 0 and y < m and maze[x][y] == 0 and not inQueue[x][y]
+
+def BFS(start, target):
+    q = Queue()
+    q.put(start)
+    inQueue[start[0]][start[1]] = True
+    step = 0
+    while not q.empty():
+        cnt = q.qsize()
+        while cnt > 0:
+            front = q.get()
+            cnt -= 1
+            if front == target:
+                return step
+            for i in range(MAXD):
+                nextX = front[0] + dx[i]
+                nextY = front[1] + dy[i]
+                if canVisit(nextX, nextY):
+                    inQueue[nextX][nextY] = True
+                    q.put((nextX, nextY))
+        step += 1
+    return -1
+
+n, m = map(int, input().split())
+maze = []
+inQueue = [[False] * m for _ in range(n)]
+start, target = None, None
+
+for i in range(n):
+    row = input()
+    maze_row = []
+    for j in range(m):
+        if row[j] == '.':
+            maze_row.append(0)
+        elif row[j] == '*':
+            maze_row.append(1)
+        elif row[j] == 'S':
+            start = (i, j)
+            maze_row.append(0)
+        elif row[j] == 'T':
+            target = (i, j)
+            maze_row.append(0)
+    maze.append(maze_row)
+
+step = BFS(start, target)
+print(step)
+```
+
+
+
+### 2.7 多终点迷宫问题
+
+现有一个 n*m 大小的迷宫，其中`1`表示不可通过的墙壁，`0`表示平地。每次移动只能向上下左右移动一格，且只能移动到平地上。求从迷宫左上角到迷宫中每个位置的最小步数。
+
+**输入**
+
+第一行两个整数  $n、m \hspace{1em} (2 \le n \le 100, 2 \le m \le 100)$，分别表示迷宫的行数和列数；
+
+接下来n行，每行m个整数（值为`0`或`1`），表示迷宫。
+
+**输出**
+
+输出n行m列个整数，表示从左上角到迷宫中每个位置需要的最小步数。如果无法到达，那么输出`-1`。注意，整数之间用空格隔开，行末不允许有多余的空格。
+
+样例1
+
+输入
+
+```
+3 3
+0 0 0
+1 0 0
+0 1 0
+```
+
+输出
+
+```
+0 1 2
+-1 2 3
+-1 -1 4
+```
+
+解释
+
+假设左上角坐标是，行数增加的方向为增长的方向，列数增加的方向为增长的方向。
+
+可以得到从左上角到所有点的前进路线：=>=>或=>=>。
+
+左下角的三个位置无法到达。
+
+
+
+```python
+from queue import Queue
+import sys
+
+INF = sys.maxsize
+MAXN = 100
+MAXD = 4
+
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def canVisit(x, y):
+    return x >= 0 and x < n and y >= 0 and y < m and maze[x][y] == 0 and not inQueue[x][y]
+
+def BFS(x, y):
+    minStep = [[-1] * m for _ in range(n)]
+    q = Queue()
+    q.put((x, y))
+    inQueue[x][y] = True
+    minStep[x][y] = 0
+    step = 0
+    while not q.empty():
+        cnt = q.qsize()
+        while cnt > 0:
+            front = q.get()
+            cnt -= 1
+            for i in range(MAXD):
+                nextX = front[0] + dx[i]
+                nextY = front[1] + dy[i]
+                if canVisit(nextX, nextY):
+                    inQueue[nextX][nextY] = True
+                    minStep[nextX][nextY] = step + 1
+                    q.put((nextX, nextY))
+        step += 1
+    return minStep
+
+n, m = map(int, input().split())
+maze = []
+inQueue = [[False] * m for _ in range(n)]
+
+for _ in range(n):
+    maze.append(list(map(int, input().split())))
+
+minStep = BFS(0, 0)
+for i in range(n):
+    #for j in range(m):
+    print(' '.join(map(str, minStep[i])))
+#        print(minStep[i][j], end='')
+#        if j < m - 1:
+#            print(' ', end='')
+#    print()
+```
+
+
+
+### 2.8 迷宫问题-传送点
+
+现有一个n*m大小的迷宫，其中`1`表示不可通过的墙壁，`0`表示平地，`2`表示传送点。每次移动只能向上下左右移动一格，且只能移动到平地或传送点上。当位于传送点时，可以选择传送到另一个`2`处（传送不计入步数），也可以选择不传送。求从迷宫左上角到右下角的最小步数。
+
+**输入**
+
+第一行两个整数$n、m \hspace{1em} (2 \le n \le 100, 2 \le m \le 100)$，分别表示迷宫的行数和列数；
+
+接下来n行，每行m个整数（值为`0`或`1`或`2`），表示迷宫。数据保证有且只有两个`2`，且传送点不会在起始点出现。
+
+**输出**
+
+输出一个整数，表示最小步数。如果无法到达，那么输出`-1`。
+
+样例1
+
+输入
+
+复制
+
+```
+3 3
+0 1 2
+0 1 0
+2 1 0
+```
+
+输出
+
+```
+4
+```
+
+解释
+
+假设左上角坐标是，行数增加的方向为增长的方向，列数增加的方向为增长的方向。
+
+可以得到从左上角到右下角的前进路线：=>=>=>=>=>，其中=>属于传送，不计入步数。
+
+因此最少需要`4`步。
+
+样例2
+
+输入
+
+```
+3 3
+0 1 0
+2 1 0
+2 1 0
+```
+
+输出
+
+```
+-1
+```
+
+解释
+
+显然从左上角无法到达右下角。
+
+
+
+将 transVector 中的第一个位置映射到第二个位置，并将第二个位置映射到第一个位置。这样，就建立了传送门的双向映射关系。
+
+在 BFS 函数中，当遇到传送门时，通过映射表 transMap 找到传送门的另一侧位置，并将其加入队列，以便继续进行搜索。
+
+```python
+from queue import Queue
+
+MAXN = 100
+MAXD = 4
+
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def canVisit(x, y):
+    return x >= 0 and x < n and y >= 0 and y < m and (maze[x][y] == 0 or maze[x][y] == 2) and not inQueue[x][y]
+
+def BFS(x, y):
+    q = Queue()
+    q.put((x, y))
+    inQueue[x][y] = True
+    step = 0
+    while not q.empty():
+        cnt = q.qsize()
+        while cnt > 0:
+            front = q.get()
+            cnt -= 1
+            if front[0] == n - 1 and front[1] == m - 1:
+                return step
+            for i in range(MAXD):
+                nextX = front[0] + dx[i]
+                nextY = front[1] + dy[i]
+                if canVisit(nextX, nextY):
+                    inQueue[nextX][nextY] = True
+                    q.put((nextX, nextY))
+                    if maze[nextX][nextY] == 2:
+                        transPosition = transMap[(nextX, nextY)]
+                        inQueue[transPosition[0]][transPosition[1]] = True
+                        q.put(transPosition)
+        step += 1
+    return -1
+
+n, m = map(int, input().split())
+maze = []
+inQueue = [[False] * m for _ in range(n)]
+transMap = {}
+transVector = []
+for i in range(n):
+    row = list(map(int, input().split()))
+    maze.append(row)
+
+    if 2 in row:
+        #transVector.append( (i, j) for j, val in enumerate(row) if val == 2)
+        for j, val in enumerate(row):
+            if val == 2:
+                transVector.append((i,j))
+
+        if len(transVector) == 2:
+            transMap[transVector[0]] = transVector[1]
+            transMap[transVector[1]] = transVector[0]
+
+    #print(transMap)
+step = BFS(0, 0)
+print(step)
+```
+
+
+
+### 2.9 中国象棋-马-无障碍
+
+ 
+
+现有一个n*m大小的棋盘，在棋盘的第行第列的位置放置了一个棋子，其他位置都未放置棋子。棋子的走位参照中国象棋的“马”。求该棋子到棋盘上每个位置的最小步数。
+
+注：中国象棋中“马”的走位为“日”字形，如下图所示。
+
+![image-20231213160152455](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231213160152455.png)
+
+**输入**
+
+四个整数$n、m、x、y \hspace{1em} (2 \le n \le 100, 2 \le m \le 100, 1 \le x \le n, 1\le y \le m)$，分别表示棋盘的行数和列数、棋子的所在位置。
+
+**输出**
+
+输出行列个整数，表示从棋子到棋盘上每个位置需要的最小步数。如果无法到达，那么输出`-1`。注意，整数之间用空格隔开，行末不允许有多余的空格。
+
+样例1
+
+输入
+
+```
+3 3 2 1
+```
+
+输出
+
+```
+3 2 1
+0 -1 4
+3 2 1
+```
+
+解释
+
+共`3`行`3`列，“马”在第`2`行第`1`列的位置，由此可得“马”能够前进的路线如下图所示。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231213160421486.png" alt="image-20231213160421486" style="zoom:67%;" />
+
+
+
+
+
+```python
+from collections import deque
+
+MAXN = 100
+MAXD = 8
+
+dx = [-2, -1, 1, 2, -2, -1, 1, 2]
+dy = [1, 2, 2, 1, -1, -2, -2, -1]
+
+def canVisit(x, y):
+    return 0 <= x < n and 0 <= y < m and not inQueue[x][y]
+
+def BFS(x, y):
+    minStep = [[-1] * m for _ in range(n)]
+    queue = deque()
+    queue.append((x, y))
+    inQueue[x][y] = True
+    minStep[x][y] = 0
+    step = 0
+    while queue:
+        cnt = len(queue)
+        while cnt > 0:
+            front = queue.popleft()
+            cnt -= 1
+            for i in range(MAXD):
+                nextX = front[0] + dx[i]
+                nextY = front[1] + dy[i]
+                if canVisit(nextX, nextY):
+                    inQueue[nextX][nextY] = True
+                    minStep[nextX][nextY] = step + 1
+                    queue.append((nextX, nextY))
+        step += 1
+    return minStep
+
+
+n, m, x, y = map(int, input().split())
+inQueue = [[False] * m for _ in range(n)]
+minStep = BFS(x - 1, y - 1)
+for row in minStep:
+    print(' '.join(map(str, row)))
+```
+
+
+
+### 2.10 中国象棋-马-有障碍
+
+https://sunnywhy.com/sfbj/8/2/327
+
+现有一个大小的棋盘，在棋盘的第行第列的位置放置了一个棋子，其他位置中的一部分放置了障碍棋子。棋子的走位参照中国象棋的“马”（障碍棋子将成为“马脚”）。求该棋子到棋盘上每个位置的最小步数。
+
+注`1`：中国象棋中“马”的走位为“日”字形，如下图所示。
+
+![中国象棋-马-有障碍_题目描述1.png](https://raw.githubusercontent.com/GMyhf/img/main/img/405270a4-8a80-4837-891a-d0d05cc5577c.png)
+
+注`2`：与“马”**直接相邻**的棋子会成为“马脚”，“马”不能往以“马”=>“马脚”为**长边**的方向前进，如下图所示。
+
+![中国象棋-马-有障碍_题目描述2.png](https://raw.githubusercontent.com/GMyhf/img/main/img/0b79f8a0-7b3e-4675-899c-b44e86ee5e40.png)
+
+**输入**
+
+第一行四个整数$n、m、x、y \hspace{1em} (2 \le n \le 100, 2 \le m \le 100, 1 \le x \le n, 1\le y \le m)$，分别表示棋盘的行数和列数、棋子的所在位置；
+
+第二行一个整数$k（1 \le k \le 10）$，表示障碍棋子的个数；
+
+接下来k行，每行两个整数$x_i、y_i（1 \le x_i \le n, 1 \le y_i \le m）$，表示第i个障碍棋子的所在位置。数据保证不存在相同位置的障碍棋子。
+
+**输出**
+
+输出n行m列个整数，表示从棋子到棋盘上每个位置需要的最小步数。如果无法到达，那么输出`-1`。注意，整数之间用空格隔开，行末不允许有多余的空格。
+
+样例1
+
+输入
+
+复制
+
+```
+3 3 2 1
+1
+1 2
+```
+
+输出
+
+复制
+
+```
+3 -1 1
+0 -1 -1
+-1 2 1
+```
+
+解释
+
+共`3`行`3`列，“马”在第`2`行第`1`列的位置，障碍棋子在第`1`行第`2`列的位置，由此可得“马”能够前进的路线如下图所示。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/f005a3c6-b042-471b-b10f-26daf7ff97fb.png" alt="中国象棋-马-有障碍_样例.png" style="zoom:67%;" />
+
+
+
+```python
+from collections import deque
+
+MAXD = 8
+dx = [-2, -1, 1, 2, -2, -1, 1, 2]
+dy = [1, 2, 2, 1, -1, -2, -2, -1]
+
+
+def canVisit(x, y):
+    return x >= 0 and x < n and y >= 0 and y < m and not isBlock.get((x, y), False) and not inQueue[x][y]
+
+
+def BFS(x, y):
+    minStep = [[-1] * m for _ in range(n)]
+    queue = deque()
+    queue.append((x, y))
+    inQueue[x][y] = True
+    minStep[x][y] = 0
+    step = 0
+    while queue:
+        cnt = len(queue)
+        for _ in range(cnt):
+            front = queue.popleft()
+            for i in range(MAXD):
+                nextX = front[0] + dx[i]
+                nextY = front[1] + dy[i]
+                if dx[i] == -1 and dy[i] == -1: #如果dx=-1，-1//2=-1，期望得到0
+                    footX, footY = front[0], front[1]
+                elif dx[i] == -1 and dy[i] != -1:
+                    footX, footY = front[0], front[1] + dy[i] // 2
+                elif dx[i] != -1 and dy[i] == -1:
+                    footX, footY = front[0] + dx[i] // 2, front[1]
+                else:
+                    footX, footY = front[0] + dx[i] // 2, front[1] + dy[i] // 2
+
+                if canVisit(nextX, nextY) and not isBlock.get((footX, footY), False):
+                    inQueue[nextX][nextY] = True
+                    minStep[nextX][nextY] = step + 1
+                    queue.append((nextX, nextY))
+
+
+        step += 1
+    return minStep
+
+n, m, x, y = map(int, input().split())
+inQueue = [[False] * m for _ in range(n)]
+isBlock = {}
+
+k = int(input())
+for _ in range(k):
+    blockX, blockY = map(int, input().split())
+    isBlock[(blockX - 1, blockY - 1)] = True
+
+minStep = BFS(x - 1, y - 1)
+
+for row in minStep:
+    print(' '.join(map(str, row)))
+```
 
 
 
