@@ -1,12 +1,12 @@
 # Cheatsheet for Book My Flight
 
-Updated 1018 GMT+8 Dec 14, 2023
+Updated 0051 GMT+8 Dec 15, 2023
 
 2023fall Hongfei Yan
 
 
 
-
+# dictionary
 
 Python Dictionary get() Method
 
@@ -46,5 +46,113 @@ for i in range(5):
 
 print(d)
 #Output: defaultdict(<class 'list'>, {0: [0, 1, 2], 1: [1, 2, 3], 2: [2, 3, 4], 3: [3, 4, 5], 4: [4, 5, 6]})
+```
+
+
+
+# str
+
+> dir(str)
+>
+> help(str.upper)
+
+upper(self, /)
+    Return a copy of the string converted to uppercase.
+
+lower(self, /)
+
+replace(self, old, new, count=-1, /)
+    Return a copy with all occurrences of substring old replaced by new.
+
+zfill(self, width, /)
+    Pad a numeric string with zeros on the left, to fill a field of the given width.
+
+split(self, /, sep=None, maxsplit=-1)
+    Return a list of the substrings in the string, using sep as the separator string.
+
+find(...)
+    S.find(sub[, start[, end]]) -> int
+
+> Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].  Optional arguments start and end are interpreted as in slice notation.
+>
+> Return -1 on failure.
+
+strip(self, chars=None, /)
+    Return a copy of the string with leading and trailing whitespace removed.
+
+count(...)
+    S.count(sub[, start[, end]]) -> int
+
+
+
+chr(i, /)
+    Return a Unicode string of one character with ordinal i; 0 <= i <= 0x10ffff.
+
+ord(c, /)
+    Return the Unicode code point for a one-character string.
+
+
+
+
+
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+
+
+
+import sys
+sys.setrecursionlimit(1<<30)
+
+
+
+product(*iterables, repeat=1) --> product object
+ |  
+ |  Cartesian product of input iterables.  Equivalent to nested for-loops.
+ |  
+ |  For example, product(A, B) returns the same as:  ((x,y) for x in A for y in B).
+ |  The leftmost iterators are in the outermost for-loop, so the output tuples
+ |  cycle in a manner similar to an odometer (with the rightmost element changing
+ |  on every iteration).
+ |  
+ |  To compute the product of an iterable with itself, specify the number
+ |  of repetitions with the optional repeat keyword argument. For example,
+ |  product(A, repeat=4) means the same as product(A, A, A, A).
+ |  
+ |  product('ab', range(3)) --> ('a',0) ('a',1) ('a',2) ('b',0) ('b',1) ('b',2)
+ |  product((0,1), (0,1), (0,1)) --> (0,0,0) (0,0,1) (0,1,0) (0,1,1) (1,0,0) ...
+
+
+
+02811: 熄灯问题
+
+from itertools import product
+
+product(range(2), repeat=6) --> (0, 0, 0, 0, 0, 0) (0, 0, 0, 0, 0, 1) (0, 0, 0, 0, 1, 0) (0, 0, 0, 0, 1, 1)...
+
+
+
+# math
+
+math.sqrt
+
+math.ceil
+
+math.floor
+
+math.log2
+
+math.log10
+
+math.gcd
+
+
+
+04036:计算系数
+
+```python
+import math
+a, b, k, n, m = map(int, input().split());
+print((pow(a, n, 10007) * pow(b, m, 10007) * math.comb(k, m)) % 10007)
 ```
 
