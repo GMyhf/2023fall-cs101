@@ -1036,28 +1036,34 @@ int main() {
 
 广度优先搜索 (BFS)一般由队列实现,且总是按层次的顺序进行遍历，其基本写法如下(可作模板用):
 
-```c++
-void BFS(int s) {
-    queue<int> q;
-    q.push(s);
-    while(!q.empty()) {
-        取出队首元素 top;
-        访问队首元素 top;
-      	将队首元素出队;
-        将 top 的下一层结点中未曾入队的结点全部入队，并设置为已入队;
-    }
-}
+```python
+from collections import deque
+  
+def bfs(s, e):
+    vis = set()
+    vis.add(s)
+      
+    q = deque()
+    q.append((0, s))
+
+    while q:
+        now, top = q.popleft() # 取出队首元素
+        if top == e:
+            return now # 返回需要的结果，如：步长、路径等信息
+
+        # 将 top 的下一层结点中未曾入队的结点全部入队q，并加入集合vis设置为已入队
+  
 ```
 
 
 
 下面是对该模板中每一个步骤的说明,请结合代码一起看: 
 
-① 定义队列 q，并将起点s入队。
+① 定义队列 q，并将起点(0, s)入队，0表示步长目前是0。
 ② 写一个 while 循环，循环条件是队列q非空。
-③ 在 while 循环中，先取出队首元素 top，然后访问它（访问可以是任何事情，例如将其输出）。访问完后将其出队。
-④ 将top 的下一层结点中所有**未曾入队**的结点入队，并标记它们的层号为 now 的层号加1，同时设置这些入队的结点已入过队。
- ⑤ 返回 ② 继续循环。
+③ 在 while 循环中，先取出队首元素 top。
+④ 将top 的下一层结点中所有**未曾入队**的结点入队，并标记它们的层号为 now 的层号加1，并加入集合vis设置为已入队。
+⑤ 返回 ② 继续循环。
 
 
 
@@ -1132,32 +1138,29 @@ print(sum(l) + len(l) - 2)
 ##### Python
 
 ```python
-# gpt translated version of the C++ code
 from collections import deque
 
-MAXN = 100000
-in_queue = [False] * (MAXN + 1)
+def bfs(n):
 
-def get_step(n):
-    step = 0
+    vis = set()
+    vis.add(1)
     q = deque()
-    q.append(1)
-    while True:
-        cnt = len(q)
-        for _ in range(cnt):
-            front = q.popleft()
-            if front == n:
-                return step
-            in_queue[front] = True
-            if front * 2 <= n and not in_queue[front * 2]:
-                q.append(front * 2)
-            if front + 1 <= n and not in_queue[front + 1]:
-                q.append(front + 1)
-        step += 1
+    q.append((1, 0))
+    while q:
+        front, step = q.popleft()
+        if front == n:
+            return step
 
-if __name__ == "__main__":
-    n = int(input())
-    print(get_step(n))
+        if front * 2 <= n and front * 2 not in vis:
+            vis.add(front *2)
+            q.append((front * 2, step+1))
+        if front + 1 <= n and front + 1 not in vis:
+            vis.add(front + 1)
+            q.append((front + 1, step+1))
+
+
+n = int(input())
+print(bfs(n))
 
 ```
 
