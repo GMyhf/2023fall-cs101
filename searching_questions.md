@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 2049 GMT+8 Dec 13 2023
+Updated 1135 GMT+8 Dec 16 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -1065,7 +1065,7 @@ void BFS(int s) {
 
 
 
-### 2.1 数字操作
+### 2.1 数字操作（一维BFS）
 
 https://sunnywhy.com/sfbj/8/2/318
 
@@ -1111,7 +1111,29 @@ https://sunnywhy.com/sfbj/8/2/318
 
 
 
-#### Python
+#### 数学思维
+
+```python
+'''
+2023TA-陈威宇，思路：二进制表示里面1的个数 + 0的个数 - 2。
+如果我们将 n 的二进制表示的每一位数从左到右依次编号为 0、1、2、...，那么：
+
+1 的个数表示需要进行加 1 的操作次数；
+0 的个数表示需要进行乘 2 的操作次数；
+len(l) - 2 表示操作的总次数减去初始状态的操作次数 1，即剩余的操作次数；
+sum(l) + len(l) - 2 表示所有操作次数之和。
+'''
+n = int(input())
+s = bin(n)
+l = [int(i) for i in s[2:]]
+print(sum(l) + len(l) - 2)
+```
+
+
+
+#### 计算机思维
+
+##### Python
 
 ```python
 # gpt translated version of the C++ code
@@ -1145,7 +1167,7 @@ if __name__ == "__main__":
 
 
 
-#### C++
+##### C++
 
 ```c++
 #include <cstdio>
