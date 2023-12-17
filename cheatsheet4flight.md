@@ -1,6 +1,6 @@
 # Cheatsheet for Book My Flight
 
-Updated 0051 GMT+8 Dec 15, 2023
+Updated 1930 GMT+8 Dec 17, 2023
 
 2023fall Hongfei Yan
 
@@ -129,6 +129,20 @@ product(*iterables, repeat=1) --> product object
 from itertools import product
 
 product(range(2), repeat=6) --> (0, 0, 0, 0, 0, 0) (0, 0, 0, 0, 0, 1) (0, 0, 0, 0, 1, 0) (0, 0, 0, 0, 1, 1)...
+
+
+
+```python
+# 要按照指定长度生成字符串 'abcd' 的全排列
+from itertools import permutations
+
+string = 'abcd'
+length = 3
+
+result = list(permutations(string, length))
+for perm in result:
+    print(''.join(perm))
+```
 
 
 
