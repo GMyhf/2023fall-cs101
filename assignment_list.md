@@ -1,6 +1,6 @@
 # Assignment & Routine List
 
-Updated 1028 GMT+8 Nov 28, 2023
+Updated 1241 GMT+8 Dec 19, 2023
 
 
 
@@ -24,11 +24,119 @@ http://cs101.openjudge.cn/practice/01833
 
 
 
-CF1883D. In Love
+
+
+## Assignment #F: 十全十美
+
+### 18155: 组合乘积
+
+dfs, brute force, http://cs101.openjudge.cn/practice/18155
+
+
+
+### 20106: 走山路
+
+bfs, http://cs101.openjudge.cn/practice/20106/
+
+
+
+### 27314: 一键换词
+
+implementation, string, http://cs101.openjudge.cn/practice/27314/
+
+
+
+### 19961: 最大点数(外太空2048)
+
+matrices, http://cs101.openjudge.cn/practice/19961/
+
+
+
+### 27401: 最佳凑单
+
+dp, sparse bucket, http://cs101.openjudge.cn/practice/27401/
+
+
+
+### 27384: 候选人追踪
+
+heap, http://cs101.openjudge.cn/practice/27384/
+
+熊江凯，这题应该不超纲的，感觉还是挺好的
+
+
+
+### CF1883D. In Love
 
 data structure, greedy, 1500, https://codeforces.com/problemset/problem/1883/D
 
 黄源森、查达闻推荐
+
+
+
+## Assignment #E: 算法基础
+
+### 02692: 假币问题
+
+brute force, http://cs101.openjudge.cn/practice/02692
+
+### 18164: 剪绳子
+
+greedy/huffman, http://cs101.openjudge.cn/practice/18164/
+
+### 01328: Radar Installation
+
+greedy, http://cs101.openjudge.cn/practice/01328/
+
+### 19930: 寻宝
+
+bfs, http://cs101.openjudge.cn/practice/19930
+
+### 1163B2. Cat Party (Hard Edition)
+
+https://codeforces.com/contest/1163/problem/B2
+
+### 02811: 熄灯问题
+
+brute force, http://cs101.openjudge.cn/practice/02811
+
+### 02802: 小游戏
+
+dfs, bfs, http://cs101.openjudge.cn/practice/02802/ 
+
+
+
+
+
+## Assignment #D: Dec 月考
+
+### 18176: 2050年成绩计算
+
+http://cs101.openjudge.cn/practice/18176/
+
+### 18224: 找魔数
+
+http://cs101.openjudge.cn/practice/18224
+
+### 19963: 买学区房
+
+http://cs101.openjudge.cn/practice/19963
+
+### 23806: 三数之和
+
+http://cs101.openjudge.cn/practice/23806/
+
+### 25561: 2022决战双十一
+
+http://cs101.openjudge.cn/practice/25561/
+
+### 08210: 河中跳房子
+
+http://cs101.openjudge.cn/practice/08210/
+
+### 01922: Ride to School
+
+http://cs101.openjudge.cn/practice/01922/
 
 
 
@@ -81,8 +189,6 @@ http://cs101.openjudge.cn/routine/18146/
 OJ02287：Tian Ji -The Horse Racing田忌赛马
 
 greedy, http://cs101.openjudge.cn/practice/02287
-
-
 
 
 
