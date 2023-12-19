@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 1135 GMT+8 Dec 16 2023
+Updated 1348 GMT+8 Dec 19 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -1162,6 +1162,37 @@ def bfs(n):
 n = int(input())
 print(bfs(n))
 
+```
+
+
+
+```python
+# gpt translated version of the C++ code
+from collections import deque
+
+MAXN = 100000
+in_queue = [False] * (MAXN + 1)
+
+def get_step(n):
+    step = 0
+    q = deque()
+    q.append(1)
+    while True:
+        cnt = len(q)
+        for _ in range(cnt):
+            front = q.popleft()
+            if front == n:
+                return step
+            in_queue[front] = True
+            if front * 2 <= n and not in_queue[front * 2]:
+                q.append(front * 2)
+            if front + 1 <= n and not in_queue[front + 1]:
+                q.append(front + 1)
+        step += 1
+
+if __name__ == "__main__":
+    n = int(input())
+    print(get_step(n))
 ```
 
 
