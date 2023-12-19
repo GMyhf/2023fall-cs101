@@ -3659,50 +3659,148 @@ NO
 
 
 
-找最短路径，是bfs，借助队列queue实现，head和tail分别指向队列的头和尾。
+其实所有求最短、最长的问题都能用heapq实现，在图搜索中搭配bfs尤其好用。
 
 ```python
-q = []
-
-step = [[0, 1], [1, 0], [-1, 0], [0, -1]]
-vis = [[0] * 52 for _ in range(52)]
-g = []
-
-m, n = map(int, input().split())
-for i in range(m):
-    g.append([int(x) for x in input().split()])
-
-def check(x, y):
-    if (x < 0 or y < 0 or x >= m or y >= n):
-        return False
-    if (vis[x][y] or g[x][y] == 2):
-        return False
-    return True
-
-
-q.append((0, 0))
-head = 0
-tail = 1
-level = 0
-while (head < tail):
-    # i = head
-    # j = tail
-    for k in range(head, tail):
-        x, y = q[head]
-        head += 1
-        if (g[x][y] == 1):
-            print(level)
-            exit(0)     
-        for z in range(4):
-            newx = x + step[z][0]
-            newy = y + step[z][1]
-            if (check(newx, newy)):
-                vis[newx][newy] = 1
-                q.append((newx, newy))
-                tail += 1
-    level += 1
-print('NO')
+#23 工学院 苏王捷
+import heapq
+def bfs(x,y):
+    d=[[-1,0],[1,0],[0,1],[0,-1]]
+    queue=[]
+    heapq.heappush(queue,[0,x,y])
+    check=set()
+    check.add((x,y))
+    while queue:
+        step,x,y=map(int,heapq.heappop(queue))
+        if martix[x][y]==1:
+            return step
+        for i in range(4):
+            dx,dy=x+d[i][0],y+d[i][1]
+            if martix[dx][dy]!=2 and (dx,dy) not in check:
+                heapq.heappush(queue,[step+1,dx,dy])
+                check.add((dx,dy))
+    return "NO"
+            
+m,n=map(int,input().split())
+martix=[[2]*(n+2)]+[[2]+list(map(int,input().split()))+[2] for i in range(m)]+[[2]*(n+2)]
+print(bfs(1,1))
 ```
+
+
+
+## 20106: 走山路
+
+http://cs101.openjudge.cn/routine/20106/
+
+某同学在一处山地里，地面起伏很大，他想从一个地方走到另一个地方，并且希望能尽量走平路。
+现有一个m*n的地形图，图上是数字代表该位置的高度，"#"代表该位置不可以经过。
+该同学每一次只能向上下左右移动，每次移动消耗的体力为移动前后该同学所处高度的差的绝对值。现在给出该同学出发的地点和目的地，需要你求出他最少要消耗多少体力。
+
+**输入**
+
+第一行是m,n,p，m是行数，n是列数，p是测试数据组数
+接下来m行是地形图
+再接下来n行每行前两个数是出发点坐标（前面是行，后面是列），后面两个数是目的地坐标（前面是行，后面是列）（出发点、目的地可以是任何地方，出发点和目的地如果有一个或两个在"#"处，则将被认为是无法达到目的地）
+
+**输出**
+
+n行，每一行为对应的所需最小体力，若无法达到，则输出"NO"
+
+样例输入
+
+```
+4 5 3
+0 0 0 0 0
+0 1 1 2 3
+# 1 0 0 0
+0 # 0 0 0
+0 0 3 4
+1 0 1 4
+3 4 3 0
+```
+
+样例输出
+
+```
+2
+3
+NO
+
+解释：
+第一组：从左上角到右下角，要上1再下来，所需体力为2
+第二组：一直往右走，高度从0变为1，再变为2，再变为3，消耗体力为3
+第三组：左下角周围都是"#"，不可以经过，因此到不了
+```
+
+来源: cs101-2019 张翔宇
+
+
+
+注意 line 9: v.add(..)，在heappop之后，保证最优的才入v。
+
+```python
+# 23 蒋子轩
+from heapq import heappop, heappush
+
+def bfs(x1, y1):
+    q = [(0, x1, y1)]
+    v = set()
+    while q:
+        t, x, y = heappop(q)
+        v.add((x, y))
+        if x == x2 and y == y2:
+            return t
+        for dx, dy in dir:
+            nx, ny = x+dx, y+dy
+            if 0 <= nx < m and 0 <= ny < n and ma[nx][ny] != '#' and (nx, ny) not in v:
+                nt = t+abs(int(ma[nx][ny])-int(ma[x][y]))
+                heappush(q, (nt, nx, ny))
+    return 'NO'
+
+
+m, n, p = map(int, input().split())
+ma = [list(input().split()) for _ in range(m)]
+dir = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+for _ in range(p):
+    x1, y1, x2, y2 = map(int, input().split())
+    if ma[x1][y1] == '#' or ma[x2][y2] == '#':
+        print('NO')
+        continue
+    print(bfs(x1, y1))
+```
+
+
+
+```python
+# 23 苏王捷
+
+import heapq
+m, n, p = map(int, input().split())
+martix = [list(input().split())for i in range(m)]
+dir = [(-1, 0), (1, 0), (0, 1), (0, -1)]
+for _ in range(p):
+    sx, sy, ex, ey = map(int, input().split())
+    if martix[sx][sy] == "#" or martix[ex][ey] == "#":
+        print("NO")
+        continue
+    vis, heap, ans = set(), [], []
+    heapq.heappush(heap, (0, sx, sy))
+    vis.add((sx, sy, -1))
+    while heap:
+        tire, x, y = heapq.heappop(heap)
+        if x == ex and y == ey:
+            ans.append(tire)
+        for i in range(4):
+            dx, dy = dir[i]
+            x1, y1 = dx+x, dy+y
+            if 0 <= x1 < m and 0 <= y1 < n and martix[x1][y1] != "#" and (x1, y1, i) not in vis:
+                t1 = tire+abs(int(martix[x][y])-int(martix[x1][y1]))
+                heapq.heappush(heap, (t1, x1, y1))
+                vis.add((x1, y1, i))
+    print(min(ans) if ans else "NO")
+```
+
+
 
 
 
