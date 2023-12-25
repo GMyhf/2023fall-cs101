@@ -1,6 +1,6 @@
 # Cheatsheet for Book My Flight
 
-Updated 1441 GMT+8 Dec 19, 2023
+Updated 1316 GMT+8 Dec 25, 2023
 
 2023fall Hongfei Yan
 
@@ -47,6 +47,29 @@ for i in range(5):
 print(d)
 #Output: defaultdict(<class 'list'>, {0: [0, 1, 2], 1: [1, 2, 3], 2: [2, 3, 4], 3: [3, 4, 5], 4: [4, 5, 6]})
 ```
+
+
+
+# heap
+
+from heapq import heappop, heappush
+
+queue=[]
+heappush(queue,[0,x,y])
+
+t, x, y = heappop(queue)
+
+
+
+# dequeu
+
+from collections import deque
+
+q = deque()
+
+ q.append((1, 0))
+
+ front, step = q.popleft()
 
 
 
@@ -116,9 +139,15 @@ ord(c, /)
 
 
 
+# lru_cache
+
 from functools import lru_cache
 
 @lru_cache(maxsize=None)
+
+@lru_cache
+
+@lru_cache(maxsize=2048)
 
 
 
@@ -190,4 +219,6 @@ import math
 a, b, k, n, m = map(int, input().split());
 print((pow(a, n, 10007) * pow(b, m, 10007) * math.comb(k, m)) % 10007)
 ```
+
+
 
