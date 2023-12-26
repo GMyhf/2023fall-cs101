@@ -1,6 +1,6 @@
 # 题目汇总
 
-Updated 1305 GMT+8 Dec 19, 2023
+Updated 1350 GMT+8 Dec 26, 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -23,3 +23,5 @@ Updated 1305 GMT+8 Dec 19, 2023
 7）greedy不知道如果作为专题讲，或者直接找greedy题目顺序过？
 
 8）每日选做，去掉太难的题目（每日选做我做的少，不好弄）；
+
+9）同学备忘录：cheatsheet-20231222-WUYuda.md, cheatsheet-20231226-JIANGZixuan 
