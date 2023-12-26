@@ -1,6 +1,6 @@
 # Previous exam questions
 
-Updated 2309 GMT+8 Dec 8 2023
+Updated 2025 GMT+8 Dec 26 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -136,20 +136,19 @@ http://cs101.openjudge.cn/practice/25353/
 http://cs101.openjudge.cn/cs101_2022fe_class13/
 
 Easy:
-
 二进制回文的整数
 http://cs101.openjudge.cn/practice/25538/
 木板掉落v0.2
 http://cs101.openjudge.cn/practice/25580/
 Medium:
-CPU 调度
+CPU 调度, greedy
 http://cs101.openjudge.cn/practice/25566/
-洋葱
+洋葱, matrices
 http://cs101.openjudge.cn/practice/25570/
 Tough:
-螃蟹采蘑菇
+螃蟹采蘑菇, bfs/dfs
 http://cs101.openjudge.cn/practice/25572/
-红蓝玫瑰
+红蓝玫瑰, dp
 http://cs101.openjudge.cn/practice/25573/
 
 
