@@ -67,6 +67,226 @@ while True:
 
 
 
+## 04110: 圣诞老人的礼物-Santa Clau’s Gifts
+
+greedy/dp, http://cs101.openjudge.cn/practice/04110
+
+圣诞节来临了，在城市A中圣诞老人准备分发糖果，现在有多箱不同的糖果，每箱糖果有自己的价值和重量，每箱糖果都可以拆分成任意散装组合带走。圣诞老人的驯鹿最多只能承受一定重量的糖果，请问圣诞老人最多能带走多大价值的糖果。
+
+**输入**
+
+第一行由两个部分组成，分别为糖果箱数正整数n(1 <= n <= 100)，驯鹿能承受的最大重量正整数w（0 < w < 10000），两个数用空格隔开。其余n行每行对应一箱糖果，由两部分组成，分别为一箱糖果的价值正整数v和重量正整数w，中间用空格隔开。
+
+**输出**
+
+输出圣诞老人能带走的糖果的最大总价值，保留1位小数。输出为一行，以换行符结束。
+
+样例输入
+
+```
+4 15
+100 4
+412 8
+266 7
+591 2
+```
+
+样例输出
+
+```
+1193.0
+```
+
+
+
+解题思路：计算平均值降序取，注意每箱糖果都可以拆分成任意散装组合带走。
+
+```python
+# 2300012302	张惠雯	生命科学学院
+n, w = map(int, input().split())
+candies = []
+
+for _ in range(n):
+    p, q = map(int, input().split())
+    for _ in range(q):
+        candies.append(p / q)
+
+candies.sort(reverse=True)
+
+'''
+Degenerate slice indices are handled gracefully: an index that is too large 
+is replaced by the string size, an upper bound smaller than the lower bound 
+returns an empty string." e.g.:
+    
+w = [1,2,3]; sum(w[:6])
+Out: 6
+'''
+value = sum(candies[:w])
+
+print("{:.1f}".format(value))
+```
+
+
+
+## 18211: 军备竞赛
+
+greedy/two pointers, http://cs101.openjudge.cn/practice/18211
+
+鸣人是木叶村的村长，最近在跟敌国进行军备竞赛，他手边有N份武器设计图，每张设计图有制作成本（大于等于零）且最多使用一次，可以选择花钱制作或是以同样的价钱卖给敌国，同时任意时刻敌国的武器不能比我国更多，鸣人的目标是在不负债的前提下武器种类比敌国越多越好。
+
+**输入**
+
+第一行为起始整数经费p,并且0≤p。且要求任何时刻p不能小于0.
+第二行为n个整数，以空格分隔，并且0≤每个整数。代表每张设计图的制作成本，同时也是卖价，最多用一次(无法又制作又卖).
+
+**输出**
+
+一个整数，代表武器种类最多比敌国多多少.
+
+样例输入
+
+```
+Sample1 Input:
+10
+20 30 40
+
+Sample1 Output:
+0
+
+解释: 10元不足以制作20元的武器，所以为0，也不能先卖50元的，不能让敌国武器比木叶多
+
+Sample2 Input:
+10
+15 5
+
+Sample2 Output:
+1
+
+解释: 10元可以制作5元的武器，木叶的武器比对手多一件
+```
+
+样例输出
+
+```
+Sample3 Input:
+40
+20 80 60 40
+
+Sample3 Output:
+2
+
+解释: 先制作20元的武器，再贩卖80元的武器，这时经费为100，再制作40、60的武器，木叶的武器比对手多二件
+```
+
+来源：cs101-2018
+
+
+
+思路：类似二分双指针left, right，有钱就买（制作），没钱就卖。感谢2020fall-cs101 汤建浩，指正 cnt<0情况。
+
+```python
+p = int(input())
+n = [int(x) for x in input().split()]
+n.sort()
+
+cnt = 0
+left = 0
+right = len(n) - 1
+
+while left<=right:
+    if n[left]<=p:
+        cnt += 1
+        p -= n[left]
+        left += 1
+    else:
+        if right==left:
+            break
+        
+        p += n[right]
+        cnt -= 1
+        if cnt<0:
+            cnt=0
+            break
+
+        right -= 1
+
+print(cnt)
+```
+
+
+
+## 19948: 因材施教
+
+greedy, http://cs101.openjudge.cn/practice/19948
+
+有一所魔法高校招入一批学生，为了贯彻因材施教的理念，学校打算根据他们的魔法等级进行分班教育。在确定班级数目的情况下，班级内学生的差异要尽可能的小，也就是各个班级内学生的魔法等级要尽可能的接近。
+例如：现在有(n = 7)位学生，他们的魔法等级分别为(r = [2, 7, 9, 9, 16, 28, 45])，我们要将他们分配到(m = 3)个班级，如果按照([2, 7], [9, 9], [16, 28, 45])的方式分班，则他们的总体差异为(d = (7 - 2) + (9 - 9) + (45 - 16) = 34)。
+
+**输入**
+
+第一行为两个整数:学生人数n和班级数目m，1 <= m <= n <= 10^5。
+第二行为n个整数：每位学生的魔法等级ri，1 <= ri <= 10^9。
+
+**输出**
+
+一个整数：学生的最小总体差异d。
+
+样例输入
+
+```
+Sample1 Input
+7 3
+2 7 9 9 16 28 45
+
+Sample1 Output
+14
+
+解释：最小总体差异的分班方式为([2, 7, 9, 9, 16], [28], [45])
+```
+
+样例输出
+
+```
+Sample2 Input
+15 9
+90 73 116 47 400 212 401 244 13 372 248 56 194 482 177
+
+Sample2 Output
+65
+
+解释：最小总体差异的分班方式为([13], [47, 56, 73, 90], [116], [177, 194], [212], [244, 248], [372], [400, 401], [482])
+```
+
+来源：cs101 2019 Final Exam
+
+
+
+思路：本质就是去掉m-1个最大的差值。先升序排序魔法等级，再按照差值逆序排。
+
+```python
+n,m = map(int,input().split())
+r = [int(x) for x in input().split()]
+r.sort()
+rd = []
+for i in range(len(r)-1):
+    rd.append(r[i+1] - r[i])
+
+rd.sort(reverse=True)
+d = sum(rd)
+
+for i in rd:
+    d -= i
+    m -= 1
+    if m==1:
+        break
+
+print(d)
+```
+
+
+
+
+
 ## 16528: 充实的寒假生活
 
 greedy/dp, cs10117 Final Exam, http://cs101.openjudge.cn/practice/16528/
@@ -140,6 +360,87 @@ for i in range(1,n):
         m = s[i][1]
 
 print(a)
+```
+
+
+
+## 01328: Radar Installation
+
+greedy, http://cs101.openjudge.cn/practice/01328/
+
+Assume the coasting is an infinite straight line. Land is in one side of coasting, sea in the other. Each small island is a point locating in the sea side. And any radar installation, locating on the coasting, can only cover d distance, so an island in the sea can be covered by a radius installation, if the distance between them is at most d.
+
+We use Cartesian coordinate system, defining the coasting is the x-axis. The sea side is above x-axis, and the land side below. Given the position of each island in the sea, and given the distance of the coverage of the radar installation, your task is to write a program to find the minimal number of radar installations to cover all the islands. Note that the position of an island is represented by its x-y coordinates.
+![image-20231021115237439](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231021115237439.png)
+Figure A Sample Input of Radar Installations
+
+**输入**
+
+The input consists of several test cases. The first line of each case contains two integers n (1<=n<=1000) and d, where n is the number of islands in the sea and d is the distance of coverage of the radar installation. This is followed by n lines each containing two integers representing the coordinate of the position of each island. Then a blank line follows to separate the cases.
+
+The input is terminated by a line containing pair of zeros
+
+**输出**
+
+For each test case output one line consisting of the test case number followed by the minimal number of radar installations needed. "-1" installation means no solution for that case.
+
+样例输入
+
+```
+3 2
+1 2
+-3 1
+2 1
+
+1 2
+0 2
+
+0 0
+```
+
+样例输出
+
+```
+Case 1: 2
+Case 2: 1
+```
+
+来源: Beijing 2002
+
+
+
+```python
+rr=0
+while True:
+    n,d=map(int,input().split())
+    if n==d==0:
+        break
+    else:
+        rr+=1
+        empty=[]
+        for i in range(n):
+            x,y=map(int,input().split())
+            if d>=y:
+                #empty.append([x+(d**2-y**2)**0.5,x-(d**2-y**2)**0.5])
+                empty.append([x-(d**2-y**2)**0.5,x+(d**2-y**2)**0.5])
+        input()
+        if len(empty)<n:
+            print("Case {}: -1".format(rr))
+        elif d<0:
+            print("Case {}: -1".format(rr))
+        else:
+            empty.sort(reverse=True)
+            #number=n
+            number = len(empty)
+            c = empty[0][0]
+            for j in range(1,n):
+                #if empty[j][0]>=empty[j-1][1]:
+                if c > empty[j][1]:
+                    c = empty[j][0]
+                else:
+                   number-=1
+
+            print("Case {}: {} ".format(rr,number))
 ```
 
 
@@ -361,6 +662,10 @@ for _ in range(T):
 
 
 
+# 其他问题
+
+
+
 ## 12559: 最大最小整数 v0.3
 
 greedy/strings/sortings, http://cs101.openjudge.cn/practice/12559
@@ -430,14 +735,6 @@ ans = "".join(nums)
 nums.reverse()
 print(ans + " " + "".join(nums))
 ```
-
-
-
-
-
-
-
-# 其他问题
 
 
 
