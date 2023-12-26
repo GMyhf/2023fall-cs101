@@ -2,11 +2,25 @@
 
 
 
+Updated 1837 GMT+8 Dec 26, 2023
+
+
+
+2023/12/26，改正了欧拉筛；加入了排列组合、阶乘、笛卡尔积等内容
+
+2023/12/22，从零基础的角度写了一份cheatsheet，自己用有点可惜。
+
 2023/12/22 compiled by 23工院 武昱达
 
-从零基础的角度写了一份cheatsheet，自己用有点可惜。
 
 
+# CS101 Cheat_Sheet_Edition_3
+
+2023.12.26 compiled by 23工院 武昱达
+
+改正了欧拉筛；
+
+加入了排列组合、阶乘、笛卡尔积等内容
 
 # **一、语法糖**和常用函数
 
@@ -34,11 +48,11 @@ decimal_num = int(binary_str, 2) # 第一个参数是字符串类型的某进制
 print(decimal_num)  # 输出 10
 ```
 
-
-
 # **二、工具**
 
-## 1. **欧拉筛**
+## 1. **素数筛**
+
+写法1（欧拉筛）：
 
 ```python
 def Euler_sieve(n):
@@ -48,14 +62,53 @@ def Euler_sieve(n):
         if primes[p]:
             for i in range(p*p, n+1, p):
                 primes[i] = False
-        print(primes)
         p += 1
-    return primes[-1]
-print(Euler_sieve(1000)) # O(n)
-""" [True, True, True, True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False]
-[True, True, True, True, False, True, False, True, False, False, False, True, False, True, False, False, False, True, False, True, False]
-[True, True, True, True, False, True, False, True, False, False, False, True, False, True, False, False, False, True, False, True, False]"""
+    primes[0]=primes[1]=False
+    return primes
+print(Euler_sieve(20))
+# [False, False, True, True, False, True, False, True, False, False, False, True, False, True, False, False, False, True, False, True, False]
 ```
+
+写法2（埃氏筛）：
+
+```python
+# 胡睿诚 23数院 
+# 埃氏筛 基本够用
+N=20
+primes = []
+is_prime = [True]*N
+is_prime[0] = False;is_prime[1] = False
+for i in range(1,N):
+    if is_prime[i]:
+        primes.append(i)
+        for k in range(2*i,N,i): #用素数去筛掉它的倍数
+            is_prime[k] = False
+print(primes)
+# [2, 3, 5, 7, 11, 13, 17, 19]
+```
+
+写法3（欧拉筛）：
+
+```python
+# 胡睿诚 23数院 
+N=20
+primes = []
+is_prime = [True]*N
+is_prime[0] = False;is_prime[1] = False
+for i in range(2,N):
+    if is_prime[i]:
+        primes.append(i)
+    for p in primes: #筛掉每个数的素数倍
+        if p*i >= N:
+            break
+        is_prime[p*i] = False
+        if i % p == 0: #这样能保证每个数都被它的最小素因数筛掉！
+            break
+print(primes)
+# [2, 3, 5, 7, 11, 13, 17, 19]
+```
+
+
 
 ## 2. 简单题可以多循环（提醒）
 
@@ -94,16 +147,18 @@ print(math.pow(2,2.5)) # 5.656854249492381
 print(9999999>math.inf) # False
 print(math.sqrt(4)) # 2.0
 print(math.log(100,10)) # 2.0  math.log(x,base) 以base为底，x的对数
+print(math.comb(5,3)) # 组合数，C53
+print(math.factorial(5)) # 5！
 ```
 
 ### （2） lru_cache
 
 ```python
-需要注意的是，使用@lru_cache装饰器时，应注意以下几点：
-	被缓存的函数的参数必须是可哈希的，这意味着参数中不能包含可变数据类型，如列表或字典。
-    缓存的大小会影响性能，需要根据实际情况来确定合适的大小或者使用默认值。
-    由于缓存中存储了计算结果，可能导致内存占用过大，需谨慎使用。
-可以是多参数的。
+# 需要注意的是，使用@lru_cache装饰器时，应注意以下几点：
+# 1.被缓存的函数的参数必须是可哈希的，这意味着参数中不能包含可变数据类型，如列表或字典。
+# 2.缓存的大小会影响性能，需要根据实际情况来确定合适的大小或者使用默认值。
+# 3.由于缓存中存储了计算结果，可能导致内存占用过大，需谨慎使用。
+# 4.可以是多参数的。
 ```
 
 ### （3）bisect（二分查找）
@@ -170,12 +225,32 @@ char_count = defaultdict(int)
 input_string = "hello"
 for char in input_string:
     char_count[char] += 1
-print(char_count)  # 输出 defaultdict(<class 'int'>, {'h': 1, 'e': 1, 'l': 2, 'o': 1})
+print(char_count)  # 输出 defaultdict(<class 'int'>, {'h': 1, 'e': 1, 'l': 2, 'o': 1})）
+```
+
+## (8) itertools包 (排列组合等)
+
+```python
+import itertools
+my_list = ['a', 'b', 'c']
+permutation_list1 = list(itertools.permutations(my_list))
+permutation_list2 = list(itertools.permutations(my_list, 2))
+combination_list = list(itertools.combinations(my_list, 2))
+bit_combinations = list(itertools.product([0, 1], repeat=4))
+
+print(permutation_list1)
+# [('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'), ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]
+print(permutation_list2)
+# [('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'c'), ('c', 'a'), ('c', 'b')]
+print(combination_list)
+# [('a', 'b'), ('a', 'c'), ('b', 'c')]
+print(bit_combinations)
+# [(0, 0, 0, 0), (0, 0, 0, 1), (0, 0, 1, 0), (0, 0, 1, 1), (0, 1, 0, 0), (0, 1, 0, 1), (0, 1, 1, 0), (0, 1, 1, 1), (1, 0, 0, 0), (1, 0, 0, 1), (1, 0, 1, 0), (1, 0, 1, 1), (1, 1, 0, 0), (1, 1, 0, 1), (1, 1, 1, 0), (1, 1, 1, 1)]
 ```
 
 ## 4.ASCII表
 
-![ASCII](C:\Users\86178\Desktop\ASCII.webp)
+![ASCII](C:\Users\86178\Desktop\ASCII.png)
 
 ## 5. 判断完全平方数
 
@@ -186,7 +261,7 @@ def isPerfectSquare(num):
         return False
     sqrt_num = math.isqrt(num)
     return sqrt_num * sqrt_num == num
-print(isPerfectSquare(97)) #False
+print(isPerfectSquare(97)) # False
 ```
 
 
@@ -440,6 +515,10 @@ print(bfs(1,1,matrix))
 ## 7. 正难则反（参考 #蒋子轩 23工院# 乌鸦坐飞机）
 
 ## 8. 审题是否准确？ 是否漏掉了输出？（参考）
+
+
+
+
 
 
 
