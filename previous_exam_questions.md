@@ -1,6 +1,6 @@
 # Previous exam questions
 
-Updated 2025 GMT+8 Dec 26 2023
+Updated 1220 GMT+8 Dec 27 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -452,9 +452,73 @@ http://cs101.openjudge.cn/practice/02981/
 
 因为OJ改版，丢失了这些年的考试信息
 
-2015fall, 2014fall, 2013fall, 2012fall, 2011fall,2010fall, 2009fall
+2015fall, 2012fall, 2011fall,2010fall, 2009fall
 
 
+
+## cs10114 Final Exam
+
+http://bailian.openjudge.cn/cs10114fe
+
+7809 出现两次的字符-Characters Appearing twice
+
+7810 19岁生日礼物-Birthday Gift
+
+7811 羚羊数量-Number Of Antelope
+
+7812 公共朋友-Common Friends
+
+7813 圣诞老人的礼物-Santa Clau’s Gifts
+
+7814 判断游戏胜者-Who Is the Winner
+
+7816 情报破译-Cryptanalysis
+
+7818 北京地铁票价-BeiJing Subway
+
+
+
+## cs10113 Final Exam
+
+http://bailian.openjudge.cn/cs10113fe
+
+6704 回文数字（Palindrome Number）
+
+6705 判断是否可以构成等差数列
+
+6706 买手机
+
+6707 全排列
+
+6708 查找出现了k次的字符
+
+6709 判断多个点是否在同一直线
+
+6710 最长公共字符串后缀（Longest String Postfix）
+
+6711 积水量
+
+
+
+## cs10113 Mock Exam
+
+http://bailian.openjudge.cn/cs10113me
+
+3087 邮箱验证
+
+2239 生日相同
+
+1913 受限完全平方数
+
+1965 日历问题
+
+1746 子串
+
+1912 提取数字
+
+1929 判断数字个数
+
+1802 垂直直方图
 
 
 
