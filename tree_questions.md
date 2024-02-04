@@ -1,6 +1,6 @@
 # 树
 
-Updated 1333 GMT+8 Feb 1, 2024
+Updated 1910 GMT+8 Feb 4, 2024
 
 
 
@@ -8,7 +8,40 @@ Updated 1333 GMT+8 Feb 1, 2024
 
 
 
+## 6.3 术语及定义
 
+在看了一些树的例子之后，现在来正式地定义树及其构成。
+节点 Node：节点是树的基础部分。
+每个节点具有名称，或“键值”。节点还可以保存额外数据项，数据项根据不同的应用而变。
+
+边 Edge：边是组成树的另一个基础部分。
+每条边恰好连接两个节点，表示节点之间具有关联，边具有出入方向；
+每个节点（除根节点）恰有一条来自另一节点的入边；
+每个节点可以有零条/一条/多条连到其它节点的出边。如果加限制不能有 “多条边”，这里树结构就特殊化为线性表
+
+根节 Root: 树中唯一没有入边的节点。
+
+路径 Path：由边依次连接在一起的有序节点列表。比如，哺乳纲→食肉目→猫科→猫属→家猫就是一条路径。
+
+子节点 Children：入边均来自于同一个节点的若干节点，称为这个节点的子节点。
+
+父节点 Parent：一个节点是其所有出边连接节点的父节点。
+
+兄弟节点 Sibling：具有同一父节点的节点之间为兄弟节点。
+
+子树 Subtree：一个节点和其所有子孙节点，以及相关边的集合。
+
+叶节点 Leaf Node：没有子节点的节点称为叶节点。
+
+层级 Level：
+从根节点开始到达一个节点的路径，所包含的边的数量，称为这个节点的层级。
+如图 D 的层级为 2，根节点的层级为 0。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20240204125813782.png" alt="image-20240204125813782" style="zoom:50%;" />
+
+
+高度 Height：
+树树中所有节点的最大层级称为树的高度，如上图树的高度为 2。
 
 
 
@@ -234,9 +267,7 @@ def evaluate(parseTree):
 
 让我们通过几个例子来理解这3种遍历方式。首先看看前序遍历。我们将一本书的内容结构表示为一棵树，整本书是根节点，每一章是根节点的子节点，每一章中的每一节是这章的子节点，每小节又是这节的子节点，依此类推。图6-13展示了一本书的树状结构，它包含两章。注意，遍历算法对每个节点的子节点数没有要求，但本例只针对二叉树。
 
-<img src="/Users/hfyan/Library/Application Support/typora-user-images/image-20240131195129558.png" alt="image-20240131195129558" style="zoom:50%;" />
-
-
+![image](https://raw.githubusercontent.com/GMyhf/img/main/img/booktree.png)
 
 图6-13 一本书的树状结构
 
@@ -365,11 +396,883 @@ def printexp(tree):
 
 
 
-# 题目
+### 24591: 中序表达式转后序表达式
 
-## 20576:printExp
+http://cs101.openjudge.cn/practice/24591/
+
+中序表达式是运算符放在两个数中间的表达式。乘、除运算优先级高于加减。可以用"()"来提升优先级 --- 就是小学生写的四则算术运算表达式。中序表达式可用如下方式递归定义：
+
+1）一个数是一个中序表达式。该表达式的值就是数的值。
+
+2) 若a是中序表达式，则"(a)"也是中序表达式(引号不算)，值为a的值。
+3) 若a,b是中序表达式，c是运算符，则"acb"是中序表达式。"acb"的值是对a和b做c运算的结果，且a是左操作数，b是右操作数。
+
+输入一个中序表达式，要求转换成一个后序表达式输出。
+
+**输入**
+
+第一行是整数n(n<100)。接下来n行，每行一个中序表达式，数和运算符之间没有空格，长度不超过700。
+
+**输出**
+
+对每个中序表达式，输出转成后序表达式后的结果。后序表达式的数之间、数和运算符之间用一个空格分开。
+
+样例输入
+
+```
+3
+7+8.3 
+3+4.5*(7+2)
+(3)*((3+4)*(2+3.5)/(4+5)) 
+```
+
+样例输出
+
+```
+7 8.3 +
+3 4.5 7 2 + * +
+3 3 4 + 2 3.5 + * 4 5 + / *
+```
+
+来源：Guo wei
+
+
+
+Shunting Yard algorithm: 
+
+Shunting Yard 算法是一种用于将中缀表达式转换为后缀表达式的算法。它的名字来自于它的操作过程类似于把火车车厢从一个轨道转移到另一个轨道的操作。
+
+它由荷兰计算机科学家 Edsger Dijkstra 在1960年代提出，用于解析和计算数学表达式。
+Shunting Yard 算法的主要思想是使用两个栈(运算符栈和输出栈)来处理表达式的符号。算法按照运算符的优先级和结合性，将符号逐个处理并放置到正确的位置。最终，输出栈中的元素就是转换后的后缀表达式。
+
+以下是 Shunting Yard 算法的基本步骤:
+
+1.初始化运算符栈和输出栈为空。
+
+2.从左到右遍历中缀表达式的每个符号。
+
+- 如果是操作数（数字），则将其添加到输出栈。
+
+- 如果是左括号，则将其推入运算符栈。
+
+- 如果是运算符:
+  - 如果运算符的优先级大于运算符栈顶的运算符，或者运算符栈顶是左括号，则将当前运算符推入运算符栈。
+  - 否则，将运算符栈顶的运算符弹出并添加到输出栈中，直到满足上述条件（或者运算符栈为空）。
+  - 将当前运算符推入运算符栈。
+
+- 如果是右括号，则将运算符栈顶的运算符弹出并添加到输出栈中，直到遇到左括号将左括号弹出但不添加到输出栈中。
+
+
+
+3.如果还有剩余的运算符在运算符栈中，将它们依次弹出并添加到输出栈中4.输出栈中的元素就是转换后的后缀表达式。
+
+
+
+```python
+def infix_to_postfix(expression):
+    def get_precedence(op):
+        precedences = {'+': 1, '-': 1, '*': 2, '/': 2}
+        return precedences[op] if op in precedences else 0
+
+    def is_operator(c):
+        return c in "+-*/"
+
+    def is_number(c):
+        return c.isdigit() or c == '.'
+
+    output = []
+    stack = []
+    
+    number_buffer = []
+    
+    def flush_number_buffer():
+        if number_buffer:
+            output.append(''.join(number_buffer))
+            number_buffer.clear()
+
+    for c in expression:
+        if is_number(c):
+            number_buffer.append(c)
+        elif c == '(':
+            flush_number_buffer()
+            stack.append(c)
+        elif c == ')':
+            flush_number_buffer()
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop()  # popping '('
+        elif is_operator(c):
+            flush_number_buffer()
+            while stack and get_precedence(c) <= get_precedence(stack[-1]):
+                output.append(stack.pop())
+            stack.append(c)
+
+    flush_number_buffer()
+    while stack:
+        output.append(stack.pop())
+
+    return ' '.join(output)
+
+# Read number of expressions
+n = int(input())
+
+# Read each expression and convert it
+for _ in range(n):
+    infix_expr = input()
+    postfix_expr = infix_to_postfix(infix_expr)
+    print(postfix_expr)
+```
+
+
+
+### 20576: printExp
 
 http://cs101.openjudge.cn/dsapre/20576/
+
+输出中缀表达式(去除不必要的括号)
+
+**输入**
+
+一个字串
+
+**输出**
+
+一个字串
+
+样例输入
+
+```
+( not ( True or False ) ) and ( False or True and True )
+```
+
+样例输出
+
+```
+not ( True or False ) and ( False or True and True )
+```
+
+
+
+```python
+class BinaryTree:
+    def __init__(self, root, left=None, right=None):
+        self.root = root
+        self.leftChild = left
+        self.rightChild = right
+
+    def getrightchild(self):
+        return self.rightChild
+
+    def getleftchild(self):
+        return self.leftChild
+
+    def getroot(self):
+        return self.root
+
+def postorder(string):    #中缀改后缀
+    opStack = []
+    postList = []
+    inList = string.split()
+    prec = { '(': 0, 'or': 1,'and': 2,'not': 3}
+
+    for word in inList:
+        if word == '(':
+            opStack.append(word)
+        elif word == ')':
+            topWord = opStack.pop()
+            while topWord != '(':
+                postList.append(topWord)
+                topWord = opStack.pop()
+        elif word == 'True' or word == 'False':
+            postList.append(word)
+        else:
+            while opStack and prec[word] <= prec[opStack[-1]]:
+                postList.append(opStack.pop())
+            opStack.append(word)
+    while opStack:
+        postList.append(opStack.pop())
+    return postList
+
+def buildParseTree(infix):       #以后缀表达式为基础建树
+    postList = postorder(infix)
+    stack = []
+    for word in postList:
+        if word == 'not':  
+            newTree = BinaryTree(word)
+            newTree.leftChild = stack.pop()
+            stack.append(newTree)
+        elif word == 'True' or word == 'False':
+            stack.append(BinaryTree(word))
+        else:
+            right = stack.pop()
+            left = stack.pop()
+            newTree = BinaryTree(word)
+            newTree.leftChild = left
+            newTree.rightChild = right
+            stack.append(newTree)
+    currentTree = stack[-1]
+    return currentTree
+
+def printTree(parsetree: BinaryTree):
+    if parsetree.getroot() == 'or':
+        return printTree(parsetree.getleftchild()) + ['or'] + printTree(parsetree.getrightchild())
+    elif parsetree.getroot() == 'not':
+        return ['not'] + (['('] + printTree(parsetree.getleftchild()) + [')'] if parsetree.leftChild.getroot() not in ['True', 'False'] else printTree(parsetree.getleftchild()))
+    elif parsetree.getroot() == 'and':
+        leftpart = ['('] + printTree(parsetree.getleftchild()) + [')'] if parsetree.leftChild.getroot() == 'or' else printTree(parsetree.getleftchild())
+        rightpart = ['('] + printTree(parsetree.getrightchild()) + [')'] if parsetree.rightChild.getroot() == 'or' else printTree(parsetree.getrightchild())
+        return leftpart + ['and'] + rightpart
+    else:
+        return [str(parsetree.getroot())]
+
+def main():
+    infix = input()
+    Tree = buildParseTree(infix)
+    print(' '.join(printTree(Tree)))
+
+main()
+```
+
+
+
+
+
+## 6.8 平衡二叉搜索树
+
+在6.7节中，我们了解了二叉搜索树的构建过程。我们已经知道，当二叉搜索树不平衡时，get和put等操作的性能可能降到O(n)。本节将介绍一种特殊的二叉搜索树，它能自动维持平衡。这种树叫作 AVL树，以其发明者G. M. Adelson-Velskii和E. M. Landis的姓氏命名。
+
+AVL树实现映射抽象数据类型的方式与普通的二叉搜索树一样，唯一的差别就是性能。实现AVL树时，要记录每个节点的平衡因子。我们通过查看每个节点左右子树的高度来实现这一点。更正式地说，我们将平衡因子定义为左右子树的高度之差。
+
+$balance Factor = height (left SubTree) - height(right SubTree)$
+
+根据上述定义，如果平衡因子大于零，我们称之为左倾；如果平衡因子小于零，就是右倾；如果平衡因子等于零，那么树就是完全平衡的。为了实现AVL树并利用平衡树的优势，我们将平衡因子为-1、0和1的树都定义为平衡树。一旦某个节点的平衡因子超出这个范围，我们就需要通过一个过程让树恢复平衡。图6-26展示了一棵右倾树及其中每个节点的平衡因子。
+
+![../_images/unbalanced.png](https://raw.githubusercontent.com/GMyhf/img/main/img/unbalanced.png)
+
+图6-26 带平衡因子的右倾树
+
+### 6.8.1 AVL树的性能
+
+我们先看看限定平衡因子带来的结果。我们认为，保证树的平衡因子为-1、0或1，可以使关键操作获得更好的大 O 性能。首先考虑平衡因子如何改善最坏情况。有左倾与右倾这两种可能性。如果考虑高度为0、1、2和3的树，图6-27展示了应用新规则后最不平衡的左倾树。
+
+![../_images/worstAVL.png](https://raw.githubusercontent.com/GMyhf/img/main/img/worstAVL.png)
+
+图6-27 左倾AVL树的最坏情况
+
+查看树中的节点数之后可知，高度为0时有1个节点，高度为1时有2个节点（1 + 1 = 2），高度为2时有4个节点（1 + 1 + 2 = 4），高度为3时有7个节点（1 + 2 + 4 = 7）。也就是说，当高度为h时，节点数$N_h$是：
+
+$N_h = 1 + N_{h-1} + N_{h-2}$​
+
+
+
+> ### P1350: AVL树至少有几个结点
+>
+> http://cs101.openjudge.cn/practice/27625/
+>
+> 输入n(0<n<50),输出一个n层的AVL树至少有多少个结点。
+>
+> **输入**
+>
+> n
+>
+> **输出**
+>
+> 答案
+>
+> 样例输入
+>
+> ```
+> 4
+> ```
+>
+> 样例输出
+>
+> ```
+> 7
+> ```
+>
+> 来源：Guo Wei
+>
+> 
+>
+> ```python
+> from functools import lru_cache
+> 
+> @lru_cache(maxsize=None)
+> def avl_min_nodes(n):
+>     if n == 0:
+>         return 0
+>     elif n == 1:
+>         return 1
+>     else:
+>         return avl_min_nodes(n-1) + avl_min_nodes(n-2) + 1
+> 
+> n = int(input())
+> min_nodes = avl_min_nodes(n)
+> print(min_nodes)
+> ```
+>
+> 
+>
+> ```python
+> def avl_min_nodes(n, memo):
+>     if n == 0:
+>         return 0
+>     elif n == 1:
+>         return 1
+>     elif memo[n] != 0:  # 如果已经计算过，直接返回保存的结果
+>         return memo[n]
+>     else:
+>         memo[n] = avl_min_nodes(n-1, memo) + avl_min_nodes(n-2, memo) + 1
+>         return memo[n]
+> 
+> n = int(input())
+> memo = [0] * (n+1)  # 创建一个数组来保存已计算的结果
+> min_nodes = avl_min_nodes(n, memo)
+> print(min_nodes)
+> ```
+
+
+
+> 
+>
+> ## AVL树最多有几层
+>
+> http://cs101.openjudge.cn/practice/27626/
+>
+> n个结点的AVL树最多有多少层？
+>
+> 输入
+>
+> 整数n 。 0< n < 50,000,000
+>
+> 输出
+>
+> AVL树最多有多少层
+>
+> 样例输入
+>
+> ```
+> 20
+> ```
+>
+> 样例输出
+>
+> ```
+> 6
+> ```
+>
+> 来源：Guo Wei
+>
+> 
+>
+> AVL树是一种自平衡的二叉搜索树，其中每个节点的左右子树的高度最多相差1。为了确定具有`n`个节点的AVL树的最大高度，我们可以使用一个递归关系，该关系描述了给定高度的AVL树所能包含的最少节点数。
+>
+> 设`N(h)`表示高度为`h`的AVL树的最少节点数，那么有如下递归关系：
+>
+> ```
+> N(h) = N(h-1) + N(h-2) + 1
+> ```
+>
+> 这里，`N(h-1)`是较高子树的最少节点数，`N(h-2)`是较矮子树的最少节点数，`+1`是根节点自身。
+>
+> 基本情况是：
+>
+> ```
+> N(1) = 1  （单个节点的树）
+> N(0) = 0  （空树）
+> ```
+>
+> 可以使用这个递归关系来计算任何高度的AVL树的最少节点数。然后，我们可以通过递增高度，直到计算出的节点数超过输入的`n`，来找出具有`n`个节点的AVL树的最大高度。
+>
+> 用于计算具有`n`个节点的AVL树的最大高度：
+>
+> ```python
+> from functools import lru_cache
+> 
+> @lru_cache(maxsize=None)
+> def min_nodes(h):
+>     if h == 0: return 0
+>     if h == 1: return 1
+>     return min_nodes(h-1) + min_nodes(h-2) + 1
+> 
+> def max_height(n):
+>     h = 0
+>     while min_nodes(h) <= n:
+>         h += 1
+>     return h - 1
+> 
+> n = int(input())
+> print(max_height(n))
+> ```
+>
+> 
+
+
+
+你或许觉得这个公式很眼熟，因为它与斐波那契数列很相似。可以根据它推导出由AVL树的节点数计算高度的公式。在斐波那契数列中，第i个数是：
+
+
+
+$\begin{split}F_0 = 0 \\
+F_1 = 1 \\
+F_i = F_{i-1} + F_{i-2}  \text{ for all } i \ge 2\end{split}$​
+
+
+
+一个重要的事实是，随着斐波那契数列的增长，$F_i/F_{i-1}$逐渐逼近黄金分割比例$\Phi$，$ \Phi = \frac{1 + \sqrt{5}}{2}$。如果你好奇这个等式的推导过程，可以找一本数学书看看。我们在此直接使用这个等式，将$F_i$近似为$F_i =
+\Phi^i/\sqrt{5}$。
+
+> ```python
+> def fibonacci_recursive(n):
+>     if n <= 1:
+>         return n
+>     else:
+>         return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+> 
+> 
+> def fibonacci_iterative(n):
+>     if n <= 1:
+>         return n
+>     else:
+>         a, b = 0, 1
+>         for _ in range(2, n+1):
+>             a, b = b, a + b
+>         return b
+> 
+> 
+> phi = (1+5**0.5)/2
+> 
+> dp = [0]
+> print("The ith Fibonacci number, \t With golden ratio approximation")
+> for i in range(10):
+>     result_recursive = fibonacci_recursive(i)
+>     print(f"F{i}: {result_recursive}, ", end='')
+>     print(f'{phi**i/(5**0.5)}')
+> 
+> """
+> The ith Fibonacci number, 	 With golden ratio approximation
+> F0: 0, 0.4472135954999579
+> F1: 1, 0.7236067977499789
+> F2: 1, 1.1708203932499368
+> F3: 2, 1.8944271909999157
+> F4: 3, 3.065247584249853
+> F5: 5, 4.959674775249769
+> F6: 8, 8.024922359499623
+> F7: 13, 12.984597134749393
+> F8: 21, 21.009519494249016
+> F9: 34, 33.99411662899841
+> """
+> ```
+>
+> 
+
+$\begin{split} N_0 = 1 \\
+N_1 = 2 \quad F_3 = 3 \\
+N_2 = 4 \quad F_4 = 5 \\
+N_3 = 7 \quad F_5 = 8 
+\end{split}$
+
+
+
+由此，可以将$N_h$的等式重写为：
+
+$N_h = F_{h+2} - 1, h \ge 1$
+
+用黄金分割近似替换，得到：
+
+$N_h = \frac{\Phi^{h+2}}{\sqrt{5}} - 1$
+
+移项，两边以2为底取对数，求h，得到：
+
+$\begin{split}\log{(N_h+1)} = (h+2)\log{\Phi} - \frac{1}{2} \log{5} \\
+h = \frac{\log{(N_h+1)} - 2 \log{\Phi} + \frac{1}{2} \log{5}}{\log{\Phi}} \\
+h = 1.44 \log{N_h}\end{split}$​​​​
+
+在任何时间，AVL树的高度都等于节点数取对数再乘以一个常数（1.44）。对于搜索AVL树来说，这是一件好事，因为时间复杂度被限制为$O(\log{N})$。
+
+### 6.8.2 AVL树的实现
+
+我们已经证明，保持AVL树的平衡会带来很大的性能优势，现在看看如何往树中插入一个键。所有新键都是以叶子节点插入的，因为新叶子节点的平衡因子是零，所以新插节点没有什么限制条件。但插入新节点后，必须更新父节点的平衡因子。新的叶子节点对其父节点平衡因子的影响取决于它是左子节点还是右子节点。如果是右子节点，父节点的平衡因子减一。如果是左子节点，则父节点的平衡因子加一。这个关系可以递归地应用到每个祖先，直到根节点。既然更新平衡因子是递归过程，就来检查以下两种基本情况：
+
+❏ 递归调用抵达根节点；
+❏ 父节点的平衡因子调整为零；可以确信，如果子树的平衡因子为零，那么祖先节点的平衡因子将不会有变化。
+
+我们将AVL树实现为BinarySearchTree的子类。首先重载\_put方法，然后新写updateBalance辅助方法，如代码清单6-37所示。可以看到，除了在第10行和第16行调用updateBalance以外，\_put方法的定义和代码清单6-25中的几乎一模一样。
+
+代码清单6-37 更新平衡因子
+
+```python
+class AVLTree(BinarySearchTree):
+    def __init__(self):
+        super().__init__()
+    def _put(self, key, val, currentNode):
+        if key < currentNode.key:
+            if currentNode.hasLeftChild():
+                self._put(key, val, currentNode.leftChild)
+            else:
+                currentNode.leftChild = TreeNode(key, val, parent = currentNode)
+                self.updateBalance(currentNode.leftChild)
+        else:
+            if currentNode.hasRightChild():
+                self._put(key, val, currentNode.rightChild)
+            else:
+                currentNode.rightChild = TreeNode(key, val, parent = currentNode)
+                self.updateBalance(currentNode.rightChild)
+    def updateBalance(self, node, mode = 'put'):
+        if mode == 'put':
+            if node.balanceFactor > 1 or node.balanceFactor < -1:
+                self.rebalance(node)
+                return
+            # if we want to put node
+            if node.parent != None:
+                if node.isLeftChild():
+                    node.parent.balanceFactor += 1
+                else:
+                    node.parent.balanceFactor -= 1
+                if node.parent.balanceFactor != 0:
+                    self.updateBalance(node.parent)
+```
+
+
+
+码清单6-25 二叉树插入新节点
+
+```python
+class BinarySearchTree:
+    ...
+    def put(self, key, val):
+        if self.root:
+            self._put(key, val, self.root)
+        else:
+            self.root = TreeNode(key, val)
+        self.size += 1
+    def _put(self, key, val, currentNode):
+        if key < currentNode.key:
+            if currentNode.hasLeftChild():
+                self._put(key, val, currentNode.leftChild)
+            else:
+                currentNode.leftChild = TreeNode(key, val, parent = currentNode)
+        elif key > currentNode.key:
+            if currentNode.hasRightChild():
+                self._put(key, val, currentNode.rightChild)
+            else:
+                currentNode.rightChild = TreeNode(key, val, parent = currentNode)
+        else:
+            currentNode.replaceNodeData(key, val, currentNode.leftChild, currentNode.rightChild)
+```
+
+新方法updateBalance做了大部分工作，它实现了前面描述的递归过程。updateBalance方法先检查当前节点是否需要再平衡（第18行）。如果符合判断条件，就进行再平衡，不需要更新父节点；如果当前节点不需要再平衡，就调整父节点的平衡因子。如果父节点的平衡因子非零，那么沿着树往根节点的方向递归调用updateBalance方法。
+
+如果需要进行再平衡，该怎么做呢？高效的再平衡是让AVL树发挥作用同时不损性能的关键。为了让AVL树恢复平衡，需要在树上进行一次或多次旋转。
+
+要理解什么是旋转，来看一个简单的例子。考虑图6-28中左边的树。这棵树失衡了，平衡因子是-2。要让它恢复平衡，我们围绕以节点A为根节点的子树做一次左旋。
+
+![../_images/simpleunbalanced.png](https://raw.githubusercontent.com/GMyhf/img/main/img/simpleunbalanced.png)
+
+图6-28 通过左旋让失衡的树恢复平衡
+
+本质上，左旋包括以下步骤。
+
+❏ 将右子节点（节点B）提升为子树的根节点。
+❏ 将旧根节点（节点A）作为新根节点的左子节点。
+❏ 如果新根节点（节点B）已经有一个左子节点，将其作为新左子节点（节点A）的右子节点。注意，因为节点B之前是节点A的右子节点，所以此时节点A必然没有右子节点。因此，可以为它添加新的右子节点，而无须过多考虑。
+
+左旋过程在概念上很简单，但代码细节有点复杂，因为需要将节点挪来挪去，以保证二叉搜索树的性质。另外，还要保证正确地更新父指针。
+我们来看一棵稍微复杂一点的树，并理解右旋过程。图6-29左边的是一棵左倾的树，根节点的平衡因子是2。右旋步骤如下。
+
+![../_images/rightrotate1.png](https://raw.githubusercontent.com/GMyhf/img/main/img/rightrotate1.png)
+
+图6-29 通过右旋让失衡的树恢复平衡
+
+❏ 将左子节点（节点C）提升为子树的根节点。
+❏ 将旧根节点（节点E）作为新根节点的右子节点。
+❏ 如果新根节点（节点C）已经有一个右子节点（节点D），将其作为新右子节点（节点E）的左子节点。注意，因为节点C之前是节点E的左子节点，所以此时节点E必然没有左子节点。因此，可以为它添加新的左子节点，而无须过多考虑。
+了解旋转的基本原理之后，来看看代码。代码清单6-38给出了左旋的代码。第2行创建一个临时变量，用于记录子树的新根节点。如前所述，新根节点是旧根节点的右子节点。既然临时变量存储了指向右子节点的引用，便可以将旧根节点的右子节点替换为新根节点的左子节点。
+
+下一步是调整这两个节点的父指针。如果新根节点有左子节点，那么这个左子节点的新父节点就是旧根节点。将新根节点的父指针指向旧根节点的父节点。如果旧根节点是整棵树的根节点，那么必须将树的根节点设为新根节点；如果不是，则当旧根节点是左子节点时，将左子节点的父指针指向新根节点；当旧根节点是右子节点时，将右子节点的父指针指向新根节点（第10～13行）。最后，将旧根节点的父节点设为新根节点。这一系列描述很复杂，所以建议你根据图6-28的例子运行一遍函数。rotateRight与rotateLeft对称，所以留作练习。
+
+
+
+根据图6-28的例子运行的例子程序
+
+```python
+# 使用 ch6_avl_tree.py 程序的例子
+if __name__=='__main__' :
+    # 创建一个AVL树对象
+    avl_tree = AVLTree()
+
+    # 向树中插入键值对
+    avl_tree.put(ord('A'), 'Apple')
+    avl_tree.put(ord('B'), 'Banana')
+    avl_tree.put(ord('C'), 'Cat')
+
+
+    # 获取键对应的值
+    print(avl_tree.get(ord('B')))  # 输出: Banana
+
+    # 使用索引运算符也可以获取键对应的值
+    print(avl_tree[ord('B')])  # 输出: Orange
+
+    # 检查键是否存在于树中
+    print(ord('A') in avl_tree)  # 输出: True
+    print(ord('D') in avl_tree)  # 输出: False
+
+    # 删除键值对
+    avl_tree.delete(ord('A'))   # 输出：balance subtract 1
+
+    # 遍历树中的键
+    for key in avl_tree:
+        print(chr(key))  # 输出: B, C
+```
+
+
+
+代码清单6-38 左旋
+
+```python
+    def rotateLeft(self, rotRoot):
+        newRoot = rotRoot.rightChild
+        rotRoot.rightChild = newRoot.leftChild
+        if newRoot.leftChild != None:
+            newRoot.leftChild.parent = rotRoot
+        newRoot.parent = rotRoot.parent
+        if rotRoot.isRoot():
+            self.root = newRoot
+        else:
+            if rotRoot.isLeftChild():
+                rotRoot.parent.leftChild = newRoot
+            else:
+                rotRoot.parent.rightChild = newRoot
+        newRoot.leftChild = rotRoot
+        rotRoot.parent = newRoot
+        rotRoot.balanceFactor = rotRoot.balanceFactor + 1\
+                                - min(newRoot.balanceFactor, 0)
+        newRoot.balanceFactor = newRoot.balanceFactor + 1\
+                                + max(rotRoot.balanceFactor, 0)
+```
+
+
+
+第16～19行需要特别解释一下。这几行更新了旧根节点和新根节点的平衡因子。由于其他移动操作都是针对整棵子树，因此旋转后其他节点的平衡因子都不受影响。但在没有完整地重新计算新子树高度的情况下，怎么能更新平衡因子呢？下面的推导过程能证明，这些代码是对的。
+图6-30展示了左旋结果。B和D是关键节点，A、C、E是它们的子树。针对根节点为x的子树，将其高度记为hx。由定义可知：
+
+![../_images/bfderive.png](https://raw.githubusercontent.com/GMyhf/img/main/img/bfderive.png)
+
+图6-30 左旋
+
+
+
+$\begin{split}newBal(B) = h_A - h_C \\
+oldBal(B) = h_A - h_D\end{split}$​
+
+D的旧高度也可以定义为$1 + max(h_C,h_E)$，即D的高度等于两棵子树的高度的大值加一。因为$h_c$与$h_E$不变，所以代入第2个等式，得到
+
+$oldBal(B) = h_A - (1 + max(h_C,h_E))$
+
+然后，将两个等式相减，并运用代数知识简化$newBal(B)$的等式。
+
+$$
+\begin{split}newBal(B) - oldBal(B) = h_A - h_C - (h_A - (1 + max(h_C,h_E))) \\
+newBal(B) - oldBal(B) = h_A - h_C - h_A + (1 + max(h_C,h_E)) \\
+newBal(B) - oldBal(B) = h_A  - h_A + 1 + max(h_C,h_E) - h_C  \\
+newBal(B) - oldBal(B) =  1 + max(h_C,h_E) - h_C\end{split}
+$$
+下面将$oldBal(B)$移到等式右边，并利用性质$max(a,b)-c = max(a-c, b-c)$得到：
+$\begin{split}newBal(B) = oldBal(B) + 1 + max(h_C - h_C ,h_E - h_C) \\\end{split}$
+由于$h_E - h_C$就等于$-oldBal(D)$，因此可以利用另一个性质$max(-a, -b)=-min(a, b)$​。最后几步推导如下：
+$$
+\begin{split}newBal(B) = oldBal(B) + 1 + max(0 , -oldBal(D)) \\
+newBal(B) = oldBal(B) + 1 - min(0 , oldBal(D)) \\\end{split}
+$$
+
+至此，我们已经做好所有准备了。如果还记得B是rotRoot而D是newRoot，那么就能看到以上等式对应于代码清单6-38中的第16行：
+
+```
+rotRoot.balanceFactor = rotRoot.balanceFactor + 1 - min(0,newRoot.balanceFactor)
+```
+
+通过类似的推导，可以得到节点D的等式，以及右旋后的平衡因子。这个推导过程留作练习。
+现在你可能认为大功告成了。我们已经知道如何左旋和右旋，也知道应该在什么时候旋转，但请看看图6-31。节点A的平衡因子为-2，应该做一次左旋。但是，围绕节点A左旋后会怎样呢？
+
+![../_images/hardunbalanced.png](https://raw.githubusercontent.com/GMyhf/img/main/img/hardunbalanced.png)
+图6-31 更难平衡的树
+
+左旋后得到另一棵失衡的树，如图6-32所示。如果在此基础上做一次右旋，就回到了图6-31的状态。
+
+![../_images/badrotate.png](https://raw.githubusercontent.com/GMyhf/img/main/img/badrotate.png)
+
+图6-32 左旋后，树朝另一个方向失衡
+
+要解决这种问题，必须遵循以下规则。
+❏ 如果子树需要左旋，首先检查右子树的平衡因子。如果右子树左倾，就对右子树做一次右旋，再围绕原节点做一次左旋。
+❏ 如果子树需要右旋，首先检查左子树的平衡因子。如果左子树右倾，就对左子树做一次左旋，再围绕原节点做一次右旋。
+图6-33展示了如何通过以上规则解决图6-31和图6-32中的困境。围绕节点C做一次右旋，再围绕节点A做一次左旋，就能让子树恢复平衡。
+
+
+
+![../_images/rotatelr.png](https://raw.githubusercontent.com/GMyhf/img/main/img/rotatelr.png)
+
+
+图6-33 先右旋，再左旋
+
+rebalance方法实现了上述规则，如代码清单6-39所示。第2行的if语句实现了规则1，第8行的elif语句实现了规则2。
+在6.11节中，你将尝试通过先左旋再右旋的方式恢复一棵树的平衡，还会试着为一些更复杂的树恢复平衡。
+
+代码清单6-39 实现再平衡
+
+```python
+def rebalance(self, node):
+    if node.balanceFactor < 0:
+        if node.rightChild.balanceFactor > 0:
+            self.rotateRight(node.rightChild)
+            self.rotateLeft(node)
+        else:
+            self.rotateLeft(node)
+    elif node.balanceFactor > 0:
+        if node.leftChild.balanceFactor < 0:
+            self.rotateLeft(node.leftChild)
+            self.rotateRight(node)
+        else:
+            self.rotateRight(node)
+```
+
+通过维持树的平衡，可以保证get方法的时间复杂度为$O(log_2(n))$。但这会给put操作的性能带来多大影响呢？我们来看看put操作。因为新节点作为叶子节点插入，所以更新所有父节点的平衡因子最多需要$log_2(n)$次操作——每一层一次。如果树失衡了，恢复平衡最多需要旋转两次。每次旋转的时间复杂度是O(1)，所以put操作的时间复杂度仍然是$O(log_2(n))$。
+至此，我们已经实现了一棵可用的AVL树，不过还没有实现删除节点的功能。我们将删除节点及后续的更新和再平衡的实现留作练习。
+
+### 6.8.3 映射实现总结
+
+本章和第5章介绍了可以用来实现映射这一抽象数据类型的多种数据结构，包括有序列表、散列表、二叉搜索树以及AVL树。表6-1总结了每个数据结构的性能。
+
+表6-1 映射的不同实现间的性能对比
+
+| operation | Sorted List    | Hash Table | Binary Search Tree | AVL Tree       |
+| :-------- | :------------- | :--------- | :----------------- | :------------- |
+| put       | $O(n)$         | $O(1)$     | $O(n)$             | $O(\log_2{n})$ |
+| get       | $O(\log_2{n})$ | $O(1)$     | $O(n)$             | $O(\log_2{n})$ |
+| in        | $O(\log_2{n})$ | $O(1)$     | $O(n)$             | $O(\log_2{n})$ |
+| del       | $O(n)$         | $O(1)$     | $O(n)$             | $O(\log_2{n})$ |
+
+
+
+## 6.9 小结
+
+本章介绍了树这一数据结构。有了树，我们可以写出很多有趣的算法。我们用树做了以下这些事。
+❏ 用二叉树解析并计算表达式。
+❏ 用二叉树实现映射。
+❏ 用平衡二叉树（AVL树）实现映射。
+❏ 用二叉树实现最小堆。
+❏ 用最小堆实现优先级队列。
+
+
+
+# Ch6 树这章程序对应类图
+
+## 生成类图
+
+https://github.com/Yuqiu-Yang/problem_solving_with_algorithms_and_data_structures_using_python
+
+下载后，到ch6目录，生成类图。
+
+
+
+> https://stackoverflow.com/questions/260165/whats-the-best-way-to-generate-a-uml-diagram-from-python-source-code
+>
+> You may have heard of [Pylint](http://www.pylint.org/) that helps statically checking Python code. Few people know that it comes with a tool named [Pyreverse](https://pylint.pycqa.org/en/latest/pyreverse.html) that draws UML diagrams from the Python code it reads. Pyreverse uses Graphviz as a backend.
+>
+> It is used like this:
+>
+> ```none
+> pyreverse -o png -p yourpackage .
+> ```
+>
+> where the `.` can also be a single file.
+
+
+
+Generating UML Diagrams
+
+https://www.bhavaniravi.com/python/generate-uml-diagrams-from-python-code
+
+brew install pylint
+
+brew install Graphviz 
+
+
+
+在 ch6目录下运行
+
+% pyreverse -o png *.py                     
+
+> Format png is not supported natively. Pyreverse will try to generate it using Graphviz...
+>
+> Analysed 12 modules with a total of 6 imports
+
+产生俩文件
+
+![image-20240204154709659](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20240204154709659.png)
+
+图 packages.png
+
+
+
+
+
+![image-20240204154437448](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20240204154437448.png)
+
+图 classes.png
+
+
+
+## 在UML类图中，常见的连线和符号
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/891cfde691e54661923699d89c198373.png" alt="在这里插入图片描述" style="zoom: 67%;" />
+
+
+
+在UML（统一建模语言）类图中，常见的连线和符号包括以下这些：
+
+1. 关联(Association)
+
+   - 普通关联：用一条直线表示两个类之间的关系，通常在关联的两端可以有箭头，箭头指向被关联的类，表示导航方向。
+
+   - 双向关联：一条简单的线，表示两个类相互知道对方。
+
+   - 聚合关系(Aggregation)：用一个空心的菱形加一条线来表示，空心菱形位于整体的一端。表示一个类是另一个类的部分，但它们之间没有强耦合关系，部分可以存在独立于整体的情况。菱形指向整体类。例如：
+
+     <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/381dc758d91249208d20709e4fd67a8e.png" alt="在这里插入图片描述" style="zoom: 67%;" />
+
+   - 组合关系(Composition)：用一个实心的菱形加一条线来表示，实心菱形位于整体的一端。表示一个类是另一个类的整体部分，它们具有生命周期上的整体关系。菱形指向整体类。例如：
+
+     <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/338de2b8eaf2425cbf060ade0f38a0f6.png" alt="在这里插入图片描述" style="zoom:67%;" />
+
+2. 泛化(Generalization)
+
+   - 用一条带有空心箭头的直线表示，箭头指向父类，表示子类继承自父类。表示继承关系，一个类是另一个类的子类，继承了父类的属性和方法。例如：
+
+     <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/7b6c62e666e44a56987f1e222c498b6f.png" alt="在这里插入图片描述" style="zoom:67%;" />
+
+3. 实现(Implementation)
+
+   - 用一条带有空心箭头的虚线表示，箭头指向接口，表示类实现了接口。
+
+4. 依赖(Dependency)
+
+   - 用一条带有箭头的虚线表示，箭头指向被依赖的类。
+
+在类图中，类通常用带有三个部分的矩形来表示：
+
+- 顶部部分：显示类名，如果是抽象类，则用斜体表示。
+- 中间部分：显示类的属性或字段。
+- 底部部分：显示类的方法或操作。
+
+还有一些其他的符号和约定，比如表示多重性的数字（例如，1…* 表示一个到多个），以及用来表示接口、抽象类等的特殊图标。在类图中，你也可以使用注释框（用一条虚线连接的矩形框）来添加对关系或类的额外说明。
+
+
+
+
 
 
 
@@ -384,3 +1287,7 @@ https://runestone.academy/ns/books/published/pythonds/index.html
 https://github.com/Yuqiu-Yang/problem_solving_with_algorithms_and_data_structures_using_python
 
 https://github.com/wesleyjtann/Problem-Solving-with-Algorithms-and-Data-Structures-Using-Python
+
+【小沐学Python】UML类图的箭头连线关系总结（python+graphviz）
+
+https://blog.csdn.net/hhy321/article/details/132651062
