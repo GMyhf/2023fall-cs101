@@ -1166,9 +1166,9 @@ def rebalance(self, node):
 
 
 
-# Ch6 树这章程序对应类图
+## Ch6 树这章程序对应类图
 
-## 生成类图
+### 生成类图
 
 https://github.com/Yuqiu-Yang/problem_solving_with_algorithms_and_data_structures_using_python
 
@@ -1224,7 +1224,7 @@ brew install Graphviz
 
 
 
-## 在UML类图中，常见的连线和符号
+### 在UML类图中，常见的连线和符号
 
 
 
@@ -1272,11 +1272,481 @@ brew install Graphviz
 
 
 
+## Introduction to Disjoint Set (Union-Find Algorithm)
+
+https://www.geeksforgeeks.org/introduction-to-disjoint-set-data-structure-or-union-find-algorithm/
+
+### What is a Disjoint set data structure?
+
+> Two sets are called **disjoint sets** if they don’t have any element in common, the intersection of sets is a null set.
+
+A data structure that stores non overlapping or disjoint subset of elements is called disjoint set data structure. The disjoint set data structure supports following operations:
+
+- Adding new sets to the disjoint set.
+- Merging disjoint sets to a single disjoint set using **Union** operation.
+- Finding representative of a disjoint set using **Find** operation.
+- Check if two sets are disjoint or not. 
+
+Consider a situation with a number of persons and the following tasks to be performed on them:
+
+- Add a **new friendship relation**, i.e. a person x becomes the friend of another person y i.e adding new element to a set.
+- Find whether individual **x is a friend of individual y** (direct or indirect friend)
+
+**Examples:** 
+
+> We are given 10 individuals say, a, b, c, d, e, f, g, h, i, j
+>
+> Following are relationships to be added:
+> a <-> b  
+> b <-> d
+> c <-> f
+> c <-> i
+> j <-> e
+> g <-> j
+>
+> Given queries like whether a is a friend of d or not. We basically need to create following 4 groups and maintain a quickly accessible connection among group items:
+> G1 = {a, b, d}
+> G2 = {c, f, i}
+> G3 = {e, g, j}
+> G4 = {h}
+
+
+
+**Find whether x and y belong to the same group or not, i.e. to find if x and y are direct/indirect friends.**
+
+Partitioning the individuals into different sets according to the groups in which they fall. This method is known as a **Disjoint set Union** which maintains a collection of **Disjoint sets** and each set is represented by one of its members.
+
+**To answer the above question two key points to be considered are:**
+
+- **How to Resolve sets?** Initially, all elements belong to different sets. After working on the given relations, we select a member as a **representative**. There can be many ways to select a representative, a simple one is to select with the biggest index.
+- **Check if 2 persons are in the same group?** If representatives of two individuals are the same, then they’ll become friends.
+
+
+
+**Data Structures used are:** 
+
+**Array:** An array of integers is called **Parent[]**. If we are dealing with **N** items, i’th element of the array represents the i’th item. More precisely, the i’th element of the Parent[] array is the parent of the i’th item. These relationships create one or more virtual trees.
+
+**Tree:** It is a **Disjoint set**. If two elements are in the same tree, then they are in the same **Disjoint set**. The root node (or the topmost node) of each tree is called the **representative** of the set. There is always a single **unique representative** of each set. A simple rule to identify a representative is if ‘i’ is the representative of a set, then **Parent[i] = i**. If i is not the representative of his set, then it can be found by traveling up the tree until we find the representative.
+
+
+
+### **Operations on Disjoint Set Data Structures:**
+
+1. Find
+2. Union
+
+#### **1. Find:**
+
+Can be implemented by recursively traversing the parent array until we hit a node that is the parent of itself.
+
+
+
+```python
+# Finds the representative of the set
+# that i is an element of
+
+def find(i):
+
+	# If i is the parent of itself
+	if (parent[i] == i):
+
+		# Then i is the representative of
+		# this set
+		return i
+	else:
+
+		# Else if i is not the parent of
+		# itself, then i is not the
+		# representative of his set. So we
+		# recursively call Find on its parent
+		return find(parent[i])
+
+# The code is contributed by Nidhi goel
+
+```
+
+
+
+**Time complexity**: This approach is inefficient and can take O(n) time in worst case.
+
+
+
+#### **2. Union:** 
+
+It takes **two elements** as input and finds the representatives of their sets using the **Find** operation, and finally puts either one of the trees (representing the set) under the root node of the other tree.
+
+```python
+# Unites the set that includes i
+# and the set that includes j
+
+def union(parent, rank, i, j):
+	# Find the representatives
+	# (or the root nodes) for the set
+	# that includes i
+	irep = find(parent, i)
+	
+	# And do the same for the set
+	# that includes j
+	jrep = find(parent, j)
+	
+	# Make the parent of i’s representative
+	# be j’s representative effectively
+	# moving all of i’s set into j’s set)
+	
+	parent[irep] = jrep
+
+```
+
+
+
+**Optimizations (Union by Rank/Size and Path Compression):**
+
+The efficiency depends heavily on which tree get attached to the other***\*.\**** There are 2 ways in which it can be done. First is Union by Rank, which considers height of the tree as the factor and Second is Union by Size, which considers size of the tree as the factor while attaching one tree to the other . This method along with Path Compression gives complexity of nearly constant time.
+
+
+
+**[Path Compression](https://www.geeksforgeeks.org/union-find-algorithm-set-2-union-by-rank/) (Modifications to Find()):**
+
+It speeds up the data structure by **compressing the height** of the trees. It can be achieved by inserting a small caching mechanism into the **Find** operation. Take a look at the code for more details:
+
+```python
+# Finds the representative of the set that i
+# is an element of.
+
+
+def find(i):
+
+	# If i is the parent of itself
+	if Parent[i] == i:
+
+		# Then i is the representative 
+		return i
+	else:
+
+		# Recursively find the representative.
+		result = find(Parent[i])
+
+		# We cache the result by moving i’s node 
+		# directly under the representative of this
+		# set
+		Parent[i] = result
+	
+		# And then we return the result
+		return result
+
+# The code is contributed by Arushi Jindal. 
+
+```
+
+
+
+**Time Complexity**: O(log n) on average per call.
+
+
+
+### Union by Rank
+
+First of all, we need a new array of integers called **rank[]**. The size of this array is the same as the parent array **Parent[]**. If i is a representative of a set, **rank[i]** is the height of the tree representing the set. 
+Now recall that in the Union operation, it doesn’t matter which of the two trees is moved under the other. Now what we want to do is minimize the height of the resulting tree. If we are uniting two trees (or sets), let’s call them left and right, then it all depends on the **rank of left** and the **rank of right**. 
+
+- If the rank of **left** is less than the rank of **right**, then it’s best to move **left under right**, because that won’t change the rank of right (while moving right under left would increase the height). In the same way, if the rank of right is less than the rank of left, then we should move right under left.
+- If the ranks are equal, it doesn’t matter which tree goes under the other, but the rank of the result will always be one greater than the rank of the trees.
+
+
+
+```c++
+// Unites the set that includes i and the set
+// that includes j by rank
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void unionbyrank(int i, int j) {
+
+	// Find the representatives (or the root nodes)
+	// for the set that includes i
+	int irep = this.find(i);
+
+	// And do the same for the set that includes j
+	int jrep = this.Find(j);
+
+	// Elements are in same set, no need to
+	// unite anything.
+	if (irep == jrep)
+		return;
+	
+	// Get the rank of i’s tree
+	irank = Rank[irep],
+
+	// Get the rank of j’s tree
+	jrank = Rank[jrep];
+
+	// If i’s rank is less than j’s rank
+	if (irank < jrank) {
+
+		// Then move i under j
+		this.parent[irep] = jrep;
+	}
+
+	// Else if j’s rank is less than i’s rank
+	else if (jrank < irank) {
+
+		// Then move j under i
+		this.Parent[jrep] = irep;
+	}
+
+	// Else if their ranks are the same
+	else {
+
+		// Then move i under j (doesn’t matter
+		// which one goes where)
+		this.Parent[irep] = jrep;
+
+		// And increment the result tree’s
+		// rank by 1
+		Rank[jrep]++;
+	}
+}
+
+```
+
+
+
+### Union by Size
+
+Again, we need a new array of integers called **size[]**. The size of this array is the same as the parent array **Parent[]**. If i is a representative of a set, **size[i]** is the number of the elements in the tree representing the set. 
+Now we are uniting two trees (or sets), let’s call them left and right, then in this case it all depends on the **size of left** and the **size of right** tree (or set).
+
+- If the size of **left** is less than the size of **right**, then it’s best to move **left under right** and increase size of right by size of left. In the same way, if the size of right is less than the size of left, then we should move right under left. and increase size of left by size of right.
+- If the sizes are equal, it doesn’t matter which tree goes under the other.
+
+```c++
+// Unites the set that includes i and the set
+// that includes j by size
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void unionbysize(int i, int j) {
+
+	// Find the representatives (or the root nodes)
+	// for the set that includes i
+	int irep = this.find(i);
+
+	// And do the same for the set that includes j
+	int jrep = this.Find(j);
+
+	// Elements are in same set, no need to
+	// unite anything.
+	if (irep == jrep)
+		return;
+	
+	// Get the size of i’s tree
+	isize = Size[irep],
+
+	// Get the size of j’s tree
+	jsize = Size[jrep];
+
+	// If i’s size is less than j’s size
+	if (isize < jsize) {
+
+		// Then move i under j
+		this.parent[irep] = jrep;
+	
+	// Increment j's size by i'size
+		Size[jrep]+=Size[irep];
+	}
+
+	// Else if j’s rank is less than i’s rank
+	else if (jsize < isize) {
+
+		// Then move j under i
+		this.Parent[jrep] = irep;
+	
+	// Increment i's size by j'size
+		Size[irep]+=Size[jrep];
+	}
+
+	// Else if their ranks are the same
+	else {
+
+		// Then move i under j (doesn’t matter
+		// which one goes where)
+		this.Parent[irep] = jrep;
+
+		// Increment j's size by i'size
+		Size[jrep]+=Size[irep];
+	}
+}
+
+```
+
+
+
+**Time complexity**: O(log n) without Path Compression.
+
+
+
+**Below is the complete implementation of disjoint set with path compression and union by rank.**
+
+```python
+# Python3 program to implement Disjoint Set Data
+# Structure.
+
+class DisjSet:
+	def __init__(self, n):
+		# Constructor to create and
+		# initialize sets of n items
+		self.rank = [1] * n
+		self.parent = [i for i in range(n)]
+
+
+	# Finds set of given item x
+	def find(self, x):
+		
+		# Finds the representative of the set
+		# that x is an element of
+		if (self.parent[x] != x):
+			
+			# if x is not the parent of itself
+			# Then x is not the representative of
+			# its set,
+			self.parent[x] = self.find(self.parent[x])
+			
+			# so we recursively call Find on its parent
+			# and move i's node directly under the
+			# representative of this set
+
+		return self.parent[x]
+
+
+	# Do union of two sets represented
+	# by x and y.
+	def Union(self, x, y):
+		
+		# Find current sets of x and y
+		xset = self.find(x)
+		yset = self.find(y)
+
+		# If they are already in same set
+		if xset == yset:
+			return
+
+		# Put smaller ranked item under
+		# bigger ranked item if ranks are
+		# different
+		if self.rank[xset] < self.rank[yset]:
+			self.parent[xset] = yset
+
+		elif self.rank[xset] > self.rank[yset]:
+			self.parent[yset] = xset
+
+		# If ranks are same, then move y under
+		# x (doesn't matter which one goes where)
+		# and increment rank of x's tree
+		else:
+			self.parent[yset] = xset
+			self.rank[xset] = self.rank[xset] + 1
+
+# Driver code
+obj = DisjSet(5)
+obj.Union(0, 2)
+obj.Union(4, 2)
+obj.Union(3, 1)
+if obj.find(4) == obj.find(0):
+	print('Yes')
+else:
+	print('No')
+if obj.find(1) == obj.find(0):
+	print('Yes')
+else:
+	print('No')
+
+# This code is contributed by ng24_7.
+
+```
+
+
+
+**Time complexity**: O(n) for creating n single item sets . The two techniques -path compression with the union by rank/size, the time complexity will reach nearly constant time. It turns out, that the final[ amortized time complexity](https://www.geeksforgeeks.org/introduction-to-amortized-analysis/) is O(α(n)), where α(n) is the inverse Ackermann function, which grows very steadily (it does not even exceed for n<10600  approximately).
+
+**Space complexity:** O(n) because we need to store n elements in the Disjoint Set Data Structure.
+
+
+
+### 并查集例题
+
+#### 01182: 食物链
+
+并查集, http://cs101.openjudge.cn/practice/01182
+
+动物王国中有三类动物A,B,C，这三类动物的食物链构成了有趣的环形。A吃B， B吃C，C吃A。
+现有N个动物，以1－N编号。每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。
+有人用两种说法对这N个动物所构成的食物链关系进行描述：
+第一种说法是"1 X Y"，表示X和Y是同类。
+第二种说法是"2 X Y"，表示X吃Y。
+此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。当一句话满足下列三条之一时，这句话就是假话，否则就是真话。
+1） 当前的话与前面的某些真的话冲突，就是假话；
+2） 当前的话中X或Y比N大，就是假话；
+3） 当前的话表示X吃X，就是假话。
+你的任务是根据给定的N（1 <= N <= 50,000）和K句话（0 <= K <= 100,000），输出假话的总数。
+
+**输入**
+
+第一行是两个整数N和K，以一个空格分隔。
+以下K行每行是三个正整数 D，X，Y，两数之间用一个空格隔开，其中D表示说法的种类。
+若D=1，则表示X和Y是同类。
+若D=2，则表示X吃Y。
+
+**输出**
+
+只有一个整数，表示假话的数目。
+
+样例输入
+
+```
+100 7
+1 101 1 
+2 1 2
+2 2 3 
+2 3 3 
+1 1 3 
+2 3 1 
+1 5 5
+```
+
+样例输出
+
+```
+3
+```
+
+来源: Noi 01
+
+
+
+## Introduction to Trie – Data Structure and Algorithm Tutorials
+
+https://www.geeksforgeeks.org/introduction-to-trie-data-structure-and-algorithm-tutorials/
+
+
+
+## 线段树和树状数组
 
 
 
 
-# 参考
+
+## Regular expression
+
+正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。
+
+**正则表达式**，又称规则表达式**,**（Regular Expression，在代码中常简写为regex、regexp或RE），是一种[文本模式](https://baike.baidu.com/item/文本模式/7355156?fromModule=lemma_inlink)，包括普通字符（例如，a 到 z 之间的字母）和[特殊字符](https://baike.baidu.com/item/特殊字符/112715?fromModule=lemma_inlink)（称为"[元字符](https://baike.baidu.com/item/元字符/6062776?fromModule=lemma_inlink)"），是[计算机科学](https://baike.baidu.com/item/计算机科学/9132?fromModule=lemma_inlink)的一个概念。正则表达式使用单个[字符串](https://baike.baidu.com/item/字符串/1017763?fromModule=lemma_inlink)来描述、匹配一系列匹配某个[句法规则](https://baike.baidu.com/item/句法规则/53352483?fromModule=lemma_inlink)的字符串，通常被用来检索、替换那些符合某个模式（规则）的文本。
+
+
+
+## 参考
 
 Problem Solving with Algorithms and Data Structures using Python
 
