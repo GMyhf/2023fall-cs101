@@ -1,6 +1,6 @@
 # 树
 
-Updated 1910 GMT+8 Feb 4, 2024
+Updated 2250 GMT+8 Feb 10, 2024
 
 
 
@@ -39,8 +39,94 @@ Updated 1910 GMT+8 Feb 4, 2024
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20240204125813782.png" alt="image-20240204125813782" style="zoom:50%;" />
 
-高度 Height：
-树树中所有节点的最大层级称为树的高度，如上图树的高度为 2。
+### 高度 Height：
+
+树中所有节点的最大层级称为树的高度，如上图树的高度为 2。
+
+#### 27638:求二叉树的高度和叶子数目
+
+http://cs101.openjudge.cn/practice/27638/
+
+```python
+class TreeNode:
+    def __init__(self):
+        self.left = None
+        self.right = None
+
+def tree_height(node):
+    if node is None:
+        return -1  # 根据定义，空树高度为-1
+    return max(tree_height(node.left), tree_height(node.right)) + 1
+
+def count_leaves(node):
+    if node is None:
+        return 0
+    if node.left is None and node.right is None:
+        return 1
+    return count_leaves(node.left) + count_leaves(node.right)
+
+n = int(input())  # 读取节点数量
+nodes = [TreeNode() for _ in range(n)]
+has_parent = [False] * n  # 用来标记节点是否有父节点
+
+for i in range(n):
+    left_index, right_index = map(int, input().split())
+    if left_index != -1:
+        nodes[i].left = nodes[left_index]
+        has_parent[left_index] = True
+    if right_index != -1:
+        #print(right_index)
+        nodes[i].right = nodes[right_index]
+        has_parent[right_index] = True
+
+# 寻找根节点，也就是没有父节点的节点
+root_index = has_parent.index(False)
+root = nodes[root_index]
+
+# 计算高度和叶子节点数
+height = tree_height(root)
+leaves = count_leaves(root)
+
+print(f"{height} {leaves}")
+```
+
+
+
+#### 06646:二叉树的深度
+
+http://cs101.openjudge.cn/dsapre/06646/
+
+二叉树深度定义：从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的节点个数为树的深度
+
+```python
+class TreeNode:
+    def __init__(self):
+        self.left = None
+        self.right = None
+
+def tree_depth(node):
+    if node is None:
+        return 0
+    left_depth = tree_depth(node.left)
+    right_depth = tree_depth(node.right)
+    return max(left_depth, right_depth) + 1
+
+n = int(input())  # 读取节点数量
+nodes = [TreeNode() for _ in range(n)]
+
+for i in range(n):
+    left_index, right_index = map(int, input().split())
+    if left_index != -1:
+        nodes[i].left = nodes[left_index-1]
+    if right_index != -1:
+        nodes[i].right = nodes[right_index-1]
+
+root = nodes[0]
+depth = tree_depth(root)
+print(depth)
+```
+
+
 
 
 
@@ -65,6 +151,8 @@ Updated 1910 GMT+8 Feb 4, 2024
 ![image](https://raw.githubusercontent.com/GMyhf/img/main/img/TreeDefRecursive.png)
 
 图6-5 树的递归定义
+
+
 
 
 
@@ -275,6 +363,102 @@ def evaluate(parseTree):
 
 至此，我们已经为顶层的operator.add调用计算出一个参数的值了，但还没完。继续从左到右的参数计算过程，现在进行一个递归调用，计算根节点的右子节点。我们发现，该节点不仅有左子节点，还有右子节点，所以检查节点存储的运算符——是＊，将左右子节点作为参数调用函数。这时可以看到，两个调用都已到达叶子节点，计算结果分别是4和5。算出参数之后，返回operator.mul(4, 5)的结果。至此，我们已经算出了顶层运算符（+）的操作数，剩下的工作就是完成对operator.add(3, 20)的调用。因此，表达式(3 + (4 ∗ 5))的计算结果就是23。
 
+
+
+#### P0580:根据后序表达式建立表达式树
+
+http://dsbpython.openjudge.cn/dspythonbook/P0580/
+
+后序算术表达式可以通过栈来计算其值，做法就是从左到右扫描表达式，碰到操作数就入栈，碰到运算符，就取出栈顶的2个操作数做运算(先出栈的是第二个操作数，后出栈的是第一个)，并将运算结果压入栈中。最后栈里只剩下一个元素，就是表达式的值。
+
+有一种算术表达式不妨叫做“队列表达式”，它的求值过程和后序表达式很像，只是将栈换成了队列：从左到右扫描表达式，碰到操作数就入队列，碰到运算符，就取出队头2个操作数做运算（先出队的是第2个操作数，后出队的是第1个），并将运算结果加入队列。最后队列里只剩下一个元素，就是表达式的值。
+
+给定一个后序表达式，请转换成等价的队列表达式。例如，"3 4 + 6 5 * -"的等价队列表达式就是"5 6 4 3 * + -" 。
+
+输入
+
+第一行是正整数n(n<100)。接下来是n行，每行一个由字母构成的字符串，长度不超过100,表示一个后序表达式，其中小写字母是操作数，大写字母是运算符。运算符都是需要2个操作数的。
+
+输出
+
+对每个后序表达式，输出其等价的队列表达式。
+
+样例输入
+
+```
+2
+xyPzwIM
+abcABdefgCDEF
+```
+
+样例输出
+
+```
+wzyxIPM
+gfCecbDdAaEBF
+```
+
+提示
+
+建立起表达式树，按层次遍历表达式树的结果前后颠倒就得到队列表达式
+
+来源：Guo Wei modified from Ulm Local 2007
+
+
+
+The problem is asking to convert a postfix expression to an equivalent queue expression. The queue expression is obtained by reversing the level order traversal of the expression tree built from the postfix expression.  
+
+Here is a step-by-step plan:  
+1.Create a TreeNode class to represent each node in the tree.
+2.Create a function build_tree that takes the postfix expression as input and returns the root of the constructed tree.
+	Use a stack to store the nodes.
+	Iterate over the characters in the postfix expression.
+	If the character is an operand, create a new node and push it onto the stack.
+	If the character is an operator, pop two nodes from the stack, make them the children of a new node, and push the new node onto the stack.
+3.Create a function level_order_traversal that takes the root of the tree as input and returns the level order traversal of the tree.
+	Use a queue to store the nodes to be visited.
+	While the queue is not empty, dequeue a node, visit it, and enqueue its children.
+4.For each postfix expression, construct the tree, perform the level order traversal, reverse the result, and output it.
+
+```python
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def build_tree(postfix):
+    stack = []
+    for char in postfix:
+        node = TreeNode(char)
+        if char.isupper():
+            node.right = stack.pop()
+            node.left = stack.pop()
+        stack.append(node)
+    return stack[0]
+
+def level_order_traversal(root):
+    queue = [root]
+    traversal = []
+    while queue:
+        node = queue.pop(0)
+        traversal.append(node.value)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    return traversal
+
+n = int(input().strip())
+for _ in range(n):
+    postfix = input().strip()
+    root = build_tree(postfix)
+    queue_expression = level_order_traversal(root)[::-1]
+    print(''.join(queue_expression))
+```
+
+
+
 ### 6.5.2 树的遍历
 
 我们已经了解了树的基本功能，现在是时候看看一些附加的使用模式了。这些使用模式可以按节点的访问方式分为3种。我们将对所有节点的访问称为“遍历”，共有3种遍历方式，分别为前序遍历、中序遍历和后序遍历。接下来，我们先仔细地定义这3种遍历方式，然后通过一些例子看看它们的用法。
@@ -419,7 +603,7 @@ def printexp(tree):
 
 
 
-### 24591: 中序表达式转后序表达式
+#### 24591: 中序表达式转后序表达式
 
 http://cs101.openjudge.cn/practice/24591/
 
@@ -548,7 +732,7 @@ for _ in range(n):
 
 
 
-### 20576: printExp
+#### 20576: printExp
 
 http://cs101.openjudge.cn/dsapre/20576/
 
@@ -655,6 +839,335 @@ def main():
 
 main()
 ```
+
+
+
+#### 22275: 二叉搜索树的遍历
+
+http://cs101.openjudge.cn/practice/22275/
+
+```python
+def post_order(pre_order):
+    if not pre_order:
+        return []
+    root = pre_order[0]
+    left_subtree = [x for x in pre_order if x < root]
+    right_subtree = [x for x in pre_order if x > root]
+    return post_order(left_subtree) + post_order(right_subtree) + [root]
+
+n = int(input())
+pre_order = list(map(int, input().split()))
+print(' '.join(map(str, post_order(pre_order))))
+```
+
+
+
+#### 24750: 根据二叉树中后序序列建树
+
+http://cs101.openjudge.cn/practice/24750/
+
+```python
+"""
+定义一个递归函数。在这个递归函数中，我们将后序遍历的最后一个元素作为当前的根节点，然后在中序遍历序列中找到这个根节点的位置，
+这个位置将中序遍历序列分为左子树和右子树。
+"""
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+
+def buildTree(inorder, postorder):
+    if not inorder or not postorder:
+        return None
+
+    # 后序遍历的最后一个元素是当前的根节点
+    root_val = postorder.pop()
+    root = TreeNode(root_val)
+
+    # 在中序遍历中找到根节点的位置
+    root_index = inorder.index(root_val)
+
+    # 构建右子树和左子树
+    root.right = buildTree(inorder[root_index + 1:], postorder)
+    root.left = buildTree(inorder[:root_index], postorder)
+
+    return root
+
+
+def preorderTraversal(root):
+    result = []
+    if root:
+        result.append(root.val)
+        result.extend(preorderTraversal(root.left))
+        result.extend(preorderTraversal(root.right))
+    return result
+
+
+# 读取输入
+inorder = input().strip()
+postorder = input().strip()
+
+# 构建树
+root = buildTree(list(inorder), list(postorder))
+
+# 输出前序遍历序列
+print(''.join(preorderTraversal(root)))
+```
+
+
+
+#### P0570: 根据二叉树前中序序列建树
+
+http://dsbpython.openjudge.cn/dspythonbook/P0570/
+
+假设二叉树的节点里包含一个大写字母，每个节点的字母都不同。
+
+给定二叉树的前序遍历序列和中序遍历序列(长度均不超过26)，请输出该二叉树的后序遍历序列
+
+输入
+
+多组数据
+每组数据2行，第一行是前序遍历序列，第二行是中序遍历序列
+
+输出
+
+对每组序列建树，输出该树的后序遍历序列
+
+样例输入
+
+```
+DURPA
+RUDPA
+XTCNB
+CTBNX
+```
+
+样例输出
+
+```
+RUAPD
+CBNTX
+```
+
+来源：郭炜
+
+
+
+The problem is asking to construct a binary tree from given preorder and inorder traversal sequences, and then output the postorder traversal sequence of the constructed tree.  
+
+Here is a step-by-step plan:  
+1.Create a TreeNode class to represent each node in the tree.
+2.Create a function build_tree that takes the preorder and inorder sequences as input and returns the root of the constructed tree.
+	The first character of the preorder sequence is the root of the tree.
+	Find the position of the root in the inorder sequence.
+	Recursively construct the left subtree using the left part of the inorder sequence and the corresponding part of the preorder sequence.
+	Recursively construct the right subtree using the right part of the inorder sequence and the corresponding part of the preorder sequence.
+3.Create a function postorder_traversal that takes the root of the tree as input and returns the postorder traversal sequence of the tree.
+4.For each pair of preorder and inorder sequences, construct the tree and output the postorder traversal sequence.
+Here is the Python code that implements this plan:
+
+```python
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def build_tree(preorder, inorder):
+    if not preorder or not inorder:
+        return None
+    root_value = preorder[0]
+    root = TreeNode(root_value)
+    root_index_inorder = inorder.index(root_value)
+    root.left = build_tree(preorder[1:1+root_index_inorder], inorder[:root_index_inorder])
+    root.right = build_tree(preorder[1+root_index_inorder:], inorder[root_index_inorder+1:])
+    return root
+
+def postorder_traversal(root):
+    if root is None:
+        return ''
+    return postorder_traversal(root.left) + postorder_traversal(root.right) + root.value
+
+while True:
+    try:
+        preorder = input().strip()
+        inorder = input().strip()
+        root = build_tree(preorder, inorder)
+        print(postorder_traversal(root))
+    except EOFError:
+        break
+```
+
+
+
+#### 27637: 括号嵌套二叉树
+
+http://cs101.openjudge.cn/practice/27637/
+
+```python
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+def parse_tree(s):
+    if s == '*':
+        return None
+    if '(' not in s:
+        return TreeNode(s)
+
+    # Find the root value and the subtrees
+    root_value = s[0]
+    subtrees = s[2:-1]  # Remove the root and the outer parentheses
+
+    # Use a stack to find the comma that separates the left and right subtrees
+    stack = []
+    comma_index = None
+    for i, char in enumerate(subtrees):
+        if char == '(':
+            stack.append(char)
+        elif char == ')':
+            stack.pop()
+        elif char == ',' and not stack:
+            comma_index = i
+            break
+
+    left_subtree = subtrees[:comma_index] if comma_index is not None else subtrees
+    right_subtree = subtrees[comma_index + 1:] if comma_index is not None else None
+
+    # Parse the subtrees
+    root = TreeNode(root_value)
+    root.left = parse_tree(left_subtree)
+    root.right = parse_tree(right_subtree) if right_subtree else None
+    return root
+
+
+# Define the traversal functions
+def preorder_traversal(root):
+    if root is None:
+        return ""
+    return root.value + preorder_traversal(root.left) + preorder_traversal(root.right)
+
+
+def inorder_traversal(root):
+    if root is None:
+        return ""
+    return inorder_traversal(root.left) + root.value + inorder_traversal(root.right)
+
+
+# Input reading and processing
+n = int(input().strip())
+for _ in range(n):
+    tree_string = input().strip()
+    tree = parse_tree(tree_string)
+    preorder = preorder_traversal(tree)
+    inorder = inorder_traversal(tree)
+    print(preorder)
+    print(inorder)
+```
+
+
+
+## 6.7 二叉搜索树
+
+本节将探讨二叉搜索树，它是映射的另一种实现。我们感兴趣的不是元素在树中的确切位置，而是如何利用二叉树结构提供高效的搜索。
+
+二叉搜索树依赖于这样一个性质：小于父节点的键都在左子树中，大于父节点的键则都在右子树中。我们称这个性质为二叉搜索性。
+
+
+
+#### P1320:二叉搜索树的层次遍历
+
+http://dsbpython.openjudge.cn/dspythonbook/P1320/
+
+二叉搜索树在动态查表中有特别的用处，一个无序序列可以通过构造一棵二叉搜索树变成一个有序序列，
+
+构造树的过程即为对无序序列进行排序的过程。每次插入的新的结点都是二叉搜索树上新的叶子结点，在进行
+
+插入操作时，不必移动其它结点，只需改动某个结点的指针，由空变为非空即可。
+
+   这里，我们想探究二叉树的建立和层次输出。
+
+输入
+
+只有一行，包含若干个数字，中间用空格隔开。（数字可能会有重复，对于重复的数字，只计入一个）
+
+输出
+
+输出一行，对输入数字建立二叉搜索树后进行按层次周游的结果。
+
+样例输入
+
+```
+51 45 59 86 45 4 15 76 60 20 61 77 62 30 2 37 13 82 19 74 2 79 79 97 33 90 11 7 29 14 50 1 96 59 91 39 34 6 72 7
+```
+
+样例输出
+
+```
+51 45 59 4 50 86 2 15 76 97 1 13 20 60 77 90 11 14 19 30 61 82 96 7 29 37 62 79 91 6 33 39 74 34 72
+```
+
+提示
+
+输入输出的最后都不带空格和回车换行
+
+
+
+The problem is asking to construct a binary search tree (BST) from a sequence of numbers and then perform a level order traversal (also known as breadth-first search) on the BST.
+
+Here is a step-by-step plan:
+1. Create a TreeNode class to represent each node in the tree.
+2. Create a function `insert` that takes a node and a value as input and inserts the value into the BST rooted at the node.
+3. Create a function `level_order_traversal` that takes the root of the tree as input and returns the level order traversal of the tree.
+   - Use a queue to store the nodes to be visited.
+   - While the queue is not empty, dequeue a node, visit it, and enqueue its children.
+4. Read the sequence of numbers from the input, construct the BST, perform the level order traversal, and output the result.
+
+Here is the Python code that implements this plan:
+
+```python
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert(node, value):
+    if node is None:
+        return TreeNode(value)
+    if value < node.value:
+        node.left = insert(node.left, value)
+    elif value > node.value:
+        node.right = insert(node.right, value)
+    return node
+
+def level_order_traversal(root):
+    queue = [root]
+    traversal = []
+    while queue:
+        node = queue.pop(0)
+        traversal.append(node.value)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    return traversal
+
+numbers = list(map(int, input().strip().split()))
+numbers = list(dict.fromkeys(numbers))  # remove duplicates
+root = None
+for number in numbers:
+    root = insert(root, number)
+traversal = level_order_traversal(root)
+print(' '.join(map(str, traversal)))
+```
+
+This code reads the sequence of numbers from the input, removes duplicates, constructs the BST, performs the level order traversal, and prints the result.
 
 
 
@@ -1766,6 +2279,36 @@ https://www.geeksforgeeks.org/introduction-to-trie-data-structure-and-algorithm-
 正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。
 
 **正则表达式**，又称规则表达式**,**（Regular Expression，在代码中常简写为regex、regexp或RE），是一种[文本模式](https://baike.baidu.com/item/文本模式/7355156?fromModule=lemma_inlink)，包括普通字符（例如，a 到 z 之间的字母）和[特殊字符](https://baike.baidu.com/item/特殊字符/112715?fromModule=lemma_inlink)（称为"[元字符](https://baike.baidu.com/item/元字符/6062776?fromModule=lemma_inlink)"），是[计算机科学](https://baike.baidu.com/item/计算机科学/9132?fromModule=lemma_inlink)的一个概念。正则表达式使用单个[字符串](https://baike.baidu.com/item/字符串/1017763?fromModule=lemma_inlink)来描述、匹配一系列匹配某个[句法规则](https://baike.baidu.com/item/句法规则/53352483?fromModule=lemma_inlink)的字符串，通常被用来检索、替换那些符合某个模式（规则）的文本。
+
+
+
+## FAQ
+
+Q: 树用递归实现才简洁易懂吧？
+
+A: 是的，递归实现通常更简洁易懂，特别是在处理树这种递归结构时。递归的思想与树的结构自然契合，因为树的定义本身就是递归的：树由根节点和若干子树组成，每个子树也可以看作是一棵树。
+
+递归实现的优点包括：
+
+1. 自然而直观：递归实现能够直接模拟树的结构，更符合我们对树的直觉认知，使代码更易理解和编写。
+
+2. 代码简洁：递归实现通常比迭代实现代码更为简洁，因为递归能够利用函数的自身调用来处理子树。
+
+3. 逻辑清晰：递归实现能够清晰地表达树的遍历和处理逻辑，使代码更易读。
+
+然而，递归实现也有一些潜在的缺点，例如在处理大规模的树时可能导致栈溢出（Stack Overflow）的问题。此外，递归实现有时可能会导致性能较差，因为在递归过程中可能会进行重复的计算。
+
+
+
+Q:树的规模较小，较大，具体大概指多少个节点呢？
+
+A:一般来说，树的规模较小和较大是相对的概念，具体的节点数量取决于问题的上下文和实际需求。以下是一些常见的节点数量范围，尽管这只是一种常见的划分，并不是严格的界定：
+
+1. 小型树：通常指节点数量在几十到几百个之间的树。在这种情况下，递归实现往往是简洁易懂的选择，并且性能方面的差异可能并不明显。
+
+2. 中型树：通常指节点数量在几百到几千个之间的树。对于中型树，递归实现仍然可以考虑使用，但在性能方面可能需要更加谨慎，以避免潜在的栈溢出问题。在这种情况下，迭代实现可能是更好的选择。
+
+3. 大型树：通常指节点数量在几千到几百万（甚至更多）之间的树。对于大型树，递归实现可能会面临栈溢出的风险，并且性能方面的差异可能会更加明显。在这种情况下，迭代实现通常是更可靠和高效的选择。
 
 
 
