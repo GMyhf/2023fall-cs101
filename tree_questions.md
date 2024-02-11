@@ -1,6 +1,6 @@
 # 树
 
-Updated 14400 GMT+8 Feb 11, 2024
+Updated 1458 GMT+8 Feb 11, 2024
 
 
 
@@ -235,7 +235,70 @@ EBFGCIHDA
 
 
 
-看不到测试数据，但是猜测有不规范的输入，如：A(B(,D),E(F,G))
+样例能过，但是Wrong Answer
+
+```python
+# Wrong Answer
+def parse_tree(s):
+    stack = []
+    node = None
+    for char in s:
+        if char.isalpha():  # 如果是字母，创建新节点
+            node = {'value': char, 'children': []}
+            if stack:  # 如果栈不为空，把节点作为子节点加入到栈顶节点的子节点列表中
+                stack[-1]['children'].append(node)
+        elif char == '(':  # 开始新节点的子节点列表
+            stack.append(node)
+        elif char == ')':  # 结束当前节点的子节点列表
+            if len(stack) > 1:
+                stack.pop()  # 弹出当前节点
+            else:
+                return stack.pop()  # 弹出根节点，结束解析
+    return None  # 如果输入不正确返回None
+
+def preorder(node):
+    output = [node['value']]
+    for child in node['children']:
+        output.extend(preorder(child))
+    return ''.join(output)
+
+def postorder(node):
+    output = []
+    for child in node['children']:
+        output.extend(postorder(child))
+    output.append(node['value'])
+    return ''.join(output)
+
+# 主程序
+def main():
+    s = input().strip()
+    s = ''.join(s.split())  # 去掉所有空白字符
+    root = parse_tree(s)  # 解析整棵树
+    if root:
+        print(preorder(root))  # 输出前序遍历序列
+        print(postorder(root))  # 输出后序遍历序列
+    else:
+        print("input tree string error!")
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+看不到测试数据，猜测有不规范的输入，如：A(B(,D),E(F,G))
+
+如果得到了一个错误输出（WA，即Wrong Answer），很可能是因为解析树的逻辑在处理某些特定情况时出了问题。
+
+在`parse_tree`函数中，试图在遇到左括号`(`时将当前节点推入栈中，而在遇到右括号`)`时将其弹出。但是，代码中存在一个逻辑错误：当解析器遇到左括号`(`时，它应该期待一个新的节点开始，而不是立即将当前节点推入栈中。您应该在遇到一个字母后，随后如果是左括号，则应该推入栈中。
+
+此外，解析逻辑应该在遇到右括号时做检查，只有当栈中有多于一个节点时（即不是根节点），才能弹出，这是因为右括号表明一个节点的子节点列表已结束。
+
+
+
+下面两个AC的代码，是修改了`parse_tree`函数。
+
+
 
 用类表示node
 
