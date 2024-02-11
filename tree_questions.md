@@ -1,6 +1,6 @@
 # 树
 
-Updated 2250 GMT+8 Feb 10, 2024
+Updated 14400 GMT+8 Feb 11, 2024
 
 
 
@@ -153,6 +153,194 @@ print(depth)
 图6-5 树的递归定义
 
 
+
+
+
+### 树的表示方法
+
+https://blog.csdn.net/qq_41891805/article/details/104473065
+
+树是n (n>=0) 个结点的有限集。在任意一棵非空树中：
+（1）有且仅有一个根结点；（2）除根结点外，其余的结点可分为m(m>=0)个互不相交的子树。
+
+
+
+树的表示方法包括
+
+（1）嵌套括号表示法
+
+Nested parentheses representation
+
+
+
+$(A(B(EK,L),F),C(G),D(H(M),I,J))$​
+
+
+
+（2）树形表示
+
+Node-Based or Node-Link structure
+In computer science, a general tree is typically represented using this data structure. Each node in the tree contains information and references (links) to its child nodes.
+
+![在这里插入图片描述](https://raw.githubusercontent.com/GMyhf/img/main/img/watermark%252Ctype_ZmFuZ3poZW5naGVpdGk%252Cshadow_10%252Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODkxODA1%252Csize_16%252Ccolor_FFFFFF%252Ct_70.png)
+
+（3）文氏图
+
+文氏图（英语：Venn diagram），或译Venn图、温氏图、维恩图、范氏图，是在所谓的集合论（或者类的理论）数学分支中，在不太严格的意义下用以表示集合（或类）的一种草图。
+
+![在这里插入图片描述](https://raw.githubusercontent.com/GMyhf/img/main/img/watermark%252Ctype_ZmFuZ3poZW5naGVpdGk%252Cshadow_10%252Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODkxODA1%252Csize_16%252Ccolor_FFFFFF%252Ct_70-20240211143714968.png)
+
+（4）凹入表
+![在这里插入图片描述](https://raw.githubusercontent.com/GMyhf/img/main/img/20200224102939456.png)
+
+
+
+### P0740:括号嵌套树
+
+http://dsbpython.openjudge.cn/dspythonbook/P0740/
+
+可以用括号嵌套的方式来表示一棵树。表示方法如下：
+
+1) 如果一棵树只有一个结点，则该树就用一个大写字母表示，代表其根结点。
+2) 如果一棵树有子树，则用“树根(子树1,子树2,...,子树n)”的形式表示。树根是一个大写字母,子树之间用逗号隔开，没有空格。子树都是用括号嵌套法表示的树。
+
+给出一棵不超过26个结点的树的括号嵌套表示形式，请输出其前序遍历序列和后序遍历序列。
+
+输入样例代表的树如下图：
+
+![img](http://media.openjudge.cn/images/upload/5805/1653472173.png)
+
+输入
+
+一行，一棵树的括号嵌套表示形式
+
+输出
+
+两行。第一行是树的前序遍历序列，第二行是树的后序遍历序列
+
+样例输入
+
+```
+A(B(E),C(F,G),D(H(I)))
+```
+
+样例输出
+
+```
+ABECFGDHI
+EBFGCIHDA
+```
+
+来源：Guo Wei
+
+
+
+看不到测试数据，但是猜测有不规范的输入，如：A(B(,D),E(F,G))
+
+用类表示node
+
+```python
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.children = []
+
+def parse_tree(s):
+    stack = []
+    node = None
+    for char in s:
+        if char.isalpha():  # 如果是字母，创建新节点
+            node = TreeNode(char)
+            if stack:  # 如果栈不为空，把节点作为子节点加入到栈顶节点的子节点列表中
+                stack[-1].children.append(node)
+        elif char == '(':  # 遇到左括号，当前节点可能会有子节点
+            if node:
+                stack.append(node)  # 把当前节点推入栈中
+                node = None
+        elif char == ')':  # 遇到右括号，子节点列表结束
+            if stack:
+                node = stack.pop()  # 弹出当前节点
+    return node  # 根节点
+
+
+def preorder(node):
+    output = [node.value]
+    for child in node.children:
+        output.extend(preorder(child))
+    return ''.join(output)
+
+def postorder(node):
+    output = []
+    for child in node.children:
+        output.extend(postorder(child))
+    output.append(node.value)
+    return ''.join(output)
+
+# 主程序
+def main():
+    s = input().strip()
+    s = ''.join(s.split())  # 去掉所有空白字符
+    root = parse_tree(s)  # 解析整棵树
+    if root:
+        print(preorder(root))  # 输出前序遍历序列
+        print(postorder(root))  # 输出后序遍历序列
+    else:
+        print("input tree string error!")
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+用字典表示node
+
+```python
+def parse_tree(s):
+    stack = []
+    node = None
+    for char in s:
+        if char.isalpha():  # 如果是字母，创建新节点
+            node = {'value': char, 'children': []}
+            if stack:  # 如果栈不为空，把节点作为子节点加入到栈顶节点的子节点列表中
+                stack[-1]['children'].append(node)
+        elif char == '(':  # 遇到左括号，当前节点可能会有子节点
+            if node:
+                stack.append(node)  # 把当前节点推入栈中
+                node = None
+        elif char == ')':  # 遇到右括号，子节点列表结束
+            if stack:
+                node = stack.pop()  # 弹出当前节点
+    return node  # 根节点
+
+
+def preorder(node):
+    output = [node['value']]
+    for child in node['children']:
+        output.extend(preorder(child))
+    return ''.join(output)
+
+def postorder(node):
+    output = []
+    for child in node['children']:
+        output.extend(postorder(child))
+    output.append(node['value'])
+    return ''.join(output)
+
+# 主程序
+def main():
+    s = input().strip()
+    s = ''.join(s.split())  # 去掉所有空白字符
+    root = parse_tree(s)  # 解析整棵树
+    if root:
+        print(preorder(root))  # 输出前序遍历序列
+        print(postorder(root))  # 输出后序遍历序列
+    else:
+        print("input tree string error!")
+
+if __name__ == "__main__":
+    main()
+```
 
 
 
