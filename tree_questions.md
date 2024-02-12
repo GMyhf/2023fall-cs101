@@ -182,7 +182,18 @@ $(A(B(EK,L),F),C(G),D(H(M),I,J))$​
 Node-Based or Node-Link structure
 In computer science, a general tree is typically represented using this data structure. Each node in the tree contains information and references (links) to its child nodes.
 
-![在这里插入图片描述](https://raw.githubusercontent.com/GMyhf/img/main/img/watermark%252Ctype_ZmFuZ3poZW5naGVpdGk%252Cshadow_10%252Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODkxODA1%252Csize_16%252Ccolor_FFFFFF%252Ct_70.png)
+```mermaid
+graph TD
+    A((A)); 
+    B((B)); C((C)); D((D));
+    E((E)); F((F)); G((G)); H((H)); I((I)); J((J));
+    K((K)); L((L)); M((M))
+    A --- B; A --- C; A --- D
+    B --- E; B --- F; C --- G; D --- H; D --- I; D --- J;
+    E --- K; E --- L; H --- M
+```
+
+
 
 （3）文氏图
 
