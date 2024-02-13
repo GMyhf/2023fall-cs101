@@ -206,7 +206,7 @@ graph TD
 
 
 
-### P0740:括号嵌套树
+### P0740: 括号嵌套树
 
 http://dsbpython.openjudge.cn/dspythonbook/P0740/
 
@@ -221,11 +221,11 @@ http://dsbpython.openjudge.cn/dspythonbook/P0740/
 
 ![img](http://media.openjudge.cn/images/upload/5805/1653472173.png)
 
-输入
+**输入**
 
 一行，一棵树的括号嵌套表示形式
 
-输出
+**输出**
 
 两行。第一行是树的前序遍历序列，第二行是树的后序遍历序列
 
@@ -1264,6 +1264,87 @@ while True:
 
 
 
+#### P0650:猜二叉树
+
+http://dsbpython.openjudge.cn/dspythonbook/P0650/
+
+一棵二叉树，结点都是大写英文字母，且不重复。
+
+给出它的中序遍历序列和后序遍历序列，求其按层次遍历的序列。
+
+ 
+
+**输入**
+
+第一行是整数n, n <=30，表示有n棵二叉树
+接下来每两行代表一棵二叉树，第一行是其中序遍历序列，第二行是后序遍历序列
+
+**输出**
+
+对每棵二叉树输出其按层次遍历序列
+
+样例输入
+
+```
+2
+LZGD
+LGDZ
+BKTVQP
+TPQVKB
+```
+
+样例输出
+
+```
+ZLDG
+BKVTQP
+```
+
+来源: Guo Wei
+
+
+
+```python
+from collections import deque
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def build_tree(inorder, postorder):
+    if inorder:
+        root = Node(postorder.pop())
+        root_index = inorder.index(root.data)
+        root.right = build_tree(inorder[root_index+1:], postorder)
+        root.left = build_tree(inorder[:root_index], postorder)
+        return root
+
+def level_order_traversal(root):
+    if root is None:
+        return []
+    result = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        result.append(node.data)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    return result
+
+n = int(input())
+for _ in range(n):
+    inorder = list(input().strip())
+    postorder = list(input().strip())
+    root = build_tree(inorder, postorder)
+    print(''.join(level_order_traversal(root)))
+```
+
+
+
 #### 27637: 括号嵌套二叉树
 
 http://cs101.openjudge.cn/practice/27637/
@@ -1354,11 +1435,11 @@ http://dsbpython.openjudge.cn/dspythonbook/P1320/
 
    这里，我们想探究二叉树的建立和层次输出。
 
-输入
+**输入**
 
 只有一行，包含若干个数字，中间用空格隔开。（数字可能会有重复，对于重复的数字，只计入一个）
 
-输出
+**输出**
 
 输出一行，对输入数字建立二叉搜索树后进行按层次周游的结果。
 
