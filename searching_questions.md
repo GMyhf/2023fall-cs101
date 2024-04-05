@@ -1,6 +1,6 @@
 # 20231128-Week12 搜索专题
 
-Updated 1348 GMT+8 Dec 19 2023
+Updated 1349 GMT+8 Dec 19 2023
 
 2023 fall, Complied by Hongfei Yan
 
@@ -248,53 +248,6 @@ print(counter)
 
 
 
-#### C++
-
-```c++
-#include <cstdio>
-
-const int MAXN = 5;
-int n, m, maze[MAXN][MAXN];
-bool visited[MAXN][MAXN] = {false};
-int counter = 0;
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool isValid(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && maze[x][y] == 0 && !visited[x][y];
-}
-
-void DFS(int x, int y) {
-    if (x == n - 1 && y == m - 1) {
-        counter++;
-        return;
-    }
-    visited[x][y] = true;
-    for (int i = 0; i < MAXD; i++) {
-        int nextX = x + dx[i];
-        int nextY = y + dy[i];
-        if (isValid(nextX, nextY)) {
-            DFS(nextX, nextY);
-        }
-    }
-    visited[x][y] = false;
-}
-
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &maze[i][j]);
-        }
-    }
-    DFS(0, 0);
-    printf("%d", counter);
-    return 0;
-}
-```
-
 
 
 ### 1.2 指定步数的迷宫问题
@@ -447,58 +400,6 @@ print("Yes" if canReach else "No")
 ```
 
 
-
-#### C++
-
-```c++
-#include <cstdio>
-
-const int MAXN = 5;
-int n, m, k, maze[MAXN][MAXN];
-bool visited[MAXN][MAXN] = {false};
-bool canReach = false;
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool isValid(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && maze[x][y] == 0 && !visited[x][y];
-}
-
-void DFS(int x, int y, int step) {
-    if (canReach) {
-        return;
-    }
-    if (x == n - 1 && y == m - 1) {
-        if (step == k) {
-            canReach = true;
-        }
-        return;
-    }
-    visited[x][y] = true;
-    for (int i = 0; i < MAXD; i++) {
-        int nextX = x + dx[i];
-        int nextY = y + dy[i];
-        if (step < k && isValid(nextX, nextY)) {
-            DFS(nextX, nextY, step + 1);
-        }
-    }
-    visited[x][y] = false;
-}
-
-int main() {
-    scanf("%d%d%d", &n, &m, &k);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &maze[i][j]);
-        }
-    }
-    DFS(0, 0, 0);
-    printf(canReach ? "Yes" : "No");
-    return 0;
-}
-```
 
 
 
@@ -769,69 +670,6 @@ for pos in optPath:
 
 
 
-#### C++
-
-```c++
-#include <cstdio>
-#include <vector>
-#include <utility>
-using namespace std;
-
-typedef pair<int, int> Position;
-
-const int MAXN = 5;
-const int INF = 0x3f;
-int n, m, maze[MAXN][MAXN];
-bool visited[MAXN][MAXN] = {false};
-int maxValue = -INF;
-vector<Position> tempPath, optPath;
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool isValid(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && !visited[x][y];
-}
-
-void DFS(int x, int y, int nowValue) {
-    if (x == n - 1 && y == m - 1) {
-        if (nowValue > maxValue) {
-            maxValue = nowValue;
-            optPath = tempPath;
-        }
-        return;
-    }
-    visited[x][y] = true;
-    for (int i = 0; i < MAXD; i++) {
-        int nextX = x + dx[i];
-        int nextY = y + dy[i];
-        if (isValid(nextX, nextY)) {
-            int nextValue = nowValue + maze[nextX][nextY];
-            tempPath.push_back(Position(nextX, nextY));
-            DFS(nextX, nextY, nextValue);
-            tempPath.pop_back();
-        }
-    }
-    visited[x][y] = false;
-}
-
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &maze[i][j]);
-        }
-    }
-    tempPath.push_back(Position(0, 0));
-    DFS(0, 0, maze[0][0]);
-    for (int i = 0; i < optPath.size(); i++) {
-        printf("%d %d\n", optPath[i].first + 1, optPath[i].second + 1);
-    }
-    return 0;
-}
-```
-
 
 
 ### 1.5 迷宫最大权值
@@ -967,62 +805,6 @@ print(maxValue)
 ```
 
 
-
-#### C++
-
-```c++
-#include <cstdio>
-
-const int MAXN = 5;
-const int INF = 0x3f;
-int n, m, maze[MAXN][MAXN], isWall[MAXN][MAXN];
-bool visited[MAXN][MAXN] = {false};
-int maxValue = -INF;
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool isValid(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && !isWall[x][y] && !visited[x][y];
-}
-
-void DFS(int x, int y, int nowValue) {
-    if (x == n - 1 && y == m - 1) {
-        if (nowValue > maxValue) {
-            maxValue = nowValue;
-        }
-        return;
-    }
-    visited[x][y] = true;
-    for (int i = 0; i < MAXD; i++) {
-        int nextX = x + dx[i];
-        int nextY = y + dy[i];
-        if (isValid(nextX, nextY)) {
-            int nextValue = nowValue + maze[nextX][nextY];
-            DFS(nextX, nextY, nextValue);
-        }
-    }
-    visited[x][y] = false;
-}
-
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &isWall[i][j]);
-        }
-    }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &maze[i][j]);
-        }
-    }
-    DFS(0, 0, maze[0][0]);
-    printf("%d", maxValue);
-    return 0;
-}
-```
 
 
 
@@ -1197,48 +979,6 @@ if __name__ == "__main__":
 
 
 
-##### C++
-
-```c++
-#include <cstdio>
-#include <queue>
-using namespace std;
-
-const int MAXN = 100000;
-bool inQueue[MAXN + 1] = {false};
-
-int getStep(int n) {
-    int step = 0;
-    queue<int> q;
-    q.push(1);
-    while (true) {
-        int cnt = q.size();
-        for (int i = 0; i < cnt; i++) {
-            int front = q.front();
-            q.pop();
-            if (front == n) {
-                return step;
-            }
-            inQueue[front] = true;
-            if (front * 2 <= n && !inQueue[front * 2]) {
-                q.push(front * 2);
-            }
-            if (front + 1 <= n && !inQueue[front + 1]) {
-                q.push(front + 1);
-            }
-        }
-        step++;
-    }
-}
-
-int main() {
-    int n, step = 0;
-    scanf("%d", &n);
-    printf("%d", getStep(n));
-    return 0;
-}
-```
-
 
 
 ### 2.2 矩阵中的块
@@ -1381,67 +1121,6 @@ print(counter)
 ```
 
 
-
-#### C++
-
-```c++
-#include <cstdio>
-#include <queue>
-#include <utility>
-using namespace std;
-
-typedef pair<int, int> Position;
-
-const int MAXN = 100;
-int n, m, matrix[MAXN][MAXN];
-bool inQueue[MAXN][MAXN] = {false};
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool canVisit(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && matrix[x][y] == 1 && !inQueue[x][y];
-}
-
-void BFS(int x, int y) {
-    queue<Position> q;
-    q.push(Position(x, y));
-    inQueue[x][y] = true;
-    while (!q.empty()) {
-        Position front = q.front();
-        q.pop();
-        for (int i = 0; i < MAXD; i++) {
-            int nextX = front.first + dx[i];
-            int nextY = front.second + dy[i];
-            if (canVisit(nextX, nextY)) {
-                inQueue[nextX][nextY] = true;
-                q.push(Position(nextX, nextY));
-            }
-        }
-    }
-}
-
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &matrix[i][j]);
-        }
-    }
-    int counter = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            if (matrix[i][j] == 1 && !inQueue[i][j]) {
-                BFS(i, j);
-                counter++;
-            }
-        }
-    }
-    printf("%d", counter);
-    return 0;
-}
-```
 
 
 
@@ -1599,68 +1278,6 @@ if __name__ == '__main__':
 
 
 
-#### C++
-
-```c++
-#include <cstdio>
-#include <queue>
-#include <utility>
-using namespace std;
-
-typedef pair<int, int> Position;
-
-const int MAXN = 100;
-int n, m, maze[MAXN][MAXN];
-bool inQueue[MAXN][MAXN] = {false};
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool canVisit(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && maze[x][y] == 0 && !inQueue[x][y];
-}
-
-int BFS(int x, int y) {
-    queue<Position> q;
-    q.push(Position(x, y));
-    inQueue[x][y] = true;
-    int step = 0;
-    while (!q.empty()) {
-        int cnt = q.size();
-        while (cnt--) {
-            Position front = q.front();
-            q.pop();
-            if (front.first == n - 1 && front.second == m - 1) {
-                return step;
-            }
-            for (int i = 0; i < MAXD; i++) {
-                int nextX = front.first + dx[i];
-                int nextY = front.second + dy[i];
-                if (canVisit(nextX, nextY)) {
-                    inQueue[nextX][nextY] = true;
-                    q.push(Position(nextX, nextY));
-                }
-            }
-        }
-        step++;
-    }
-    return -1;
-}
-
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &maze[i][j]);
-        }
-    }
-    int step = BFS(0, 0);
-    printf("%d", step);
-    return 0;
-}
-```
-
 
 
 ### 2.4 迷宫最短路径
@@ -1762,76 +1379,6 @@ printPath((n - 1, m - 1))
 ```
 
 
-
-#### C++
-
-```python
-#include <cstdio>
-#include <queue>
-#include <utility>
-#include <algorithm>
-using namespace std;
-
-typedef pair<int, int> Position;
-
-const int MAXN = 100;
-int n, m, maze[MAXN][MAXN];
-bool inQueue[MAXN][MAXN] = {false};
-Position pre[MAXN][MAXN];
-
-const int MAXD = 4;
-int dx[MAXD] = {0, 0, 1, -1};
-int dy[MAXD] = {1, -1, 0, 0};
-
-bool canVisit(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && maze[x][y] == 0 && !inQueue[x][y];
-}
-
-void BFS(int x, int y) {
-    queue<Position> q;
-    q.push(Position(x, y));
-    inQueue[x][y] = true;
-    while (!q.empty()) {
-        Position front = q.front();
-        q.pop();
-        if (front.first == n - 1 && front.second == m - 1) {
-            return;
-        }
-        for (int i = 0; i < MAXD; i++) {
-            int nextX = front.first + dx[i];
-            int nextY = front.second + dy[i];
-            if (canVisit(nextX, nextY)) {
-                pre[nextX][nextY] = Position(front.first, front.second);
-                inQueue[nextX][nextY] = true;
-                q.push(Position(nextX, nextY));
-            }
-        }
-    }
-}
-
-void printPath(Position p) {
-    Position prePosition = pre[p.first][p.second];
-    if (prePosition == Position(-1, -1)) {
-        printf("%d %d\n", p.first + 1, p.second + 1);
-        return;
-    }
-    printPath(prePosition);
-    printf("%d %d\n", p.first + 1, p.second + 1);
-}
-
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &maze[i][j]);
-        }
-    }
-    fill(pre[0], pre[0] + n * m, Position(-1, -1));
-    BFS(0, 0);
-    printPath(Position(n - 1, m - 1));
-    return 0;
-}
-```
 
 
 
@@ -1947,6 +1494,8 @@ print(step)
 
 
 ### 2.6 字符迷宫
+
+https://sunnywhy.com/sfbj/8/2/323
 
 现有一个n*m大小的迷宫，其中`*`表示不可通过的墙壁，`.`表示平地。每次移动只能向上下左右移动一格，且只能移动到平地上。求从起点`S`到终点`T`的最小步数。
 
@@ -2078,6 +1627,8 @@ print(step)
 
 ### 2.7 多终点迷宫问题
 
+https://sunnywhy.com/sfbj/8/2/324
+
 现有一个 n*m 大小的迷宫，其中`1`表示不可通过的墙壁，`0`表示平地。每次移动只能向上下左右移动一格，且只能移动到平地上。求从迷宫左上角到迷宫中每个位置的最小步数。
 
 **输入**
@@ -2175,6 +1726,8 @@ for i in range(n):
 
 
 ### 2.8 迷宫问题-传送点
+
+https://sunnywhy.com/sfbj/8/2/325
 
 现有一个n*m大小的迷宫，其中`1`表示不可通过的墙壁，`0`表示平地，`2`表示传送点。每次移动只能向上下左右移动一格，且只能移动到平地或传送点上。当位于传送点时，可以选择传送到另一个`2`处（传送不计入步数），也可以选择不传送。求从迷宫左上角到右下角的最小步数。
 
@@ -2307,7 +1860,7 @@ print(step)
 
 ### 2.9 中国象棋-马-无障碍
 
- 
+ https://sunnywhy.com/sfbj/8/2/326
 
 现有一个n*m大小的棋盘，在棋盘的第行第列的位置放置了一个棋子，其他位置都未放置棋子。棋子的走位参照中国象棋的“马”。求该棋子到棋盘上每个位置的最小步数。
 
@@ -3688,7 +3241,7 @@ print(bfs(1,1))
 
 
 
-## 20106: 走山路
+### 20106: 走山路
 
 http://cs101.openjudge.cn/routine/20106/
 
