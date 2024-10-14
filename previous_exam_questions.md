@@ -1,6 +1,6 @@
-# Previous exam questions
+# Previous exam questions历年机考题目
 
-Updated 1220 GMT+8 Dec 27 2023
+Updated 0955 GMT+8 Oct 14 2024
 
 2023 fall, Complied by Hongfei Yan
 
@@ -16,9 +16,29 @@ Updated 1220 GMT+8 Dec 27 2023
 
 ## 2023fall
 
-Todo:
+E27273: 简单的数学题
 
-cs101 2023 Final Exam @ 20231228
+http://cs101.openjudge.cn/practice/27273/
+
+E27301:给植物浇水
+
+http://cs101.openjudge.cn/practice/27301/
+
+M27274:字符串提炼
+
+http://cs101.openjudge.cn/practice/27274/
+
+M27310:积木
+
+http://cs101.openjudge.cn/practice/27310/
+
+T27237:体育游戏跳房子
+
+http://cs101.openjudge.cn/practice/27237/
+
+T27373:最大整数
+
+http://cs101.openjudge.cn/practice/27373/
 
 
 
