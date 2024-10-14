@@ -1,131 +1,98 @@
 # Previous exam questions历年机考题目
 
-Updated 0955 GMT+8 Oct 14 2024
-
+Updated 0955 GMT+8 Oct 14 2024  
 2023 fall, Complied by Hongfei Yan
 
-
-
-每次上机考试2小时，在计算中心机房进行。可以Python, C++提交程序。
-
-题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。
-
+每次上机考试2小时，在计算中心机房进行。可以Python, C++提交程序。  
+题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。  
 往年考试题目，http://cs101.openjudge.cn，点“已结束的比赛”
 
 
-
 ## 2023fall
-
-E27273: 简单的数学题
-
+E27273: 简单的数学题  
 http://cs101.openjudge.cn/practice/27273/
 
-E27301:给植物浇水
-
+E27301:给植物浇水  
 http://cs101.openjudge.cn/practice/27301/
 
-M27274:字符串提炼
-
+M27274:字符串提炼  
 http://cs101.openjudge.cn/practice/27274/
 
-M27310:积木
-
+M27310:积木  
 http://cs101.openjudge.cn/practice/27310/
 
-T27237:体育游戏跳房子
-
+T27237:体育游戏跳房子  
 http://cs101.openjudge.cn/practice/27237/
 
-T27373:最大整数
-
+T27373:最大整数  
 http://cs101.openjudge.cn/practice/27373/
 
 
-
 ### 20231207 cs101 2023 Mock Exam
-
-Easy:
-
-18176: 2050年成绩计算
-
+E18176: 2050年成绩计算  
 http://cs101.openjudge.cn/practice/18176/
 
-18224: 找魔数
-
+E18224: 找魔数  
 http://cs101.openjudge.cn/practice/18224
 
-Medium:
-
-19963: 买学区房
-
+M19963: 买学区房  
 http://cs101.openjudge.cn/practice/19963
 
-23806: 三数之和
-
-Tough
-
+M23806: 三数之和  
 http://cs101.openjudge.cn/practice/23806/
 
-25561: 2022决战双十一
-
+T25561: 2022决战双十一  
 http://cs101.openjudge.cn/practice/25561/
 
-08210: 河中跳房子
-
+T08210: 河中跳房子  
 http://cs101.openjudge.cn/practice/08210/
 
-Unsure
-
-01922: Ride to School
-
+Unsure  
+01922: Ride to School  
 http://cs101.openjudge.cn/practice/01922/
 
 
-
 ### 20231102 cs101 2023 Mock Exam
-
-Easy:
-03143 验证“歌德巴赫猜想”
+E03143 验证“歌德巴赫猜想”  
 http://cs101.openjudge.cn/practice/03143/
-计算鞍点
+
+E计算鞍点  
 http://cs101.openjudge.cn/practice/03670/
-多项式时间复杂度
+
+E多项式时间复杂度
 http://cs101.openjudge.cn/practice/023563/
-决战双十一
+
+E决战双十一  
 http://cs101.openjudge.cn/practice/23566/
 
-Medium:
-打怪兽(sorting,math)v0.2
+M打怪兽(sorting,math)v0.2  
 http://cs101.openjudge.cn/practice/18182/
-因材施教(greedy)
+
+M因材施教(greedy)  
 http://cs101.openjudge.cn/practice/19948/
 
 
-
-
-
-
 ### 20231005 cs101 2023 Mock Exam
-
-Easy:
-与7无关的数
+E与7无关的数  
 http://cs101.openjudge.cn/practice/02701/
-细菌繁殖
+
+E细菌繁殖  
 http://cs101.openjudge.cn/practice/02712/
-菲波那契数列
+
+E菲波那契数列  
 http://cs101.openjudge.cn/practice/02753/
-完美立方
+
+E完美立方  
 http://cs101.openjudge.cn/practice/02810/
-质数的和与积
+
+E质数的和与积  
 http://cs101.openjudge.cn/practice/04138/
-数字方格
+
+E数字方格  
 http://cs101.openjudge.cn/practice/04146/
-Medium:
-约瑟夫问题
+
+M约瑟夫问题  
 http://cs101.openjudge.cn/practice/02746/
-
-
-
 
 
 ### 2023年计算概论摸底考试
