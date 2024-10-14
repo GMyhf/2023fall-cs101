@@ -3,9 +3,29 @@
 Updated 0955 GMT+8 Oct 14 2024  
 2023 fall, Complied by Hongfei Yan
 
-每次上机考试2小时，在计算中心机房进行。可以Python, C++提交程序。  
+每次上机考试1小时50分钟，在计算中心机房进行。可以Python, C++提交程序。  
 题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。  
 往年考试题目，点“已结束的比赛”。http://cs101.openjudge.cn
+
+### 20241010 cs101 Mock Exam暨选做题目满百
+E28674:《黑神话：悟空》之加密  
+http://cs101.openjudge.cn/practice/28674/
+
+E28691:字符串中的整数求和  
+http://cs101.openjudge.cn/practice/28691/
+
+M28664:验证身份证号  
+http://cs101.openjudge.cn/practice/28664/
+
+M28678:角谷猜想  
+http://cs101.openjudge.cn/practice/28678/
+
+M28700:罗马数字与整数的转换  
+http://cs101.openjudge.cn/practice/28700/
+
+T25353:排队  
+http://cs101.openjudge.cn/practice/25353/
+
 
 
 | 2023fall                                                     | 20231207 cs101 Mock Exam                                     |
@@ -105,7 +125,7 @@ http://cs101.openjudge.cn/practice/25570/
 T25572: 螃蟹采蘑菇, bfs/dfs  
 http://cs101.openjudge.cn/practice/25572/
 
-T25573: 红蓝玫瑰, dp
+T25573: 红蓝玫瑰, dp  
 http://cs101.openjudge.cn/practice/25573/
 
 
@@ -142,25 +162,23 @@ http://cs101.openjudge.cn/practice/H04135/
 ### cs101 2021 Final Exam (非留学生)
 
 http://cs101.openjudge.cn/cs101_2021fe_class8/
-Easy:  
-小朋友春游  
+
+E23554: 小朋友春游  
 http://cs101.openjudge.cn/practice/23554/
 
-数论  
+E23564: 数论  
 http://cs101.openjudge.cn/practice/23564/
 
-Medium:  
-节省存储的矩阵乘法  
+M23555: 节省存储的矩阵乘法  
 http://cs101.openjudge.cn/practice/23555/
 
-小青蛙跳荷叶  
+M23556: 小青蛙跳荷叶  
 http://cs101.openjudge.cn/practice/23556/
 
-Tough:  
-有界的深度优先搜索  
+T23558: 有界的深度优先搜索  
 http://cs101.openjudge.cn/practice/23558/
 
-幸福的寒假生活  
+T23568: 幸福的寒假生活  
 http://cs101.openjudge.cn/practice/23568/
 
 
@@ -314,7 +332,7 @@ http://cs101.openjudge.cn/practice/19959/
 刷漆工  
 http://cs101.openjudge.cn/practice/19952/
 
-寻宝 
+寻宝  
 http://cs101.openjudge.cn/practice/19930/
 
 环形穿梭车调度  
@@ -470,28 +488,26 @@ http://bailian.openjudge.cn/cs10114fe
 出现两次的字符-Characters Appearing twice  
 http://cs101.openjudge.cn/practice/04106/
 
-19岁生日礼物-Birthday Gift
+19岁生日礼物-Birthday Gift  
 http://cs101.openjudge.cn/practice/04107/
 
 
-羚羊数量-Number Of Antelope
+羚羊数量-Number Of Antelope  
 http://cs101.openjudge.cn/practice/04108/
 
-
-公共朋友-Common Friends
+公共朋友-Common Friends  
 http://cs101.openjudge.cn/practice/04109/
 
-圣诞老人的礼物-Santa Clau’s Gifts
+圣诞老人的礼物-Santa Clau’s Gifts  
 http://cs101.openjudge.cn/practice/04110/
 
-判断游戏胜者-Who Is the Winner
+判断游戏胜者-Who Is the Winner  
 http://cs101.openjudge.cn/practice/04111/
 
-情报破译-Cryptanalysis
+情报破译-Cryptanalysis  
 http://cs101.openjudge.cn/practice/04112/
 
-
-北京地铁票价-BeiJing Subway
+北京地铁票价-BeiJing Subway  
 http://cs101.openjudge.cn/practice/04113/
 
 
@@ -500,28 +516,28 @@ http://cs101.openjudge.cn/practice/04113/
 
 http://bailian.openjudge.cn/cs10113fe
 
-回文数字（Palindrome Number）
+回文数字（Palindrome Number）  
 http://cs101.openjudge.cn/practice/04067/
 
-判断是否可以构成等差数列
+判断是否可以构成等差数列  
 http://cs101.openjudge.cn/practice/04068
 
-买手机
+买手机  
 http://cs101.openjudge.cn/practice/04069
 
-全排列
+全排列  
 http://cs101.openjudge.cn/practice/04070
 
-查找出现了k次的字符
+查找出现了k次的字符  
 http://cs101.openjudge.cn/practice/04071
 
-判断多个点是否在同一直线
+判断多个点是否在同一直线  
 http://cs101.openjudge.cn/practice/04072
 
-最长公共字符串后缀（Longest String Postfix）
+最长公共字符串后缀（Longest String Postfix）  
 http://cs101.openjudge.cn/practice/04073
 
-积水量
+积水量  
 http://cs101.openjudge.cn/practice/04074
 
 
@@ -530,28 +546,28 @@ http://cs101.openjudge.cn/practice/04074
 
 http://bailian.openjudge.cn/cs10113me
 
-邮箱验证
+邮箱验证  
 http://cs101.openjudge.cn/practice/04015/
 
-生日相同
+生日相同  
 http://cs101.openjudge.cn/practice/02724/
 
-受限完全平方数
+受限完全平方数  
 http://cs101.openjudge.cn/practice/02911/
 
-日历问题
+日历问题  
 http://cs101.openjudge.cn/practice/02964/
 
-子串
+子串  
 http://cs101.openjudge.cn/practice/02744/
 
-提取数字
+提取数字  
 http://cs101.openjudge.cn/practice/02910/
 
-判断数字个数
+判断数字个数  
 http://cs101.openjudge.cn/practice/02927/
 
-垂直直方图
+垂直直方图  
 http://cs101.openjudge.cn/practice/02800/
 
 
@@ -648,9 +664,8 @@ http://cs101.openjudge.cn/practice/02936/
 吃糖果  
 http://cs101.openjudge.cn/practice/02942/
 
-玩游戏
+玩游戏  
 http://cs101.openjudge.cn/practice/02946/
-
 
 
 
@@ -688,7 +703,7 @@ http://cs101.openjudge.cn/practice/02899/
 Holiday Hotel  
 http://cs101.openjudge.cn/practice/02783/
 
-子串
+子串  
 http://cs101.openjudge.cn/practice/04018/
 
  
