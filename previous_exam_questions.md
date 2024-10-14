@@ -278,22 +278,22 @@ http://cs101.openjudge.cn/practice/02773/
 
 http://cs101.openjudge.cn/cs10119fe/
 
-这一天星期几v0.3(math)
+这一天星期几v0.3(math)  
 http://cs101.openjudge.cn/practice/19944/
-提取实体v0.3 (string)
 
+提取实体v0.3 (string)  
 http://cs101.openjudge.cn/practice/19949/
-图的拉普拉斯矩阵(matrix)
 
+图的拉普拉斯矩阵(matrix)  
 http://cs101.openjudge.cn/practice/19943/
-二维矩阵上的卷积运算v0.2 (matrix)
 
+二维矩阵上的卷积运算v0.2 (matrix)  
 http://cs101.openjudge.cn/practice/19942/
-买学区房v0.4(sort,math)
 
+买学区房v0.4(sort,math)  
 http://cs101.openjudge.cn/practice/19963/
-因材施教(greedy)
 
+因材施教(greedy)  
 http://cs101.openjudge.cn/practice/19948/
 
 
@@ -450,7 +450,7 @@ http://cs101.openjudge.cn/practice/02936/
 异常细胞检测  
 http://cs101.openjudge.cn/practice/02937/
 
-小白鼠排队
+小白鼠排队  
 http://cs101.openjudge.cn/practice/02943/
 
 大整数加法  
@@ -458,8 +458,7 @@ http://cs101.openjudge.cn/practice/02981/
 
 
 
-因为OJ改版，丢失了这些年的考试信息
-
+因为OJ改版，丢失了这些年的考试信息  
 2015fall, 2012fall, 2011fall,2010fall, 2009fall
 
 
@@ -468,21 +467,32 @@ http://cs101.openjudge.cn/practice/02981/
 
 http://bailian.openjudge.cn/cs10114fe
 
-7809 出现两次的字符-Characters Appearing twice
+出现两次的字符-Characters Appearing twice  
+http://cs101.openjudge.cn/practice/04106/
 
-7810 19岁生日礼物-Birthday Gift
+19岁生日礼物-Birthday Gift
+http://cs101.openjudge.cn/practice/04107/
 
-7811 羚羊数量-Number Of Antelope
 
-7812 公共朋友-Common Friends
+羚羊数量-Number Of Antelope
+http://cs101.openjudge.cn/practice/04108/
 
-7813 圣诞老人的礼物-Santa Clau’s Gifts
 
-7814 判断游戏胜者-Who Is the Winner
+公共朋友-Common Friends
+http://cs101.openjudge.cn/practice/04109/
 
-7816 情报破译-Cryptanalysis
+圣诞老人的礼物-Santa Clau’s Gifts
+http://cs101.openjudge.cn/practice/04110/
 
-7818 北京地铁票价-BeiJing Subway
+判断游戏胜者-Who Is the Winner
+http://cs101.openjudge.cn/practice/04111/
+
+情报破译-Cryptanalysis
+http://cs101.openjudge.cn/practice/04112/
+
+
+北京地铁票价-BeiJing Subway
+http://cs101.openjudge.cn/practice/04113/
 
 
 
@@ -490,21 +500,29 @@ http://bailian.openjudge.cn/cs10114fe
 
 http://bailian.openjudge.cn/cs10113fe
 
-6704 回文数字（Palindrome Number）
+回文数字（Palindrome Number）
+http://cs101.openjudge.cn/practice/04067/
 
-6705 判断是否可以构成等差数列
+判断是否可以构成等差数列
+http://cs101.openjudge.cn/practice/04068
 
-6706 买手机
+买手机
+http://cs101.openjudge.cn/practice/04069
 
-6707 全排列
+全排列
+http://cs101.openjudge.cn/practice/04070
 
-6708 查找出现了k次的字符
+查找出现了k次的字符
+http://cs101.openjudge.cn/practice/04071
 
-6709 判断多个点是否在同一直线
+判断多个点是否在同一直线
+http://cs101.openjudge.cn/practice/04072
 
-6710 最长公共字符串后缀（Longest String Postfix）
+最长公共字符串后缀（Longest String Postfix）
+http://cs101.openjudge.cn/practice/04073
 
-6711 积水量
+积水量
+http://cs101.openjudge.cn/practice/04074
 
 
 
@@ -512,21 +530,29 @@ http://bailian.openjudge.cn/cs10113fe
 
 http://bailian.openjudge.cn/cs10113me
 
-3087 邮箱验证
+邮箱验证
+http://cs101.openjudge.cn/practice/04015/
 
-2239 生日相同
+生日相同
+http://cs101.openjudge.cn/practice/02724/
 
-1913 受限完全平方数
+受限完全平方数
+http://cs101.openjudge.cn/practice/02911/
 
-1965 日历问题
+日历问题
+http://cs101.openjudge.cn/practice/02964/
 
-1746 子串
+子串
+http://cs101.openjudge.cn/practice/02744/
 
-1912 提取数字
+提取数字
+http://cs101.openjudge.cn/practice/02910/
 
-1929 判断数字个数
+判断数字个数
+http://cs101.openjudge.cn/practice/02927/
 
-1802 垂直直方图
+垂直直方图
+http://cs101.openjudge.cn/practice/02800/
 
 
 
@@ -534,8 +560,7 @@ http://bailian.openjudge.cn/cs10113me
 
 **cs10108 C++ Final Exam**
 
-2009/1/13 14:40～17:40
-
+2009/1/13 14:40～17:40  
 http://jsgl.openjudge.cn/contest1642/
 
 1的个数  
@@ -573,8 +598,7 @@ http://cs101.openjudge.cn/practice/03717
 
 ### cs10108 C++ Mock Exam No.2
 
-2008/12/30 14:40～16:40
-
+2008/12/30 14:40～16:40  
 http://jsgl.openjudge.cn/contest1640/
 
 日历问题  
@@ -600,8 +624,7 @@ http://cs101.openjudge.cn/practice/01159/
 
 ### cs10108 C++ Mock Exam No.1
 
-2008/12/23 14:40～16:40
-
+2008/12/23 14:40～16:40  
 http://jsgl.openjudge.cn/contest1637/
 
 满足条件的整数  
@@ -635,8 +658,7 @@ http://cs101.openjudge.cn/practice/02946/
 
 ### cs10107 C++ Mock Exam No.3
 
- 2007/12/19 12:30~14:20
-
+2007/12/19 12:30~14:20  
 http://jsgl.openjudge.cn/contest1460/
 
 整数的个数  
@@ -669,47 +691,50 @@ http://cs101.openjudge.cn/practice/02783/
 子串
 http://cs101.openjudge.cn/practice/04018/
 
-
-
  
-
 ### cs10107 C++ Mock Exam No.2
 
- 2007/12/5 12:30~14:20
-
+2007/12/5 12:30~14:20  
 http://jsgl.openjudge.cn/contest1452/
 
-受限完全平方数
+受限完全平方数  
 http://cs101.openjudge.cn/practice/02911/
-加密技术
+
+加密技术  
 http://cs101.openjudge.cn/practice/02913/
-熄灯问题
+
+熄灯问题  
 http://cs101.openjudge.cn/practice/02811/
-分解因数
+
+分解因数  
 http://cs101.openjudge.cn/practice/02749/
-最长上升子序列
+
+最长上升子序列  
 http://cs101.openjudge.cn/practice/02757/
-麦森数
+
+麦森数  
 http://cs101.openjudge.cn/practice/02706/
-提取数字 1912
+
+提取数字  
 http://bailian.openjudge.cn/practice/2910/
-
-
 
 
 ### cs10107 C++ Mock Exam No.1
 
- 2007/11/21 12:30~14:20
-
+2007/11/21 12:30~14:20  
 http://jsgl.openjudge.cn/contest1447/
 
-判断数字个数
+判断数字个数  
 http://cs101.openjudge.cn/practice/02927/
-满足条件的整数
+
+满足条件的整数  
 http://cs101.openjudge.cn/practice/03225/
-生日相同
-http://cs101.openjudge.cn/practice/25301/
-鸡兔同笼
+
+生日相同  
+http://cs101.openjudge.cn/practice/02724/
+
+鸡兔同笼  
 http://cs101.openjudge.cn/practice/03237/
-棋盘问题
+
+棋盘问题  
 http://cs101.openjudge.cn/practice/01321/
