@@ -1,30 +1,51 @@
 # Previous exam questions历年机考题目
 
-Updated 1755 GMT+8 Oct 14 2024  
+Updated 1920 GMT+8 Dec 16 2024  
 2023 fall, Complied by Hongfei Yan
 
 每次上机考试1小时50分钟，在计算中心机房进行。可以Python, C++提交程序。  
 题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。  
 往年考试题目，点“已结束的比赛”。http://cs101.openjudge.cn
 
-### 20241010 cs101 Mock Exam暨选做题目满百
-E28674:《黑神话：悟空》之加密  
-http://cs101.openjudge.cn/practice/28674/
 
-E28691:字符串中的整数求和  
-http://cs101.openjudge.cn/practice/28691/
 
-M28664:验证身份证号  
-http://cs101.openjudge.cn/practice/28664/
 
-M28678:角谷猜想  
-http://cs101.openjudge.cn/practice/28678/
 
-M28700:罗马数字与整数的转换  
-http://cs101.openjudge.cn/practice/28700/
+### 20241205 cs101 Dec Mock Exam大雪前一天
+E22548: 机智的股民老张  
+http://cs101.openjudge.cn/practice/22548/
 
-T25353:排队  
-http://cs101.openjudge.cn/practice/25353/
+M28701: 炸鸡排  
+http://cs101.openjudge.cn/practice/28701/
+
+M20744: 土豪购物   
+http://cs101.openjudge.cn/practice/20744/
+
+T25561: 2022决战双十一  
+http://cs101.openjudge.cn/practice/25561/
+
+T20741: 两座孤岛最短距离  
+http://cs101.openjudge.cn/practice/20741/
+
+T28776: 国王游戏  
+http://cs101.openjudge.cn/practice/28776/
+
+
+
+
+
+| 20241010 cs101 Mock Exam暨选做题目满百                       | 20241107 cs101 Mock Exam立冬                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| E28674:《黑神话：悟空》之加密  <br/>http://cs101.openjudge.cn/practice/28674/ | E07618:病人排队  <br/>http://cs101.openjudge.cn/practice/07681/ |
+| E28691:字符串中的整数求和  <br/>http://cs101.openjudge.cn/practice/28691/ | E23555: 节省存储的矩阵乘法  <br/>http://cs101.openjudge.cn/practice/23555/ |
+| M28664:验证身份证号  <br/>http://cs101.openjudge.cn/practice/28664/ | M18182: 打怪兽   <br/>http://cs101.openjudge.cn/practice/18182/ |
+| M28678:角谷猜想  <br/>http://cs101.openjudge.cn/practice/28678/ | M28780: 零钱兑换3  <br/>http://cs101.openjudge.cn/practice/28780/ |
+| M28700:罗马数字与整数的转换  <br/>http://cs101.openjudge.cn/practice/28700/ | T12757: 阿尔法星人翻译官  <br/>http://cs101.openjudge.cn/practice/12757/ |
+| T25353:排队  <br/>http://cs101.openjudge.cn/practice/25353/  | T16528: 充实的寒假生活  <br/>http://cs101.openjudge.cn/practice/16528/ |
+
+
+
+
 
 
 
@@ -706,7 +727,7 @@ http://cs101.openjudge.cn/practice/02783/
 子串  
 http://cs101.openjudge.cn/practice/04018/
 
- 
+
 ### cs10107 C++ Mock Exam No.2
 
 2007/12/5 12:30~14:20  
