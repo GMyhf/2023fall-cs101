@@ -752,7 +752,7 @@ http://cs101.openjudge.cn/practice/02757/
 http://cs101.openjudge.cn/practice/02706/
 
 提取数字  
-http://bailian.openjudge.cn/practice/2910/
+http://cs101.openjudge.cn/practice/02910
 
 
 ### cs10107 C++ Mock Exam No.1
