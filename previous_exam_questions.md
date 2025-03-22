@@ -172,10 +172,10 @@ http://cs101.openjudge.cn/practice/M18182/
 
 Tough:  
 滑雪  
-http://cs101.openjudge.cn/practice/H01088/
+http://cs101.openjudge.cn/practice/01088/
 
 月度开销  
-http://cs101.openjudge.cn/practice/H04135/
+http://cs101.openjudge.cn/practice/04135/
 
 
 ## 2021fall
