@@ -1,6 +1,6 @@
 # Previous exam questions历年机考题目
 
-Updated 1920 GMT+8 Dec 16 2024  
+Updated 0049 GMT+8 Mar 23 2025  
 2023 fall, Complied by Hongfei Yan
 
 每次上机考试1小时50分钟，在计算中心机房进行。可以Python, C++提交程序。  
