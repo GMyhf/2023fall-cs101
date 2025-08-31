@@ -1,13 +1,43 @@
 # Previous exam questions历年机考题目
 
-Updated 0049 GMT+8 Mar 23 2025  
-2023 fall, Complied by Hongfei Yan
+*Updated 2025-08-31 10:23 GMT+8*  
+ *Compiled by Hongfei Yan (2023 Fall)*  
 
-每次上机考试1小时50分钟，在计算中心机房进行。可以Python, C++提交程序。  
+
+
+每次上机考试1小时50分钟，在计算中心机房进行。可以Python3, PyPy3, C++提交程序。  
 题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。  
 往年考试题目，点“已结束的比赛”。http://cs101.openjudge.cn
 
 
+
+## 2024fall
+
+### cs101 2024 Final Exam
+
+E28681: 奖学金
+
+http://cs101.openjudge.cn/practice/28681
+
+E28908: PASCAL代码
+
+http://cs101.openjudge.cn/practice/28908
+
+M28699: 买水果
+
+http://cs101.openjudge.cn/practice/28699
+
+M28906: 数的划分
+
+http://cs101.openjudge.cn/practice/28906
+
+M28914: 温度调节
+
+http://cs101.openjudge.cn/practice/28914
+
+T28973: 蛇入迷宫
+
+http://cs101.openjudge.cn/practice/28973
 
 
 
@@ -47,7 +77,7 @@ http://cs101.openjudge.cn/practice/28776/
 
 
 
-
+## 2023fall
 
 | 2023fall                                                     | 20231207 cs101 Mock Exam                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
