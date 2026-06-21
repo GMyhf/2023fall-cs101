@@ -312,18 +312,15 @@ http://cs101.openjudge.cn/practice/21458/
 
 
 
-### cs101 2020 Mock Exam (class 13)
+### cs101 2020 Mock Exam (class 12)
 
-http://cs101.openjudge.cn/cs101_2020me_class13/
+http://cs101.openjudge.cn/cs101_2020me_class12/
 
 鸡兔同笼  
 http://cs101.openjudge.cn/practice/02750/
 
 24点  
 http://cs101.openjudge.cn/practice/18223/
-
-找魔数  
-http://cs101.openjudge.cn/practice/18224/
 
 编码字符串(string)  
 http://cs101.openjudge.cn/practice/12556/
